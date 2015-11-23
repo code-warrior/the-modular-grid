@@ -158,6 +158,3 @@ ehthumbs.db
 ##########################################
 # Add your repo-specific overrides below #
 ##########################################
-
-# Ignore the `css` folder, since it must be compiled via Sass
-/css
