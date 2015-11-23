@@ -1,6 +1,6 @@
 # Column and Baseline Grid
 
-![Screenshot of Column and Baseline Grid](img/column-baseline-grid-screenshot.png);
+![Screenshot of Column and Baseline Grid](img/column-baseline-grid-screenshot.png)
 
 This is a simple column and baseline grid that uses 75-pixel columns, 25-pixel gutters, and 24-pixel baselines, each of which can be changed in the file `_variables.scss`. Hitting the `esc` key toggles the grid.
 
