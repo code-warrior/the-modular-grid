@@ -1,0 +1,68 @@
+@import 'reset';
+@import 'variables';
+@import 'grid';
+
+#layer {
+   margin: 0 auto;
+   max-width: $width-body;
+   padding: {
+      left: (1 * ($grid-width + $grid-gutter));
+      right: (1 * ($grid-width + $grid-gutter));
+   }
+}
+
+h1 {
+   font-size: 2 * $font-size;   // 32px
+   line-height: 1.5 * $leading; // 36px
+   margin: (.75 * $leading) 0;  // 18px
+}
+
+h2 {
+   font-size: 1.5 * $font-size; // 24px
+   line-height: 1.5 * $leading; // 36px
+   margin: (.25 * $leading) 0;  // 6px
+}
+
+h3 {
+   font-size: 1.25 * $font-size;
+   line-height: 2 * $leading;
+}
+
+p {
+   line-height: $leading;
+}
+
+blockquote {
+   padding: 0 0 0 $grid-width;
+   margin: 0;
+   line-height: $leading;
+}
+
+q {
+   line-height: $leading;
+}
+
+code {
+   font: 400 $font-size monospace;
+}
+
+section {
+   padding-right: $grid-gutter;
+   margin-top: $leading;
+   display: inline-block;
+   vertical-align: top;
+}
+
+section:nth-of-type(1),
+section:nth-of-type(4) {
+   max-width: $width-body;
+}
+
+section:nth-of-type(2) {
+   max-width: (4 * ($grid-width + $grid-gutter)) + $grid-width;
+}
+
+section:nth-of-type(3) {
+   max-width: (4 * ($grid-width + $grid-gutter)) + $grid-width;
+   padding-right: 0;
+}
