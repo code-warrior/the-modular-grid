@@ -13,8 +13,8 @@ window.onload = function () {
     gridLayer.setAttribute('id', 'column-baseline-grid');
 
     styleSheet.insertRule('#column-baseline-grid { height: '
-        + document.body.scrollHeight
-        + 'px; }', 1);
+            + document.body.scrollHeight
+            + 'px; }', 1);
 
     if (null !== firstChildOfBody) {
         body.insertBefore(gridLayer, firstChildOfBody);
