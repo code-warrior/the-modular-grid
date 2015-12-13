@@ -1,4 +1,5 @@
-/*global window */
+/*jslint browser: true, plusplus: true */
+/*global window, document */
 
 window.onload = function () {
     'use strict';
