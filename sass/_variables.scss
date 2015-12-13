@@ -3,3 +3,6 @@ $leading: 1.5 * $font-size;                                    // 24 pixels
 $grid-width: 4.6875 * $font-size;                              // 75 pixels
 $grid-gutter: 1.5625 * $font-size;                             // 25 pixels
 $width-body: (9 * ($grid-width + $grid-gutter)) + $grid-width; // 975 pixels
+$color-grid-column: rgba(200, 0, 0, 0.2);
+$color-grid-baseline: rgba(56, 255, 255, 0.8);
+

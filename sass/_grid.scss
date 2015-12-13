@@ -7,9 +7,9 @@
 }
 
 .all-grids {
-   background-image: url('../img/modular-grid.png'),
-      linear-gradient(90deg, rgba(200, 0, 0, 0.2) $grid-width, transparent 0px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, rgba(56, 255, 255, 0.8) 100%);
+   background-image: $users-comparison-bg-image,
+      linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px),
+      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
 
    background-position: center center,
       0% 0%,
@@ -33,18 +33,18 @@
 }
 
 .modular-grid {
-   background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.2) $grid-width, transparent 0px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, rgba(56, 255, 255, 0.8) 100%);
+   background-image: linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px),
+      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
    background-size: ($grid-width + $grid-gutter) 100%,
       100% $leading;
 }
 
 .column-grid {
-   background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.2) $grid-width, transparent 0px);
+   background-image: linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px);
    background-size: ($grid-width + $grid-gutter) 100%;
 }
 
 .baseline-grid {
-   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, rgba(56, 255, 255, 0.8) 100%);
+   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
    background-size: 100% $leading;
 }
