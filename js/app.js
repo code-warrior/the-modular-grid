@@ -8,7 +8,6 @@ window.onload = function () {
         firstChildOfBody = body.firstElementChild,
         gridLayer = document.createElement('div'),
         styleSheet = document.styleSheets[0],
-        showingGrid = true;
 
     gridLayer.setAttribute('id', 'column-baseline-grid');
 
@@ -24,13 +23,8 @@ window.onload = function () {
 
     document.onkeydown = function (evnt) {
         if (27 === evnt.keyCode) {
-            if (false === showingGrid) {
-                gridLayer.setAttribute('id', 'column-baseline-grid');
-            } else {
-                gridLayer.removeAttribute('id');
             }
 
-            showingGrid = !showingGrid;
         }
     };
 };
