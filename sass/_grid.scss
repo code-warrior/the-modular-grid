@@ -11,23 +11,23 @@
       linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px),
       linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
 
-   background-position: center center,
+   background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y,
       0% 0%,
       0% 0%;
 
-   background-size: auto auto,
+   background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y,
       ($grid-width + $grid-gutter) 100%,
       100% $leading;
 
-   background-attachment: fixed,
+   background-attachment: $users-comparison-bg-image--attachment,
       fixed,
       fixed;
 
-   background-repeat: no-repeat,
+   background-repeat: $users-comparison-bg-image--repeat,
       no-repeat,
       no-repeat;
 
-   background-color: transparent,
+   background-color: $users-comparison-bg-image--color,
       transparent,
       transparent;
 }
