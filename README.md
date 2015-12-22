@@ -1,5 +1,5 @@
 # Column and Baseline Modular Grid
-(v1.0.2)
+(v1.0.3)
 
 This is a simple column and baseline grid (known as a modular grid) that uses **75-pixel columns**, **25-pixel gutters**, and **24-pixel baselines** in order to compare against a user-supplied image. Hitting the `esc` key toggles the grid in a round-robin fashion, observing the following order.
 
