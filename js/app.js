@@ -7,14 +7,9 @@ window.onload = function () {
     var body = document.querySelector('body'),
         firstChildOfBody = body.firstElementChild,
         gridLayer = document.createElement('div'),
-        styleSheet = document.styleSheets[0],
         gridChoice = 1;
 
     gridLayer.setAttribute('id', 'column-baseline-grid');
-
-    styleSheet.insertRule('#column-baseline-grid { height: '
-            + document.body.scrollHeight
-            + 'px; }', 1);
 
     if (null !== firstChildOfBody) {
         body.insertBefore(gridLayer, firstChildOfBody);
