@@ -6,19 +6,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700&subset=latin,latin-ext');
 
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite,
+code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure,
+footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label,
+legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, section, samp,
+small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr,
+ul, var, video {
    margin: 0;
    padding: 0;
    border: 0;
@@ -26,8 +19,7 @@ time, mark, audio, video {
    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
    display: block;
 }
 body {
@@ -40,8 +32,7 @@ ol, ul {
 blockquote, q {
    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before, blockquote:after, q:before, q:after {
    content: none;
 }
 table {
