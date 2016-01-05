@@ -18,9 +18,9 @@ $color-grid-baseline: rgba(56, 255, 255, 0.8);
 $width-body: (9 * ($grid-width + $grid-gutter)) + $grid-width; // 975 pixels
 
 // =================================================================================
-// The image `modular-grid.png` on line 18 below is used as a background image by the
-// file `index.html`. It should be updated by the user in order to compare it to the
-// background grid defined at the top of this document.
+// The image `modular-grid.png` on line 18 below is used as a background image by
+// the file `index.html`. It should be updated by the user in order to compare it to
+// the background grid defined at the top of this document.
 // =================================================================================
 $users-comparison-bg-image: url('../img/modular-grid.png');
 $users-comparison-bg-image--height: 3111px;
