@@ -1,21 +1,23 @@
 # Column and Baseline Modular Grid
-(v1.0.3)
+(v1.1.0)
 
 This is a simple column and baseline grid (known as a modular grid) that uses **75-pixel columns**, **25-pixel gutters**, and **24-pixel baselines** in order to compare against a user-supplied image. Hitting the `esc` key toggles the grid in a round-robin fashion, observing the following order.
 
-1. Displays *only* the user-supplied image (used for comparison) and your HTML.
-2. Displays *only* the column and baseline modular grid and your HTML.
-3. Displays *only* the column grid and your HTML.
-4. Displays *only* the baseline grid and your HTML.
-5. Displays *none* of the grids and *only* your HTML.
+1. Displays *none* of the grids and *only* your HTML on page load.
+2. Displays the column grid and your HTML.
+3. Displays the column and baseline modular grid and your HTML.
+4. Displays the baseline grid and your HTML.
+5. Displays a left guide used for alignment, your user-supplied background image (used for comparison), and your HTML.
+6. Displays your user-supplied image and your HTML.
 
 See the screenshots below.
 
-![Screenshot of page with column and baseline (modular) grid background image.](img/column-baseline-grid-screenshot-01.png)
-![Screenshot of page with column and baseline (modular) grid using CSS.](img/column-baseline-grid-screenshot-02.png)
-![Screenshot of page with column grid using CSS.](img/column-baseline-grid-screenshot-03.png)
-![Screenshot of page with baseline grid using CSS.](img/column-baseline-grid-screenshot-04.png)
-![Screenshot of page without any grids.](img/column-baseline-grid-screenshot-05.png)
+![Displays none of the grids and only your HTML on page load.](img/01.png)
+![Displays the column grid and your HTML.](img/02.png)
+![Displays the column and baseline modular grid and your HTML.](img/03.png)
+![Displays the baseline grid and your HTML.](img/04.png)
+![Displays a left guide used for alignment, your user-supplied background image (used for comparison), and your HTML.](img/05.png)
+![Displays your user-supplied image and your HTML.](img/06.png)
 
 ## Installation
 
