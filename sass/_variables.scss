@@ -7,8 +7,8 @@ $leading: 1.5 * $font-size;                                    // 24 pixels
 // =================================================================================
 // Grid-specific variables.
 // =================================================================================
-$grid-width: 4.6875 * $font-size;                              // 75 pixels
-$grid-gutter: 1.5625 * $font-size;                             // 25 pixels
+$grid-width: 75px;                                             // 75 pixels
+$grid-gutter: $grid-width / 3;                                 // 25 pixels
 $color-grid-column: rgba(200, 0, 0, 0.2);
 $color-grid-baseline: rgba(56, 255, 255, 0.8);
 
@@ -18,9 +18,9 @@ $color-grid-baseline: rgba(56, 255, 255, 0.8);
 $width-body: (9 * ($grid-width + $grid-gutter)) + $grid-width; // 975 pixels
 
 // =================================================================================
-// The image `modular-grid.png` on line 18 below is used as a background image by the
-// file `index.html`. It should be updated by the user in order to compare it to the
-// background grid defined at the top of this document.
+// The image `modular-grid.png` on line 18 below is used as a background image by
+// the file `index.html`. It should be updated by the user in order to compare it to
+// the background grid defined at the top of this document.
 // =================================================================================
 $users-comparison-bg-image: url('../img/modular-grid.png');
 $users-comparison-bg-image--height: 3111px;
