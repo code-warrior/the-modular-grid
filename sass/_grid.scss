@@ -13,8 +13,8 @@
       linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
 
    background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y,
-      0% 0%,
-      0% 0%;
+      0 0,
+      0 0;
 
    background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y,
       ($grid-width + $grid-gutter) 100%,
