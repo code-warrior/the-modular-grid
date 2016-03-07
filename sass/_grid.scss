@@ -49,10 +49,9 @@
 }
 
 .user-supplied-bg-image {
-   background-image: $users-comparison-bg-image;
-   background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y;
-   background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y;
-   background-attachment: $users-comparison-bg-image--attachment;
-   background-repeat: $users-comparison-bg-image--repeat;
-   background-color: $users-comparison-bg-image--color;
+   background: $users-comparison-bg-image--color
+               $users-comparison-bg-image
+               $users-comparison-bg-image--repeat
+               $users-comparison-bg-image--attachment
+               #{$users-comparison-bg-image--position-x $users-comparison-bg-image--position-y} / #{$users-comparison-bg-image--size-x $users-comparison-bg-image--size-y};
 }
