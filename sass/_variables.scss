@@ -26,12 +26,12 @@ $width-body: (9 * ($grid-column + $grid-gutter)) + $grid-column; // 975 pixels
 // the file `index.html`. It should be updated by the user in order to compare it to
 // the background grid defined at the top of this document.
 // =================================================================================
-$users-bg-image: url('../img/modular-grid.png');
 $users-bg-image--height: 3111px;
+$users-bg-image--color: transparent;
+$users-bg-image: url('../img/modular-grid.png');
+$users-bg-image--repeat: no-repeat;
+$users-bg-image--attachment: scroll;
 $users-bg-image--position-x: center;
 $users-bg-image--position-y: top;
 $users-bg-image--size-x: auto;
 $users-bg-image--size-y: auto;
-$users-bg-image--attachment: scroll;
-$users-bg-image--repeat: no-repeat;
-$users-bg-image--color: transparent;
