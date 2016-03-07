@@ -8,27 +8,27 @@
 }
 
 .all-grids {
-   background-image: $users-bg-image,
-      linear-gradient(90deg, $color-grid-column $grid-column, transparent 0px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
+   // This is the CSS background shortcut, not the Sass namespace shortcut.
+   background:
+      $users-bg-image
+      $users-bg-image--repeat
+      $users-bg-image--attachment
+      #{$users-bg-image--position-x} #{$users-bg-image--position-y} /
+      #{$users-bg-image--size-width} #{$users-bg-image--size-height},
 
-   background-position: $users-bg-image--position-x $users-bg-image--position-y,
-      0 0,
-      0 0;
+      linear-gradient(90deg, $color-grid-column $grid-column, transparent 0px)
+      no-repeat
+      fixed
+      #{0} #{0} /
+      #{($grid-column + $grid-gutter)} #{100%},
 
-   background-size: $users-bg-image--size-width $users-bg-image--size-height,
-      ($grid-column + $grid-gutter) 100%,
-      100% $leading;
+      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%)
+      no-repeat
+      fixed
+      #{0} #{0} /
+      #{100%} #{$leading},
 
-   background-attachment: $users-bg-image--attachment,
-      fixed,
-      fixed;
-
-   background-repeat: $users-bg-image--repeat,
-      no-repeat,
-      no-repeat;
-
-   background-color: $users-bg-image--color;
+      $users-bg-image--color;
 }
 
 .modular-grid {
