@@ -4,31 +4,31 @@
    top: 0;
    left: 0;
    width: 100%;
-   height: $users-comparison-bg-image--height;
+   height: $users-bg-image--height;
 }
 
 .all-grids {
-   background-image: $users-comparison-bg-image,
+   background-image: $users-bg-image,
       linear-gradient(90deg, $color-grid-column $grid-column, transparent 0px),
       linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
 
-   background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y,
+   background-position: $users-bg-image--position-x $users-bg-image--position-y,
       0 0,
       0 0;
 
-   background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y,
+   background-size: $users-bg-image--size-x $users-bg-image--size-y,
       ($grid-column + $grid-gutter) 100%,
       100% $leading;
 
-   background-attachment: $users-comparison-bg-image--attachment,
+   background-attachment: $users-bg-image--attachment,
       fixed,
       fixed;
 
-   background-repeat: $users-comparison-bg-image--repeat,
+   background-repeat: $users-bg-image--repeat,
       no-repeat,
       no-repeat;
 
-   background-color: $users-comparison-bg-image--color;
+   background-color: $users-bg-image--color;
 }
 
 .modular-grid {
@@ -49,12 +49,12 @@
 }
 
 .user-supplied-bg-image {
-   background: $users-comparison-bg-image--color
-               $users-comparison-bg-image
-               $users-comparison-bg-image--repeat
-               $users-comparison-bg-image--attachment
-               #{$users-comparison-bg-image--position-x
-                 $users-comparison-bg-image--position-y} /
-               #{$users-comparison-bg-image--size-x
-                 $users-comparison-bg-image--size-y};
+   background: $users-bg-image--color
+               $users-bg-image
+               $users-bg-image--repeat
+               $users-bg-image--attachment
+               #{$users-bg-image--position-x
+                 $users-bg-image--position-y} /
+               #{$users-bg-image--size-x
+                 $users-bg-image--size-y};
 }
