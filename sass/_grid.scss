@@ -53,5 +53,8 @@
                $users-comparison-bg-image
                $users-comparison-bg-image--repeat
                $users-comparison-bg-image--attachment
-               #{$users-comparison-bg-image--position-x $users-comparison-bg-image--position-y} / #{$users-comparison-bg-image--size-x $users-comparison-bg-image--size-y};
+               #{$users-comparison-bg-image--position-x
+                 $users-comparison-bg-image--position-y} /
+               #{$users-comparison-bg-image--size-x
+                 $users-comparison-bg-image--size-y};
 }
