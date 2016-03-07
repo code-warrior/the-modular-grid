@@ -53,8 +53,6 @@
                $users-bg-image
                $users-bg-image--repeat
                $users-bg-image--attachment
-               #{$users-bg-image--position-x
-                 $users-bg-image--position-y} /
-               #{$users-bg-image--size-width
-                 $users-bg-image--size-height};
+               #{$users-bg-image--position-x} #{$users-bg-image--position-y} /
+               #{$users-bg-image--size-width} #{$users-bg-image--size-height};
 }
