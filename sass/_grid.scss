@@ -16,7 +16,7 @@
       0 0,
       0 0;
 
-   background-size: $users-bg-image--size-x $users-bg-image--size-y,
+   background-size: $users-bg-image--size-width $users-bg-image--size-y,
       ($grid-column + $grid-gutter) 100%,
       100% $leading;
 
@@ -55,6 +55,6 @@
                $users-bg-image--attachment
                #{$users-bg-image--position-x
                  $users-bg-image--position-y} /
-               #{$users-bg-image--size-x
+               #{$users-bg-image--size-width
                  $users-bg-image--size-y};
 }
