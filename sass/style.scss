@@ -6,8 +6,8 @@
    margin: 0 auto;
    max-width: $width-body;
    padding: {
-      left: (1 * ($grid-width + $grid-gutter));
-      right: (1 * ($grid-width + $grid-gutter));
+      left: (1 * ($grid-column + $grid-gutter));
+      right: (1 * ($grid-column + $grid-gutter));
    }
 }
 
@@ -33,7 +33,7 @@ p {
 }
 
 blockquote {
-   padding: 0 0 0 $grid-width;
+   padding: 0 0 0 $grid-column;
    margin: 0;
    line-height: $leading;
 }
@@ -59,10 +59,10 @@ section:nth-of-type(4) {
 }
 
 section:nth-of-type(2) {
-   max-width: (4 * ($grid-width + $grid-gutter)) + $grid-width;
+   max-width: (4 * ($grid-column + $grid-gutter)) + $grid-column;
 }
 
 section:nth-of-type(3) {
-   max-width: (4 * ($grid-width + $grid-gutter)) + $grid-width;
+   max-width: (4 * ($grid-column + $grid-gutter)) + $grid-column;
    padding-right: 0;
 }

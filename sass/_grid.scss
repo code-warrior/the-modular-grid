@@ -4,55 +4,77 @@
    top: 0;
    left: 0;
    width: 100%;
-   height: $users-comparison-bg-image--height;
+   height: $users-bg-image--height;
 }
 
 .all-grids {
-   background-image: $users-comparison-bg-image,
-      linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
+   // This is the CSS background shortcut, not the Sass namespace shortcut.
+   background:
+      $users-bg-image
+      $users-bg-image--repeat
+      $users-bg-image--attachment
+      #{$users-bg-image--position-x} #{$users-bg-image--position-y} /
+      #{$users-bg-image--size-width} #{$users-bg-image--size-height},
 
-   background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y,
-      0 0,
-      0 0;
+      linear-gradient(90deg, $color-grid-column $grid-column, transparent 0px)
+      no-repeat
+      fixed
+      #{0} #{0} /
+      #{($grid-column + $grid-gutter)} #{100%},
 
-   background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y,
-      ($grid-width + $grid-gutter) 100%,
-      100% $leading;
+      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%)
+      no-repeat
+      fixed
+      #{0} #{0} /
+      #{100%} #{$leading},
 
-   background-attachment: $users-comparison-bg-image--attachment,
-      fixed,
-      fixed;
-
-   background-repeat: $users-comparison-bg-image--repeat,
-      no-repeat,
-      no-repeat;
-
-   background-color: $users-comparison-bg-image--color;
+      $users-bg-image--color;
 }
 
 .modular-grid {
-   background-image: linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
-   background-size: ($grid-width + $grid-gutter) 100%,
+   background-image:
+      linear-gradient(
+         90deg,
+         $color-grid-column $grid-column,
+         transparent 0px
+      ),
+      linear-gradient(
+         0deg,
+         rgba(0, 0, 0, 0) 95%,
+         $color-grid-baseline 100%
+      );
+   background-size:
+      ($grid-column + $grid-gutter) 100%,
       100% $leading;
 }
 
 .column-grid {
-   background-image: linear-gradient(90deg, $color-grid-column $grid-width, transparent 0px);
-   background-size: ($grid-width + $grid-gutter) 100%;
+   background-image:
+      linear-gradient(
+         90deg,
+         $color-grid-column $grid-column,
+         transparent 0px
+      );
+   background-size:
+      ($grid-column + $grid-gutter) 100%;
 }
 
 .baseline-grid {
-   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%);
-   background-size: 100% $leading;
+   background-image:
+      linear-gradient(
+         0deg,
+         rgba(0, 0, 0, 0) 95%,
+         $color-grid-baseline 100%
+      );
+   background-size:
+      100% $leading;
 }
 
 .user-supplied-bg-image {
-   background-image: $users-comparison-bg-image;
-   background-position: $users-comparison-bg-image--position-x $users-comparison-bg-image--position-y;
-   background-size: $users-comparison-bg-image--size-x $users-comparison-bg-image--size-y;
-   background-attachment: $users-comparison-bg-image--attachment;
-   background-repeat: $users-comparison-bg-image--repeat;
-   background-color: $users-comparison-bg-image--color;
+   background: $users-bg-image--color
+               $users-bg-image
+               $users-bg-image--repeat
+               $users-bg-image--attachment
+               #{$users-bg-image--position-x} #{$users-bg-image--position-y} /
+               #{$users-bg-image--size-width} #{$users-bg-image--size-height};
 }
