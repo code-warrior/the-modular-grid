@@ -53,7 +53,8 @@
       linear-gradient(
          90deg,
          $color-grid-column $grid-column,
-         transparent 0px);
+         transparent 0px
+      );
    background-size:
       ($grid-column + $grid-gutter) 100%;
 }
