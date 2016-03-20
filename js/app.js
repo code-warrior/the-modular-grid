@@ -52,6 +52,7 @@ window.onload = function () {
 
             case 5:
                 modularGrid.classList.remove('user-supplied-bg-image');
+
                 break;
             }
 
