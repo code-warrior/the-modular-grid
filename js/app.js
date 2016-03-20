@@ -9,7 +9,7 @@ window.onload = function () {
         gridLayer = document.createElement('div'),
         gridChoice = 0;
 
-    gridLayer.setAttribute('id', 'column-baseline-grid');
+    gridLayer.setAttribute('id', 'modular-grid');
 
     if (null !== firstChildOfBody) {
         body.insertBefore(gridLayer, firstChildOfBody);
