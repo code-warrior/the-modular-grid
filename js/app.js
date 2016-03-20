@@ -6,13 +6,13 @@ window.onload = function () {
 
     var body = document.querySelector('body'),
         firstChildOfBody = body.firstElementChild,
-        gridLayer = document.createElement('div'),
+        modularGrid = document.createElement('div'),
         gridChoice = 0;
 
-    gridLayer.setAttribute('id', 'modular-grid');
+    modularGrid.setAttribute('id', 'modular-grid');
 
     if (null !== firstChildOfBody) {
-        body.insertBefore(gridLayer, firstChildOfBody);
+        body.insertBefore(modularGrid, firstChildOfBody);
     } else {
         body.textContent = 'The body element does not have a child element.';
     }
@@ -21,37 +21,37 @@ window.onload = function () {
         if (27 === evnt.keyCode) {
             switch (gridChoice) {
             case 0:
-                gridLayer.classList.add('column-grid');
-                gridLayer.classList.remove('user-supplied-bg-image');
+                modularGrid.classList.add('column-grid');
+                modularGrid.classList.remove('user-supplied-bg-image');
 
                 break;
 
             case 1:
-                gridLayer.classList.remove('column-grid');
-                gridLayer.classList.add('modular-grid');
+                modularGrid.classList.remove('column-grid');
+                modularGrid.classList.add('modular-grid');
 
                 break;
 
             case 2:
-                gridLayer.classList.remove('modular-grid');
-                gridLayer.classList.add('baseline-grid');
+                modularGrid.classList.remove('modular-grid');
+                modularGrid.classList.add('baseline-grid');
 
                 break;
 
             case 3:
-                gridLayer.classList.remove('baseline-grid');
-                gridLayer.classList.add('all-grids');
+                modularGrid.classList.remove('baseline-grid');
+                modularGrid.classList.add('all-grids');
 
                 break;
 
             case 4:
-                gridLayer.classList.remove('all-grids');
-                gridLayer.classList.add('user-supplied-bg-image');
+                modularGrid.classList.remove('all-grids');
+                modularGrid.classList.add('user-supplied-bg-image');
 
                 break;
 
             case 5:
-                gridLayer.classList.remove('user-supplied-bg-image');
+                modularGrid.classList.remove('user-supplied-bg-image');
                 break;
             }
 
