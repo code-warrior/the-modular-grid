@@ -35,7 +35,7 @@ $color-grid-baseline : rgba(56, 255, 255, 0.8);
 // file `index.html`. It should be updated by the user in order to compare it to
 // this project’s various background grids.
 // =================================================================================
-$users-bg-image--height      : 3111px;
+$users-bg-image--height      : 3111px; // TODO: Calculate the height of body and use that value here.
 $users-bg-image--color       : transparent;
 $users-bg-image              : url('../img/modular-grid.png');
 $users-bg-image--repeat      : no-repeat;
