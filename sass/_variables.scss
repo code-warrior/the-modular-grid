@@ -15,7 +15,7 @@ $grid-margin : $grid-gutter / 2;                  // 10 pixels
 // Grid-specific unit lengths
 // =================================================================================
 $grid--GU    : $grid-column + $grid-gutter;       // A single grid unit
-$width--12GU : 12 * $grid--GU;                    // 980 pixels
+$width--12GU : 12 * $grid--GU;                    // 960 pixels
 $width--8GU  : 8 * $grid--GU;                     // 640 pixels
 $width--4GU  : 4 * $grid--GU;                     // 320 pixels
 
