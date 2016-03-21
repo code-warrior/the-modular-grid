@@ -9,6 +9,15 @@ window.onload = function () {
         modularGrid = document.createElement('div'),
         gridChoice = 0;
 
+        grids = {
+            columnGrid:   0,
+            modularGrid:  1,
+            baselineGrid: 2,
+            allGrids:     3,
+            userImage:    4,
+            noGrid:       5
+        };
+
     modularGrid.setAttribute('id', 'modular-grid');
 
     if (null !== firstChildOfBody) {
@@ -20,44 +29,44 @@ window.onload = function () {
     document.onkeydown = function (evnt) {
         if (27 === evnt.keyCode) {
             switch (gridChoice) {
-            case 0:
+            case grids.columnGrid:
                 modularGrid.classList.add('column-grid');
                 modularGrid.classList.remove('user-supplied-bg-image');
 
                 break;
 
-            case 1:
+            case grids.modularGrid:
                 modularGrid.classList.remove('column-grid');
                 modularGrid.classList.add('modular-grid');
 
                 break;
 
-            case 2:
+            case grids.baselineGrid:
                 modularGrid.classList.remove('modular-grid');
                 modularGrid.classList.add('baseline-grid');
 
                 break;
 
-            case 3:
+            case grids.allGrids:
                 modularGrid.classList.remove('baseline-grid');
                 modularGrid.classList.add('all-grids');
 
                 break;
 
-            case 4:
+            case grids.userImage:
                 modularGrid.classList.remove('all-grids');
                 modularGrid.classList.add('user-supplied-bg-image');
 
                 break;
 
-            case 5:
+            case grids.noGrid:
                 modularGrid.classList.remove('user-supplied-bg-image');
 
                 break;
             }
 
-            if (gridChoice++ === 5) {
-                gridChoice = 0;
+            if (gridChoice++ === grids.noGrid) {
+                gridChoice = grids.columnGrid;
             }
         }
     };
