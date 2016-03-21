@@ -11,6 +11,9 @@ window.onload = function () {
 
         controlKeyPressed    = false,
         shiftKeyPressed      = false,
+        column               = 60,
+        gutter               = column / 3,
+        fullColumn           = column + gutter,
         grids = {
             columnGrid:   0,
             modularGrid:  1,
