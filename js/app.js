@@ -9,6 +9,8 @@ window.onload = function () {
         modularGrid = document.createElement('div'),
         gridChoice = 0;
 
+        controlKeyPressed    = false,
+        shiftKeyPressed      = false,
         grids = {
             columnGrid:   0,
             modularGrid:  1,
@@ -26,8 +28,26 @@ window.onload = function () {
         body.textContent = 'The body element does not have a child element.';
     }
 
+    /**
+     * Keyboard mapping:
+     *
+     * 16 = The shift key
+     * 17 = The control key
+     * 27 = The esc key
+     */
     document.onkeydown = function (evnt) {
-        if (27 === evnt.keyCode) {
+        switch (evnt.keyCode) {
+        case 16:
+            shiftKeyPressed = true;
+
+            break;
+
+        case 17:
+            controlKeyPressed = true;
+
+            break;
+
+        case 27:
             switch (gridChoice) {
             case grids.columnGrid:
                 modularGrid.classList.add('column-grid');
@@ -68,6 +88,16 @@ window.onload = function () {
             if (gridChoice++ === grids.noGrid) {
                 gridChoice = grids.columnGrid;
             }
+
+            break;
+        }
+
+        if (shiftKeyPressed) {
+            if (controlKeyPressed) {
+                toggleGridInfo();
+            }
+
+            controlKeyPressed = shiftKeyPressed = false;
         }
     };
 };
