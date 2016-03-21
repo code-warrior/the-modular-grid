@@ -9,6 +9,7 @@ $leading                     : 1.5 * $font-size;  // 24 pixels
 // =================================================================================
 $grid-column : 60px;                              // 60 pixels
 $grid-gutter : $grid-column / 3;                  // 20 pixels
+$grid-margin : $grid-gutter / 2;                  // 10 pixels
 
 // =================================================================================
 // Grid-specific unit lengths
