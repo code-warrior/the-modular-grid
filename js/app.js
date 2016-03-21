@@ -25,6 +25,28 @@ window.onload = function () {
 
     modularGrid.setAttribute('id', 'modular-grid');
 
+    /**
+     *
+     */
+    function toggleGridSettingsDisplay() {
+        if (gridSettingsShowing) {
+            gridSettingsContainer.style.display = 'none';
+            gridSettingsShowing = false;
+        } else {
+            gridSettingsContainer.style.display = 'block';
+            gridSettingsShowing = true;
+        }
+    }
+
+    /**
+     *
+     */
+    window.onresize = function() {
+        columnInfo.innerHTML = 'Column count: ' +
+            (Math.ceil((body.clientWidth / fullColumn)) +
+            '<br>Page width: ' + body.clientWidth);
+    };
+
     if (null !== firstChildOfBody) {
         body.insertBefore(modularGrid, firstChildOfBody);
     } else {
