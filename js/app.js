@@ -4,16 +4,19 @@
 window.onload = function () {
     'use strict';
 
-    var body = document.querySelector('body'),
-        firstChildOfBody = body.firstElementChild,
-        modularGrid = document.createElement('div'),
-        gridChoice = 0;
-
-        controlKeyPressed    = false,
-        shiftKeyPressed      = false,
-        column               = 60,
-        gutter               = column / 3,
-        fullColumn           = column + gutter,
+    var body                  = document.querySelector('body'),
+        modularGridContainer  = document.createElement('div'),
+        modularGrid           = document.createElement('div'),
+        gridSettingsContainer = document.createElement('section'),
+        columnInfo            = document.createElement('p'),
+        firstChildOfBody      = body.firstElementChild,
+        controlKeyPressed     = false,
+        shiftKeyPressed       = false,
+        gridSettingsShowing   = true,
+        column                = 60,
+        gutter                = column / 3,
+        fullColumn            = column + gutter,
+        gridChoice            = 0,
         grids = {
             columnGrid:   0,
             modularGrid:  1,
@@ -23,7 +26,9 @@ window.onload = function () {
             noGrid:       5
         };
 
+    modularGridContainer.setAttribute('id', 'modular-grid-container');
     modularGrid.setAttribute('id', 'modular-grid');
+    modularGridContainer.appendChild(modularGrid);
 
     /**
      *
@@ -48,7 +53,7 @@ window.onload = function () {
     };
 
     if (null !== firstChildOfBody) {
-        body.insertBefore(modularGrid, firstChildOfBody);
+        body.insertBefore(modularGridContainer, firstChildOfBody);
     } else {
         body.textContent = 'The body element does not have a child element.';
     }
@@ -119,7 +124,7 @@ window.onload = function () {
 
         if (shiftKeyPressed) {
             if (controlKeyPressed) {
-                toggleGridInfo();
+                toggleGridSettingsDisplay();
             }
 
             controlKeyPressed = shiftKeyPressed = false;
