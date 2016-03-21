@@ -67,59 +67,59 @@ window.onload = function () {
      */
     document.onkeydown = function (evnt) {
         switch (evnt.keyCode) {
-        case 16:
-            shiftKeyPressed = true;
-
-            break;
-
-        case 17:
-            controlKeyPressed = true;
-
-            break;
-
-        case 27:
-            switch (gridChoice) {
-            case grids.columnGrid:
-                modularGrid.classList.add('column-grid');
-                modularGrid.classList.remove('user-supplied-bg-image');
+            case 16:
+                shiftKeyPressed = true;
 
                 break;
 
-            case grids.modularGrid:
-                modularGrid.classList.remove('column-grid');
-                modularGrid.classList.add('modular-grid');
+            case 17:
+                controlKeyPressed = true;
 
                 break;
 
-            case grids.baselineGrid:
-                modularGrid.classList.remove('modular-grid');
-                modularGrid.classList.add('baseline-grid');
+            case 27:
+                switch (gridChoice) {
+                    case grids.columnGrid:
+                        modularGrid.classList.add('column-grid');
+                        modularGrid.classList.remove('user-supplied-bg-image');
+
+                        break;
+
+                    case grids.modularGrid:
+                        modularGrid.classList.remove('column-grid');
+                        modularGrid.classList.add('modular-grid');
+
+                        break;
+
+                    case grids.baselineGrid:
+                        modularGrid.classList.remove('modular-grid');
+                        modularGrid.classList.add('baseline-grid');
+
+                        break;
+
+                    case grids.allGrids:
+                        modularGrid.classList.remove('baseline-grid');
+                        modularGrid.classList.add('all-grids');
+
+                        break;
+
+                    case grids.userImage:
+                        modularGrid.classList.remove('all-grids');
+                        modularGrid.classList.add('user-supplied-bg-image');
+
+                        break;
+
+                    case grids.noGrid:
+                        modularGrid.classList.remove('user-supplied-bg-image');
+
+                        break;
+                }
+
+                if (gridChoice++ === grids.noGrid) {
+                    gridChoice = grids.columnGrid;
+                }
 
                 break;
-
-            case grids.allGrids:
-                modularGrid.classList.remove('baseline-grid');
-                modularGrid.classList.add('all-grids');
-
-                break;
-
-            case grids.userImage:
-                modularGrid.classList.remove('all-grids');
-                modularGrid.classList.add('user-supplied-bg-image');
-
-                break;
-
-            case grids.noGrid:
-                modularGrid.classList.remove('user-supplied-bg-image');
-
-                break;
-            }
-
-            if (gridChoice++ === grids.noGrid) {
-                gridChoice = grids.columnGrid;
-            }
-
-            break;
         }
 
         if (shiftKeyPressed) {
