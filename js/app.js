@@ -12,7 +12,7 @@ window.onload = function () {
         firstChildOfBody      = body.firstElementChild,
         controlKeyPressed     = false,
         shiftKeyPressed       = false,
-        gridSettingsShowing   = true,
+        gridSettingsAreShowing= true,
         column                = 60,
         gutter                = column / 3,
         fullColumn            = column + gutter,
@@ -39,12 +39,12 @@ window.onload = function () {
      *
      */
     function toggleGridSettingsDisplay() {
-        if (gridSettingsShowing) {
+        if (gridSettingsAreShowing) {
             gridSettingsContainer.style.display = 'none';
-            gridSettingsShowing = false;
+            gridSettingsAreShowing = false;
         } else {
             gridSettingsContainer.style.display = 'block';
-            gridSettingsShowing = true;
+            gridSettingsAreShowing = true;
         }
     }
 
