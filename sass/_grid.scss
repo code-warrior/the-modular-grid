@@ -38,7 +38,7 @@
       no-repeat
       fixed
       #{0} #{0} /
-      #{($grid-column + $grid-gutter)} #{100%},
+      #{$grid--GU} #{100%},
 
       linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%)
       no-repeat
@@ -62,7 +62,7 @@
          $color-grid-baseline 100%
       );
    background-size:
-      ($grid-column + $grid-gutter) 100%,
+            $grid--GU 100%,
       100% $leading;
 }
 
@@ -74,7 +74,7 @@
          transparent 0px
       );
    background-size:
-      ($grid-column + $grid-gutter) 100%;
+            $grid--GU 100%;
 }
 
 .baseline-grid {
