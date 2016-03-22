@@ -64,10 +64,9 @@ window.onload = function () {
     }
 
     /**
-     * Pressing the `esc` key (keyCode 27) cycles through the different grids.
-     * Pressing the `cntrl` key (keyCode 17) followed by the `shift` key (keyCode
-     * 16) toggles the grid settings info layer that appears along the right side of
-     * the viewport.
+     * Pressing the `esc` key cycles through the different grids. Pressing the
+     * `cntrl` key followed by the `shift` key toggles the grid settings info layer
+     * that appears along the right side of the viewport.
      *
      * @param {Object} keyboard event - The key press entered by the user.
      */
