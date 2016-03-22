@@ -26,7 +26,8 @@
 }
 
 .all-grids {
-   // This is the CSS background shortcut, not the Sass namespace shortcut.
+
+   // Note: This is the CSS background shortcut, *not* the Sass namespace shortcut.
    background:
       $users-bg-image
       $users-bg-image--repeat
