@@ -24,6 +24,11 @@ window.onload = function () {
             allGrids:     3,
             userImage:    4,
             noGrid:       5
+        },
+        keyboard = {
+            shiftKey:   16,
+            controlKey: 17,
+            escapeKey:  27
         };
 
     modularGridContainer.setAttribute('id', 'modular-grid-container');
@@ -68,17 +73,17 @@ window.onload = function () {
      */
     document.onkeydown = function (evnt) {
         switch (evnt.keyCode) {
-            case 16:
+            case keyboard.shiftKey:
                 shiftKeyPressed = true;
 
                 break;
 
-            case 17:
+            case keyboard.controlKey:
                 controlKeyPressed = true;
 
                 break;
 
-            case 27:
+            case keyboard.escapeKey:
                 switch (gridChoice) {
                     case grids.columnGrid:
                         modularGrid.classList.add('column-grid');
