@@ -52,11 +52,15 @@
 
 .modular-grid {
    background-image:
+
+      // The column grid
       linear-gradient(
          90deg,
          $color-grid-column $grid-column,
          transparent 0px
       ),
+
+      // The baseline grid
       linear-gradient(
          0deg,
          rgba(0, 0, 0, 0) 95%,
