@@ -5,9 +5,7 @@
 #layer {
    margin: 0 auto;
    max-width: $width-body;
-   padding: {
-      left: (1 * ($grid-column + $grid-gutter));
-      right: (1 * ($grid-column + $grid-gutter));
+   padding: 0 $grid-margin;
    }
 }
 
