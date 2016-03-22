@@ -5,7 +5,6 @@
 #layer {
    margin: 0 auto;
    max-width: $width-body;
-   padding: 0 $grid-margin;
 
    @media screen and (max-width: $width--12GU) {
       max-width: $width--8GU;
