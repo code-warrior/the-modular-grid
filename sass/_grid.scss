@@ -4,7 +4,25 @@
    top: 0;
    left: 0;
    width: 100%;
+}
+
+#modular-grid {
+   position: relative;
+   margin: 0 auto;
+   width: 100%;
    height: $users-bg-image--height;
+
+   @media screen and (max-width: $width--12GU) {
+      max-width: $width--8GU;
+   }
+
+   @media screen and (max-width: $width--8GU) {
+      max-width: $width--6GU;
+   }
+
+   @media screen and (max-width: $width--6GU) {
+      max-width: 100%;
+   }
 }
 
 .all-grids {
