@@ -36,7 +36,8 @@ window.onload = function () {
     modularGridContainer.appendChild(modularGrid);
 
     /**
-     *
+     * Toggle the fixed wrapper containing the grid settings data that appear along
+     * the right side of the viewport.
      */
     function toggleGridSettingsDisplay() {
         if (gridSettingsAreShowing) {
