@@ -6,6 +6,21 @@
    margin: 0 auto;
    max-width: $width-body;
    padding: 0 $grid-margin;
+
+   @media screen and (max-width: $width--12GU) {
+      max-width: $width--8GU;
+   }
+
+   @media screen and (max-width: $width--8GU) {
+      max-width: $width--6GU;
+   }
+
+   @media screen and (max-width: $width--6GU) {
+      max-width: $width--4GU;
+   }
+
+   @media screen and (max-width: $width--4GU) {
+      max-width: 100%;
    }
 }
 
