@@ -120,6 +120,11 @@ window.onload = function () {
                         break;
                 }
 
+                /**
+                 * If you have reached the end of the escape key round robin cycle,
+                 * set the gridChoice variable to grids.columnGrid, which is
+                 * synonymous with the number 0.
+                 */
                 if (gridChoice++ === grids.noGrid) {
                     gridChoice = grids.columnGrid;
                 }
