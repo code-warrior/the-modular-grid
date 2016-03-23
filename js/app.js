@@ -59,6 +59,7 @@ window.onload = function () {
     };
 
     if (null !== firstChildOfBody) {
+        body.appendChild(gridSettingsContainer);
         body.insertBefore(modularGridContainer, firstChildOfBody);
     } else {
         body.textContent = 'The body element does not have a child element.';
