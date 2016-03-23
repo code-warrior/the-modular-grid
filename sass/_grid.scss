@@ -42,8 +42,8 @@
       #{0} #{0} /
       #{0} #{100%},
 
-      linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%)
       // The grid baseline
+      linear-gradient(0deg, transparent 95%, $color-grid-baseline 100%)
       no-repeat
       fixed
       #{0} #{0} /
