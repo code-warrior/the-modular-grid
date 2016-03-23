@@ -4,18 +4,18 @@
 
 #layer {
    margin: 0 auto;
-   max-width: $width-body;
+   max-width: $width-body - (2 * $grid-margin);
 
    @media screen and (max-width: $width--12GU) {
-      max-width: $width--8GU;
+      max-width: $width--8GU - (2 * $grid-margin)
    }
 
    @media screen and (max-width: $width--8GU) {
-      max-width: $width--6GU;
+      max-width: $width--6GU - (2 * $grid-margin)
    }
 
    @media screen and (max-width: $width--6GU) {
-      max-width: $width--4GU;
+      max-width: $width--4GU - (2 * $grid-margin)
    }
 
    @media screen and (max-width: $width--4GU) {
