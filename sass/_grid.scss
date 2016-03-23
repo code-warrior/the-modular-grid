@@ -68,6 +68,10 @@
          transparent 95%,
          $color-grid-baseline 100%
       );
+   background-position:
+      $grid-margin 0, // Set $grid-margin to 0 in order to align columns with the
+                      // left margin of the viewport.
+      0 0;
    background-size:
       $grid--GU 100%,
       100% $leading;
@@ -80,6 +84,9 @@
          $color-grid-column $grid-column,
          transparent 0px
       );
+   background-position:
+      $grid-margin 0; // Set $grid-margin to 0 in order to align columns with the
+                      // left margin of the viewport.
    background-size:
       $grid--GU 100%;
 }
