@@ -35,6 +35,7 @@
       #{$users-bg-image--position-x} #{$users-bg-image--position-y} /
       #{$users-bg-image--size-width} #{$users-bg-image--size-height},
 
+      // The grid column
       linear-gradient(90deg, $color-grid-column $grid-column, transparent 0px)
       no-repeat
       fixed
@@ -42,6 +43,7 @@
       #{0} #{100%},
 
       linear-gradient(0deg, rgba(0, 0, 0, 0) 95%, $color-grid-baseline 100%)
+      // The grid baseline
       no-repeat
       fixed
       #{0} #{0} /
