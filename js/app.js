@@ -70,7 +70,7 @@ window.onload = function () {
      * `cntrl` key followed by the `shift` key toggles the grid settings info layer
      * that appears along the right side of the viewport.
      *
-     * @param {Object} keyboard event - The key press entered by the user.
+     * @param {Object} evnt of type keyboard - The key pressed by the user.
      */
     document.onkeydown = function (evnt) {
         switch (evnt.keyCode) {
