@@ -89,6 +89,7 @@ window.onload = function () {
                     case grids.columnGrid:
                         modularGrid.classList.add('column-grid');
                         modularGrid.classList.remove('user-supplied-bg-image');
+                        modularGridContainer.style.zIndex = '3';
 
                         break;
 
@@ -118,6 +119,7 @@ window.onload = function () {
 
                     case grids.noGrid:
                         modularGrid.classList.remove('user-supplied-bg-image');
+                        modularGridContainer.style.zIndex = '-1';
 
                         break;
                 }
