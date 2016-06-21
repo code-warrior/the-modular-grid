@@ -1,0 +1,66 @@
+{ 
+ 
+  "manifest_version": 2,
+
+  "name": "__MSG_extName__",
+
+  "short_name": "Modular Grid",
+
+  "author": "Roy Vanegas & Saman Tehrani",
+
+  "version": "2.0.0",
+
+  "version_name": "2.0.0",
+
+  "minimum_chrome_version": "30",
+
+  "default_locale": "en",
+
+  "description": "This is a simple column and baseline grid.",
+
+  "icons": {
+    "16":  "img/extension-logo-16.png",
+    "48":  "img/extension-logo-48.png",
+    "128": "img/extension-logo-128.png"
+  },
+
+  "homepage_url": "https://github.com/code-warrior/column-baseline-grid",
+
+  "browser_action": {
+    "default_icon": {                      
+      "19": "img/extension-icon-19.png",
+      "38": "img/extension-icon-38.png"
+    },
+    "default_title": "Modular Grid",
+    "default_popup": "settings-layer/settings-index.html"  
+  },
+
+  "background": {
+    "scripts": ["backend-layer/backend-main.js"],  
+    "persistent": false         
+  },
+
+  "commands": {
+    "toggle-grid-mode": {       
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M",
+        "windows": "Ctrl+Shift+M",
+        "linux": "Ctrl+Shift+M",
+        "chromeos": "Ctrl+Shift+M"
+      },
+      "description": "Toggles different modes of the Modular Grid",
+      "global": false         
+    }
+  },
+
+  "web_accessible_resources": [],
+
+  "permissions": [
+    "unlimitedStorage"
+  ],
+
+  "offline_enabled": true,
+
+  "incognito": "not_allowed"
+}
