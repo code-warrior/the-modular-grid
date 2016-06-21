@@ -25,9 +25,13 @@ The third one is the **Backend Layer**. This is where all the logic of the appli
 
 ## Backend Layer
 
-
+This layer is under `./backend-layer/`.
 
 ## Content Layer
+
+This layer is under `./content-layer/`.
+
+
 
 ### Interactions
 
@@ -39,6 +43,10 @@ The third one is the **Backend Layer**. This is where all the logic of the appli
 
 
 ## Setting Layer
+
+This layer is under `./settings-layer/`.
+
+
 
 ### Options
 
