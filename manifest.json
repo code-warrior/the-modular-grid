@@ -57,7 +57,9 @@
   "web_accessible_resources": [],
 
   "permissions": [
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "tabs",
+    "http://*/"
   ],
 
   "offline_enabled": true,
