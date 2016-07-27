@@ -1,4 +1,4 @@
-body, html{
+body, html {
   position: relative;
   margin: 0px auto;
   width: 100%;
@@ -6,9 +6,9 @@ body, html{
   background-color: grey;
   font-size: 16px;
   line-height: 1.6;
-  cursor: auto;  
+  cursor: auto;
 }
-.main-wrapper{
+.main-wrapper {
   width: 100px;
   height: 100px;
 }

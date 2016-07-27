@@ -16,7 +16,7 @@ chrome.tabs.onSelectionChanged.addListener(function(tabId) {
 
 //message event listener -- To be replaced with a persistent communication port instead of a single time message passing
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-   switch(message){
+   switch(message) {
       case 'settingsOpened':
          sendResponse(currentSettings);
          break;

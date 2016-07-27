@@ -14,5 +14,4 @@ window.onload = function() {
          chrome.runtime.sendMessage('disableGrid');
       }
    },false);
-   
 };
