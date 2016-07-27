@@ -22,8 +22,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
          break;
       case 'enableGrid':
          currentSettings.gridIsEnabled = true;
-         chrome.tabs.insertCSS(null, {file: "content-layer/content-main.css"});
-         chrome.tabs.executeScript(null, {file: "content-layer/content-main.js"});
+         chrome.tabs.insertCSS(null, {file: "content-layer/main.css"});
+         chrome.tabs.executeScript(null, {file: "content-layer/main.js"});
          break;
       case 'disableGrid':
          currentSettings.gridIsEnabled = false;

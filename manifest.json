@@ -32,11 +32,11 @@
       "38": "img/extension-icon-38.png"
     },
     "default_title": "Modular Grid",
-    "default_popup": "settings-layer/settings-index.html"  
+    "default_popup": "settings-layer/index.html"  
   },
 
   "background": {
-    "scripts": ["backend-layer/backend-main.js"],  
+    "scripts": ["backend-layer/main.js"],  
     "persistent": false         
   },
 
