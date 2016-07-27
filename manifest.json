@@ -59,7 +59,8 @@
   "permissions": [
     "unlimitedStorage",
     "tabs",
-    "http://*/"
+    "http://*/",
+    "https://*/"
   ],
 
   "offline_enabled": true,
