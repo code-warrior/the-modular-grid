@@ -10,6 +10,7 @@ if (null !== firstChildOfBody) {
 } else {
     body.textContent = 'The body element does not have a child element.';
 }
+
 document.onkeydown = function (evnt) {
     if (27 === evnt.keyCode) {
         switch (gridChoice) {
