@@ -1,3 +1,5 @@
+/* global chrome*/
+
 let lastTabId;
 //structure for holding and reserving project settings
 currentSettings = {
