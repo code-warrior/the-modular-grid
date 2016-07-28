@@ -1,7 +1,7 @@
 var body = document.querySelector('body'),
-        firstChildOfBody = body.firstElementChild,
-        gridLayer = document.createElement('div'),
-        gridChoice = 0;
+    firstChildOfBody = body.firstElementChild,
+    gridLayer = document.createElement('div'),
+    gridChoice = 0;
 
 gridLayer.setAttribute('id', 'column-baseline-grid');
 
@@ -13,39 +13,40 @@ if (null !== firstChildOfBody) {
 document.onkeydown = function (evnt) {
     if (27 === evnt.keyCode) {
         switch (gridChoice) {
-        case 0:
-            gridLayer.classList.add('column-grid');
-            gridLayer.classList.remove('user-supplied-bg-image');
+            case 0:
+                gridLayer.classList.add('column-grid');
+                gridLayer.classList.remove('user-supplied-bg-image');
 
-            break;
+                break;
 
-        case 1:
-            gridLayer.classList.remove('column-grid');
-            gridLayer.classList.add('modular-grid');
+            case 1:
+                gridLayer.classList.remove('column-grid');
+                gridLayer.classList.add('modular-grid');
 
-            break;
+                break;
 
-        case 2:
-            gridLayer.classList.remove('modular-grid');
-            gridLayer.classList.add('baseline-grid');
+            case 2:
+                gridLayer.classList.remove('modular-grid');
+                gridLayer.classList.add('baseline-grid');
 
-            break;
+                break;
 
-        case 3:
-            gridLayer.classList.remove('baseline-grid');
-            gridLayer.classList.add('all-grids');
+            case 3:
+                gridLayer.classList.remove('baseline-grid');
+                gridLayer.classList.add('all-grids');
 
-            break;
+                break;
 
-        case 4:
-            gridLayer.classList.remove('all-grids');
-            gridLayer.classList.add('user-supplied-bg-image');
+            case 4:
+                gridLayer.classList.remove('all-grids');
+                gridLayer.classList.add('user-supplied-bg-image');
 
-            break;
+                break;
 
-        case 5:
-            gridLayer.classList.remove('user-supplied-bg-image');
-            break;
+            case 5:
+                gridLayer.classList.remove('user-supplied-bg-image');
+
+                break;
         }
 
         if (5 === gridChoice++) {
