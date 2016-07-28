@@ -32,6 +32,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             chrome.tabs.executeScript(null, {file: 'content-layer/main.js'});
 
             break;
+
         case 'disableGrid':
 
             currentSettings.gridIsEnabled = false;
