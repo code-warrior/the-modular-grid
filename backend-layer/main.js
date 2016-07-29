@@ -1,11 +1,10 @@
 /* global chrome */
 
-let lastTabId;
-
-// Structure for holding and reserving project settings
-currentSettings = {
-    gridIsEnabled : false
-};
+let lastTabId,
+    // Structure for holding and reserving project settings
+    currentSettings = {
+        gridIsEnabled : false
+    };
 
 // Acquiring last tab’s ID
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
