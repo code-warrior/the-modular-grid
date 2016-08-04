@@ -18,8 +18,6 @@
   "description": "This is a simple column and baseline grid.",
 
   "icons": {
-    "16":  "img/extension-logo-16.png",
-    "48":  "img/extension-logo-48.png",
     "128": "img/extension-logo-128.png"
   },
 
