@@ -1,0 +1,91 @@
+////
+/// This file styles the popup browser action HTML file in the toolbar. Linting is
+/// carried out using `sass-lint` (see `.sass-lint.yml`). Use the following command
+//  to lint:
+///
+/// sass-lint -c .sass-lint.yml -v -s main.scss
+///
+/// @author Roy Vanegas <roy@thecodeeducators.com>
+////
+
+$colors: (
+   'background': (
+      primary:   #fff,
+      secondary: #c0c0c0
+   ),
+   'grid': (
+      column:   #ff7bac,
+      baseline: #29abe2
+   )
+);
+
+$transition-time--button: .25s;
+$width--popup-wrapper:    100px;
+$width--slider:           60px;                                   // 60px
+$width--half-slider:      $width--slider / 2;                     // 30px
+$offset--button:          $width--slider / 15;                    // 4px
+$width--button:           ($width--slider / 2) - $offset--button; // 26px
+$radius--slider:          ($width--slider / 2) + $offset--button; // 34px
+
+body,
+html {
+   position: relative;
+   margin: 0 auto;
+   background-color: map-get(map-get($colors, background), secondary);
+   width: 100%;
+   height: 100%;
+   line-height: 1.6;
+}
+
+.popup {
+   &--wrapper {
+      width: $width--popup-wrapper;
+      height: $width--popup-wrapper;
+   }
+
+   &--switch__button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: $transition-time--button;
+      border-radius: $radius--slider;
+      background-color: map-get(map-get($colors, background), primary);
+
+      &::before {
+         position: absolute;
+         bottom: $offset--button;
+         left: $offset--button;
+         transition: $transition-time--button;
+         border-radius: 50%;
+         background-color: map-get(map-get($colors, background), secondary);
+         width: $width--button;
+         height: $width--button;
+         content: '';
+      }
+   }
+
+   &--switch__wrapper {
+      display: inline-block;
+      position: absolute;
+      top: calc(50% - #{$radius--slider / 2});
+      left: calc(50% - #{$width--half-slider});
+      cursor: pointer;
+      width: $width--slider;
+      height: $width--slider - $width--button;
+
+      input {
+         display: none;
+
+         &:checked {
+            + .popup--switch__button {
+               &::before {
+                  transform: translateX($width--button);
+                  background-color: map-get(map-get($colors, grid), column);
+               }
+            }
+         }
+      }
+   }
+}
