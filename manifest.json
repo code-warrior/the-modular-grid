@@ -27,7 +27,7 @@
     },
 
     "background": {
-        "scripts": ["backend-layer/main.js"],
+        "scripts": ["background/main.js"],
         "persistent": false
     },
 
