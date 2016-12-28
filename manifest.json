@@ -18,12 +18,12 @@
     },
 
     "browser_action": {
+        "default_title": "Modular Grid",
+        "default_popup": "popup/index.html",
         "default_icon": {
             "19": "img/extension-icon-19.png",
             "38": "img/extension-icon-38.png"
-        },
-        "default_title": "Modular Grid",
-        "default_popup": "settings-layer/index.html"
+        }
     },
 
     "background": {

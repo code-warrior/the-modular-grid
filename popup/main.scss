@@ -1,3 +1,6 @@
+@import '../common-css/reset';
+@import '../common-css/variables';
+
 ////
 /// This file styles the popup browser action HTML file in the toolbar. Linting is
 /// carried out using `sass-lint` (see `.sass-lint.yml`). Use the following command
@@ -7,25 +10,6 @@
 ///
 /// @author Roy Vanegas <roy@thecodeeducators.com>
 ////
-
-$colors: (
-   'background': (
-      primary:   #fff,
-      secondary: #c0c0c0
-   ),
-   'grid': (
-      column:   #ff7bac,
-      baseline: #29abe2
-   )
-);
-
-$transition-time--button: .25s;
-$width--popup-wrapper:    100px;
-$width--slider:           60px;                                   // 60px
-$width--half-slider:      $width--slider / 2;                     // 30px
-$offset--button:          $width--slider / 15;                    // 4px
-$width--button:           ($width--slider / 2) - $offset--button; // 26px
-$radius--slider:          ($width--slider / 2) + $offset--button; // 34px
 
 body,
 html {
