@@ -1,0 +1,27 @@
+$colors: (
+   'background': (
+      primary:   #fff,
+      secondary: #c0c0c0
+   ),
+   'grid': (
+      column:   #ff7bac,
+      baseline: #29abe2
+   )
+);
+
+///
+/// The following is used by the popup
+///
+$popup--transition-time--button: .25s;
+$popup--width--popup-wrapper:    100px;
+$popup--width--slider:           60px;                       // 60px
+$popup--width--half-slider:      $popup--width--slider / 2;  // 30px
+$popup--offset--button:          $popup--width--slider / 15; // 4px
+$popup--width--button:           ($popup--width--slider / 2) - $popup--offset--button; // 26px
+$popup--radius--slider:          ($popup--width--slider / 2) + $popup--offset--button; // 34px
+
+///
+/// Font Weights
+///
+$light: 200;
+$bold:  700;
