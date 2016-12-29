@@ -10,7 +10,7 @@ $colors: (
 );
 
 ///
-/// The following is used by the popup
+/// Styles specific to the popup
 ///
 $popup--transition-time--button: .25s;
 $popup--width--popup-wrapper:    100px;
@@ -20,6 +20,12 @@ $popup--offset--button:          $popup--width--slider / 15; // 4px
 $popup--width--button:           ($popup--width--slider / 2) - $popup--offset--button; // 26px
 $popup--radius--slider:          ($popup--width--slider / 2) + $popup--offset--button; // 34px
 
+///
+/// Styles specific to the options page
+///
+///
+/// Fonts-related styles, irrespective of page
+///
 ///
 /// Font Weights
 ///
