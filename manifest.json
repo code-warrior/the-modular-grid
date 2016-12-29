@@ -31,6 +31,8 @@
         "persistent": false
     },
 
+    "options_page": "options/index.html",
+
     "commands": {
         "toggle-grid-mode": {
             "suggested_key": {

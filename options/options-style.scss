@@ -1,0 +1,66 @@
+@import '../common-styles/reset';
+@import '../common-styles/fonts';
+@import '../common-styles/variables';
+
+html {
+   background-color: map-get(map-get($colors, background), ternary);
+   color: map-get(map-get($colors, background), primary);
+   font: $light #{$font--base-size} / 1.4 $font--stack;
+}
+
+div {
+   margin: #{$options--width--input / 2};
+}
+
+h1 {
+   position: relative;
+   top: 97vh;
+   transform: rotate(-90deg);
+   width: 97vh;
+   height: $options--width--header;
+   text-align: center;
+   font: $bold #{$font--size--h1} / #{$options--width--header} $font--stack;
+   transform-origin: top left;
+}
+
+h2 {
+   margin: #{$options--width--input / 2} 0;
+   font-size: $font--size--h2;
+}
+
+h3 {
+   margin: 0 0 #{$options--width--input / 6};
+   font-size: $font--size--h3;
+}
+
+[type='range'] {
+   width: $options--width--header;
+}
+
+input {
+   margin: #{$options--width--input / 2} 0;
+   padding: #{$options--width--input / 12} 0;
+   width: $options--width--input;
+   text-align: center;
+   font-size: $font--base-size;
+}
+
+section {
+   margin: #{$options--width--input / 2} 0;
+   border-bottom: 1px solid map-get(map-get($colors, background), quartenary);
+   padding: 0 #{$options--width--input / 2} #{$options--width--input / 2};
+}
+
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: $options--width--header;
+   height: 100%;
+}
+
+form {
+   position: absolute;
+   left: $options--width--header;
+   background-color: map-get(map-get($colors, background), ternary);
+}
