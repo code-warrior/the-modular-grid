@@ -1,4 +1,5 @@
 /* global chrome */
+
 /*
     This file is called when the browser loads.
  */
@@ -28,7 +29,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
             break;
 
-        case 'enableGrid':
+        case 'gridEnabled':
             currentSettings.gridIsEnabled = true;
             chrome.tabs.insertCSS({file: 'content-layer/main.css'});    // path is to root
             chrome.tabs.executeScript({file: 'content-layer/main.js'}); // path is to root
@@ -36,7 +37,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
             break;
 
-        case 'disableGrid':
+        case 'gridDisabled':
             currentSettings.gridIsEnabled = false;
             chrome.tabs.executeScript({file: 'content-layer/remove-grid.js'});
 
