@@ -42,15 +42,20 @@
                 "linux": "Ctrl+Shift+M",
                 "chromeos": "Ctrl+Shift+M"
             },
+
             "description": "Toggles different modes of the Modular Grid",
             "global": false
         }
     },
 
     "permissions": [
+        "background",
         "unlimitedStorage",
         "tabs",
+        "activeTab",
         "http://*/",
-        "https://*/"
+        "https://*/",
+        "*://*/*",
+        "<all_urls>"
     ]
 }
