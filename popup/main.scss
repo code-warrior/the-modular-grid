@@ -1,5 +1,5 @@
-@import '../common-css/reset';
-@import '../common-css/variables';
+@import '../common-styles/reset';
+@import '../common-styles/variables';
 
 ////
 /// This file styles the popup browser action HTML file in the toolbar. Linting is
@@ -23,8 +23,8 @@ html {
 
 .popup {
    &--wrapper {
-      width: $width--popup-wrapper;
-      height: $width--popup-wrapper;
+      width: $popup--width--popup-wrapper;
+      height: $popup--width--popup-wrapper;
    }
 
    &--switch__button {
@@ -33,19 +33,19 @@ html {
       right: 0;
       bottom: 0;
       left: 0;
-      transition: $transition-time--button;
-      border-radius: $radius--slider;
+      transition: $popup--transition-time--button;
+      border-radius: $popup--radius--slider;
       background-color: map-get(map-get($colors, background), primary);
 
       &::before {
          position: absolute;
-         bottom: $offset--button;
-         left: $offset--button;
-         transition: $transition-time--button;
+         bottom: $popup--offset--button;
+         left: $popup--offset--button;
+         transition: $popup--transition-time--button;
          border-radius: 50%;
          background-color: map-get(map-get($colors, background), secondary);
-         width: $width--button;
-         height: $width--button;
+         width: $popup--width--button;
+         height: $popup--width--button;
          content: '';
       }
    }
@@ -53,11 +53,11 @@ html {
    &--switch__wrapper {
       display: inline-block;
       position: absolute;
-      top: calc(50% - #{$radius--slider / 2});
-      left: calc(50% - #{$width--half-slider});
+      top: calc(50% - #{$popup--radius--slider / 2});
+      left: calc(50% - #{$popup--width--half-slider});
       cursor: pointer;
-      width: $width--slider;
-      height: $width--slider - $width--button;
+      width: $popup--width--slider;
+      height: $popup--width--slider - $popup--width--button;
 
       input {
          display: none;
@@ -65,7 +65,7 @@ html {
          &:checked {
             + .popup--switch__button {
                &::before {
-                  transform: translateX($width--button);
+                  transform: translateX($popup--width--button);
                   background-color: map-get(map-get($colors, grid), column);
                }
             }
