@@ -31,12 +31,12 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
         case 'gridEnabled':
             currentSettings.gridIsEnabled = true;
-            chrome.tabs.insertCSS({file: 'content-layer/main.css'});    // path is to root
-            chrome.tabs.executeScript({file: 'content-layer/main.js'}); // path is to root
 
             //
             // The path to both files below is from the root of this project.
             //
+            chrome.tabs.insertCSS({file: 'content-layer/main.css'});
+            chrome.tabs.executeScript({file: 'content-layer/main.js'});
             chrome.extension.getBackgroundPage();
 
             break;
