@@ -1,7 +1,9 @@
 $colors: (
    'background': (
-      primary:   #fff,
-      secondary: #c0c0c0
+      primary: #fff,
+      secondary: #c0c0c0,
+      ternary: #464646,
+      quartenary: rgba(170, 170, 170, .1)
    ),
    'grid': (
       column:   #ff7bac,
@@ -23,9 +25,18 @@ $popup--radius--slider:          ($popup--width--slider / 2) + $popup--offset--b
 ///
 /// Styles specific to the options page
 ///
+$options--width--header: 100px;
+$options--width--input:  48px;
+
 ///
 /// Fonts-related styles, irrespective of page
 ///
+$font--stack:     'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font--base-size: 1rem;
+$font--size--h1:  2rem;
+$font--size--h2:  1.5rem;
+$font--size--h3:  1.17rem;
+
 ///
 /// Font Weights
 ///
