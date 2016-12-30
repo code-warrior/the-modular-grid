@@ -35,8 +35,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             //
             // The path to both files below is from the root of this project.
             //
-            chrome.tabs.insertCSS({file: 'content-layer/main.css'});
-            chrome.tabs.executeScript({file: 'content-layer/main.js'});
+            chrome.tabs.insertCSS({file: 'content/main.css'});
+            chrome.tabs.executeScript({file: 'content/main.js'});
             chrome.extension.getBackgroundPage();
 
             break;
@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             //
             // The path to both files below is from the root of this project.
             //
-            chrome.tabs.executeScript({file: 'content-layer/remove-grid.js'});
+            chrome.tabs.executeScript({file: 'content/remove-grid.js'});
 
             break;
     }
