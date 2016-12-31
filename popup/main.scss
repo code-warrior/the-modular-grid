@@ -1,5 +1,6 @@
 @import '../common-styles/reset';
 @import '../common-styles/variables';
+@import '../common-styles/functions';
 
 ////
 /// This file styles the popup browser action HTML file in the toolbar. Linting is
@@ -15,7 +16,7 @@ body,
 html {
    position: relative;
    margin: 0 auto;
-   background-color: map-get(map-get($colors, background), secondary);
+   background-color: get-color('background', 'secondary');
    width: 100%;
    height: 100%;
    line-height: 1.6;
@@ -35,7 +36,7 @@ html {
       left: 0;
       transition: $popup--transition-time--button;
       border-radius: $popup--radius--slider;
-      background-color: map-get(map-get($colors, background), primary);
+      background-color: get-color('background', 'primary');
 
       &::before {
          position: absolute;
@@ -43,7 +44,7 @@ html {
          left: $popup--offset--button;
          transition: $popup--transition-time--button;
          border-radius: 50%;
-         background-color: map-get(map-get($colors, background), secondary);
+         background-color: get-color('background', 'secondary');
          width: $popup--width--button;
          height: $popup--width--button;
          content: '';
@@ -66,7 +67,7 @@ html {
             + .popup--switch__button {
                &::before {
                   transform: translateX($popup--width--button);
-                  background-color: map-get(map-get($colors, grid), column);
+                  background-color: get-color('grid', 'column');
                }
             }
          }
