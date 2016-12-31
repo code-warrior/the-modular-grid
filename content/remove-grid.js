@@ -1,6 +1,6 @@
 /*jslint browser:true */
 
-if ('undefined' !== gridBGLayer) {
+if (undefined !== gridBGLayer) {
     gridBGLayer.parentNode.removeChild(gridBGLayer);
 
     console.log('%c gridBGLayer removed ',
