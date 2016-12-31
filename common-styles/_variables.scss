@@ -1,3 +1,6 @@
+////
+/// Add a poster comment here.
+////
 $colors: (
    'background': (
       primary: #fff,
@@ -13,7 +16,7 @@ $colors: (
 );
 
 ///
-/// Styles specific to the popup
+/// Styles specific to the popup page
 ///
 $popup--transition-time--button: .25s;
 $popup--width--popup-wrapper:    100px;
@@ -30,7 +33,7 @@ $options--width--header: 100px;
 $options--width--input:  48px;
 
 ///
-/// Fonts-related styles, irrespective of page
+/// Font-related styles, irrespective of page
 ///
 $font--stack:     Muli, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font--base-size: 1rem;
