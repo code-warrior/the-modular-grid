@@ -1,20 +1,7 @@
 @import '../common-styles/variables';
 @import '../common-styles/functions';
-@import '../common-styles/mixins';
 
 #column-baseline-grid {
-   @include max-width-responsive-media-query(16u) {
-      max-width: $width--12u;
-   }
-
-   @include max-width-responsive-media-query(12u) {
-      max-width: $width--8u;
-   }
-
-   @include max-width-responsive-media-query(8u) {
-      max-width: 100%;
-   }
-
    position:  relative;
    z-index:   -1;
    margin:    0 auto;
