@@ -1,0 +1,28 @@
+///
+/// Retrieve the RGB value for any of the colors defined in the color palette.
+///
+/// @access public
+/// @param {String} $palette — One of the two color layers ('background' or 'grid')
+///                            in the palette.
+/// @param {String} $tone — One of the various tones ('primary', 'column', etc)
+///                         associated with a layer in the palette.
+/// @author Roy Vanegas
+///
+/// @example
+/// body {
+///    background-color: get-color('background', 'primary');
+///    color: get-color('grid', 'column');
+///    border-color: get-color('grid', 'column-transparent');
+/// }
+///
+@function get-color($palette, $tone) {
+   @if map-has-key($colors, $palette) {
+      @if map-has-key(map-get($colors, $palette), $tone) {
+         @return map-get(map-get($colors, $palette), $tone);
+      } @else {
+         @error '`#{$tone}` is not a valid tone in the `#{$palette}` color palette.';
+      }
+   } @else {
+      @error '`#{$palette}` is not a valid palette in the `#{$tone}` list of color tones.';
+   }
+}
