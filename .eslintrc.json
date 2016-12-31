@@ -1,5 +1,12 @@
 {
     "rules": {
+        "no-console": [
+            "error", {
+                "allow": [
+                    "log"
+                ]
+            }
+        ],
         "indent": [
             2,
             4,
