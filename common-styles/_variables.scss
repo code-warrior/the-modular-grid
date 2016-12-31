@@ -42,7 +42,50 @@ $font--size--h2:  1.5rem;
 $font--size--h3:  1.17rem;
 
 ///
+/// Leading-related styles
+///
+$leading:         1.5 * $font--base-size;
+
+///
 /// Font Weights
 ///
 $light: 200;
 $bold:  700;
+
+///
+/// Styles specific to the grid.
+///
+/// The variables $grid-column and $grid-gutter below map to the variables column
+/// and gutter in the JS file at app/scripts/main.js. For the grid to work, these
+/// Sass variables must map to the JS variables.
+///
+$grid-column:             60px;                        // 60px
+$grid-gutter:             20px;                        // 20px
+$grid-gutter-split:       $grid-gutter / 2;            // 10px
+$width--grid-column-full: $grid-column + $grid-gutter; // 80px
+
+///
+/// Responsive Breakpoints
+///
+$width--16u: 16 * $width--grid-column-full;
+$width--12u: 12 * $width--grid-column-full;
+$width--8u:  8 * $width--grid-column-full;
+
+///
+/// Styles specific to the info side bar created when the grid is shown to the user.
+///
+$offset-sidebar: 14px;
+
+///
+/// When using a URL for the user’s image, remember to set $users-image--height to
+/// the height of the user’s image.
+///
+$users-image:             none;
+$users-image--height:     2000px; // Set to auto when grid isn’t needed.
+$users-image--position-x: center;
+$users-image--position-y: top;
+$users-image--size-x:     auto;
+$users-image--size-y:     auto;
+$users-image--attachment: scroll;
+$users-image--repeat:     no-repeat;
+$users-image--color:      transparent;
