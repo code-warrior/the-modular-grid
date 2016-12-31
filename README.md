@@ -64,10 +64,27 @@ When an image is loaded for comparison, the user should be given the ability to 
 #### Grid Layer
 The Grid should give the user the ability to place the layer anywhere in the page’s stacking context. Again, it’s important that the user be made aware of the stacking context. Notify the user of the under “glass” problem when the grid is at the top of the stacking context.
 
-## Linting
+## Development
 
-### Sass
+### Compiling
 
+#### Sass
+
+````bash
+\sass \
+   --sourcemap=none \
+   --unix-newlines \
+   --no-cache \
+   --style compressed \
+   --watch content/main.scss:content/main.css \
+      popup/main.scss:popup/main.css \
+      options/main.scss:options/main.css
 ````
+
+### Linting
+
+#### Sass
+
+````bash
 sass-lint -c .sass-lint.yml -v -s .
 ````
