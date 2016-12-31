@@ -1,7 +1,8 @@
 /*jslint browser:true */
 
-//
-// TODO: Using let instead of var is causing a problem.
-//
-var columnBaselineGrid = document.getElementById('column-baseline-grid');
-columnBaselineGrid.parentNode.removeChild(columnBaselineGrid);
+if ('undefined' !== gridBGLayer) {
+    gridBGLayer.parentNode.removeChild(gridBGLayer);
+
+    console.log('%c gridBGLayer removed ',
+        'background-color: green; color: white; padding: 4px; border-radius: 4px;');
+}
