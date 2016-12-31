@@ -6,6 +6,10 @@ Requires an if statement to check if the grid element has already been created.
  */
 'use strict';
 
+const SHIFT_KEY = 16,
+    CONTROL_KEY = 17,
+    ESCAPE_KEY = 27;
+
 let body = document.querySelector('body'),
     gridBGLayer = document.createElement('div'),
     columnBaselineGrid = document.createElement('div'),
@@ -83,26 +87,19 @@ window.onresize = function () {
     showColumnInfo();
 };
 
-/**
- * Keyboard mapping:
- *
- * 16 = The shift key
- * 17 = The control key
- * 27 = The esc key
- */
 document.onkeydown = function (evnt) {
     switch (evnt.keyCode) {
-        case 16:
+        case SHIFT_KEY:
             shiftKeyPressed = true;
 
             break;
 
-        case 17:
+        case CONTROL_KEY:
             controlKeyPressed = true;
 
             break;
 
-        case 27:
+        case ESCAPE_KEY:
             switch (gridChoice) {
                 case 0:
                     columnBaselineGrid.classList.add('column-grid');
