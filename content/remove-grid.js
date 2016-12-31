@@ -7,6 +7,8 @@ if (undefined !== gridBGLayer) {
     console.log('%c gridBGLayer removed ', error_styles);
 }
 
-    console.log('%c gridBGLayer removed ',
-        'background-color: green; color: white; padding: 4px; border-radius: 4px;');
+if (undefined !== gridInfoContainer) {
+    gridInfoContainer.parentNode.removeChild(gridInfoContainer);
+
+    console.log('%c gridInfoContainer removed ', error_styles);
 }
