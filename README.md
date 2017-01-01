@@ -78,7 +78,6 @@ The Grid should give the user the ability to place the layer anywhere in the pag
    --no-cache \
    --style compressed \
    --watch content/main.scss:content/main.css \
-      popup/main.scss:popup/main.css \
       options/main.scss:options/main.css
 ````
 
