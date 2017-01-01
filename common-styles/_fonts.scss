@@ -5,12 +5,12 @@
    font-family: 'Muli';
    font-weight: 300;
    font-style: normal;
-   src: local('Muli Light'), local('Muli-Light'), url('../fonts/Muli-Light.ttf') format('truetype');
+   src: url('chrome-extension://__MSG_@@extension_id__/fonts/muli-light-webfont.woff2') format('woff2');
 }
 
 @font-face {
    font-family: 'Muli';
    font-weight: 700;
    font-style: normal;
-   src: local('Muli Bold'), local('Muli-Bold'), url('../fonts/Muli-Bold.ttf') format('truetype');
+   src: url('chrome-extension://__MSG_@@extension_id__/fonts/muli-bold-webfont.woff2') format('woff2');
 }

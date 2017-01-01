@@ -9,7 +9,9 @@
     "default_locale": "en",
     "description": "This is a simple column and baseline grid.",
     "homepage_url": "https://github.com/code-warrior/column-baseline-grid",
-    "web_accessible_resources": [],
+    "web_accessible_resources": [
+        "fonts/*.woff2"
+    ],
     "offline_enabled": true,
     "incognito": "not_allowed",
 
