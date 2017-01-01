@@ -28,7 +28,8 @@ let body = document.querySelector('body'),
 
     column = 60,
     gutter = 20,
-    fullColumn = column + gutter,
+    gridUnit = column + gutter,
+
     gridChoice = 3;
 
 gridInfoContainer.style.display = 'block';
@@ -52,7 +53,7 @@ instructions.innerHTML =
     'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
     'can cycle through the various grids by typing <kbd>esc</kbd>.';
 columnInfo.innerHTML = 'Column count: ' +
-    Math.ceil(body.clientWidth / fullColumn) +
+    Math.ceil(body.clientWidth / gridUnit) +
     '<br>Page width: ' + body.clientWidth;
 gridInfoContainer.appendChild(instructions);
 gridInfoContainer.appendChild(columnInfo);
@@ -85,7 +86,7 @@ function toggleGridInfo() {
  */
 function showColumnInfo() {
     columnInfo.innerHTML = 'Column count: ' +
-        Math.floor(body.clientWidth / fullColumn) +
+        Math.floor(body.clientWidth / gridUnit) +
         '<br>Page width: ' + body.clientWidth;
 }
 
