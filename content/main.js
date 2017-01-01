@@ -42,7 +42,7 @@ modularGridContainer.id = 'modular-grid--container';
 modularGridContainer.appendChild(modularGrid);
 
 // The information sidebar that is toggled by the key sequence cntrl + shift
-gridInfoContainer.setAttribute('id', 'info-sidebar');
+gridInfoContainer.id = 'info-sidebar';
 
 // The first message box inside the sidebar
 instructions.setAttribute('class', 'message-box');
