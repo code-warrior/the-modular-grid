@@ -12,6 +12,7 @@ https://github.com/code-warrior/column-baseline-grid
 ## Architecture
 
 Modular Grid Chrome Browser Extension, similar to any other chrome extension follows Chrome Extension Architecture model. We divide the entire application into three sub sections.
+
 The first, is the **Settings Layer** through which the users will modify and manipulate the characteristics, preferences and features of the Grid for their individual and different projects. In other words, this is the user interface of the extension. This layer, can be implemented through variety of methods and designs. So far we have considered several options. It might be ideal for the users to interact with the Grid settings via a **semi transparent side-tray** that overlays on the project that they are working on, or maybe all the setting should be set in a **separate tab in chrome developers toolbar**. It could also be handled through an **external page/tab**. Or maybe it should be modified through a **website on cloud** accessible to different stakeholders of the project ( designers or visual artists ). Similarly, **hybrid solutions** can also be valuable for consideration. For the alpha version of this extension, we are aiming for the overlaying side-tray which will contain all the Grid preferences/settings.
 
 The second section is the **Content Layer**. Content layer contains all the scripts and styles that will run in the context of the user's web page/application. This layer is in charge of overlaying the Grid system on the current web page. This function is handled by injecting the Grid system and DOM elements into the current page's DOM. It also handles some inputs and interactions from users like listeners for shortcuts or changing Grid states and sizes.
@@ -35,7 +36,7 @@ This layer is under `./settings/`.
 #### Through Keyboard Shortcuts
 
 `esc`: Cycles through the various grids in round-robin fashion.
-`cntrl + shift` (in succession): Shows and hides the most important information, which can be populated by the user via the settings section.
+`cntrl + shift`: Shows and hides the most important information, which can be populated by the user via the settings section.
 
 ### Options
 
@@ -46,6 +47,7 @@ Options: `fluid` or `fixed`.
 Options: `36px`, `24px`, or user-specified.
 
 #### Columns
+
 ##### Width
 Options: `75px`, `60px`,`48px` or user-specified.
 
@@ -69,7 +71,6 @@ The Grid should give the user the ability to place the layer anywhere in the pag
 ### Compiling
 
 #### Sass
-
 ````bash
 \sass \
    --sourcemap=none \
@@ -84,7 +85,6 @@ The Grid should give the user the ability to place the layer anywhere in the pag
 ### Linting
 
 #### Sass
-
 ````bash
 sass-lint -c .sass-lint.yml -v -s .
 ````
