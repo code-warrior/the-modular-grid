@@ -3,10 +3,10 @@
 let error_styles =
     'background-color: green; color: white; padding: 2px; border-radius: 4px;';
 
-if (undefined !== gridBGLayer) {
-    gridBGLayer.parentNode.removeChild(gridBGLayer);
+if (undefined !== modularGridContainer) {
+    modularGridContainer.parentNode.removeChild(modularGridContainer);
 
-    console.log('%c gridBGLayer removed ', error_styles);
+    console.log('%c modularGridContainer removed ', error_styles);
 }
 
 if (undefined !== gridInfoContainer) {

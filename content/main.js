@@ -11,8 +11,8 @@ const SHIFT_KEY = 16,
     ESCAPE_KEY = 27;
 
 let body = document.querySelector('body'),
-    gridBGLayer = document.createElement('div'),
     columnBaselineGrid = document.createElement('div'),
+    modularGridContainer = document.createElement('div'),
     gridInfoContainer = document.createElement('div'),
     instructions = document.createElement('span'),
     columnInfo = document.createElement('span'),
@@ -20,6 +20,7 @@ let body = document.querySelector('body'),
     controlKeyPressed = false,
     shiftKeyPressed = false,
     gridInfoIsShowing = true,
+
     column = 60,
     gutter = 20,
     fullColumn = column + gutter,
@@ -31,8 +32,8 @@ columnBaselineGrid.classList.add('all-grids');
 
 // The modular grid that is round-robin cycled via the esc key
 columnBaselineGrid.setAttribute('id', 'column-baseline-grid');
-gridBGLayer.setAttribute('id', 'grid-bg');
-gridBGLayer.appendChild(columnBaselineGrid);
+modularGridContainer.id = 'modular-grid--container';
+modularGridContainer.appendChild(modularGrid);
 
 // The information sidebar that is toggled by the key sequence cntrl + shift
 gridInfoContainer.setAttribute('id', 'info-sidebar');
@@ -53,7 +54,7 @@ gridInfoContainer.appendChild(columnInfo);
 
 if (null !== firstChildOfBody) {
     body.appendChild(gridInfoContainer);
-    body.insertBefore(gridBGLayer, firstChildOfBody);
+    body.insertBefore(modularGridContainer, firstChildOfBody);
 } else {
     body.textContent = 'The body element does not have a child element.';
 }
@@ -106,7 +107,7 @@ document.onkeydown = function (evnt) {
                     columnBaselineGrid.classList.remove(
                         'user-supplied-bg-image'
                     );
-                    gridBGLayer.style.zIndex = '3';
+                    modularGridContainer.style.zIndex = '3';
 
                     break;
 
@@ -138,7 +139,7 @@ document.onkeydown = function (evnt) {
                     columnBaselineGrid.classList.remove(
                         'user-supplied-bg-image'
                     );
-                    gridBGLayer.style.zIndex = '-1';
+                    modularGridContainer.style.zIndex = '-1';
 
                     break;
             }
