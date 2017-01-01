@@ -17,6 +17,10 @@ let body = document.querySelector('body'),
     instructions = document.createElement('span'),
     columnInfo = document.createElement('span'),
     firstChildOfBody = body.firstElementChild,
+
+    //
+    // Keyboard-related Booleans
+    //
     controlKeyPressed = false,
     shiftKeyPressed = false,
     gridInfoIsShowing = true,
