@@ -11,8 +11,9 @@ const SHIFT_KEY = 16,
     ESCAPE_KEY = 27;
 
 let body = document.querySelector('body'),
-    columnBaselineGrid = document.createElement('div'),
     modularGridContainer = document.createElement('div'),
+    modularGrid = document.createElement('div'),
+
     gridInfoContainer = document.createElement('div'),
     instructions = document.createElement('span'),
     columnInfo = document.createElement('span'),
@@ -32,10 +33,10 @@ let body = document.querySelector('body'),
 
 gridInfoContainer.style.display = 'block';
 
-columnBaselineGrid.classList.add('all-grids');
+modularGrid.classList.add('all-grids');
 
 // The modular grid that is round-robin cycled via the esc key
-columnBaselineGrid.setAttribute('id', 'column-baseline-grid');
+modularGrid.id = 'modular-grid';
 modularGridContainer.id = 'modular-grid--container';
 modularGridContainer.appendChild(modularGrid);
 
@@ -107,8 +108,8 @@ document.onkeydown = function (evnt) {
         case ESCAPE_KEY:
             switch (gridChoice) {
                 case 0:
-                    columnBaselineGrid.classList.add('column-grid');
-                    columnBaselineGrid.classList.remove(
+                    modularGrid.classList.add('column-grid');
+                    modularGrid.classList.remove(
                         'user-supplied-bg-image'
                     );
                     modularGridContainer.style.zIndex = '3';
@@ -116,31 +117,31 @@ document.onkeydown = function (evnt) {
                     break;
 
                 case 1:
-                    columnBaselineGrid.classList.remove('column-grid');
-                    columnBaselineGrid.classList.add('modular-grid');
+                    modularGrid.classList.remove('column-grid');
+                    modularGrid.classList.add('modular-grid');
 
                     break;
 
                 case 2:
-                    columnBaselineGrid.classList.remove('modular-grid');
-                    columnBaselineGrid.classList.add('baseline-grid');
+                    modularGrid.classList.remove('modular-grid');
+                    modularGrid.classList.add('baseline-grid');
 
                     break;
 
                 case 3:
-                    columnBaselineGrid.classList.remove('baseline-grid');
-                    columnBaselineGrid.classList.add('all-grids');
+                    modularGrid.classList.remove('baseline-grid');
+                    modularGrid.classList.add('all-grids');
 
                     break;
 
                 case 4:
-                    columnBaselineGrid.classList.remove('all-grids');
-                    columnBaselineGrid.classList.add('user-supplied-bg-image');
+                    modularGrid.classList.remove('all-grids');
+                    modularGrid.classList.add('user-supplied-bg-image');
 
                     break;
 
                 case 5:
-                    columnBaselineGrid.classList.remove(
+                    modularGrid.classList.remove(
                         'user-supplied-bg-image'
                     );
                     modularGridContainer.style.zIndex = '-1';
