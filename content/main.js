@@ -40,7 +40,6 @@ let body = document.querySelector('body'),
     controlKeyPressed = false,
     shiftKeyPressed = false,
 
-    sideBarPopup__IsShowing = true,
     //
     // Turn on the sidebar popup by default
     //
@@ -50,6 +49,7 @@ let body = document.querySelector('body'),
     // Closely related to the sideBarPopup__IsInitiallyShowing Boolean, this variable
     // is used to toggle the sidebar popup by the user.
     //
+    sideBarPopup__IsShowing = false,
 
     //
     // Turn off the grid by default
