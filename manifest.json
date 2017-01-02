@@ -7,7 +7,7 @@
     "version_name": "1.0",
     "minimum_chrome_version": "30",
     "default_locale": "en",
-    "description": "This is a simple column and baseline grid.",
+    "description": "A modular grid for web development and/or design.",
     "homepage_url": "https://github.com/code-warrior/column-baseline-grid",
     "web_accessible_resources": [
         "fonts/*.woff2",
