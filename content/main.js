@@ -101,12 +101,8 @@ sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 
-if (null !== firstChildOfBody) {
-    body.appendChild(sideBarPopup__Container);
     head.appendChild(stylesheet);
     body.insertBefore(modularGrid__Container, firstChildOfBody);
-} else {
-    body.textContent = 'The body element does not have a child element.';
 }
 
 /**
