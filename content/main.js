@@ -1,7 +1,4 @@
 /*jslint browser: true */
-/*global window */
-
-
 const SHIFT_KEY = 16,
     CONTROL_KEY = 17,
     ESCAPE_KEY = 27,
@@ -16,6 +13,8 @@ let body = document.querySelector('body'),
     firstChildOfBody = body.firstElementChild,
     head = document.querySelector('head'),
     stylesheet = document.createElement('link'),
+
+/*global window, chrome */
 
 
     //
