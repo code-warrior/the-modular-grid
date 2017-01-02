@@ -26,6 +26,8 @@ let gridEnabled = true;
 //     lastTabId = tabId;
 // });
 
+chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+
 /**
  *
  */
