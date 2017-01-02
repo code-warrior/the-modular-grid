@@ -31,7 +31,7 @@ chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 /**
  *
  */
-chrome.browserAction.onClicked.addListener(function() {
+chrome.browserAction.onClicked.addListener(function () {
     if (gridEnabled) {
         chrome.tabs.executeScript({file: 'content/disable-grid.js'});
         chrome.browserAction.setIcon({path:"img/extension-icon-19-off.png"});
