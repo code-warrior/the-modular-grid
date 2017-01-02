@@ -36,10 +36,10 @@ chrome.browserAction.onClicked.addListener(function () {
 
     if (gridEnabled) {
         chrome.tabs.executeScript({file: 'content/disable-grid.js'});
-        chrome.browserAction.setIcon({path:"img/extension-icon-19-off.png"});
+        chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
         chrome.tabs.executeScript({file: 'content/enable-grid.js'});
-        chrome.browserAction.setIcon({path:"img/extension-icon-19.png"});
+        chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
     gridEnabled = !gridEnabled;
