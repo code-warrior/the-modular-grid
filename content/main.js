@@ -86,12 +86,15 @@ sideBarPopup__Instructions.className = 'message-box';
 sideBarPopup__ColumnAndPageInfo.className = 'message-box';
 
 sideBarPopup__Instructions.innerHTML =
-    'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
-    'can cycle through the various grids by typing <kbd>esc</kbd>.';
+        'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
+        'can cycle through the various grids by typing <kbd>esc</kbd>.';
+
 sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
-    Math.ceil(body.clientWidth / gridUnit) +
-    '<br>Page width: ' + body.clientWidth;
+        Math.ceil(body.clientWidth / gridUnit) +
+        '<br>Page width: ' + body.clientWidth;
+
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
+
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 
 if (null !== firstChildOfBody) {
@@ -127,8 +130,8 @@ function showColumnInfo() {
     'use strict';
 
     sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
-        Math.floor(body.clientWidth / gridUnit) +
-        '<br>Page width: ' + body.clientWidth;
+            Math.floor(body.clientWidth / gridUnit) +
+            '<br>Page width: ' + body.clientWidth;
 }
 
 /**
@@ -148,67 +151,67 @@ document.onkeydown = function (evnt) {
     'use strict';
 
     switch (evnt.keyCode) {
-        case SHIFT_KEY:
-            shiftKeyPressed = true;
+    case SHIFT_KEY:
+        shiftKeyPressed = true;
+
+        break;
+
+    case CONTROL_KEY:
+        controlKeyPressed = true;
+
+        break;
+
+    case ESCAPE_KEY:
+        switch (gridChoice) {
+        case SHOWING_NO_GRID:
+            modularGrid.classList.add('column-grid');
+            modularGrid.classList.remove(
+                'user-supplied-bg-image'
+            );
+            modularGrid__Container.style.zIndex = '3';
 
             break;
 
-        case CONTROL_KEY:
-            controlKeyPressed = true;
+        case SHOWING_COLUMN_GRID:
+            modularGrid.classList.remove('column-grid');
+            modularGrid.classList.add('modular-grid');
 
             break;
 
-        case ESCAPE_KEY:
-            switch (gridChoice) {
-                case SHOWING_NO_GRID:
-                    modularGrid.classList.add('column-grid');
-                    modularGrid.classList.remove(
-                        'user-supplied-bg-image'
-                    );
-                    modularGrid__Container.style.zIndex = '3';
-
-                    break;
-
-                case SHOWING_COLUMN_GRID:
-                    modularGrid.classList.remove('column-grid');
-                    modularGrid.classList.add('modular-grid');
-
-                    break;
-
-                case SHOWING_MODULAR_GRID:
-                    modularGrid.classList.remove('modular-grid');
-                    modularGrid.classList.add('baseline-grid');
-
-                    break;
-
-                case SHOWING_BASELINE_GRID:
-                    modularGrid.classList.remove('baseline-grid');
-                    modularGrid.classList.add('all-grids');
-
-                    break;
-
-                case SHOWING_ALL_GRIDS:
-                    modularGrid.classList.remove('all-grids');
-                    // modularGrid.classList.add('user-supplied-bg-image');
-
-                    break;
-
-                // case SHOWING_USER_SUPPLIED_BG_IMAGE:
-                //     modularGrid.classList.remove(
-                //         'user-supplied-bg-image'
-                //     );
-                //     modularGrid__Container.style.zIndex = '-1';
-                //
-                //     break;
-            }
-
-            if (SHOWING_ALL_GRIDS === gridChoice) {
-                gridChoice = -1;
-            }
-
-            gridChoice += 1;
+        case SHOWING_MODULAR_GRID:
+            modularGrid.classList.remove('modular-grid');
+            modularGrid.classList.add('baseline-grid');
 
             break;
+
+        case SHOWING_BASELINE_GRID:
+            modularGrid.classList.remove('baseline-grid');
+            modularGrid.classList.add('all-grids');
+
+            break;
+
+        case SHOWING_ALL_GRIDS:
+            modularGrid.classList.remove('all-grids');
+            // modularGrid.classList.add('user-supplied-bg-image');
+
+            break;
+
+        // case SHOWING_USER_SUPPLIED_BG_IMAGE:
+        //     modularGrid.classList.remove(
+        //         'user-supplied-bg-image'
+        //     );
+        //     modularGrid__Container.style.zIndex = '-1';
+        //
+        //     break;
+        }
+
+        if (SHOWING_ALL_GRIDS === gridChoice) {
+            gridChoice = -1;
+        }
+
+        gridChoice += 1;
+
+        break;
     }
 
     if (shiftKeyPressed) {
