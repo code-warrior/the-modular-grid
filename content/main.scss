@@ -1,0 +1,94 @@
+@import '../common-styles/reset';
+@import '../common-styles/fonts';
+@import '../common-styles/variables';
+@import '../common-styles/functions';
+
+#modular-grid {
+   position:  relative;
+   z-index:   -1;
+   margin:    0 auto;
+   max-width: $width--16u;
+   height:    $users-image--height;
+}
+
+.all-grids {
+   background-color: $users-image--color;
+   background-image: $users-image, linear-gradient(90deg, get-color('grid', 'column-transparent') $grid-column, transparent 0), linear-gradient(0deg, transparent 95%, get-color('grid', 'baseline') 100%);
+   background-repeat: no-repeat, repeat, repeat;
+   background-position: $users-image--position-x $users-image--position-y, $grid-gutter-split 0, 0 0;
+   background-size: $users-image--size-x $users-image--size-y, ($grid-column + $grid-gutter) 100%, 100% $leading;
+}
+
+.modular-grid {
+   background-image: linear-gradient(90deg, get-color('grid', 'column-transparent') $grid-column, transparent 0),
+   linear-gradient(0deg, transparent 95%, get-color('grid', 'baseline') 100%);
+   background-position: $grid-gutter-split 0, 0 0;
+   background-size: ($grid-column + $grid-gutter) 100%, 100% $leading;
+}
+
+.column-grid {
+   background-image: linear-gradient(90deg, get-color('grid', 'column-transparent') $grid-column, transparent 0);
+   background-position: $grid-gutter-split 0;
+   background-size: ($grid-column + $grid-gutter) 100%;
+}
+
+.baseline-grid {
+   background-image: linear-gradient(0deg, transparent 95%, get-color('grid', 'baseline') 100%);
+   background-size: 100% $leading;
+}
+
+.user-supplied-bg-image {
+   background-attachment: $users-image--attachment;
+   background-color:      $users-image--color;
+   background-image:      $users-image;
+   background-repeat:     $users-image--repeat;
+   background-position:   $users-image--position-x $users-image--position-y;
+   background-size:       $users-image--size-x $users-image--size-y;
+}
+
+#info-sidebar {
+   font: .9875rem / 1.6 $font--stack;
+   text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
+   display: none;
+   position: fixed;
+   top: 2 * $leading;
+   right: $offset-sidebar;
+   z-index: 2; // $stacking-context--above-tray + 1;
+
+   .message-box {
+      display: block;
+      position: relative;
+      margin-bottom: $offset-sidebar;
+      background-color: get-color('grid', 'baseline');
+      padding: $offset-sidebar;
+      width: 4 * $grid-column;
+      color: get-color('background', 'primary');
+
+      &::after {
+         position: absolute;
+         top: 0;
+         right: -(2 * $offset-sidebar);
+         border: {
+            top:    $offset-sidebar solid transparent;
+            right:  $offset-sidebar solid transparent;
+            bottom: $offset-sidebar solid transparent;
+            left:   $offset-sidebar solid get-color('grid', 'baseline');
+         }
+         content: '';
+      }
+   }
+}
+
+#modular-grid--container {
+   position: absolute;
+   z-index: -1;
+   width: 100%;
+}
+
+kbd {
+   border-radius: 8px;
+   background-color: lighten(get-color('grid', 'baseline'), 8%);
+   color: get-color('background', 'primary');
+   border: 1px solid darken(get-color('grid', 'baseline'), 2%);
+   padding: 0 6px 3px;
+}

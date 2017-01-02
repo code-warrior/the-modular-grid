@@ -1,0 +1,90 @@
+////
+/// Add a poster comment here.
+////
+
+$colors: (
+   'background': (
+      primary: #fff,
+      secondary: #c0c0c0,
+      ternary: #464646,
+      quartenary: rgba(170, 170, 170, .1)
+   ),
+   'grid': (
+      column: #ff7bac,
+      column-transparent: rgba(200, 0, 0, .2),
+      baseline: #29abe2
+   )
+);
+
+///
+/// Styles specific to the popup page
+///
+$popup--transition-time--button: .25s;
+$popup--width--popup-wrapper:    100px;
+$popup--width--slider:           60px;                       // 60px
+$popup--width--half-slider:      $popup--width--slider / 2;  // 30px
+$popup--offset--button:          $popup--width--slider / 15; // 4px
+$popup--width--button:           ($popup--width--slider / 2) - $popup--offset--button; // 26px
+$popup--radius--slider:          ($popup--width--slider / 2) + $popup--offset--button; // 34px
+
+///
+/// Styles specific to the options page
+///
+$options--width--header: 100px;
+$options--width--input:  48px;
+
+///
+/// Font-related styles, irrespective of page
+///
+$font--stack:     Muli, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font--base-size: 1rem;
+$font--size--h1:  2rem;
+$font--size--h2:  1.5rem;
+$font--size--h3:  1.17rem;
+
+///
+/// Leading-related styles
+///
+$leading:         1.5 * $font--base-size;
+
+///
+/// Font Weights
+///
+$light: 200;
+$bold:  700;
+
+///
+/// Styles specific to the grid.
+///
+/// The variables $grid-column and $grid-gutter below map to the variables column
+/// and gutter in the JS file at app/scripts/main.js. For the grid to work, these
+/// Sass variables must map to the JS variables.
+///
+$grid-column:             60px;                        // 60px
+$grid-gutter:             20px;                        // 20px
+$grid-gutter-split:       $grid-gutter / 2;            // 10px
+$width--grid-column-full: $grid-column + $grid-gutter; // 80px
+
+///
+/// Responsive Breakpoints
+///
+$width--16u: 16 * $width--grid-column-full;
+
+///
+/// Styles specific to the info side bar created when the grid is shown to the user.
+///
+$offset-sidebar: 14px;
+
+///
+/// When using a URL for the user’s image, remember to set $users-image--height to
+/// the height of the user’s image.
+///
+$users-image:             none;
+$users-image--height:     2000px; // TODO: A value of 2000 pixels is completely arbitrary
+$users-image--position-x: center;
+$users-image--position-y: top;
+$users-image--size-x:     auto;
+$users-image--size-y:     auto;
+$users-image--attachment: scroll;
+$users-image--repeat:     no-repeat;
+$users-image--color:      transparent;
