@@ -124,6 +124,8 @@ function toggleGridInfo() {
  * along the right of the viewport.
  */
 function showColumnInfo() {
+    'use strict';
+
     sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
         Math.floor(body.clientWidth / gridUnit) +
         '<br>Page width: ' + body.clientWidth;
@@ -133,6 +135,8 @@ function showColumnInfo() {
  *
  */
 window.onresize = function () {
+    'use strict';
+
     showColumnInfo();
 };
 
@@ -141,6 +145,8 @@ window.onresize = function () {
  * @param evnt
  */
 document.onkeydown = function (evnt) {
+    'use strict';
+
     switch (evnt.keyCode) {
         case SHIFT_KEY:
             shiftKeyPressed = true;
