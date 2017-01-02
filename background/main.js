@@ -1,7 +1,7 @@
 /* global chrome */
 
 /*
- * This file is called when the browser loads.
+ * This file is called each time a new browser window loads.
  */
 let gridEnabled = true;
     // lastTabId,
