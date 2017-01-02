@@ -4,59 +4,83 @@
    <meta charset="utf-8">
    <title>Modular Grid Options</title>
    <link href="main.css" rel="stylesheet">
+   <style>
+      p.pending {
+         color: red;
+      }
+      p:not(.pending) {
+         padding: 24px;
+         font-size: 1.2rem;
+         text-align: center;
+         border: 1px solid white;
+         border-radius: 8px;
+         margin: 24px;
+         line-height: 1.4;
+      }
+   </style>
 </head>
 <body>
    <header>
       <h1>Options</h1>
    </header>
+   <p>This extension is in beta, and, as such, none of the features below has been implemented. The settings for the current, default implementation of the grid appear below.</p>
    <form>
       <section>
          <h2>Columns</h2>
          <div>
             <h3>Width</h3>
-            <p><label for="column--width-input">How wide would you like each column to be? (Range: 00&#8202;–&#8202;96)</label></p>
-            <input type="text" id="column--width-input" placeholder="12" pattern="[0-9][0-6]"> px
+            <p class="pending"><label for="column--width-input">How wide would you like each column to be? (Range: 00&#8202;–&#8202;96)</label></p>
+            <input disabled type="text" id="column--width-input" placeholder="60" pattern="[0-9][0-6]"> px
          </div>
 
          <div>
             <h3>Count</h3>
-            <p><label for="column--count-input">How many columns would you like? (Range: 00&#8202;–&#8202;96)</label></p>
-            <input type="text" id="column--count-input" placeholder="12" pattern="[0-9][0-9]">
+            <p class="pending"><label for="column--count-input">How many columns would you like? (Range: 00&#8202;–&#8202;96)</label></p>
+            <input disabled type="text" id="column--count-input" placeholder="16" pattern="[0-9][0-9]">
          </div>
 
          <div>
             <h3>Color</h3>
-            <p><label for="column--color-input">What color would you like your columns to be?</label></p>
-            <input type="color" id="column--color-input" value="#c80000">
+            <p class="pending"><label for="column--color-input">What color would you like your columns to be?</label></p>
+            <input disabled type="color" id="column--color-input" value="#c80000" title="#c80000">
          </div>
 
          <div>
             <h3>Opacity</h3>
-            <p><label for="column--opacity-input">How opaque would you like the columns to be? The less opaque, the more your designs will show through the grid.(Range: 0.0&#8202;–&#8202;1.0)</label></p>
-            <input type="range" id="column--opacity-input" min="0.0" max="1.0" step="0.1" value="0.2">
-         </div>
-
-      </section>
-
-      <section>
-         <h2>Breakpoints</h2>
-         <div>
-            Options: `24`, `18`, `16`, `12`, `8`, `4`
-         </div>
-      </section>
-
-      <section>
-         <h2>Leading</h2>
-         <div>
-            <h3>Vertical Distance</h3>
+            <p class="pending"><label for="column--opacity-input">How opaque would you like the columns to be? The less opaque, the more your designs will show through the grid.(Range: 0.0&#8202;–&#8202;1.0)</label></p>
+            <input disabled type="range" id="column--opacity-input" min="0.0" max="1.0" step="0.1" value="0.2" title="0.2">
          </div>
       </section>
 
       <section>
          <h2>Gutters</h2>
+         <p class="pending">Pending</p>
          <div>
-            <h3>Width</h3>
-            <h3>Split or None?</h3>
+            <h3>Width? 20px</h3>
+         </div>
+      </section>
+
+      <section>
+         <h2>Margins</h2>
+         <p class="pending">Pending</p>
+         <div>
+            <h3>Split Gutter or None? Split</h3>
+         </div>
+      </section>
+
+      <section>
+         <h2>Leading</h2>
+         <p class="pending">Pending</p>
+         <div>
+            <h3>Vertical Distance? 24px</h3>
+         </div>
+      </section>
+
+      <section>
+         <h2>Breakpoints</h2>
+         <p class="pending">Pending</p>
+         <div>
+            Options: `24`, `18`, `16`, `12`, `8`, `4`
          </div>
       </section>
    </form>
