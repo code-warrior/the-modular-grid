@@ -72,8 +72,12 @@ stylesheet.id = 'modular-grid-css';
 
 sideBarPopup__Container.id = 'info-sidebar';
 
-if (sideBarPopup__IsShowing) {
+//
+// When the extension loads, the sidebar info dialog box shows…
+//
+if (sideBarPopup__IsInitiallyShowing) {
     sideBarPopup__Container.style.display = 'block';
+    sideBarPopup__IsShowing = true;
 }
 
 modularGrid.id = 'modular-grid';
