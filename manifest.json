@@ -60,6 +60,7 @@
     "permissions": [
         "background",
         "unlimitedStorage",
+        "storage",
         "tabs",
         "activeTab",
         "http://*/",
