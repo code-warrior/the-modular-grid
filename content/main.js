@@ -89,6 +89,8 @@ if (null !== firstChildOfBody) {
  * TOGGLE GRID INFO
  */
 function toggleGridInfo() {
+    'use strict';
+
     if (sideBarPopup__IsShowing) {
         sideBarPopup__Container.style.display = 'none';
         sideBarPopup__IsShowing = false;
