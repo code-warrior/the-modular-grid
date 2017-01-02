@@ -9,8 +9,7 @@
         ],
         "indent": [
             2,
-            4,
-            {"SwitchCase": 1}
+            4
         ],
         "quotes": [
             2,
