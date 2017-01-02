@@ -1,4 +1,5 @@
 # Modular Grid Chrome Extension
+(v1.0.0)
 
 ## Beta Release Date
 Mid January 2017
