@@ -135,7 +135,8 @@ function showColumnInfo() {
 }
 
 /**
- *
+ * At every moment of the browser window resize, update the sidebar information
+ * popup.
  */
 window.onresize = function () {
     'use strict';
@@ -144,8 +145,11 @@ window.onresize = function () {
 };
 
 /**
+ * Handles keyboard events that cycle through the various grids (using the `esc`
+ * key) and that toggle the sidebar information popup appearing in the upper right
+ * hand corner of the browser window (using the `cntrl` + `shift` keys).
  *
- * @param evnt
+ * @param evnt is the keyboard event
  */
 document.onkeydown = function (evnt) {
     'use strict';
