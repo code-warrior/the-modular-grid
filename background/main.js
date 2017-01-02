@@ -3,7 +3,7 @@
 /*
  * This file is called each time a new browser window loads.
  */
-let gridEnabled = true;
+let gridEnabled = false;
     // lastTabId,
     //
     // Structure for holding and reserving project settings
