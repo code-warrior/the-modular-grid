@@ -165,9 +165,9 @@ document.onkeydown = function (evnt) {
         switch (gridChoice) {
         case SHOWING_NO_GRID:
             modularGrid.classList.add('column-grid');
-            modularGrid.classList.remove(
-                'user-supplied-bg-image'
-            );
+            // modularGrid.classList.remove(
+            //     'user-supplied-bg-image'
+            // );
             modularGrid__Container.style.zIndex = '3';
 
             break;
