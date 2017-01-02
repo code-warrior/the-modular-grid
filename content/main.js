@@ -101,8 +101,10 @@ sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 
+if (grid__IsInitiallyShowing) {
     head.appendChild(stylesheet);
     body.insertBefore(modularGrid__Container, firstChildOfBody);
+    body.appendChild(sideBarPopup__Container);
 }
 
 /**
