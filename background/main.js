@@ -3,7 +3,9 @@
 /*
     This file is called when the browser loads.
  */
-let lastTabId,
+let gridEnabled = true;
+    // lastTabId,
+    //
     // Structure for holding and reserving project settings
     currentSettings = {
         gridIsEnabled : false
@@ -49,6 +51,15 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             //
             chrome.tabs.executeScript({file: 'content/remove-grid.js'});
 
-            break;
+/**
+ *
+ */
+chrome.browserAction.onClicked.addListener(function() {
+    if (gridEnabled) {
+        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
+    } else {
+        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
     }
+
+    gridEnabled = !gridEnabled;
 });
