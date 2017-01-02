@@ -1,9 +1,6 @@
 /*jslint browser: true */
 /*global window */
 
-/*
-Requires an if statement to check if the grid element has already been created.
- */
 'use strict';
 
 const SHIFT_KEY = 16,
