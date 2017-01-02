@@ -41,7 +41,25 @@ let body = document.querySelector('body'),
     shiftKeyPressed = false,
 
     sideBarPopup__IsShowing = true,
+    //
+    // Turn on the sidebar popup by default
+    //
+    sideBarPopup__IsInitiallyShowing = true,
 
+    //
+    // Closely related to the sideBarPopup__IsInitiallyShowing Boolean, this variable
+    // is used to toggle the sidebar popup by the user.
+    //
+
+    //
+    // Turn off the grid by default
+    //
+    grid__IsInitiallyShowing = false,
+
+    //
+    // Grid-related variables, of which gridColumn and gridGutter will be updated by
+    // the user when choosing the size of columns and gutters.
+    //
     gridColumn = 60,
     gridGutter = 20,
     gridUnit = gridColumn + gridGutter,
