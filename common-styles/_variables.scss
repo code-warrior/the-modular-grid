@@ -68,8 +68,6 @@ $width--grid-column-full: $grid-column + $grid-gutter; // 80px
 /// Responsive Breakpoints
 ///
 $width--16u: 16 * $width--grid-column-full;
-$width--12u: 12 * $width--grid-column-full;
-$width--8u:  8 * $width--grid-column-full;
 
 ///
 /// Styles specific to the info side bar created when the grid is shown to the user.
