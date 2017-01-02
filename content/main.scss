@@ -1,3 +1,5 @@
+@import '../common-styles/reset';
+@import '../common-styles/fonts';
 @import '../common-styles/variables';
 @import '../common-styles/functions';
 
@@ -45,6 +47,8 @@
 }
 
 #info-sidebar {
+   font: .9875rem / 1.6 $font--stack;
+   text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
    display: none;
    position: fixed;
    top: 2 * $leading;
@@ -55,11 +59,10 @@
       display: block;
       position: relative;
       margin-bottom: $offset-sidebar;
-      background-color: get-color('grid', 'column');
+      background-color: get-color('grid', 'baseline');
       padding: $offset-sidebar;
       width: 4 * $grid-column;
       color: get-color('background', 'primary');
-      font: .9875rem / 1.5 $font--stack;
 
       &::after {
          position: absolute;
@@ -69,7 +72,7 @@
             top:    $offset-sidebar solid transparent;
             right:  $offset-sidebar solid transparent;
             bottom: $offset-sidebar solid transparent;
-            left:   $offset-sidebar solid get-color('grid', 'column');
+            left:   $offset-sidebar solid get-color('grid', 'baseline');
          }
          content: '';
       }
@@ -80,4 +83,12 @@
    position: absolute;
    z-index: -1;
    width: 100%;
+}
+
+kbd {
+   border-radius: 8px;
+   background-color: lighten(get-color('grid', 'baseline'), 8%);
+   color: get-color('background', 'primary');
+   border: 1px solid darken(get-color('grid', 'baseline'), 2%);
+   padding: 0 6px 3px;
 }

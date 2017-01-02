@@ -20,6 +20,13 @@
         "128": "img/extension-logo-128.png"
     },
 
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content/main.js"]
+        }
+    ],
+
     "browser_action": {
         "default_title": "Modular Grid",
         "default_icon": {

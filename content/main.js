@@ -5,59 +5,84 @@
 
 const SHIFT_KEY = 16,
     CONTROL_KEY = 17,
-    ESCAPE_KEY = 27;
+    ESCAPE_KEY = 27,
+    SHOWING_NO_GRID = 0,
+    SHOWING_COLUMN_GRID = 1,
+    SHOWING_MODULAR_GRID = 2,
+    SHOWING_BASELINE_GRID = 3,
+    SHOWING_ALL_GRIDS = 4;
+// SHOWING_USER_SUPPLIED_BG_IMAGE = 5;
 
 let body = document.querySelector('body'),
-    modularGridContainer = document.createElement('div'),
+    firstChildOfBody = body.firstElementChild,
+    head = document.querySelector('head'),
+    stylesheet = document.createElement('link'),
+
+
+    //
+    // modularGrid__Container is the container of the entire grid that is appended to
+    // the <body> element as its first child. The modularGrid variable is appended to
+    // modularGrid__Container and is the layer whose background contains the varying
+    // grids displayed to the user.
+    //
+    modularGrid__Container = document.createElement('div'),
     modularGrid = document.createElement('div'),
 
-    gridInfoContainer = document.createElement('div'),
-    instructions = document.createElement('span'),
-    columnInfo = document.createElement('span'),
-    firstChildOfBody = body.firstElementChild,
+    //
+    // sideBarPopup__Container is the container for the popup box that appears in the
+    // upper right hand corner. (Note: Do not confuse the use of “popup” here with
+    // the popup feature endemic to a Chrome extension.)
+    //
+    sideBarPopup__Container = document.createElement('div'),
+    sideBarPopup__Instructions = document.createElement('span'),
+    sideBarPopup__ColumnAndPageInfo = document.createElement('span'),
 
     //
     // Keyboard-related Booleans
     //
     controlKeyPressed = false,
     shiftKeyPressed = false,
-    gridInfoIsShowing = true,
 
-    column = 60,
-    gutter = 20,
-    gridUnit = column + gutter,
+    sideBarPopup__IsShowing = true,
 
-    gridChoice = 3;
+    gridColumn = 60,
+    gridGutter = 20,
+    gridUnit = gridColumn + gridGutter,
 
-gridInfoContainer.style.display = 'block';
+    gridChoice = SHOWING_ALL_GRIDS;
 
-modularGrid.classList.add('all-grids');
+stylesheet.href = chrome.extension.getURL('content/main.css');
+stylesheet.rel = 'stylesheet';
+stylesheet.id = 'modular-grid-css';
 
-// The modular grid that is round-robin cycled via the esc key
+sideBarPopup__Container.id = 'info-sidebar';
+
+if (sideBarPopup__IsShowing) {
+    sideBarPopup__Container.style.display = 'block';
+}
+
 modularGrid.id = 'modular-grid';
-modularGridContainer.id = 'modular-grid--container';
-modularGridContainer.appendChild(modularGrid);
+modularGrid.className = 'all-grids';
 
-// The information sidebar that is toggled by the key sequence cntrl + shift
-gridInfoContainer.id = 'info-sidebar';
+modularGrid__Container.id = 'modular-grid--container';
+modularGrid__Container.appendChild(modularGrid);
 
-// The first message box inside the sidebar
-instructions.setAttribute('class', 'message-box');
+sideBarPopup__Instructions.className = 'message-box';
+sideBarPopup__ColumnAndPageInfo.className = 'message-box';
 
-// The second message box displaying the grid information
-columnInfo.setAttribute('class', 'message-box');
-instructions.innerHTML =
+sideBarPopup__Instructions.innerHTML =
     'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
     'can cycle through the various grids by typing <kbd>esc</kbd>.';
-columnInfo.innerHTML = 'Column count: ' +
+sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
     Math.ceil(body.clientWidth / gridUnit) +
     '<br>Page width: ' + body.clientWidth;
-gridInfoContainer.appendChild(instructions);
-gridInfoContainer.appendChild(columnInfo);
+sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
+sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 
 if (null !== firstChildOfBody) {
-    body.appendChild(gridInfoContainer);
-    body.insertBefore(modularGridContainer, firstChildOfBody);
+    body.appendChild(sideBarPopup__Container);
+    head.appendChild(stylesheet);
+    body.insertBefore(modularGrid__Container, firstChildOfBody);
 } else {
     body.textContent = 'The body element does not have a child element.';
 }
@@ -66,12 +91,12 @@ if (null !== firstChildOfBody) {
  * TOGGLE GRID INFO
  */
 function toggleGridInfo() {
-    if (gridInfoIsShowing) {
-        gridInfoContainer.style.display = 'none';
-        gridInfoIsShowing = false;
+    if (sideBarPopup__IsShowing) {
+        sideBarPopup__Container.style.display = 'none';
+        sideBarPopup__IsShowing = false;
     } else {
-        gridInfoContainer.style.display = 'block';
-        gridInfoIsShowing = true;
+        sideBarPopup__Container.style.display = 'block';
+        sideBarPopup__IsShowing = true;
     }
 }
 
@@ -82,15 +107,22 @@ function toggleGridInfo() {
  * along the right of the viewport.
  */
 function showColumnInfo() {
-    columnInfo.innerHTML = 'Column count: ' +
+    sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
         Math.floor(body.clientWidth / gridUnit) +
         '<br>Page width: ' + body.clientWidth;
 }
 
+/**
+ *
+ */
 window.onresize = function () {
     showColumnInfo();
 };
 
+/**
+ *
+ * @param evnt
+ */
 document.onkeydown = function (evnt) {
     switch (evnt.keyCode) {
         case SHIFT_KEY:
@@ -105,53 +137,53 @@ document.onkeydown = function (evnt) {
 
         case ESCAPE_KEY:
             switch (gridChoice) {
-                case 0:
+                case SHOWING_NO_GRID:
                     modularGrid.classList.add('column-grid');
                     modularGrid.classList.remove(
                         'user-supplied-bg-image'
                     );
-                    modularGridContainer.style.zIndex = '3';
+                    modularGrid__Container.style.zIndex = '3';
 
                     break;
 
-                case 1:
+                case SHOWING_COLUMN_GRID:
                     modularGrid.classList.remove('column-grid');
                     modularGrid.classList.add('modular-grid');
 
                     break;
 
-                case 2:
+                case SHOWING_MODULAR_GRID:
                     modularGrid.classList.remove('modular-grid');
                     modularGrid.classList.add('baseline-grid');
 
                     break;
 
-                case 3:
+                case SHOWING_BASELINE_GRID:
                     modularGrid.classList.remove('baseline-grid');
                     modularGrid.classList.add('all-grids');
 
                     break;
 
-                case 4:
+                case SHOWING_ALL_GRIDS:
                     modularGrid.classList.remove('all-grids');
-                    modularGrid.classList.add('user-supplied-bg-image');
+                    // modularGrid.classList.add('user-supplied-bg-image');
 
                     break;
 
-                case 5:
-                    modularGrid.classList.remove(
-                        'user-supplied-bg-image'
-                    );
-                    modularGridContainer.style.zIndex = '-1';
+                // case SHOWING_USER_SUPPLIED_BG_IMAGE:
+                //     modularGrid.classList.remove(
+                //         'user-supplied-bg-image'
+                //     );
+                //     modularGrid__Container.style.zIndex = '-1';
+                //
+                //     break;
+            }
 
-                    break;
+            if (SHOWING_ALL_GRIDS === gridChoice) {
+                gridChoice = -1;
             }
 
             gridChoice += 1;
-
-            if (6 === gridChoice) {
-                gridChoice = 0;
-            }
 
             break;
     }
