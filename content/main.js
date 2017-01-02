@@ -1,7 +1,6 @@
 /*jslint browser: true */
 /*global window */
 
-'use strict';
 
 const SHIFT_KEY = 16,
     CONTROL_KEY = 17,
