@@ -33,6 +33,8 @@ git checkout ver1.0.0-rc1
 
 7. Drag the folder over the `Chrome Extensions` window.
 
+8. A greyish, grid-like icon should now appear to the right of the address bar. Click it to toggle the grid on/off.
+
 ### Updates
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically via the `git pull` command.
 
