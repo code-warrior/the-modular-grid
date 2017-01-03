@@ -1,17 +1,42 @@
 # Modular Grid Chrome Extension
 (v1.0.0)
 
+### Beta Repository URL
+[`https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1`](https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1)
+
 ## Beta Release Date
 Mid January 2017
 
-## Website
-Pending
+## Installing the Beta
+Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through a command line interface.
 
-## Repository URL
-https://github.com/code-warrior/column-baseline-grid
+### Command Line Interface (CLI) Installation
+1. Launch your CLI and navigate to a folder into which to download the extension.
+
+2. Clone the repository:
+
+````bash
+git clone git@github.com:code-warrior/column-baseline-grid.git
+````
+
+3. Switch to the version 1.0.0., release candidate 1 branch:
+
+````bash
+git checkout ver1.0.0-rc1
+````
+
+4. Launch Chrome.
+
+5. Type `chrome://extensions` into the address bar.
+
+6. Locate the `column-baseline-grid` folder that was created when you cloned this project in step `2`.
+
+7. Drag the folder over the `Chrome Extensions` window.
+
+### Updates
+Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically via the `git pull` command.
 
 ## Architecture
-
 Modular Grid Chrome Browser Extension, similar to any other chrome extension follows Chrome Extension Architecture model. We divide the entire application into three sub sections.
 
 The first, is the **Settings Layer** through which the users will modify and manipulate the characteristics, preferences and features of the Grid for their individual and different projects. In other words, this is the user interface of the extension. This layer, can be implemented through variety of methods and designs. So far we have considered several options. It might be ideal for the users to interact with the Grid settings via a **semi transparent side-tray** that overlays on the project that they are working on, or maybe all the setting should be set in a **separate tab in chrome developers toolbar**. It could also be handled through an **external page/tab**. Or maybe it should be modified through a **website on cloud** accessible to different stakeholders of the project ( designers or visual artists ). Similarly, **hybrid solutions** can also be valuable for consideration. For the alpha version of this extension, we are aiming for the overlaying side-tray which will contain all the Grid preferences/settings.
@@ -21,21 +46,17 @@ The second section is the **Content Layer**. Content layer contains all the scri
 The third one is the **Backend Layer**. This is where all the logic of the application lives. This layer is in charge of authentication, session handling, storage related tasks, server communication tasks and most importantly it behaves as a bridge between the **Settings Layer** and the **Content Layer**. Every change in the **Settings Layer** will essentially result in request to **Backend Layer**. Let's say the user changes the column width. That modification will translate into a request to **Backend Layer** and after the request has been resolved and confirmed there, **Backend Layer** will then trigger a request to the **Content Layer** so that it draws the grid with the new column width.
 
 ## Backend Layer
-
 This layer is under `./background/`.
 
 ## Content Layer
-
 This layer is under `./content/`.
 
 ## Settings Layer
-
 This layer is under `./settings/`.
 
 ### Interactions
 
 #### Through Keyboard Shortcuts
-
 `esc`: Cycles through the various grids in round-robin fashion.
 `cntrl + shift`: Shows and hides the most important information, which can be populated by the user via the settings section.
 
