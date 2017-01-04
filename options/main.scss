@@ -9,7 +9,7 @@ html {
 }
 
 div {
-   margin: #{$options--width--input / 2};
+   margin: #{$options--width--input / 4};
 }
 
 h1 {
@@ -38,7 +38,7 @@ h3 {
 }
 
 input {
-   margin: #{$options--width--input / 2} 0;
+   margin: #{$options--width--input / 4} 0;
    padding: #{$options--width--input / 12} 0;
    width: $options--width--input;
    text-align: center;
@@ -63,4 +63,52 @@ form {
    position: absolute;
    left: $options--width--header;
    background-color: map-get(map-get($colors, background), ternary);
+}
+
+p {
+   &.pending {
+      color: map-get(map-get($colors, grid), column);
+   }
+}
+
+#notification {
+   margin: 24px;
+   border: 1px solid map-get(map-get($colors, background), primary);
+   border-radius: 8px;
+   padding: 24px;
+   text-align: center;
+   line-height: 1.4;
+   font-size: 1.2rem;
+}
+
+#status {
+   position: fixed;
+   right: -4px;
+   bottom: 100px;
+   z-index: 3;
+   margin: 24px;
+}
+
+#save-options {
+   position: fixed;
+   right: 20px;
+   bottom: 20px;
+   border: 0;
+   box-shadow: 0 0 20px 20px map-get(map-get($colors, background), quartenary);
+   background-color: map-get(map-get($colors, background), quartenary);
+   padding: 24px;
+   color: map-get(map-get($colors, background), primary);
+   font-family: $font--stack;
+   font-size: 1.5rem;
+}
+
+a {
+   color: map-get(map-get($colors, background), primary);
+   text-decoration: none;
+   padding-bottom: 4px;
+   border-bottom: 1px solid map-get(map-get($colors, grid), column);
+}
+
+.highlight {
+   color: map-get(map-get($colors, grid), column);
 }
