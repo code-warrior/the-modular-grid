@@ -47,13 +47,13 @@
 }
 
 #info-sidebar {
-   font: .9875rem / 1.6 $font--stack;
-   text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
    display: none;
    position: fixed;
    top: 2 * $leading;
    right: $offset-sidebar;
    z-index: 2; // $stacking-context--above-tray + 1;
+   text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
+   font: .9875rem / 1.6 $font--stack;
 
    .message-box {
       display: block;
@@ -86,9 +86,9 @@
 }
 
 kbd {
+   border: 1px solid darken(get-color('grid', 'baseline'), 2%);
    border-radius: 8px;
    background-color: lighten(get-color('grid', 'baseline'), 8%);
-   color: get-color('background', 'primary');
-   border: 1px solid darken(get-color('grid', 'baseline'), 2%);
    padding: 0 6px 3px;
+   color: get-color('background', 'primary');
 }
