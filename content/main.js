@@ -1,6 +1,14 @@
 /*jslint browser: true */
 /*global window, chrome */
 
+/*
+ * TODO
+ * If this script is called each time the page is loaded, which I imagine is the
+ * case, then this script MUST send a message to the background script asking if the
+ * grid is enabled. If it is, then it might also need to check if the info box is
+ * enabled, also.
+ */
+
 const SHIFT_KEY = 16,
     CONTROL_KEY = 17,
     ESCAPE_KEY = 27,
