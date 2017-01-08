@@ -174,6 +174,18 @@ document.onkeydown = function (evnt) {
         switch (gridChoice) {
         case SHOWING_NO_GRID:
             modularGrid.classList.add('column-grid');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0)');
+                }
+            );
+
             // modularGrid.classList.remove(
             //     'user-supplied-bg-image'
             // );
@@ -184,6 +196,18 @@ document.onkeydown = function (evnt) {
         case SHOWING_COLUMN_GRID:
             modularGrid.classList.remove('column-grid');
             modularGrid.classList.add('modular-grid');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        colorGridBaseline + ' 100%);');
+                }
+            );
 
             break;
 
@@ -196,11 +220,24 @@ document.onkeydown = function (evnt) {
         case SHOWING_BASELINE_GRID:
             modularGrid.classList.remove('baseline-grid');
             modularGrid.classList.add('all-grids');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: none, linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        colorGridBaseline + ' 100%);');
+                }
+            );
 
             break;
 
         case SHOWING_ALL_GRIDS:
             modularGrid.classList.remove('all-grids');
+            modularGrid.removeAttribute('style');
             // modularGrid.classList.add('user-supplied-bg-image');
 
             break;
