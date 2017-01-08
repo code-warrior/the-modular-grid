@@ -53,7 +53,7 @@
       display: block;
       position: relative;
       margin-bottom: $offset-sidebar;
-      background-color: get-color('grid', 'baseline');
+      background-color: get-color('background', 'secondary');
       padding: $offset-sidebar;
       width: 4 * $grid-column;
       color: get-color('background', 'primary');
@@ -82,7 +82,7 @@
             top:    $offset-sidebar solid transparent;
             right:  $offset-sidebar solid transparent;
             bottom: $offset-sidebar solid transparent;
-            left:   $offset-sidebar solid get-color('grid', 'baseline');
+            left:   $offset-sidebar solid get-color('background', 'secondary');
          }
          content: '';
       }
