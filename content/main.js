@@ -1,6 +1,14 @@
 /*jslint browser: true */
 /*global window, chrome */
 
+/*
+ * TODO
+ * If this script is called each time the page is loaded, which I imagine is the
+ * case, then this script MUST send a message to the background script asking if the
+ * grid is enabled. If it is, then it might also need to check if the info box is
+ * enabled, also.
+ */
+
 const SHIFT_KEY = 16,
     CONTROL_KEY = 17,
     ESCAPE_KEY = 27,
@@ -64,7 +72,10 @@ let body = document.querySelector('body'),
     gridGutter = 20,
     gridUnit = gridColumn + gridGutter,
 
-    gridChoice = SHOWING_ALL_GRIDS;
+    gridChoice = SHOWING_ALL_GRIDS,
+
+    colorGridColumnTransparent = 'rgba(200, 0, 0, .2)',
+    colorGridBaseline = '#29abe2';
 
 stylesheet.href = chrome.extension.getURL('content/main.css');
 stylesheet.rel = 'stylesheet';
@@ -171,6 +182,18 @@ document.onkeydown = function (evnt) {
         switch (gridChoice) {
         case SHOWING_NO_GRID:
             modularGrid.classList.add('column-grid');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0)');
+                }
+            );
+
             // modularGrid.classList.remove(
             //     'user-supplied-bg-image'
             // );
@@ -181,6 +204,18 @@ document.onkeydown = function (evnt) {
         case SHOWING_COLUMN_GRID:
             modularGrid.classList.remove('column-grid');
             modularGrid.classList.add('modular-grid');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        colorGridBaseline + ' 100%);');
+                }
+            );
 
             break;
 
@@ -193,11 +228,26 @@ document.onkeydown = function (evnt) {
         case SHOWING_BASELINE_GRID:
             modularGrid.classList.remove('baseline-grid');
             modularGrid.classList.add('all-grids');
+            chrome.storage.sync.get(
+                {
+                    gridColumn: gridColumn
+                },
+                function (settings) {
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'background-image: none, linear-gradient(90deg, ' +
+                        colorGridColumnTransparent + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        colorGridBaseline + ' 100%);');
+                }
+            );
 
             break;
 
         case SHOWING_ALL_GRIDS:
             modularGrid.classList.remove('all-grids');
+            modularGrid.removeAttribute('style');
+            modularGrid__Container.style.zIndex = '-1';
+
             // modularGrid.classList.add('user-supplied-bg-image');
 
             break;

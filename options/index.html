@@ -4,33 +4,19 @@
    <meta charset="utf-8">
    <title>Modular Grid Options</title>
    <link href="main.css" rel="stylesheet">
-   <style>
-      p.pending {
-         color: red;
-      }
-      p:not(.pending) {
-         padding: 24px;
-         font-size: 1.2rem;
-         text-align: center;
-         border: 1px solid white;
-         border-radius: 8px;
-         margin: 24px;
-         line-height: 1.4;
-      }
-   </style>
 </head>
 <body>
    <header>
       <h1>Options</h1>
    </header>
-   <p>This extension is in beta, and, as such, none of the features below has been implemented. The settings for the current, default implementation of the grid appear below.</p>
+   <p id="notification">This extension is in beta. Settings marked in <span class="highlight">pink</span> have yet to be implemented. Submit <a href="https://github.com/code-warrior/column-baseline-grid/issues" target="_blank">feature requests at GitHub</a>.</p>
    <form>
       <section>
          <h2>Columns</h2>
          <div>
             <h3>Width</h3>
-            <p class="pending"><label for="column--width-input">How wide would you like each column to be? (Range: 00&#8202;–&#8202;96)</label></p>
-            <input disabled type="text" id="column--width-input" placeholder="60" pattern="[0-9][0-6]"> px
+            <p><label for="column--width-input">How wide would you like each column to be? (Range: 00&#8202;–&#8202;96)</label></p>
+            <input type="text" id="column--width-input" placeholder="60" pattern="[0-9][0-6]"> px
          </div>
 
          <div>
@@ -84,5 +70,8 @@
          </div>
       </section>
    </form>
+   <button id="save-options">Save</button>
+   <div id="status"></div>
+   <script src="options.js"></script>
 </body>
 </html>
