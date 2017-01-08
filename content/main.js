@@ -64,7 +64,10 @@ let body = document.querySelector('body'),
     gridGutter = 20,
     gridUnit = gridColumn + gridGutter,
 
-    gridChoice = SHOWING_ALL_GRIDS;
+    gridChoice = SHOWING_ALL_GRIDS,
+
+    colorGridColumnTransparent = 'rgba(200, 0, 0, .2)',
+    colorGridBaseline = '#29abe2';
 
 stylesheet.href = chrome.extension.getURL('content/main.css');
 stylesheet.rel = 'stylesheet';
