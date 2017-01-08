@@ -246,6 +246,8 @@ document.onkeydown = function (evnt) {
         case SHOWING_ALL_GRIDS:
             modularGrid.classList.remove('all-grids');
             modularGrid.removeAttribute('style');
+            modularGrid__Container.style.zIndex = '-1';
+
             // modularGrid.classList.add('user-supplied-bg-image');
 
             break;
