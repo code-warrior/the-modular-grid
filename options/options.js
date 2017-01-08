@@ -5,10 +5,10 @@
  * Saves options to chrome.storage
  */
 function save_options() {
-    let columnWidth = document.getElementById('column--width-input').value;
+    let gridColumn = document.getElementById('column--width-input').value;
 
     chrome.storage.sync.set({
-        columnWidth: columnWidth
+        gridColumn: gridColumn
     }, function() {
         let status = document.getElementById('status');
 
@@ -25,9 +25,9 @@ function save_options() {
  */
 function restore_options() {
     chrome.storage.sync.get({
-        columnWidth: '60'
+        gridColumn: '60'
     }, function(items) {
-        document.getElementById('column--width-input').value = items.columnWidth;
+        document.getElementById('column--width-input').value = items.gridColumn;
     });
 }
 
