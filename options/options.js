@@ -6,9 +6,11 @@
  */
 function save_options() {
     let gridColumn = document.getElementById('column--width-input').value;
+    let baselineColor = document.getElementById('baseline--color-input').value;
 
     chrome.storage.sync.set({
-        gridColumn: gridColumn
+        gridColumn: gridColumn,
+        baselineColor: baselineColor
     }, function() {
         let status = document.getElementById('status');
 
@@ -25,9 +27,11 @@ function save_options() {
  */
 function restore_options() {
     chrome.storage.sync.get({
-        gridColumn: '60'
+        gridColumn: '60',
+        baselineColor: '#29abe2'
     }, function(items) {
         document.getElementById('column--width-input').value = items.gridColumn;
+        document.getElementById('baseline--color-input').value = items.baselineColor;
     });
 }
 

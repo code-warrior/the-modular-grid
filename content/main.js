@@ -209,14 +209,15 @@ document.onkeydown = function (evnt) {
             modularGrid.classList.add('modular-grid');
             chrome.storage.sync.get(
                 {
-                    gridColumn: gridColumn
+                    gridColumn: gridColumn,
+                    baselineColor: colorGridBaseline
                 },
                 function (settings) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'background-image: linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                        colorGridBaseline + ' 100%);');
+                        settings.baselineColor + ' 100%);');
                 }
             );
 
@@ -233,14 +234,15 @@ document.onkeydown = function (evnt) {
             modularGrid.classList.add('all-grids');
             chrome.storage.sync.get(
                 {
-                    gridColumn: gridColumn
+                    gridColumn: gridColumn,
+                    baselineColor: colorGridBaseline
                 },
                 function (settings) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'background-image: none, linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                        colorGridBaseline + ' 100%);');
+                        settings.baselineColor + ' 100%);');
                 }
             );
 
