@@ -58,6 +58,22 @@
       width: 4 * $grid-column;
       color: get-color('background', 'primary');
 
+      &:nth-child(3) {
+         text-align: center;
+
+         button {
+            background-color: get-color('background', 'primary');
+            font: #{1.1 * $font--base-size} / #{$leading} $font--stack;
+            padding: 4px 8px 6px;
+            border: 0;
+
+            a {
+               color: get-color('grid', 'baseline');
+               text-decoration: none;
+            }
+         }
+      }
+
       &::after {
          position: absolute;
          top: 0;

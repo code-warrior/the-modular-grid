@@ -41,6 +41,7 @@ let body = document.querySelector('body'),
     sideBarPopup__Container = document.createElement('div'),
     sideBarPopup__Instructions = document.createElement('span'),
     sideBarPopup__ColumnAndPageInfo = document.createElement('span'),
+    sideBarPopup__OptionsLink = document.createElement('span'),
 
     //
     // Keyboard-related Booleans
@@ -99,18 +100,20 @@ modularGrid__Container.appendChild(modularGrid);
 
 sideBarPopup__Instructions.className = 'message-box';
 sideBarPopup__ColumnAndPageInfo.className = 'message-box';
+sideBarPopup__OptionsLink.className = 'message-box';
+sideBarPopup__OptionsLink.classList.add('link');
 
 sideBarPopup__Instructions.innerHTML =
         'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
         'can cycle through the various grids by typing <kbd>esc</kbd>.';
-
 sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
         Math.ceil(body.clientWidth / gridUnit) +
         '<br>Page width: ' + body.clientWidth;
+sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chrome.extension.getURL('options/index.html') + '">options</a></button>';
 
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
-
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
+sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
 
 if (grid__IsInitiallyShowing) {
     head.appendChild(stylesheet);
