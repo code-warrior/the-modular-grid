@@ -43,7 +43,7 @@
 #info-sidebar {
    display: none;
    position: fixed;
-   top: 2 * $leading;
+   top: $offset-sidebar;
    right: $offset-sidebar;
    z-index: 2; // $stacking-context--above-tray + 1;
    text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
