@@ -15,17 +15,17 @@
    background-color: $users-image--color;
    background-repeat: no-repeat, repeat, repeat;
    background-position: $users-image--position-x $users-image--position-y, $width--grid-gutter-split 0, 0 0;
-   background-size: $users-image--size-x $users-image--size-y, ($grid-column + $width--grid-gutter) 100%, 100% $leading;
+   background-size: $users-image--size-x $users-image--size-y, ($width--grid-column + $width--grid-gutter) 100%, 100% $leading;
 }
 
 .modular-grid {
    background-position: $width--grid-gutter-split 0, 0 0;
-   background-size: ($grid-column + $width--grid-gutter) 100%, 100% $leading;
+   background-size: ($width--grid-column + $width--grid-gutter) 100%, 100% $leading;
 }
 
 .column-grid {
    background-position: $width--grid-gutter-split 0;
-   background-size: ($grid-column + $width--grid-gutter) 100%;
+   background-size: ($width--grid-column + $width--grid-gutter) 100%;
 }
 
 .baseline-grid {
@@ -55,7 +55,7 @@
       margin-bottom: $offset-sidebar;
       background-color: get-color('background', 'secondary');
       padding: $offset-sidebar;
-      width: 4 * $grid-column;
+      width: 4 * $width--grid-column;
       color: get-color('background', 'primary');
 
       &:nth-child(3) {

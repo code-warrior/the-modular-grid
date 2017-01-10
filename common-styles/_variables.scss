@@ -51,14 +51,14 @@ $bold:  700;
 ///
 /// Styles specific to the grid.
 ///
-/// The variables $grid-column and $width--grid-gutter below map to the variables column
+/// The variables $width--grid-column and $width--grid-gutter below map to the variables column
 /// and gutter in the JS file at content/main.js. For the grid to work, these
 /// Sass variables must map to the JS variables.
 ///
-$grid-column:             60px;                        // 60px
+$width--grid-column:             60px;                        // 60px
 $width--grid-gutter:             20px;                        // 20px
 $width--grid-gutter-split:       $width--grid-gutter / 2;            // 10px
-$width--grid-column-full: $grid-column + $width--grid-gutter; // 80px
+$width--grid-column-full: $width--grid-column + $width--grid-gutter; // 80px
 $leading:                 1.5 * $font--base-size;      // 24px
 
 ///
