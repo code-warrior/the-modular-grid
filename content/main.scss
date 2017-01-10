@@ -4,11 +4,11 @@
 @import '../common-styles/functions';
 
 #modular-grid {
-   position:  relative;
-   z-index:   -1;
-   margin:    0 auto;
+   position: relative;
+   z-index: -1;
+   margin: 0 auto;
    max-width: $width--16u;
-   height:    $users-image--height;
+   height: $users-image--height;
 }
 
 .all-grids {
@@ -34,10 +34,10 @@
 
 .user-supplied-bg-image {
    background-attachment: $users-image--attachment;
-   background-color:      $users-image--color;
-   background-repeat:     $users-image--repeat;
-   background-position:   $users-image--position-x $users-image--position-y;
-   background-size:       $users-image--size-x $users-image--size-y;
+   background-color: $users-image--color;
+   background-repeat: $users-image--repeat;
+   background-position: $users-image--position-x $users-image--position-y;
+   background-size: $users-image--size-x $users-image--size-y;
 }
 
 #info-sidebar {
@@ -79,10 +79,10 @@
          top: 0;
          right: -(2 * $offset-sidebar);
          border: {
-            top:    $offset-sidebar solid transparent;
-            right:  $offset-sidebar solid transparent;
+            top: $offset-sidebar solid transparent;
+            right: $offset-sidebar solid transparent;
             bottom: $offset-sidebar solid transparent;
-            left:   $offset-sidebar solid get-color('background', 'secondary');
+            left: $offset-sidebar solid get-color('background', 'secondary');
          }
          content: '';
       }
