@@ -21,7 +21,7 @@ $colors: (
 ///
 $popup--transition-time--button: .25s;
 $popup--width--popup-wrapper:    100px;
-$popup--width--slider:           60px;                       // 60px
+$popup--width--slider:           60px;
 $popup--width--half-slider:      $popup--width--slider / 2;  // 30px
 $popup--offset--button:          $popup--width--slider / 15; // 4px
 $popup--width--button:           ($popup--width--slider / 2) - $popup--offset--button; // 26px
@@ -51,15 +51,15 @@ $bold:  700;
 ///
 /// Styles specific to the grid.
 ///
-/// The variables $width--grid-column and $width--grid-gutter below map to the variables column
-/// and gutter in the JS file at content/main.js. For the grid to work, these
-/// Sass variables must map to the JS variables.
+/// The variables $width--grid-column and $width--grid-gutter below map to the
+/// variables column and gutter in the JS file at content/main.js. For the grid to
+/// work consistently, these Sass variables must map to the JS variables.
 ///
-$width--grid-column:       60px;                                      // 60px
-$width--grid-gutter:       20px;                                      // 20px
+$width--grid-column:       60px;
+$width--grid-gutter:       20px;
 $width--grid-gutter-split: $width--grid-gutter / 2;                   // 10px
 $width--grid-column-full:  $width--grid-column + $width--grid-gutter; // 80px
-$height--leading:          24px;                                      // 24px
+$height--leading:          24px;
 
 ///
 /// Responsive Breakpoints
@@ -76,7 +76,7 @@ $offset-sidebar: 14px;
 /// the height of the user’s image.
 ///
 $users-image:             none;
-$users-image--height:     2000px; // TODO: A value of 2000 pixels is completely arbitrary
+$users-image--height:     2000px; // TODO: A value of 2000 pixels is arbitrary
 $users-image--position-x: center;
 $users-image--position-y: top;
 $users-image--size-x:     auto;
