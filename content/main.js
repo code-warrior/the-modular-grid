@@ -188,14 +188,15 @@ document.onkeydown = function (evnt) {
             modularGrid.classList.add('column-grid');
             chrome.storage.sync.get(
                 {
-                    gridColumn: gridColumn
+                    gridColumn: gridColumn,
+                    gridGutter: gridGutter
                 },
                 function (settings) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'background-image: linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + gridGutter) + 'px 100%');
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%');
                 }
             );
 
@@ -212,6 +213,7 @@ document.onkeydown = function (evnt) {
             chrome.storage.sync.get(
                 {
                     gridColumn: gridColumn,
+                    gridGutter: gridGutter,
                     baselineColor: colorGridBaseline,
                     baselineDistance: baselineDistance
                 },
@@ -221,7 +223,7 @@ document.onkeydown = function (evnt) {
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + gridGutter) + 'px 100%, 100% ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px');
                 }
             );
@@ -252,6 +254,7 @@ document.onkeydown = function (evnt) {
             chrome.storage.sync.get(
                 {
                     gridColumn: gridColumn,
+                    gridGutter: gridGutter,
                     baselineColor: colorGridBaseline,
                     baselineDistance: baselineDistance
                 },
@@ -261,7 +264,7 @@ document.onkeydown = function (evnt) {
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
-                        'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + gridGutter) + 'px 100%, 100% ' +
+                        'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px;');
                 }
             );

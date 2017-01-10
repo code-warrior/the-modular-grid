@@ -2,12 +2,12 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <title>Modular Grid Options</title>
+   <title>Modular Grid Options (BETA)</title>
    <link href="main.css" rel="stylesheet">
 </head>
 <body>
    <header>
-      <h1>Options</h1>
+      <h1>Options (BETA)</h1>
    </header>
    <p id="notification">This extension is in beta. Settings marked in <span class="highlight">pink</span> have yet to be implemented. Submit <a href="https://github.com/code-warrior/column-baseline-grid/issues" target="_blank">feature requests at GitHub</a>.</p>
    <form>
@@ -40,9 +40,10 @@
 
       <section>
          <h2>Gutters</h2>
-         <p class="pending">Pending</p>
          <div>
-            <h3>Width? 20px</h3>
+            <h3>Width</h3>
+            <p><label for="gutter--width-input">How wide would you like your gutters? (Range: 00&#8202;–&#8202;99)</label></p>
+            <input type="text" id="gutter--width-input" placeholder="20" pattern="[0-9][0-9]"> px
          </div>
       </section>
 
