@@ -13,9 +13,13 @@ Installing this extension requires downloading a folder and “feeding” it to 
 ### Command Line Interface (CLI) Installation
 1. Launch your CLI and navigate to a folder into which to download the extension.
 2. Clone the repository:
-       git clone git@github.com:code-warrior/column-baseline-grid.git
+
+        git clone git@github.com:code-warrior/column-baseline-grid.git
+
 3. Switch to the version 1.0.0., release candidate 1 branch:
-       git checkout ver1.0.0-rc1
+
+        git checkout ver1.0.0-rc1
+
 4. Launch Chrome.
 5. Type `chrome://extensions` into the address bar.
 6. Locate the `column-baseline-grid` folder that was created when you cloned this project in step `2`.
