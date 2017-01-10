@@ -57,7 +57,7 @@ $bold:  700;
 ///
 $grid-column:             60px;                        // 60px
 $grid-gutter:             20px;                        // 20px
-$grid-gutter-split:       $grid-gutter / 2;            // 10px
+$width--grid-gutter-split:       $grid-gutter / 2;            // 10px
 $width--grid-column-full: $grid-column + $grid-gutter; // 80px
 $leading:                 1.5 * $font--base-size;      // 24px
 

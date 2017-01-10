@@ -14,17 +14,17 @@
 .all-grids {
    background-color: $users-image--color;
    background-repeat: no-repeat, repeat, repeat;
-   background-position: $users-image--position-x $users-image--position-y, $grid-gutter-split 0, 0 0;
+   background-position: $users-image--position-x $users-image--position-y, $width--grid-gutter-split 0, 0 0;
    background-size: $users-image--size-x $users-image--size-y, ($grid-column + $grid-gutter) 100%, 100% $leading;
 }
 
 .modular-grid {
-   background-position: $grid-gutter-split 0, 0 0;
+   background-position: $width--grid-gutter-split 0, 0 0;
    background-size: ($grid-column + $grid-gutter) 100%, 100% $leading;
 }
 
 .column-grid {
-   background-position: $grid-gutter-split 0;
+   background-position: $width--grid-gutter-split 0;
    background-size: ($grid-column + $grid-gutter) 100%;
 }
 
