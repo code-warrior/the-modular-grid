@@ -15,12 +15,12 @@
    background-color: $users-image--color;
    background-repeat: no-repeat, repeat, repeat;
    background-position: $users-image--position-x $users-image--position-y, $width--grid-gutter-split 0, 0 0;
-   background-size: $users-image--size-x $users-image--size-y, ($width--grid-column + $width--grid-gutter) 100%, 100% $leading;
+   background-size: $users-image--size-x $users-image--size-y, ($width--grid-column + $width--grid-gutter) 100%, 100% $height--leading;
 }
 
 .modular-grid {
    background-position: $width--grid-gutter-split 0, 0 0;
-   background-size: ($width--grid-column + $width--grid-gutter) 100%, 100% $leading;
+   background-size: ($width--grid-column + $width--grid-gutter) 100%, 100% $height--leading;
 }
 
 .column-grid {
@@ -29,7 +29,7 @@
 }
 
 .baseline-grid {
-   background-size: 100% $leading;
+   background-size: 100% $height--leading;
 }
 
 .user-supplied-bg-image {
@@ -63,7 +63,7 @@
 
          button {
             background-color: get-color('background', 'primary');
-            font: #{1.1 * $font--base-size} / #{$leading} $font--stack;
+            font: #{1.1 * $font--base-size} / #{$height--leading} $font--stack;
             padding: 4px 8px 6px;
             border: 0;
 
