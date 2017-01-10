@@ -41,7 +41,7 @@
    position: fixed;
    top: $offset-sidebar;
    right: $offset-sidebar;
-   z-index: 2; // $stacking-context--above-tray + 1;
+   z-index: 10000000000; // This is a ridiculous number, but is temporary. TODO: Walk the DOM and retrieve the highest z-index value, then add 1. Use the result here.
    text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
    font: .9875rem / 1.6 $font--stack;
 
