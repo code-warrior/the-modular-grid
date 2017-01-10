@@ -67,21 +67,6 @@ This layer is under `./settings/`.
 #### Grid Flexibility
 Options: `fluid` or `fixed`.
 
-#### Leading
-Options: `36px`, `24px`, or user-specified.
-
-#### Columns
-
-##### Width
-Options: `75px`, `60px`,`48px` or user-specified.
-
-As a hint, choosing `75px` should generate a `25px` gutter width, choosing`60px` should generate a `20px` gutter width, and `48px` should generate a `16px` gutter width.
-
-#### Gutters
-
-##### Width
-Options: `25px`, `20px`, `16px`, or user-specified.
-
 #### Image Comparator
 The Grid should give the user the ability to load an image and place it anywhere in the page’s stacking context. It’s important that the user be made aware of the stacking context. Notify the user of the under “glass” problem when the grid is at the top of the stacking context.
 
