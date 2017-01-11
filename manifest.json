@@ -43,17 +43,20 @@
     "options_page": "options/index.html",
 
     "commands": {
-        "toggle-grid-mode": {
+        "toggle-feature": {
             "suggested_key": {
-                "default": "Ctrl+Shift+M",
-                "mac": "Command+Shift+M",
-                "windows": "Ctrl+Shift+M",
-                "linux": "Ctrl+Shift+M",
-                "chromeos": "Ctrl+Shift+M"
+                "default": "Ctrl+Shift+A",
+                "mac": "Ctrl+Shift+A"
             },
-
-            "description": "Toggles different modes of the Modular Grid",
-            "global": false
+            "description": "Enable and disable the extension"
+        },
+        "_execute_browser_action": {
+            "suggested_key": {
+                "mac": "Ctrl+Shift+A",
+                "default": "Ctrl+Shift+A",
+                "windows": "Ctrl+Shift+A",
+                "linux": "Ctrl+Shift+A"
+            }
         }
     },
 

@@ -44,3 +44,17 @@ chrome.browserAction.onClicked.addListener(function () {
 
     gridEnabled = !gridEnabled;
 });
+
+chrome.commands.onCommand.addListener(function(command) {
+    if (gridEnabled) {
+        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
+        chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+    } else {
+        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
+        chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
+    }
+
+    gridEnabled = !gridEnabled;
+
+    console.log('onCommand event received for message: ', command);
+});
