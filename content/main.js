@@ -74,6 +74,7 @@ let body = document.querySelector('body'),
     gridUnit = gridColumn + gridGutter,
     splitGutterWidth = gridGutter / 2,
     userWantsSplitGutters = true,
+    pageHeight = (undefined !== document.height) ? document.height : document.body.offsetHeight,
 
     gridChoice = SHOWING_ALL_GRIDS,
 
@@ -211,6 +212,7 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0); ' +
@@ -245,6 +247,7 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
@@ -267,6 +270,7 @@ document.onkeydown = function (evnt) {
                 },
                 function (settings) {
                     document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
                         'background-size: 100% ' + settings.baselineDistance + 'px');
@@ -294,6 +298,7 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
                         'background-image: none, linear-gradient(90deg, ' +
                         colorGridColumnTransparent + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
