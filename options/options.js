@@ -30,7 +30,7 @@ function save_options() {
 }
 
 /**
- * Restores settings using the preferences stored in chrome.storage.
+ * Restores settings from chrome.storage
  */
 function restore_options() {
     chrome.storage.sync.get({
