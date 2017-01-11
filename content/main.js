@@ -111,7 +111,7 @@ sideBarPopup__Instructions.innerHTML =
         'can cycle through the various grids by typing <kbd>esc</kbd>.';
 sideBarPopup__ColumnAndPageInfo.innerHTML =
         'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
-        '<br>Page width: <strong>' + body.clientWidth + '</strong>' +
+        '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
         '<br>Current grid layer: <strong>' + modularGrid.className + '</strong>';
 
 sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chrome.extension.getURL('options/index.html') + '">options</a></button>';
@@ -158,7 +158,7 @@ function showColumnInfo() {
 
     sideBarPopup__ColumnAndPageInfo.innerHTML =
             'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
-            '<br>Page width: <strong>' + body.clientWidth + '</strong>' +
+            '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
             '<br>Current grid layer: <strong>' + currentGrid + '</strong>';
 }
 
