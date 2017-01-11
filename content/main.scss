@@ -14,18 +14,6 @@
 .all-grids {
    background-color: $users-image--color;
    background-repeat: no-repeat, repeat, repeat;
-   background-position: $users-image--position-x $users-image--position-y, $width--grid-gutter-split 0, 0 0;
-}
-
-.modular-grid {
-   background-position: $width--grid-gutter-split 0, 0 0;
-}
-
-.column-grid {
-   background-position: $width--grid-gutter-split 0;
-}
-
-.baseline-grid {
 }
 
 .user-supplied-bg-image {

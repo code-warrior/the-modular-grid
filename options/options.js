@@ -9,12 +9,14 @@ function save_options() {
     let gridGutter = document.getElementById('gutter--width-input').value;
     let baselineColor = document.getElementById('baseline--color-input').value;
     let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
+    let userWantsSplitGutters = document.getElementById('margins--split-gutter').value;
 
     chrome.storage.sync.set({
         gridColumn: gridColumn,
         gridGutter: gridGutter,
         baselineColor: baselineColor,
-        baselineDistance: baselineDistance
+        baselineDistance: baselineDistance,
+        userWantsSplitGutters: userWantsSplitGutters
 
     }, function() {
         let status = document.getElementById('status');
@@ -35,12 +37,14 @@ function restore_options() {
         gridColumn: '60',
         gridGutter: '20',
         baselineColor: '#29abe2',
-        baselineDistance: '24'
+        baselineDistance: '24',
+        userWantsSplitGutters: 'true'
     }, function(items) {
         document.getElementById('column--width-input').value = items.gridColumn;
         document.getElementById('baseline--color-input').value = items.baselineColor;
         document.getElementById('baseline--vertical-distance-input').value = items.baselineDistance;
         document.getElementById('gutter--width-input').value = items.gridGutter;
+        document.getElementById('margins--split-gutter').value = items.userWantsSplitGutters;
     });
 }
 
