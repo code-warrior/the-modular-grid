@@ -48,17 +48,6 @@ h3 {
    width: $options--width--header;
 }
 
-.margins--radio-button {
-   height: 34px;
-   vertical-align: middle;
-   line-height: 34px;
-}
-
-[type='radio'] {
-   margin-right: 6px;
-   vertical-align: text-bottom;
-}
-
 section {
    margin: #{$options--width--input / 2} 0;
    border-bottom: 1px solid get-color('background', 'quartenary');
