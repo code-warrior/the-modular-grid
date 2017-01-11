@@ -149,9 +149,17 @@ function toggleGridInfo() {
 function showColumnInfo() {
     'use strict';
 
-    sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
-            Math.floor(body.clientWidth / gridUnit) +
-            '<br>Page width: ' + body.clientWidth;
+    let currentGrid = 'none';
+
+    if ('' === modularGrid.className) {
+        currentGrid = 'none';
+    } else
+        currentGrid = modularGrid.className;
+
+    sideBarPopup__ColumnAndPageInfo.innerHTML =
+            'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
+            '<br>Page width: <strong>' + body.clientWidth + '</strong>' +
+            '<br>Current grid layer: <strong>' + currentGrid + '</strong>';
 }
 
 /**
