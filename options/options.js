@@ -5,11 +5,11 @@
  * Saves options to chrome.storage
  */
 function save_options() {
-    let gridColumn = document.getElementById('column--width-input').value;
-    let gridGutter = document.getElementById('gutter--width-input').value;
-    let baselineColor = document.getElementById('baseline--color-input').value;
-    let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
-    let userWantsSplitGutters = document.getElementById('margins--split-gutter').value;
+    let gridColumn = document.getElementById('column--width-input').value,
+        gridGutter = document.getElementById('gutter--width-input').value,
+        baselineColor = document.getElementById('baseline--color-input').value,
+        baselineDistance = document.getElementById('baseline--vertical-distance-input').value,
+        userWantsSplitGutters = document.getElementById('margins--split-gutter').value;
 
     chrome.storage.sync.set({
         gridColumn: gridColumn,
