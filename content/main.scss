@@ -42,6 +42,11 @@
       width: 4 * $width--grid-column;
       color: get-color('background', 'primary');
 
+      strong {
+         font-weight: $bold;
+         color: get-color('background', 'primary');
+      }
+
       &:nth-child(3) {
          text-align: center;
 
