@@ -109,11 +109,12 @@ sideBarPopup__OptionsLink.classList.add('link');
 sideBarPopup__Instructions.innerHTML =
         'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
         'can cycle through the various grids by typing <kbd>esc</kbd>.';
-sideBarPopup__ColumnAndPageInfo.innerHTML = 'Column count: ' +
-        Math.ceil(body.clientWidth / gridUnit) +
-        '<br>Page width: ' + body.clientWidth;
-sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chrome.extension.getURL('options/index.html') + '">options</a></button>';
+sideBarPopup__ColumnAndPageInfo.innerHTML =
+        'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
+        '<br>Page width: <strong>' + body.clientWidth + '</strong>' +
+        '<br>Current grid layer: <strong>' + modularGrid.className + '</strong>';
 
+sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chrome.extension.getURL('options/index.html') + '">options</a></button>';
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
