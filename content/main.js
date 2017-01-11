@@ -330,6 +330,8 @@ document.onkeydown = function (evnt) {
 
         gridChoice += 1;
 
+        showColumnInfo();
+
         break;
     }
 
