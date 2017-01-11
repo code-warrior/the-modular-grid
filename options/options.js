@@ -39,12 +39,12 @@ function restore_options() {
         baselineColor: '#29abe2',
         baselineDistance: '24',
         userWantsSplitGutters: 'true'
-    }, function(items) {
-        document.getElementById('column--width-input').value = items.gridColumn;
-        document.getElementById('baseline--color-input').value = items.baselineColor;
-        document.getElementById('baseline--vertical-distance-input').value = items.baselineDistance;
-        document.getElementById('gutter--width-input').value = items.gridGutter;
-        document.getElementById('margins--split-gutter').value = items.userWantsSplitGutters;
+    }, function(settings) {
+        document.getElementById('column--width-input').value = settings.gridColumn;
+        document.getElementById('baseline--color-input').value = settings.baselineColor;
+        document.getElementById('baseline--vertical-distance-input').value = settings.baselineDistance;
+        document.getElementById('gutter--width-input').value = settings.gridGutter;
+        document.getElementById('margins--split-gutter').value = settings.userWantsSplitGutters;
     });
 }
 
