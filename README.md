@@ -29,12 +29,6 @@ Installing this extension requires downloading a folder and “feeding” it to 
 ### Updates
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically via the `git pull` command.
 
-### Interactions
-
-#### Through Keyboard Shortcuts
-`esc`: Cycles through the various grids in round-robin fashion.
-`cntrl + shift`: Shows and hides the most important information, which can be populated by the user via the settings section.
-
 ### Options
 
 #### Grid Flexibility
