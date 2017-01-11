@@ -5,11 +5,16 @@
  * Saves options to chrome.storage
  */
 function save_options() {
-    let gridColumn = document.getElementById('column--width-input').value,
-        gridGutter = document.getElementById('gutter--width-input').value,
-        baselineColor = document.getElementById('baseline--color-input').value,
-        baselineDistance = document.getElementById('baseline--vertical-distance-input').value,
-        userWantsSplitGutters = document.getElementById('margins--split-gutter').value;
+    let gridColumn =
+            document.getElementById('column--width-input').value,
+        gridGutter =
+            document.getElementById('gutter--width-input').value,
+        baselineColor =
+            document.getElementById('baseline--color-input').value,
+        baselineDistance =
+            document.getElementById('baseline--vertical-distance-input').value,
+        userWantsSplitGutters =
+            document.getElementById('margins--split-gutter').value;
 
     chrome.storage.sync.set({
         gridColumn: gridColumn,
@@ -40,11 +45,16 @@ function restore_options() {
         baselineDistance: '24',
         userWantsSplitGutters: 'true'
     }, function(settings) {
-        document.getElementById('column--width-input').value = settings.gridColumn;
-        document.getElementById('baseline--color-input').value = settings.baselineColor;
-        document.getElementById('baseline--vertical-distance-input').value = settings.baselineDistance;
-        document.getElementById('gutter--width-input').value = settings.gridGutter;
-        document.getElementById('margins--split-gutter').value = settings.userWantsSplitGutters;
+        document.getElementById('column--width-input').value =
+            settings.gridColumn;
+        document.getElementById('baseline--color-input').value =
+            settings.baselineColor;
+        document.getElementById('baseline--vertical-distance-input').value =
+            settings.baselineDistance;
+        document.getElementById('gutter--width-input').value =
+            settings.gridGutter;
+        document.getElementById('margins--split-gutter').value =
+            settings.userWantsSplitGutters;
     });
 }
 
