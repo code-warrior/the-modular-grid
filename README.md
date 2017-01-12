@@ -29,6 +29,11 @@ Installing this extension requires downloading a folder and “feeding” it to 
 ### Updates
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically via the `git pull` command.
 
+### Keyboard Shortcuts
+`Cntrl+Shift` enables/disables the sidebar info boxes in the upper right hand corner.
+
+`Command+Shift+A` enables/disables the extension.
+
 ### Options
 
 #### Grid Flexibility
