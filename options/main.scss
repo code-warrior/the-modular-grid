@@ -5,6 +5,9 @@
 html {
    background-color: get-color('background', 'ternary');
    color: get-color('background', 'primary');
+}
+
+body {
    font: $light #{$font--base-size} / 1.4 $font--stack;
 }
 
