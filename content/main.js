@@ -78,8 +78,10 @@ let body = document.querySelector('body'),
 
     gridChoice = SHOWING_ALL_GRIDS,
 
-    colorGridColumnTransparent = 'rgba(200, 0, 0, .2)',
+    columnColor = '#c80000',
+    columnColorTransparency = 0.2,
     colorGridBaseline = '#29abe2',
+
     baselineDistance = 24;
 
 stylesheet.href = chrome.extension.getURL('content/main.css');
@@ -316,7 +318,9 @@ document.onkeydown = function (evnt) {
                 {
                     gridColumn: gridColumn,
                     gridGutter: gridGutter,
-                    userWantsSplitGutters: userWantsSplitGutters
+                    userWantsSplitGutters: userWantsSplitGutters,
+                    columnColor: columnColor,
+                    columnColorTransparency: columnColorTransparency
                 },
                 function (settings) {
                     if ('true' === settings.userWantsSplitGutters) {
@@ -328,7 +332,7 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        colorGridColumnTransparent + ' ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                         settings.gridColumn + 'px, transparent 0); ' +
                         'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                         'background-position: ' + splitGutterWidth + 'px 0;');
@@ -351,7 +355,9 @@ document.onkeydown = function (evnt) {
                     gridGutter: gridGutter,
                     baselineColor: colorGridBaseline,
                     baselineDistance: baselineDistance,
-                    userWantsSplitGutters: userWantsSplitGutters
+                    userWantsSplitGutters: userWantsSplitGutters,
+                    columnColor: columnColor,
+                    columnColorTransparency: columnColorTransparency
                 },
                 function (settings) {
                     if ('true' === settings.userWantsSplitGutters) {
@@ -363,7 +369,7 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        colorGridColumnTransparent + ' ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
                         'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
@@ -402,7 +408,9 @@ document.onkeydown = function (evnt) {
                     gridGutter: gridGutter,
                     baselineColor: colorGridBaseline,
                     baselineDistance: baselineDistance,
-                    userWantsSplitGutters: userWantsSplitGutters
+                    userWantsSplitGutters: userWantsSplitGutters,
+                    columnColor: columnColor,
+                    columnColorTransparency: columnColorTransparency
                 },
                 function (settings) {
                     if ('true' === settings.userWantsSplitGutters) {
@@ -414,7 +422,7 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: none, linear-gradient(90deg, ' +
-                        colorGridColumnTransparent + ' ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                         settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
                         'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
