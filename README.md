@@ -36,9 +36,6 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 ### Options
 
-#### Grid Flexibility
-Options: `fluid` or `fixed`.
-
 #### Image Comparator
 The Grid should give the user the ability to load an image and place it anywhere in the page’s stacking context. It’s important that the user be made aware of the stacking context. Notify the user of the under “glass” problem when the grid is at the top of the stacking context.
 
