@@ -34,11 +34,6 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 `Command+Shift+A` enables/disables the extension.
 
-### Options
-
-#### Grid Layer
-The Grid should give the user the ability to place the layer anywhere in the page’s stacking context. Again, it’s important that the user be made aware of the stacking context. Notify the user of the under “glass” problem when the grid is at the top of the stacking context.
-
 ## Development
 
 ### Compiling
