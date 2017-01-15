@@ -2,7 +2,7 @@
 /*global window, chrome */
 
 /**
- * Saves options to chrome.storage
+ * Save options.
  */
 function save_options() {
     let gridColumn =
