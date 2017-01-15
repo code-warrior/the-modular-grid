@@ -14,7 +14,7 @@ function save_options() {
         baselineDistance =
             document.getElementById('baseline--vertical-distance-input').value,
         userWantsSplitGutters =
-            document.getElementById('margins--split-gutter').value, // TODO: doesn’t end in input
+            document.getElementById('margins--split-gutter-input').value,
         columnColor =
             document.getElementById('column--color-input').value,
         columnColorTransparency =
@@ -60,7 +60,7 @@ function restore_options() {
             settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
             settings.gridGutter;
-        document.getElementById('margins--split-gutter').value =
+        document.getElementById('margins--split-gutter-input').value =
             settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
             settings.columnColor;
