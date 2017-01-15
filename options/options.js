@@ -40,9 +40,9 @@ function save_options() {
 }
 
 /**
- * Restores settings from chrome.storage
+ * Retrieve options.
  */
-function restore_options() {
+function retrieve_options() {
     chrome.storage.sync.get({
         gridColumn: '60',
         gridGutter: '20',
@@ -69,5 +69,5 @@ function restore_options() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', restore_options);
+document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);
