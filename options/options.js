@@ -5,6 +5,8 @@
  * Save options.
  */
 function save_options() {
+    'use strict';
+
     let gridColumn =
             document.getElementById('column--width-input').value,
         gridGutter =
@@ -43,6 +45,8 @@ function save_options() {
  * Retrieve options.
  */
 function retrieve_options() {
+    'use strict';
+
     chrome.storage.sync.get({
         gridColumn: '60',
         gridGutter: '20',
