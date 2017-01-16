@@ -45,6 +45,7 @@ chrome.browserAction.onClicked.addListener(function () {
     gridEnabled = !gridEnabled;
 });
 
+// TODO: remove “command” arg
 chrome.commands.onCommand.addListener(function(command) {
     if (gridEnabled) {
         chrome.tabs.executeScript({file: 'content/disable-grid.js'});
@@ -56,5 +57,6 @@ chrome.commands.onCommand.addListener(function(command) {
 
     gridEnabled = !gridEnabled;
 
+    // TODO: remove
     console.log('onCommand event received for message: ', command);
 });
