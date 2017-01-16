@@ -8,19 +8,19 @@ function save_options() {
     'use strict';
 
     let gridColumn =
-            document.getElementById('column--width-input').value,
+                document.getElementById('column--width-input').value,
         gridGutter =
-            document.getElementById('gutter--width-input').value,
+                document.getElementById('gutter--width-input').value,
         baselineColor =
-            document.getElementById('baseline--color-input').value,
+                document.getElementById('baseline--color-input').value,
         baselineDistance =
-            document.getElementById('baseline--vertical-distance-input').value,
+                document.getElementById('baseline--vertical-distance-input').value,
         userWantsSplitGutters =
-            document.getElementById('margins--split-gutter-input').value,
+                document.getElementById('margins--split-gutter-input').value,
         columnColor =
-            document.getElementById('column--color-input').value,
+                document.getElementById('column--color-input').value,
         columnColorTransparency =
-            document.getElementById('column--opacity-input').value;
+                document.getElementById('column--opacity-input').value;
 
     chrome.storage.sync.set({
         gridColumn: gridColumn,
@@ -57,19 +57,19 @@ function retrieve_options() {
         columnColorTransparency: 0.2
     }, function(settings) {
         document.getElementById('column--width-input').value =
-            settings.gridColumn;
+                settings.gridColumn;
         document.getElementById('baseline--color-input').value =
-            settings.baselineColor;
+                settings.baselineColor;
         document.getElementById('baseline--vertical-distance-input').value =
-            settings.baselineDistance;
+                settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
-            settings.gridGutter;
+                settings.gridGutter;
         document.getElementById('margins--split-gutter-input').value =
-            settings.userWantsSplitGutters;
+                settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
-            settings.columnColor;
+                settings.columnColor;
         document.getElementById('column--opacity-input').value =
-            settings.columnColorTransparency;
+                settings.columnColorTransparency;
     });
 }
 
