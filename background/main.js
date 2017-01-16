@@ -56,7 +56,23 @@ chrome.browserAction.onClicked.addListener(function () {
     }
 
     isGridEnabled = !isGridEnabled;
+
+    chrome.storage.sync.set({isGridEnabled: isGridEnabled});
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            {
+                isGridEnabledViaBrowserAction: isGridEnabled
+            }
+        );
+    });
 });
+
+/**
+ *
+ */
+chrome.commands.onCommand.addListener(function() {
+    'use strict';
 
     if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
@@ -66,11 +82,13 @@ chrome.browserAction.onClicked.addListener(function () {
 
     isGridEnabled = !isGridEnabled;
 
-    // TODO: remove
-    console.log('onCommand event received for message: ', command);
+    chrome.storage.sync.set({isGridEnabled: isGridEnabled});
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            {
+                isGridEnabledViaBrowserAction: isGridEnabled
+            }
+        );
+    });
 });
-
-//
-// Set the initial grid
-//
-chrome.storage.sync.set({currentGrid: 'all-grids'});
