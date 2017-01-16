@@ -129,6 +129,120 @@ sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
 
+/**
+ * Accepts a Hex-formatted color and a floating point opacity value; returns its
+ * <tt>rgba</tt> equivalent, or <tt>-1</tt> on error.
+ *
+ * @example
+ * convertToRGBA('#bada55', 0.2); // Returns rgba(188, 222, 248, 0.2)
+ *
+ * @param hex A 7-character color value, ranging from #000000 – #ffffff. Note: this
+ * function does not accept 3-character shortcuts, as in #fff, for example.
+ * @param opacity A floating point number between 0.0 – 1.0.
+ * @returns {string} A CSS3 rgba equivalent to the hex and opacity combination.
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
+function convertHexToRGBA(hex, opacity) {
+    'use strict';
+
+    //
+    // TODO: Error-check the opacity variable, then remove the devel JSLint flag
+    //
+
+    let patternForHex = /^#([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}$/;
+    let currentNumberInNibble = 0;
+    let previousNumberInNibble = 0;
+    let calculateNibble = 0;
+    let rgbColor = 'rgba(';
+    let index;
+
+    const HEX = 16;
+    const END_OF_HEX = 6;
+    const HEX_LENGTH = hex.length;
+
+    if (null !== hex.match(patternForHex)) {
+        for (index = 1; index < HEX_LENGTH; index += 1) {
+            currentNumberInNibble = hex.substring(index, index + 1);
+
+            switch (currentNumberInNibble) {
+            case 'a':
+            case 'A':
+                currentNumberInNibble = 10;
+
+                break;
+
+            case 'b':
+            case 'B':
+                currentNumberInNibble = 11;
+
+                break;
+
+            case 'c':
+            case 'C':
+                currentNumberInNibble = 12;
+
+                break;
+
+            case 'd':
+            case 'D':
+                currentNumberInNibble = 13;
+
+                break;
+
+            case 'e':
+            case 'E':
+                currentNumberInNibble = 14;
+
+                break;
+
+            case 'f':
+            case 'F':
+                currentNumberInNibble = 15;
+
+                break;
+            }
+
+            //
+            // For every second digit, meaning we’re at the end of a nibble…
+            //
+            if (0 === (index % 2)) {
+
+                //
+                // Perform the math to convert from hex to decimal…
+                //
+                calculateNibble = (Math.pow(HEX, 1) * previousNumberInNibble + Math.pow(HEX, 0) * currentNumberInNibble);
+
+                //
+                // Append the result to the running calculation of the string…
+                //
+                rgbColor = rgbColor + calculateNibble;
+
+                //
+                // And, if we’re not at the end of the hex string, append a comma and a space.
+                //
+                if (0 !== (index % (END_OF_HEX + 2))) {
+                    rgbColor = rgbColor + ', ';
+                }
+            }
+
+            //
+            // Keep track of the previous nibble in order to carry out the conversion in the beginning of the if
+            // statement.
+            //
+            previousNumberInNibble = currentNumberInNibble;
+        }
+
+        //
+        // We’ve arrived at the end of the conversion, so append the opacity and the closing of the string.
+        //
+        rgbColor = rgbColor + opacity + ')';
+    } else {
+        return -1;
+    }
+
+    return rgbColor;
+}
+
 //
 // On page load, inject into the DOM and render the correct grid. NOT revisited; visited only on page load
 //
@@ -391,121 +505,6 @@ chrome.extension.onMessage.addListener(function(msg) {
         stylesheet.parentNode.removeChild(stylesheet);
     }
 });
-
-
-/**
- * Accepts a Hex-formatted color and a floating point opacity value; returns its
- * <tt>rgba</tt> equivalent, or <tt>-1</tt> on error.
- *
- * @example
- * convertToRGBA('#bada55', 0.2); // Returns rgba(188, 222, 248, 0.2)
- *
- * @param hex A 7-character color value, ranging from #000000 – #ffffff. Note: this
- * function does not accept 3-character shortcuts, as in #fff, for example.
- * @param opacity A floating point number between 0.0 – 1.0.
- * @returns {string} A CSS3 rgba equivalent to the hex and opacity combination.
- * @author Roy Vanegas <roy@thecodeeducators.com>
- */
-function convertHexToRGBA(hex, opacity) {
-    'use strict';
-
-    //
-    // TODO: Error-check the opacity variable, then remove the devel JSLint flag
-    //
-
-    let patternForHex = /^#([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}$/;
-    let currentNumberInNibble = 0;
-    let previousNumberInNibble = 0;
-    let calculateNibble = 0;
-    let rgbColor = 'rgba(';
-    let index;
-
-    const HEX = 16;
-    const END_OF_HEX = 6;
-    const HEX_LENGTH = hex.length;
-
-    if (null !== hex.match(patternForHex)) {
-        for (index = 1; index < HEX_LENGTH; index += 1) {
-            currentNumberInNibble = hex.substring(index, index + 1);
-
-            switch (currentNumberInNibble) {
-            case 'a':
-            case 'A':
-                currentNumberInNibble = 10;
-
-                break;
-
-            case 'b':
-            case 'B':
-                currentNumberInNibble = 11;
-
-                break;
-
-            case 'c':
-            case 'C':
-                currentNumberInNibble = 12;
-
-                break;
-
-            case 'd':
-            case 'D':
-                currentNumberInNibble = 13;
-
-                break;
-
-            case 'e':
-            case 'E':
-                currentNumberInNibble = 14;
-
-                break;
-
-            case 'f':
-            case 'F':
-                currentNumberInNibble = 15;
-
-                break;
-            }
-
-            //
-            // For every second digit, meaning we’re at the end of a nibble…
-            //
-            if (0 === (index % 2)) {
-
-                //
-                // Perform the math to convert from hex to decimal…
-                //
-                calculateNibble = (Math.pow(HEX, 1) * previousNumberInNibble + Math.pow(HEX, 0) * currentNumberInNibble);
-
-                //
-                // Append the result to the running calculation of the string…
-                //
-                rgbColor = rgbColor + calculateNibble;
-
-                //
-                // And, if we’re not at the end of the hex string, append a comma and a space.
-                //
-                if (0 !== (index % (END_OF_HEX + 2))) {
-                    rgbColor = rgbColor + ', ';
-                }
-            }
-
-            //
-            // Keep track of the previous nibble in order to carry out the conversion in the beginning of the if
-            // statement.
-            //
-            previousNumberInNibble = currentNumberInNibble;
-        }
-
-        //
-        // We’ve arrived at the end of the conversion, so append the opacity and the closing of the string.
-        //
-        rgbColor = rgbColor + opacity + ')';
-    } else {
-        return -1;
-    }
-
-    return rgbColor;
-}
 
 /**
  * TOGGLE GRID INFO
