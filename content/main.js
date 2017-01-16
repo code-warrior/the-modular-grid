@@ -9,7 +9,8 @@
  * enabled, also.
  */
 
-const SHIFT_KEY = 16,
+const
+    SHIFT_KEY = 16,
     CONTROL_KEY = 17,
     ESCAPE_KEY = 27,
     SHOWING_NO_GRID = 0,
