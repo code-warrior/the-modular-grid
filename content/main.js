@@ -246,7 +246,7 @@ function convertHexToRGBA(hex, opacity) {
 //
 // On page load, inject into the DOM and render the correct grid. NOT revisited; visited only on page load
 //
-chrome.storage.sync.get({isGridEnabled: false}, function(settings) {
+chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
     'use strict';
 
     if (settings.isGridEnabled) {
@@ -254,7 +254,7 @@ chrome.storage.sync.get({isGridEnabled: false}, function(settings) {
         body.insertBefore(modularGrid__Container, firstChildOfBody);
         body.appendChild(sideBarPopup__Container);
 
-        chrome.storage.sync.get({currentGrid: 'all-grids'}, function(settings) {
+        chrome.storage.sync.get({currentGrid: 'all-grids'}, function (settings) {
             switch (settings.currentGrid) {
             case 'column-grid':
 
@@ -383,7 +383,7 @@ chrome.extension.onMessage.addListener(function(msg) {
         body.insertBefore(modularGrid__Container, firstChildOfBody);
         body.appendChild(sideBarPopup__Container);
 
-        chrome.storage.sync.get({currentGrid: 'all-grids'}, function(settings) {
+        chrome.storage.sync.get({currentGrid: 'all-grids'}, function (settings) {
             switch (settings.currentGrid) {
             case 'column-grid':
                 modularGrid.className = CSS__Classes.columngrid;
