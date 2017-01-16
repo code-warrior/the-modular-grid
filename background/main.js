@@ -17,6 +17,18 @@ let isGridEnabled = false;
     //     gridIsEnabled : false
     // };
 
+//
+// Initiate the default settings
+//
+chrome.storage.sync.set(
+    {
+        currentGrid: 'all-grids',
+        isGridEnabled: false
+    }
+);
+
+chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+
 /**
  * Acquiring last tab’s ID
  */
@@ -30,8 +42,6 @@ let isGridEnabled = false;
 // chrome.tabs.onSelectionChanged.addListener(function(tabId) {
 //     lastTabId = tabId;
 // });
-
-chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 
 /**
  *
