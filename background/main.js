@@ -1,4 +1,5 @@
-/* global chrome */
+/*jslint browser, es6, single, for, devel, multivar */
+/*global window, chrome */
 
 /*
  * This file is called each time a new browser window loads.
