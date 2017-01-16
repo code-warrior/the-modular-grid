@@ -48,9 +48,6 @@ chrome.browserAction.onClicked.addListener(function () {
     isGridEnabled = !isGridEnabled;
 });
 
-// TODO: remove “command” arg
-chrome.commands.onCommand.addListener(function(command) {
-        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
     if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
