@@ -30,12 +30,12 @@ function save_options() {
         userWantsSplitGutters: userWantsSplitGutters,
         columnColor: columnColor,
         columnColorTransparency: columnColorTransparency
-    }, function() {
+    }, function () {
         let status = document.getElementById('status');
 
         status.textContent = 'Options saved.';
 
-        setTimeout(function() {
+        setTimeout(function () {
             status.textContent = '';
         }, 1500);
     });
@@ -55,7 +55,7 @@ function retrieve_options() {
         userWantsSplitGutters: 'true',
         columnColor: '#c80000',
         columnColorTransparency: 0.2
-    }, function(settings) {
+    }, function (settings) {
         document.getElementById('column--width-input').value =
                 settings.gridColumn;
         document.getElementById('baseline--color-input').value =
