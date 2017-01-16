@@ -70,7 +70,9 @@ let body = document.querySelector('body'),
     gridUnit = gridColumn + gridGutter,
     splitGutterWidth = gridGutter / 2,
     userWantsSplitGutters = true,
-    pageHeight = (undefined !== document.height) ? document.height : document.body.offsetHeight,
+    pageHeight = (undefined !== document.height)
+        ? document.height
+        : document.body.offsetHeight,
 
     // TODO: May not need this any more
     gridChoice = SHOWING_ALL_GRIDS,
