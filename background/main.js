@@ -3,6 +3,11 @@
 /*
  * This file is called each time a new browser window loads.
  */
+
+//
+// TODO: This variable should be removed in favor of inspecting the settings variable
+// isGridEnabled in chrome.browserAction.onClicked and chrome.commands.onCommand
+//
 let isGridEnabled = false;
     // lastTabId,
     //

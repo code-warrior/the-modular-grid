@@ -76,6 +76,7 @@ let body = document.querySelector('body'),
     userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height) ? document.height : document.body.offsetHeight,
 
+    // TODO: May not need this any more
     gridChoice = SHOWING_ALL_GRIDS,
 
     CSS__Classes = {
@@ -100,6 +101,7 @@ sideBarPopup__Container.id = 'info-sidebar';
 //
 // When the extension loads, the sidebar info dialog box shows…
 //
+// TODO: I may not need this
 if (sideBarPopup__IsInitiallyShowing) {
     sideBarPopup__Container.style.display = 'block';
     sideBarPopup__IsShowing = true;
