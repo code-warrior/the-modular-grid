@@ -1,4 +1,4 @@
-/*jslint browser, es6, single, for, devel */
+/*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
 /*
