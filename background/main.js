@@ -60,3 +60,8 @@ chrome.commands.onCommand.addListener(function(command) {
     // TODO: remove
     console.log('onCommand event received for message: ', command);
 });
+
+//
+// Set the initial grid
+//
+chrome.storage.sync.set({currentGrid: 'all-grids'});
