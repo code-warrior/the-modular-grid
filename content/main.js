@@ -426,41 +426,41 @@ function convertHexToRGBA(hex, opacity) {
             currentNumberInNibble = hex.substring(index, index + 1);
 
             switch (currentNumberInNibble) {
-                case 'a':
-                case 'A':
-                    currentNumberInNibble = 10;
+            case 'a':
+            case 'A':
+                currentNumberInNibble = 10;
 
-                    break;
+                break;
 
-                case 'b':
-                case 'B':
-                    currentNumberInNibble = 11;
+            case 'b':
+            case 'B':
+                currentNumberInNibble = 11;
 
-                    break;
+                break;
 
-                case 'c':
-                case 'C':
-                    currentNumberInNibble = 12;
+            case 'c':
+            case 'C':
+                currentNumberInNibble = 12;
 
-                    break;
+                break;
 
-                case 'd':
-                case 'D':
-                    currentNumberInNibble = 13;
+            case 'd':
+            case 'D':
+                currentNumberInNibble = 13;
 
-                    break;
+                break;
 
-                case 'e':
-                case 'E':
-                    currentNumberInNibble = 14;
+            case 'e':
+            case 'E':
+                currentNumberInNibble = 14;
 
-                    break;
+                break;
 
-                case 'f':
-                case 'F':
-                    currentNumberInNibble = 15;
+            case 'f':
+            case 'F':
+                currentNumberInNibble = 15;
 
-                    break;
+                break;
             }
 
             //
