@@ -275,12 +275,12 @@ chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0); ' +
+                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                                'background-position: ' + splitGutterWidth + 'px 0;');
                     }
                 );
 
@@ -306,14 +306,14 @@ chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                                settings.baselineDistance + 'px; ' +
+                                'background-position: ' + splitGutterWidth + 'px 0;');
                     }
                 );
 
@@ -328,10 +328,10 @@ chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
                     },
                     function (settings) {
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: 100% ' + settings.baselineDistance + 'px');
                     }
                 );
 
@@ -357,14 +357,14 @@ chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: none, linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: none, linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                                settings.baselineDistance + 'px; ' +
+                                'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
                     }
                 );
 
@@ -403,12 +403,12 @@ chrome.extension.onMessage.addListener(function (msg) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0); ' +
+                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                                'background-position: ' + splitGutterWidth + 'px 0;');
                     }
                 );
 
@@ -434,14 +434,14 @@ chrome.extension.onMessage.addListener(function (msg) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                                settings.baselineDistance + 'px; ' +
+                                'background-position: ' + splitGutterWidth + 'px 0;');
                     }
                 );
 
@@ -456,10 +456,10 @@ chrome.extension.onMessage.addListener(function (msg) {
                     },
                     function (settings) {
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: 100% ' + settings.baselineDistance + 'px');
                     }
                 );
 
@@ -485,14 +485,14 @@ chrome.extension.onMessage.addListener(function (msg) {
                         }
 
                         document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: none, linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                                'height: ' + pageHeight + 'px; ' +
+                                'background-image: none, linear-gradient(90deg, ' +
+                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                                settings.baselineColor + ' 100%); ' +
+                                'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                                settings.baselineDistance + 'px; ' +
+                                'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
                     }
                 );
 
@@ -595,12 +595,12 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
-                        'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                        'background-position: ' + splitGutterWidth + 'px 0;');
+                            'height: ' + pageHeight + 'px; ' +
+                            'background-image: linear-gradient(90deg, ' +
+                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                            settings.gridColumn + 'px, transparent 0); ' +
+                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                            'background-position: ' + splitGutterWidth + 'px 0;');
                 }
             );
 
@@ -634,14 +634,14 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
-                        'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                        settings.baselineColor + ' 100%); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                        settings.baselineDistance + 'px; ' +
-                        'background-position: ' + splitGutterWidth + 'px 0;');
+                            'height: ' + pageHeight + 'px; ' +
+                            'background-image: linear-gradient(90deg, ' +
+                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                            settings.baselineColor + ' 100%); ' +
+                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            settings.baselineDistance + 'px; ' +
+                            'background-position: ' + splitGutterWidth + 'px 0;');
                 }
             );
 
@@ -659,10 +659,10 @@ document.onkeydown = function (evnt) {
                 },
                 function (settings) {
                     document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
-                        'background-image: linear-gradient(0deg, transparent 95%, ' +
-                        settings.baselineColor + ' 100%); ' +
-                        'background-size: 100% ' + settings.baselineDistance + 'px');
+                            'height: ' + pageHeight + 'px; ' +
+                            'background-image: linear-gradient(0deg, transparent 95%, ' +
+                            settings.baselineColor + ' 100%); ' +
+                            'background-size: 100% ' + settings.baselineDistance + 'px');
                 }
             );
 
@@ -691,14 +691,14 @@ document.onkeydown = function (evnt) {
                     }
 
                     document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
-                        'background-image: none, linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                        settings.baselineColor + ' 100%); ' +
-                        'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                        settings.baselineDistance + 'px; ' +
-                        'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                            'height: ' + pageHeight + 'px; ' +
+                            'background-image: none, linear-gradient(90deg, ' +
+                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                            settings.baselineColor + ' 100%); ' +
+                            'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            settings.baselineDistance + 'px; ' +
+                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
                 }
             );
 
