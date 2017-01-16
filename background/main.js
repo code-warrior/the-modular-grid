@@ -3,7 +3,7 @@
 /*
  * This file is called each time a new browser window loads.
  */
-let gridEnabled = false;
+let isGridEnabled = false;
     // lastTabId,
     //
     // Structure for holding and reserving project settings
@@ -34,25 +34,25 @@ chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 chrome.browserAction.onClicked.addListener(function () {
     'use strict';
 
-    if (gridEnabled) {
+    if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
-    gridEnabled = !gridEnabled;
+    isGridEnabled = !isGridEnabled;
 });
 
 // TODO: remove “command” arg
 chrome.commands.onCommand.addListener(function(command) {
-    if (gridEnabled) {
         chrome.tabs.executeScript({file: 'content/disable-grid.js'});
+    if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
-    gridEnabled = !gridEnabled;
+    isGridEnabled = !isGridEnabled;
 
     // TODO: remove
     console.log('onCommand event received for message: ', command);
