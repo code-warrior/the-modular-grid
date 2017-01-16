@@ -375,9 +375,9 @@ chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
     }
 });
 
+chrome.extension.onMessage.addListener(function (msg) {
+    'use strict';
 
-
-chrome.extension.onMessage.addListener(function(msg) {
     if (msg.isGridEnabledViaBrowserAction) {
         head.appendChild(stylesheet);
         body.insertBefore(modularGrid__Container, firstChildOfBody);
