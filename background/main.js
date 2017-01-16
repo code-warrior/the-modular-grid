@@ -59,7 +59,7 @@ chrome.browserAction.onClicked.addListener(function () {
     isGridEnabled = !isGridEnabled;
 
     chrome.storage.sync.set({isGridEnabled: isGridEnabled});
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(
             tabs[0].id,
             {
@@ -72,7 +72,7 @@ chrome.browserAction.onClicked.addListener(function () {
 /**
  *
  */
-chrome.commands.onCommand.addListener(function() {
+chrome.commands.onCommand.addListener(function () {
     'use strict';
 
     if (isGridEnabled) {
@@ -84,7 +84,7 @@ chrome.commands.onCommand.addListener(function() {
     isGridEnabled = !isGridEnabled;
 
     chrome.storage.sync.set({isGridEnabled: isGridEnabled});
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(
             tabs[0].id,
             {
