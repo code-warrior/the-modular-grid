@@ -346,6 +346,8 @@ document.onkeydown = function (evnt) {
                 }
             );
 
+            chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
+
             // modularGrid.classList.remove(
             //     'user-supplied-bg-image'
             // );
@@ -385,6 +387,8 @@ document.onkeydown = function (evnt) {
                 }
             );
 
+            chrome.storage.sync.set({currentGrid: CSS__Classes.modulargrid});
+
             break;
 
         case SHOWING_MODULAR_GRID:
@@ -403,6 +407,8 @@ document.onkeydown = function (evnt) {
                         'background-size: 100% ' + settings.baselineDistance + 'px');
                 }
             );
+
+            chrome.storage.sync.set({currentGrid: CSS__Classes.baselinegrid});
 
             break;
 
@@ -437,6 +443,8 @@ document.onkeydown = function (evnt) {
                         'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
                 }
             );
+
+            chrome.storage.sync.set({currentGrid: CSS__Classes.allgrids});
 
             break;
 
