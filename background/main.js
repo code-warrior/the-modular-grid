@@ -35,10 +35,8 @@ chrome.browserAction.onClicked.addListener(function () {
     'use strict';
 
     if (gridEnabled) {
-        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
-        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
@@ -51,7 +49,6 @@ chrome.commands.onCommand.addListener(function(command) {
         chrome.tabs.executeScript({file: 'content/disable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
-        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
