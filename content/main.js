@@ -532,8 +532,9 @@ function showColumnInfo() {
 
     if ('' === modularGrid.className) {
         currentGrid = 'none';
-    } else
+    } else {
         currentGrid = modularGrid.className;
+    }
 
     sideBarPopup__ColumnAndPageInfo.innerHTML =
             'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
