@@ -3,7 +3,12 @@
 /*
  * This file is called each time a new browser window loads.
  */
-let gridEnabled = false;
+
+//
+// TODO: This variable should be removed in favor of inspecting the settings variable
+// isGridEnabled in chrome.browserAction.onClicked and chrome.commands.onCommand
+//
+let isGridEnabled = false;
     // lastTabId,
     //
     // Structure for holding and reserving project settings
@@ -11,6 +16,18 @@ let gridEnabled = false;
     // currentSettings = {
     //     gridIsEnabled : false
     // };
+
+//
+// Initiate the default settings
+//
+chrome.storage.sync.set(
+    {
+        currentGrid: 'all-grids',
+        isGridEnabled: false
+    }
+);
+
+chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 
 /**
  * Acquiring last tab’s ID
@@ -26,35 +43,52 @@ let gridEnabled = false;
 //     lastTabId = tabId;
 // });
 
-chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
-
 /**
  *
  */
 chrome.browserAction.onClicked.addListener(function () {
     'use strict';
 
-    if (gridEnabled) {
-        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
+    if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
-        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
-    gridEnabled = !gridEnabled;
+    isGridEnabled = !isGridEnabled;
+
+    chrome.storage.sync.set({isGridEnabled: isGridEnabled});
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            {
+                isGridEnabledViaBrowserAction: isGridEnabled
+            }
+        );
+    });
 });
 
-chrome.commands.onCommand.addListener(function(command) {
-    if (gridEnabled) {
-        chrome.tabs.executeScript({file: 'content/disable-grid.js'});
+/**
+ *
+ */
+chrome.commands.onCommand.addListener(function() {
+    'use strict';
+
+    if (isGridEnabled) {
         chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
     } else {
-        chrome.tabs.executeScript({file: 'content/enable-grid.js'});
         chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
     }
 
-    gridEnabled = !gridEnabled;
+    isGridEnabled = !isGridEnabled;
 
-    console.log('onCommand event received for message: ', command);
+    chrome.storage.sync.set({isGridEnabled: isGridEnabled});
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(
+            tabs[0].id,
+            {
+                isGridEnabledViaBrowserAction: isGridEnabled
+            }
+        );
+    });
 });

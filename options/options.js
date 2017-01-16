@@ -2,7 +2,7 @@
 /*global window, chrome */
 
 /**
- * Saves options to chrome.storage
+ * Save options.
  */
 function save_options() {
     let gridColumn =
@@ -14,7 +14,7 @@ function save_options() {
         baselineDistance =
             document.getElementById('baseline--vertical-distance-input').value,
         userWantsSplitGutters =
-            document.getElementById('margins--split-gutter').value, // TODO: doesn’t end in input
+            document.getElementById('margins--split-gutter-input').value,
         columnColor =
             document.getElementById('column--color-input').value,
         columnColorTransparency =
@@ -40,9 +40,9 @@ function save_options() {
 }
 
 /**
- * Restores settings from chrome.storage
+ * Retrieve options.
  */
-function restore_options() {
+function retrieve_options() {
     chrome.storage.sync.get({
         gridColumn: '60',
         gridGutter: '20',
@@ -60,7 +60,7 @@ function restore_options() {
             settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
             settings.gridGutter;
-        document.getElementById('margins--split-gutter').value =
+        document.getElementById('margins--split-gutter-input').value =
             settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
             settings.columnColor;
@@ -69,5 +69,5 @@ function restore_options() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', restore_options);
+document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);
