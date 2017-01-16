@@ -5,7 +5,7 @@
 [`https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1`](https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1)
 
 ## Beta Release Date
-Late January 2017
+29 January 2017
 
 ## Installing the Beta
 Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through a command line interface.
