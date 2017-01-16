@@ -320,7 +320,7 @@ document.onkeydown = function (evnt) {
     case ESCAPE_KEY:
         switch (gridChoice) {
         case SHOWING_NO_GRID:
-            modularGrid.classList.add('column-grid');
+            modularGrid.classList.add(CSS__Classes.columngrid);
             chrome.storage.sync.get(
                 {
                     gridColumn: gridColumn,
@@ -354,8 +354,8 @@ document.onkeydown = function (evnt) {
             break;
 
         case SHOWING_COLUMN_GRID:
-            modularGrid.classList.remove('column-grid');
-            modularGrid.classList.add('modular-grid');
+            modularGrid.classList.remove(CSS__Classes.columngrid);
+            modularGrid.classList.add(CSS__Classes.modulargrid);
             chrome.storage.sync.get(
                 {
                     gridColumn: gridColumn,
@@ -388,8 +388,8 @@ document.onkeydown = function (evnt) {
             break;
 
         case SHOWING_MODULAR_GRID:
-            modularGrid.classList.remove('modular-grid');
-            modularGrid.classList.add('baseline-grid');
+            modularGrid.classList.remove(CSS__Classes.modulargrid);
+            modularGrid.classList.add(CSS__Classes.baselinegrid);
             chrome.storage.sync.get(
                 {
                     baselineColor: colorGridBaseline,
@@ -407,8 +407,8 @@ document.onkeydown = function (evnt) {
             break;
 
         case SHOWING_BASELINE_GRID:
-            modularGrid.classList.remove('baseline-grid');
-            modularGrid.classList.add('all-grids');
+            modularGrid.classList.remove(CSS__Classes.baselinegrid);
+            modularGrid.classList.add(CSS__Classes.allgrids);
             chrome.storage.sync.get(
                 {
                     gridColumn: gridColumn,
@@ -441,7 +441,7 @@ document.onkeydown = function (evnt) {
             break;
 
         case SHOWING_ALL_GRIDS:
-            modularGrid.classList.remove('all-grids');
+            modularGrid.classList.remove(CSS__Classes.allgrids);
             modularGrid.removeAttribute('style');
             modularGrid__Container.style.zIndex = '-1';
 
