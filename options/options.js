@@ -1,24 +1,26 @@
-/*jslint browser: true */
+/*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
 /**
  * Save options.
  */
 function save_options() {
+    'use strict';
+
     let gridColumn =
-            document.getElementById('column--width-input').value,
+                document.getElementById('column--width-input').value,
         gridGutter =
-            document.getElementById('gutter--width-input').value,
+                document.getElementById('gutter--width-input').value,
         baselineColor =
-            document.getElementById('baseline--color-input').value,
+                document.getElementById('baseline--color-input').value,
         baselineDistance =
-            document.getElementById('baseline--vertical-distance-input').value,
+                document.getElementById('baseline--vertical-distance-input').value,
         userWantsSplitGutters =
-            document.getElementById('margins--split-gutter-input').value,
+                document.getElementById('margins--split-gutter-input').value,
         columnColor =
-            document.getElementById('column--color-input').value,
+                document.getElementById('column--color-input').value,
         columnColorTransparency =
-            document.getElementById('column--opacity-input').value;
+                document.getElementById('column--opacity-input').value;
 
     chrome.storage.sync.set({
         gridColumn: gridColumn,
@@ -28,12 +30,12 @@ function save_options() {
         userWantsSplitGutters: userWantsSplitGutters,
         columnColor: columnColor,
         columnColorTransparency: columnColorTransparency
-    }, function() {
+    }, function () {
         let status = document.getElementById('status');
 
         status.textContent = 'Options saved.';
 
-        setTimeout(function() {
+        setTimeout(function () {
             status.textContent = '';
         }, 1500);
     });
@@ -43,6 +45,8 @@ function save_options() {
  * Retrieve options.
  */
 function retrieve_options() {
+    'use strict';
+
     chrome.storage.sync.get({
         gridColumn: '60',
         gridGutter: '20',
@@ -51,21 +55,21 @@ function retrieve_options() {
         userWantsSplitGutters: 'true',
         columnColor: '#c80000',
         columnColorTransparency: 0.2
-    }, function(settings) {
+    }, function (settings) {
         document.getElementById('column--width-input').value =
-            settings.gridColumn;
+                settings.gridColumn;
         document.getElementById('baseline--color-input').value =
-            settings.baselineColor;
+                settings.baselineColor;
         document.getElementById('baseline--vertical-distance-input').value =
-            settings.baselineDistance;
+                settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
-            settings.gridGutter;
+                settings.gridGutter;
         document.getElementById('margins--split-gutter-input').value =
-            settings.userWantsSplitGutters;
+                settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
-            settings.columnColor;
+                settings.columnColor;
         document.getElementById('column--opacity-input').value =
-            settings.columnColorTransparency;
+                settings.columnColorTransparency;
     });
 }
 
