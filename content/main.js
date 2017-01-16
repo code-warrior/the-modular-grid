@@ -78,6 +78,13 @@ let body = document.querySelector('body'),
 
     gridChoice = SHOWING_ALL_GRIDS,
 
+    CSS__Classes = {
+        columngrid: 'column-grid',
+        modulargrid: 'modular-grid',
+        baselinegrid: 'baseline-grid',
+        allgrids: 'all-grids'
+    },
+
     columnColor = '#c80000',
     columnColorTransparency = 0.2,
     colorGridBaseline = '#29abe2',
