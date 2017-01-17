@@ -93,7 +93,7 @@ document.getElementById('column--width-input').addEventListener('blur', function
 document.getElementById('gutter--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])$/,
+    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
         gutterWidthInputBox = document.getElementById('gutter--width-input').value,
         gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message'),
         saveOptionsSubmitButton = document.getElementById('save-options');
