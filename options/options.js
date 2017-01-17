@@ -80,6 +80,27 @@ function retrieve_options() {
     });
 }
 
+function toggleSaveButtonBasedOnInputErrors() {
+    'use strict';
+
+    let saveOptionsSubmitButton = document.getElementById('save-options'),
+        errorFound = false;
+
+    for (let key in inputErrorsIn) {
+        if (true === inputErrorsIn[key]) {
+            errorFound = true;
+
+            break;
+        }
+    }
+
+    if (errorFound) {
+        saveOptionsSubmitButton.style.display = 'none';
+    } else {
+        saveOptionsSubmitButton.style.display = 'inline';
+    }
+}
+
 document.getElementById('column--width-input').addEventListener('blur', function () {
     'use strict';
 
@@ -94,6 +115,8 @@ document.getElementById('column--width-input').addEventListener('blur', function
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
         inputErrorsIn.columnWidth = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('gutter--width-input').addEventListener('blur', function () {
@@ -110,6 +133,8 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
         inputErrorsIn.gutterWidth = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('column--count-input').addEventListener('blur', function () {
@@ -126,6 +151,8 @@ document.getElementById('column--count-input').addEventListener('blur', function
         columnCountInputBox__ErrorMessage.style.display = 'inline';
         inputErrorsIn.columnCount = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
@@ -142,6 +169,8 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
         inputErrorsIn.baselineVerticalDistance = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.addEventListener('DOMContentLoaded', retrieve_options);
