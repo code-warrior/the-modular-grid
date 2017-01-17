@@ -78,15 +78,12 @@ document.getElementById('column--width-input').addEventListener('blur', function
 
     let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
         columnWidthInputBox = document.getElementById('column--width-input').value,
-        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
     if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
         columnWidthInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
     } else {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
     }
 });
 
@@ -95,15 +92,12 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
 
     let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
         gutterWidthInputBox = document.getElementById('gutter--width-input').value,
-        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
 
     if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
     } else {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
     }
 });
 
@@ -112,15 +106,12 @@ document.getElementById('column--count-input').addEventListener('blur', function
 
     let patternForColumnCountInputBox = /^([1-9]|[1-2][0-4])$/,
         columnCountInputBox = document.getElementById('column--count-input').value,
-        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
     if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
         columnCountInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
     } else {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
     }
 });
 
@@ -129,15 +120,12 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
         baselineVerticalDistanceInputBox = document.getElementById('baseline--vertical-distance-input').value,
-        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
 
     if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
     }
 });
 
