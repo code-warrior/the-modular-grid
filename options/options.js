@@ -73,5 +73,72 @@ function retrieve_options() {
     });
 }
 
+document.getElementById('column--width-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])$/,
+        columnWidthInputBox = document.getElementById('column--width-input').value,
+        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
+        columnWidthInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        columnWidthInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
+
+document.getElementById('gutter--width-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])$/,
+        gutterWidthInputBox = document.getElementById('gutter--width-input').value,
+        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
+        gutterWidthInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
+
+document.getElementById('column--count-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForColumnCountInputBox = /^([1-9]|[1-2][0-4])$/,
+        columnCountInputBox = document.getElementById('column--count-input').value,
+        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
+        columnCountInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        columnCountInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
+
+document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
+        baselineVerticalDistanceInputBox = document.getElementById('baseline--vertical-distance-input').value,
+        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
+        baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
 document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);

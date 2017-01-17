@@ -107,6 +107,17 @@ p {
    font-size: 1.5rem;
 }
 
+.error-message {
+   display: none;
+   background-color: get-color('background', 'primary');
+   color: get-color('grid', 'column');
+   margin: 24px;
+   border: 1px solid get-color('grid', 'column');
+   border-radius: 8px;
+   padding: 24px;
+   text-align: center;
+}
+
 a {
    border-bottom: 1px solid get-color('grid', 'column');
    padding-bottom: 4px;

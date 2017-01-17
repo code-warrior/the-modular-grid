@@ -9,20 +9,20 @@
    <header>
       <h1>Options (BETA)</h1>
    </header>
-   <p id="notification">This extension is in beta. Settings marked in <span class="highlight">pink</span> have yet to be implemented. Submit <a href="https://github.com/code-warrior/column-baseline-grid/issues" target="_blank">feature requests at GitHub</a>.</p>
+   <p id="notification">This extension is in beta. Submit <a href="https://github.com/code-warrior/column-baseline-grid/issues" target="_blank">feature requests at GitHub</a>.</p>
    <form>
       <section>
          <h2>Columns</h2>
          <div>
             <h3>Width</h3>
-            <p><label for="column--width-input">How wide would you like each column to be? (Range: 00&#8202;–&#8202;96)</label></p>
-            <input type="text" id="column--width-input" placeholder="60" pattern="[0-9][0-6]"> px
+            <p><label for="column--width-input">How wide, in pixels, would you like each column to be? (Range: 1&#8202;–&#8202;128)</label></p>
+            <input type="text" id="column--width-input" placeholder="60" autofocus> px <span id="width-input--error-message" class="error-message">This option only accepts values between 1&#8202;–&#8202;128.</span>
          </div>
 
          <div>
             <h3>Count</h3>
-            <p class="pending"><label for="column--count-input">How many columns would you like? (Range: 00&#8202;–&#8202;96)</label></p>
-            <input disabled type="text" id="column--count-input" placeholder="16" pattern="[0-9][0-9]">
+            <p class="pending"><label for="column--count-input">How many columns would you like? (Range: 1&#8202;–&#8202;24)</label></p>
+            <input disabled type="text" id="column--count-input" placeholder="16"> <span id="column-count-input--error-message" class="error-message">This option only accepts values between 1&#8202;–&#8202;24.</span>
          </div>
 
          <div>
@@ -42,8 +42,8 @@
          <h2>Gutters</h2>
          <div>
             <h3>Width</h3>
-            <p><label for="gutter--width-input">How wide would you like your gutters? (Range: 00&#8202;–&#8202;99)</label></p>
-            <input type="text" id="gutter--width-input" placeholder="20" pattern="[0-9][0-9]"> px
+            <p><label for="gutter--width-input">How wide, in pixels, would you like your gutters? (Range: 1&#8202;–&#8202;128)</label></p>
+            <input type="text" id="gutter--width-input" placeholder="20"> px <span id="gutter-width-input--error-message" class="error-message">This option only accepts values between 1&#8202;–&#8202;128.</span>
          </div>
       </section>
 
@@ -68,8 +68,8 @@
 
          <div>
             <h3>Vertical Distance</h3>
-            <p><label for="baseline--vertical-distance-input">Define your leading, or the distance between two baselines.</label> (No less than 12px)</p>
-            <input type="text" id="baseline--vertical-distance-input" value="24"> px
+            <p><label for="baseline--vertical-distance-input">Define your leading, or the distance between two baselines.</label> (Range: 12&#8202;–&#8202;128)</p>
+            <input type="text" id="baseline--vertical-distance-input" value="24"> px <span id="baseline-vertical-distance-input--error-message" class="error-message">This option only accepts values between 12&#8202;–&#8202;128.</span>
          </div>
       </section>
 
