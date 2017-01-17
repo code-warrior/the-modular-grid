@@ -1,6 +1,13 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
+let inputErrorsIn = {
+    columnWidth: false,
+    gutterWidth: false,
+    columnCount: false,
+    baselineVerticalDistance: false
+};
+
 /**
  * Save options.
  */
@@ -73,38 +80,61 @@ function retrieve_options() {
     });
 }
 
+function toggleSaveButtonBasedOnInputErrors() {
+    'use strict';
+
+    let saveOptionsSubmitButton = document.getElementById('save-options'),
+        errorFound = false;
+
+    for (let key in inputErrorsIn) {
+        if (true === inputErrorsIn[key]) {
+            errorFound = true;
+
+            break;
+        }
+    }
+
+    if (errorFound) {
+        saveOptionsSubmitButton.style.display = 'none';
+    } else {
+        saveOptionsSubmitButton.style.display = 'inline';
+    }
+}
+
 document.getElementById('column--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])$/,
+    let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
         columnWidthInputBox = document.getElementById('column--width-input').value,
-        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
     if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
         columnWidthInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
+        inputErrorsIn.columnWidth = false;
     } else {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
+        inputErrorsIn.columnWidth = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('gutter--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])$/,
+    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
         gutterWidthInputBox = document.getElementById('gutter--width-input').value,
-        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
 
     if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
+        inputErrorsIn.gutterWidth = false;
     } else {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
+        inputErrorsIn.gutterWidth = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('column--count-input').addEventListener('blur', function () {
@@ -112,16 +142,17 @@ document.getElementById('column--count-input').addEventListener('blur', function
 
     let patternForColumnCountInputBox = /^([1-9]|[1-2][0-4])$/,
         columnCountInputBox = document.getElementById('column--count-input').value,
-        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
     if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
         columnCountInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
+        inputErrorsIn.columnCount = false;
     } else {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
+        inputErrorsIn.columnCount = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
@@ -129,16 +160,18 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
         baselineVerticalDistanceInputBox = document.getElementById('baseline--vertical-distance-input').value,
-        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message'),
-        saveOptionsSubmitButton = document.getElementById('save-options');
+        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
 
     if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
-        saveOptionsSubmitButton.style.display = 'inline';
+        inputErrorsIn.baselineVerticalDistance = false;
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
-        saveOptionsSubmitButton.style.display = 'none';
+        inputErrorsIn.baselineVerticalDistance = true;
     }
+
+    toggleSaveButtonBasedOnInputErrors();
 });
+
 document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);
