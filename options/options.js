@@ -107,5 +107,22 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
     }
 });
 
+document.getElementById('column--count-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForColumnCountInputBox = /^([1-9]|[1-2][0-4])$/,
+        columnCountInputBox = document.getElementById('column--count-input').value,
+        columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
+        columnCountInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        columnCountInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
+
 document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);
