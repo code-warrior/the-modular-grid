@@ -124,5 +124,21 @@ document.getElementById('column--count-input').addEventListener('blur', function
     }
 });
 
+document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
+        baselineVerticalDistanceInputBox = document.getElementById('baseline--vertical-distance-input').value,
+        baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message'),
+        saveOptionsSubmitButton = document.getElementById('save-options');
+
+    if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
+        baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
+        saveOptionsSubmitButton.style.display = 'inline';
+    } else {
+        baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
+        saveOptionsSubmitButton.style.display = 'none';
+    }
+});
 document.addEventListener('DOMContentLoaded', retrieve_options);
 document.getElementById('save-options').addEventListener('click', save_options);
