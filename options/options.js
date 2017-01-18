@@ -11,7 +11,7 @@ let inputErrorsIn = {
 /**
  * Save options.
  */
-function save_options() {
+function saveOptions() {
     'use strict';
 
     let gridColumn =
@@ -51,7 +51,7 @@ function save_options() {
 /**
  * Retrieve options.
  */
-function retrieve_options() {
+function retrieveOptions() {
     'use strict';
 
     chrome.storage.sync.get({
@@ -173,5 +173,5 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     toggleSaveButtonBasedOnInputErrors();
 });
 
-document.addEventListener('DOMContentLoaded', retrieve_options);
-document.getElementById('save-options').addEventListener('click', save_options);
+document.addEventListener('DOMContentLoaded', retrieveOptions);
+document.getElementById('save-options').addEventListener('click', saveOptions);
