@@ -67,6 +67,8 @@ function retrieveOptions() {
                 settings.gridColumn;
         document.getElementById('baseline--color-input').value =
                 settings.baselineColor;
+        document.getElementById('baseline--color-input').title =
+            settings.baselineColor;
         document.getElementById('baseline--vertical-distance-input').value =
                 settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
@@ -75,8 +77,12 @@ function retrieveOptions() {
                 settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
                 settings.columnColor;
+        document.getElementById('column--color-input').title =
+                settings.columnColor;
         document.getElementById('column--opacity-input').value =
                 settings.columnColorTransparency;
+        document.getElementById('column--opacity-input').title =
+            settings.columnColorTransparency;
     });
 }
 
