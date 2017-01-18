@@ -24,54 +24,54 @@
 
 #info-sidebar {
    display: none;
-   position: fixed;
-   top: $offset-sidebar;
-   right: $offset-sidebar;
-   z-index: 10000000000; // This is a ridiculous number, but is temporary. TODO: Walk the DOM and retrieve the highest z-index value, then add 1. Use the result here.
-   text-align: left; // To over-ride body.default-theme.des-mat added by Chrome
-   font: .9875rem / 1.6 $font--stack;
+   position: fixed !important;
+   top: $offset-sidebar !important;
+   right: $offset-sidebar !important;
+   z-index: 10000000000 !important; // This is a ridiculous number, but is temporary. TODO: Walk the DOM and retrieve the highest z-index value, then add 1. Use the result here.
+   text-align: left !important; // To over-ride body.default-theme.des-mat added by Chrome
+   font: .9875rem / 1.6 $font--stack !important;
 
    .message-box {
-      display: block;
-      position: relative;
-      margin-bottom: $offset-sidebar;
-      background-color: get-color('background', 'secondary');
-      padding: $offset-sidebar;
-      width: 4 * $width--grid-column;
-      color: get-color('background', 'primary');
+      display: block !important;
+      position: relative !important;
+      margin-bottom: $offset-sidebar !important;
+      background-color: get-color('background', 'secondary') !important;
+      padding: $offset-sidebar !important;
+      width: 4 * $width--grid-column !important;
+      color: get-color('background', 'primary') !important;
 
       strong {
-         font-weight: $bold;
-         color: get-color('background', 'primary');
+         color: get-color('background', 'primary') !important;
+         font-weight: $bold !important;
       }
 
       &:nth-child(3) {
-         text-align: center;
+         text-align: center !important;
 
          button {
-            background-color: get-color('background', 'primary');
-            font: #{1.1 * $font--base-size} / #{$height--leading} $font--stack;
-            padding: 4px 8px 6px;
-            border: 0;
+            border: 0 !important;
+            background-color: get-color('background', 'primary') !important;
+            padding: 4px 8px 6px !important;
+            font: #{1.1 * $font--base-size} / #{$height--leading} $font--stack !important;
 
             a {
-               color: get-color('grid', 'baseline');
-               text-decoration: none;
+               text-decoration: none !important;
+               color: get-color('grid', 'baseline') !important;
             }
          }
       }
 
       &::after {
-         position: absolute;
-         top: 0;
-         right: -(2 * $offset-sidebar);
+         position: absolute !important;
+         top: 0 !important;
+         right: -(2 * $offset-sidebar) !important;
          border: {
-            top: $offset-sidebar solid transparent;
-            right: $offset-sidebar solid transparent;
-            bottom: $offset-sidebar solid transparent;
-            left: $offset-sidebar solid get-color('background', 'secondary');
+            top: $offset-sidebar solid transparent !important;
+            right: $offset-sidebar solid transparent !important;
+            bottom: $offset-sidebar solid transparent !important;
+            left: $offset-sidebar solid get-color('background', 'secondary') !important;
          }
-         content: '';
+         content: '' !important;
       }
    }
 }
@@ -83,9 +83,9 @@
 }
 
 kbd {
-   border: 1px solid darken(get-color('grid', 'baseline'), 2%);
-   border-radius: 8px;
-   background-color: lighten(get-color('grid', 'baseline'), 8%);
-   padding: 0 6px 3px;
-   color: get-color('background', 'primary');
+   border: 1px solid darken(get-color('grid', 'baseline'), 2%) !important;
+   border-radius: 8px !important;
+   background-color: lighten(get-color('grid', 'baseline'), 8%) !important;
+   padding: 0 6px 3px !important;
+   color: get-color('background', 'primary') !important;
 }
