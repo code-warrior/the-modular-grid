@@ -21,7 +21,9 @@ Installing this extension requires downloading a folder and “feeding” it to 
       ![](img/login-box--windows.png)
 
 3. Load the repo into GitHub Desktop by clicking the appropriate link for your operating system.
+
    **Mac**: [`github-mac://openRepo/https://github.com/code-warrior/column-baseline-grid`](github-mac://openRepo/https://github.com/code-warrior/column-baseline-grid)
+
    **Windows**: [`github-windows://openRepo/https://github.com/code-warrior/column-baseline-grid`](github-windows://openRepo/https://github.com/code-warrior/column-baseline-grid)
 
 4. Choose a name and location for the repo, then click the blue `Clone` button.
