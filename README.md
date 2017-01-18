@@ -10,7 +10,7 @@
 ## Installing the Beta
 Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through the GitHub Desktop client and via a command line interface.
 
-## GitHub Desktop Installation
+### GitHub Desktop Installation
 (Burden: ~5 minutes)
 
 1. Launch GitHub Desktop.
