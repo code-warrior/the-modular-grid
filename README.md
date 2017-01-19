@@ -70,13 +70,13 @@ Installing this extension requires downloading a folder and “feeding” it to 
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically. In your CLI, simply `git pull`, and in the GitHub Desktop client, click the `Sync` icon in the upper right hand corner.
 
 ### Keyboard Shortcuts
-`Ctrl+Shift` enables/disables the sidebar info boxes in the upper right hand corner. This shortcut is universal across all operating systems.
+`Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner. This shortcut is universal across all operating systems.
 
-`Command+Shift+A` enables/disables the extension in Mac.
+`Command+Shift+A` toggles the extension in Mac.
 
-`Ctrl+Shift+A` enables/disables the extension in Windows 10.
+`Ctrl+Shift+A` toggles the extension in Windows 10.
 
-`Ctrl+Shift+A` enables/disables the extension in Fedora Linux.
+`Ctrl+Shift+A` toggles the extension in Fedora Linux.
 
 ## Development
 
