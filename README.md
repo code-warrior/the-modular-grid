@@ -1,9 +1,6 @@
 # Modular Grid Chrome Extension
 (v1.0.0)
 
-### Beta Repository URL
-[`https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1`](https://github.com/code-warrior/column-baseline-grid/tree/ver1.0.0-rc1)
-
 ## Beta Release Date
 29 January 2017
 
