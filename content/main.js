@@ -34,6 +34,8 @@ let body = document.querySelector('body'),
     modularGrid__Container = document.createElement('div'),
     modularGrid = document.createElement('div'),
 
+    modularGrid__ZIndex = null,
+
     //
     // sideBarPopup__Container is the container for the popup box that appears in the
     // upper right hand corner. (Note: Do not confuse the use of “popup” here with
@@ -128,6 +130,90 @@ sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chro
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
+
+/**
+ * Returns the largest z-index of all non-static elements in the tree whose root is
+ * at the HTML element named in node.
+ *
+ * @example
+ * let body = document.getElementsByTagName('body')[0],
+ *     largestZIndex = getLargestZIndexOfNonStaticElements(body);
+ *
+ * @param node is the root node at which to start traversing the DOM, inspecting for
+ * z-index values.
+ * @returns {*} an integer representing the largest z-index in the DOM, or null if
+ * one is not calculated.
+ */
+function getLargestZIndexOfNonStaticElements(node) {
+    let largestZIndexThusFar = null,
+        zIndexOfCurrentHTMLElement = 0,
+        occurrencesOfAuto = 0,
+        positionOfCurrentHTMLElement = '';
+
+    const HTML_ELEMENT = 1;
+
+    if (undefined === node.nodeType) {
+        console.error(node + ' is not a valid HTML node.');
+
+        return;
+    }
+
+    function calculateLargestZIndex(node) {
+        if (HTML_ELEMENT === node.nodeType) {
+            positionOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue("position");
+
+            if ('static' !== positionOfCurrentHTMLElement) {
+                zIndexOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue("z-index");
+
+                if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
+                    zIndexOfCurrentHTMLElement = parseInt(zIndexOfCurrentHTMLElement, 10);
+
+                    if (null === largestZIndexThusFar) {
+                        largestZIndexThusFar = zIndexOfCurrentHTMLElement;
+                    } else {
+                        if (zIndexOfCurrentHTMLElement > largestZIndexThusFar) {
+                            largestZIndexThusFar = zIndexOfCurrentHTMLElement;
+                        }
+                    }
+                } else {
+                    //
+                    // Note: The “inherit” case is not handled.
+                    //
+                    if ('auto' === zIndexOfCurrentHTMLElement) {
+                        occurrencesOfAuto = occurrencesOfAuto + 1;
+                    }
+                }
+            }
+
+            node = node.firstChild;
+
+            while (node) {
+                calculateLargestZIndex(node);
+                node = node.nextSibling;
+            }
+        }
+    }
+
+    calculateLargestZIndex(node);
+
+    if (null === largestZIndexThusFar) {
+        return occurrencesOfAuto;
+    } else {
+        return largestZIndexThusFar + occurrencesOfAuto;
+    }
+}
+
+modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
+
+if (null !== modularGrid__ZIndex) {
+    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
+    modularGrid.style.zIndex = modularGrid__ZIndex;
+    sideBarPopup__Container.style.zIndex = (modularGrid__ZIndex + 1);
+} else {
+    modularGrid__Container.style.zIndex = 'auto';
+    modularGrid.style.zIndex = 'auto';
+    sideBarPopup__Container.style.zIndex = 'auto';
+}
 
 /**
  * Accepts a Hex-formatted color and a floating point opacity value; returns its
