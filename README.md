@@ -3,6 +3,17 @@
 
 This extension provides a grid overlay to web pages in order for web authors to see how pages in development compare against the grid used in design. Some key options include the ability for the user to change column colors and opacity, column widths, gutter widths, and baseline/leading distance. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
 
+- [Installation](#installation)
+   * [Via GitHub Desktop Client](#github-desktop-installation)
+   * [Via The Command Line](#command-line-installation)
+- [Updates](#updates)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Development](#development)
+   * [Compiling](#development--compiling)
+      * [Sass](#development--compiling__sass)
+   * [Linting](#development--linting)
+      * [Sass](#development--linting__sass)
+
 ![](img/screenshot--baseline-grid.png)
 
 ![](img/screenshot--modular-grid.png)
@@ -12,10 +23,10 @@ This extension provides a grid overlay to web pages in order for web authors to 
 ## Beta Release Date
 29 January 2017
 
-## Installing the Beta
+## <a name="installation">Installing the Beta</a>
 Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through the GitHub Desktop client and via a command line interface.
 
-### GitHub Desktop Installation
+### <a name="github-desktop-installation">GitHub Desktop Installation</a>
 (Burden: ~5 minutes)
 
 1. Launch GitHub Desktop.
@@ -48,7 +59,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
       ![](img/extension-installed.png)
 
-### Command Line Interface (CLI) Installation
+### <a name="command-line-installation">Command Line Interface (CLI) Installation</a>
 (Burden: ~2 minutes)
 
 1. Launch your CLI and navigate to a folder into which to download the extension.
@@ -66,10 +77,10 @@ Installing this extension requires downloading a folder and “feeding” it to 
 7. Drag the folder over the `Chrome Extensions` window.
 8. A greyish, grid-like icon should now appear to the right of the address bar. Click it to toggle the grid on/off.
 
-### Updates
+### <a name="updates">Updates</a>
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically. In your CLI, simply `git pull`, and in the GitHub Desktop client, click the `Sync` icon in the upper right hand corner.
 
-### Keyboard Shortcuts
+### <a name="keyboard-shortcuts">Keyboard Shortcuts</a>
 `Command+Shift+A` toggles the extension in Mac.
 
 `Ctrl+Shift+A` toggles the extension in Windows 10.
@@ -78,11 +89,11 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
 
-## Development
+## <a name="development">Development</a>
 
-### Compiling
+### <a name="development--compiling">Compiling</a>
 
-#### Sass
+#### <a name="development--compiling__sass">Sass</a>
 ````bash
 \sass \
    --sourcemap=none \
@@ -93,9 +104,9 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
       options/main.scss:options/main.css
 ````
 
-### Linting
+### <a name="development--linting">Linting</a>
 
-#### Sass
+#### <a name="development--linting__sass">Sass</a>
 ````bash
 sass-lint -c .sass-lint.yml -v -s .
 ````
