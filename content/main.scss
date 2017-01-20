@@ -4,7 +4,6 @@
 
 #modular-grid {
    position: relative;
-   z-index: -1;
    margin: 0 auto;
    max-width: $width--16u;
 }
@@ -27,11 +26,14 @@
    position: fixed !important;
    top: $offset-sidebar !important;
    right: $offset-sidebar !important;
-   z-index: 10000000000 !important; // This is a ridiculous number, but is temporary. TODO: Walk the DOM and retrieve the highest z-index value, then add 1. Use the result here.
    text-align: left !important; // To over-ride body.default-theme.des-mat added by Chrome
    font: .9875rem / 1.6 $font--stack !important;
 
    .message-box {
+      font: {
+         family: inherit !important;
+         size: inherit !important;
+      }
       display: block !important;
       position: relative !important;
       margin-bottom: $offset-sidebar !important;
@@ -81,7 +83,6 @@
 
 #modular-grid--container {
    position: absolute;
-   z-index: -1;
    width: 100%;
 }
 
