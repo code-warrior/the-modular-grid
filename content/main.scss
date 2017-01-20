@@ -30,6 +30,10 @@
    font: .9875rem / 1.6 $font--stack !important;
 
    .message-box {
+      font: {
+         family: inherit !important;
+         size: inherit !important;
+      }
       display: block !important;
       position: relative !important;
       margin-bottom: $offset-sidebar !important;
