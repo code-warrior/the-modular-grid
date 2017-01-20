@@ -51,11 +51,6 @@
             background-color: get-color('background', 'primary') !important;
             padding: 4px 8px 6px !important;
             font: #{1.1 * $font--base-size} / #{$height--leading} $font--stack !important;
-
-            a {
-               text-decoration: none !important;
-               color: get-color('grid', 'baseline') !important;
-            }
          }
       }
 
@@ -70,6 +65,14 @@
             left: $offset-sidebar solid get-color('background', 'secondary') !important;
          }
          content: '' !important;
+      }
+
+      &.link {
+         a {
+            border-bottom: 0 !important;
+            text-decoration: none !important;
+            color: get-color('grid', 'baseline') !important;
+         }
       }
    }
 }
