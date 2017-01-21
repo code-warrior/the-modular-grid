@@ -49,13 +49,7 @@
 
       &:nth-child(3) {
          text-align: center !important;
-
-         button {
-            border: 0 !important;
-            background-color: get-color('background', 'primary') !important;
-            padding: 4px 8px 6px !important;
-            font: #{1.1 * $font--base-size} / #{$height--leading} $font--stack !important;
-         }
+         cursor: pointer !important;
       }
 
       &::after {

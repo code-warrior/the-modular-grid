@@ -93,3 +93,14 @@ chrome.commands.onCommand.addListener(function () {
         );
     });
 });
+
+/**
+ *
+ */
+chrome.runtime.onMessage.addListener(function(response){
+    'use strict';
+
+    if ('openOptions' === response) {
+        chrome.tabs.create({url: chrome.extension.getURL('options/index.html')});
+    }
+});
