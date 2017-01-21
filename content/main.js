@@ -149,10 +149,10 @@ function getLargestZIndexOfNonStaticElements(node) {
 
     function calculateLargestZIndex(node) {
         if (HTML_ELEMENT === node.nodeType) {
-            positionOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue("position");
+            positionOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue('position');
 
             if ('static' !== positionOfCurrentHTMLElement) {
-                zIndexOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue("z-index");
+                zIndexOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue('z-index');
 
                 if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
                     zIndexOfCurrentHTMLElement = parseInt(zIndexOfCurrentHTMLElement, 10);
