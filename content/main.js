@@ -1,14 +1,6 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-/*
- * TODO
- * If this script is called each time the page is loaded, which I imagine is the
- * case, then this script MUST send a message to the background script asking if the
- * grid is enabled. If it is, then it might also need to check if the info box is
- * enabled, also.
- */
-
 const
     SHIFT_KEY = 16,
     CONTROL_KEY = 17,
@@ -98,9 +90,6 @@ stylesheet.id = 'modular-grid-css';
 
 sideBarPopup__Container.id = 'info-sidebar';
 
-//
-// When the extension loads, the sidebar info dialog box shows…
-//
 // TODO: I may not need this
 if (sideBarPopup__IsInitiallyShowing) {
     sideBarPopup__Container.style.display = 'block';
@@ -329,9 +318,6 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
-//
-// On page load, inject into the DOM and render the correct grid. NOT revisited; visited only on page load
-//
 chrome.storage.sync.get({isGridEnabled: false}, function (settings) {
     'use strict';
 
@@ -592,9 +578,6 @@ chrome.extension.onMessage.addListener(function (msg) {
     }
 });
 
-/**
- * TOGGLE GRID INFO
- */
 function toggleGridInfo() {
     'use strict';
 
@@ -607,12 +590,6 @@ function toggleGridInfo() {
     }
 }
 
-/**
- * SHOW COLUMN INFO
- *
- * Shows the amount of columns and the width of the viewport in a popup box
- * along the right of the viewport.
- */
 function showColumnInfo() {
     'use strict';
 
@@ -630,10 +607,6 @@ function showColumnInfo() {
             '<br>Current grid layer: <strong>' + currentGrid + '</strong>';
 }
 
-/**
- * At every moment of the browser window resize, update the sidebar information
- * popup.
- */
 window.onresize = function () {
     'use strict';
 
