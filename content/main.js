@@ -116,10 +116,11 @@ sideBarPopup__ColumnAndPageInfo.innerHTML =
         '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
         '<br>Current grid layer: <strong>' + modularGrid.className + '</strong>';
 
-sideBarPopup__OptionsLink.innerHTML = 'Options';
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
+
+sideBarPopup__OptionsLink.innerHTML = 'Options';
 sideBarPopup__OptionsLink.addEventListener('click', function() {
     'use strict';
 
