@@ -108,8 +108,8 @@ sideBarPopup__OptionsLink.className = 'message-box';
 sideBarPopup__OptionsLink.classList.add('link');
 
 sideBarPopup__Instructions.innerHTML =
-        'This section can be toggled by typing <kbd>cntrl + shift</kbd>. You ' +
-        'can cycle through the various grids by typing <kbd>esc</kbd>.';
+        'Toggle this section by typing <kbd>cntrl + shift</kbd>. ' +
+        'Cycle through the grids by typing <kbd>esc</kbd>.';
 sideBarPopup__ColumnAndPageInfo.innerHTML =
         'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
         '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
