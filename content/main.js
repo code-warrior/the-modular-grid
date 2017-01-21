@@ -104,6 +104,7 @@ modularGrid__Container.appendChild(modularGrid);
 
 sideBarPopup__Instructions.className = 'message-box';
 sideBarPopup__ColumnAndPageInfo.className = 'message-box';
+sideBarPopup__ColumnAndPageInfo.id = 'column-and-page-info';
 sideBarPopup__OptionsLink.className = 'message-box';
 sideBarPopup__OptionsLink.classList.add('link');
 
