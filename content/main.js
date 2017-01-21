@@ -115,11 +115,15 @@ sideBarPopup__ColumnAndPageInfo.innerHTML =
         '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
         '<br>Current grid layer: <strong>' + modularGrid.className + '</strong>';
 
-sideBarPopup__OptionsLink.innerHTML = '<button><a target="_blank" href="' + chrome.extension.getURL('options/index.html') + '">options</a></button>';
+sideBarPopup__OptionsLink.innerHTML = 'Options';
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
 sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
+sideBarPopup__OptionsLink.addEventListener('click', function() {
+    'use strict';
 
+    chrome.runtime.sendMessage('openOptions');
+});
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
