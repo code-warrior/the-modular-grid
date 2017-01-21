@@ -785,17 +785,16 @@ document.onkeydown = function (evnt) {
                 //     modularGrid__Container.style.zIndex = '-1';
                 //
                 //     break;
+                }
+
+                if (SHOWING_ALL_GRIDS === gridChoice) {
+                    gridChoice = -1;
+                }
+
+                gridChoice += 1;
+
+                showColumnInfo();
             }
-
-            if (SHOWING_ALL_GRIDS === gridChoice) {
-                gridChoice = -1;
-            }
-
-            gridChoice += 1;
-
-            showColumnInfo();
-
-        }
         });
 
         break;
