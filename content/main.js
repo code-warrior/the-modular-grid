@@ -10,7 +10,6 @@ const
     SHOWING_MODULAR_GRID = 2,
     SHOWING_BASELINE_GRID = 3,
     SHOWING_ALL_GRIDS = 4;
-// SHOWING_USER_SUPPLIED_BG_IMAGE = 5;
 
 let body = document.querySelector('body'),
     firstChildOfBody = body.firstElementChild,
@@ -90,7 +89,6 @@ stylesheet.id = 'modular-grid-css';
 
 sideBarPopup__Container.id = 'info-sidebar';
 
-// TODO: I may not need this
 if (sideBarPopup__IsInitiallyShowing) {
     sideBarPopup__Container.style.display = 'block';
     sideBarPopup__IsShowing = true;
@@ -674,10 +672,6 @@ document.onkeydown = function (evnt) {
                     );
 
                     chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
-
-                    // modularGrid.classList.remove(
-                    //     'user-supplied-bg-image'
-                    // );
                     modularGrid__Container.style.zIndex = '3';
 
                     break;
@@ -780,17 +774,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.removeAttribute('style');
                     modularGrid__Container.style.zIndex = '-1';
 
-                    // modularGrid.classList.add('user-supplied-bg-image');
-
                     break;
-
-                // case SHOWING_USER_SUPPLIED_BG_IMAGE:
-                //     modularGrid.classList.remove(
-                //         'user-supplied-bg-image'
-                //     );
-                //     modularGrid__Container.style.zIndex = '-1';
-                //
-                //     break;
                 }
 
                 if (SHOWING_ALL_GRIDS === gridChoice) {
