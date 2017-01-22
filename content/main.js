@@ -110,7 +110,7 @@ sideBarPopup__OptionsLink.classList.add('link');
 
 sideBarPopup__Instructions.innerHTML =
         'Toggle this section by typing <kbd>cntrl + shift</kbd>, and ' +
-        'cycle through the grids by typing <kbd>esc</kbd>.';
+        'cycle through the grids by pressing <kbd>esc</kbd>.';
 sideBarPopup__ColumnAndPageInfo.innerHTML =
         'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
         '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
