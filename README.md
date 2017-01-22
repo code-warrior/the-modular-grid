@@ -38,9 +38,9 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
 3. Load the repo into GitHub Desktop by clicking the appropriate link for your operating system.
 
-   **Mac**: [`github-mac://openRepo/https://github.com/code-warrior/column-baseline-grid`](github-mac://openRepo/https://github.com/code-warrior/column-baseline-grid)
+   **Mac**: [`github-mac://openRepo/https://github.com/code-warrior/the-modular-grid`](github-mac://openRepo/https://github.com/code-warrior/the-modular-grid)
 
-   **Windows**: [`github-windows://openRepo/https://github.com/code-warrior/column-baseline-grid`](github-windows://openRepo/https://github.com/code-warrior/column-baseline-grid)
+   **Windows**: [`github-windows://openRepo/https://github.com/code-warrior/the-modular-grid`](github-windows://openRepo/https://github.com/code-warrior/the-modular-grid)
 
 4. Choose a name and location for the repo, then click the blue `Clone` button.
 
@@ -54,7 +54,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
       ![](img/folder-and-browser.png)
 
-7. Drag the `column-baseline-grid` folder over the extensions page.
+7. Drag the `the-modular-grid` folder over the extensions page.
 8. The extension is now installed. (The title **column-baseline-grid** is a legacy artifact that will likely be changed to **The Modular Grid**.)
 
       ![](img/extension-installed.png)
@@ -65,7 +65,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 1. Launch your CLI and navigate to a folder into which to download the extension.
 2. Clone the repository:
 
-        git clone git@github.com:code-warrior/column-baseline-grid.git
+        git clone git@github.com:code-warrior/the-modular-grid
 
 3. Switch to the version 1.0.0., release candidate 1 branch:
 
