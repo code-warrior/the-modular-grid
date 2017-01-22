@@ -29,7 +29,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 ### <a name="github-desktop-installation">GitHub Desktop Installation</a>
 (Burden: ~5 minutes)
 
-1. Launch GitHub Desktop.
+1. Launch [GitHub Desktop](https://desktop.github.com/).
 2. Log in via the `Preferences…` page in Mac or the `Options…` page in Windows
 
       ![](img/login-box--mac.png)
