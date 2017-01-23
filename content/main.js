@@ -107,7 +107,7 @@ sideBarPopup__ColumnAndPageInfo.className = 'message-box';
 sideBarPopup__OptionsLink.className = 'message-box';
 
 sideBarPopup__Instructions.innerHTML =
-        'Toggle this section by typing <kbd>cntrl + shift</kbd>, and ' +
+        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
         'cycle through the grids by pressing <kbd>esc</kbd>.';
 sideBarPopup__ColumnAndPageInfo.innerHTML =
         'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
@@ -619,7 +619,7 @@ window.onresize = function () {
 /**
  * Handles keyboard events that cycle through the various grids (using the `esc`
  * key) and that toggle the sidebar information popup appearing in the upper right
- * hand corner of the browser window (using the `cntrl` + `shift` keys).
+ * hand corner of the browser window (using the `Ctrl` + `Shift` keys).
  *
  * @param evnt is the keyboard event
  */
