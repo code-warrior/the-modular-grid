@@ -8,7 +8,7 @@
     "minimum_chrome_version": "30",
     "default_locale": "en",
     "description": "A modular grid for web development and/or design.",
-    "homepage_url": "https://github.com/code-warrior/column-baseline-grid",
+    "homepage_url": "https://github.com/code-warrior/the-modular-grid",
     "web_accessible_resources": [
         "fonts/*.woff2",
         "content/*.css"
