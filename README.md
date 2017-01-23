@@ -50,12 +50,12 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
       ![](img/extension-loaded-into-github-desktop.png)
 
-6. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `column-baseline-grid` repo. In my case, it’s a folder called `GitHub`.
+6. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `the-modular-grid` repo. In my case, it’s a folder called `GitHub`.
 
       ![](img/folder-and-browser.png)
 
 7. Drag the `the-modular-grid` folder over the extensions page.
-8. The extension is now installed. (The title **column-baseline-grid** is a legacy artifact that will likely be changed to **The Modular Grid**.)
+8. The extension is now installed.
 
       ![](img/extension-installed.png)
 
@@ -73,7 +73,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
 4. Launch Chrome.
 5. Type `chrome://extensions` into the address bar.
-6. Locate the `column-baseline-grid` folder that was created when you cloned this project in step `2`.
+6. Locate the `the-modular-grid` folder that was created when you cloned this project in step `2`.
 7. Drag the folder over the `Chrome Extensions` window.
 8. A greyish, grid-like icon should now appear to the right of the address bar. Click it to toggle the grid on/off.
 
