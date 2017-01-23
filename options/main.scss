@@ -103,8 +103,8 @@ p {
    right: 20px !important;
    bottom: 20px !important;
    border: 0 !important;
-   box-shadow: 0 0 20px 20px get-color('background', 'quartenary') !important;
-   background-color: get-color('background', 'quartenary') !important;
+   box-shadow: 0 0 10px 10px get-color('grid', 'column') !important;
+   background-color: get-color('grid', 'column') !important;
    padding: 24px !important;
    color: get-color('background', 'primary') !important;
    font-family: $font--stack !important;
@@ -117,7 +117,7 @@ p {
    border: 1px solid get-color('grid', 'column') !important;
    border-radius: 8px !important;
    background-color: get-color('background', 'primary') !important;
-   padding: 24px !important;
+   padding: 12px !important;
    text-align: center !important;
    color: get-color('grid', 'column') !important;
 }
