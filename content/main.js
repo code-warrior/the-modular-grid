@@ -109,10 +109,20 @@ sideBarPopup__OptionsLink.className = 'message-box';
 sideBarPopup__Instructions.innerHTML =
         'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
         'cycle through the grids by pressing <kbd>esc</kbd>.';
-sideBarPopup__ColumnAndPageInfo.innerHTML =
-        'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
-        '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
-        '<br>Current grid layer: <strong>' + modularGrid.className + '</strong>';
+
+chrome.storage.sync.get(
+    {
+        currentGrid: CSS__Classes.allgrids,
+        gridColumn: gridColumn,
+        gridGutter: gridGutter
+    },
+    function(settings) {
+        sideBarPopup__ColumnAndPageInfo.innerHTML =
+            'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
+            '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
+            '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
+    }
+);
 
 sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
 sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
