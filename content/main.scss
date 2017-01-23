@@ -47,9 +47,10 @@
          font-weight: $bold !important;
       }
 
-      &:nth-child(3) {
+      &:last-of-type {
          text-align: center !important;
          cursor: pointer !important;
+         margin-bottom: 0 !important;
       }
 
       &::after {
