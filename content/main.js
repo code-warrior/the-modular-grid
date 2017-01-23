@@ -672,9 +672,6 @@ document.onkeydown = function (evnt) {
 
                     chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
 
-                    // modularGrid.classList.remove(
-                    //     'user-supplied-bg-image'
-                    // );
                     modularGrid__Container.style.zIndex = '3';
 
                     break;
@@ -777,17 +774,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.removeAttribute('style');
                     modularGrid__Container.style.zIndex = '-1';
 
-                    // modularGrid.classList.add('user-supplied-bg-image');
-
                     break;
-
-                // case SHOWING_USER_SUPPLIED_BG_IMAGE:
-                //     modularGrid.classList.remove(
-                //         'user-supplied-bg-image'
-                //     );
-                //     modularGrid__Container.style.zIndex = '-1';
-                //
-                //     break;
                 }
 
                 if (SHOWING_ALL_GRIDS === gridChoice) {
