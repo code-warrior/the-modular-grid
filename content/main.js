@@ -74,7 +74,8 @@ let body = document.querySelector('body'),
         columngrid: 'column-grid',
         modulargrid: 'modular-grid',
         baselinegrid: 'baseline-grid',
-        allgrids: 'all-grids'
+        allgrids: 'all-grids',
+        none: 'none'
     },
 
     columnColor = '#c80000',
