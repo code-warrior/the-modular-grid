@@ -37,7 +37,7 @@
       display: block !important;
       position: relative !important;
       margin-bottom: $offset-sidebar !important;
-      background-color: get-color('background', 'secondary') !important;
+      background-color: get-color('background', 'ternary') !important;
       padding: $offset-sidebar !important;
       width: 4 * $width--grid-column !important;
       color: get-color('background', 'primary') !important;
@@ -47,9 +47,10 @@
          font-weight: $bold !important;
       }
 
-      &:nth-child(3) {
+      &:last-of-type {
          text-align: center !important;
          cursor: pointer !important;
+         margin-bottom: 0 !important;
       }
 
       &::after {
@@ -60,7 +61,7 @@
             top: $offset-sidebar solid transparent !important;
             right: $offset-sidebar solid transparent !important;
             bottom: $offset-sidebar solid transparent !important;
-            left: $offset-sidebar solid get-color('background', 'secondary') !important;
+            left: $offset-sidebar solid get-color('background', 'ternary') !important;
          }
          content: '' !important;
       }
@@ -81,9 +82,8 @@
 }
 
 kbd {
-   border: 1px solid darken(get-color('grid', 'baseline'), 2%) !important;
    border-radius: 8px !important;
-   background-color: lighten(get-color('grid', 'baseline'), 8%) !important;
-   padding: 0 6px 3px !important;
+   background-color: get-color('background', 'quartenary') !important;
+   padding: 4px 6px !important;
    color: get-color('background', 'primary') !important;
 }

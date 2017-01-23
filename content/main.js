@@ -105,10 +105,9 @@ modularGrid__Container.appendChild(modularGrid);
 sideBarPopup__Instructions.className = 'message-box';
 sideBarPopup__ColumnAndPageInfo.className = 'message-box';
 sideBarPopup__OptionsLink.className = 'message-box';
-sideBarPopup__OptionsLink.classList.add('link');
 
 sideBarPopup__Instructions.innerHTML =
-        'Toggle this section by typing <kbd>cntrl + shift</kbd>, and ' +
+        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
         'cycle through the grids by pressing <kbd>esc</kbd>.';
 sideBarPopup__ColumnAndPageInfo.innerHTML =
         'Column count: <strong>' + Math.floor(body.clientWidth / gridUnit) + '</strong>' +
@@ -620,7 +619,7 @@ window.onresize = function () {
 /**
  * Handles keyboard events that cycle through the various grids (using the `esc`
  * key) and that toggle the sidebar information popup appearing in the upper right
- * hand corner of the browser window (using the `cntrl` + `shift` keys).
+ * hand corner of the browser window (using the `Ctrl` + `Shift` keys).
  *
  * @param evnt is the keyboard event
  */
@@ -673,9 +672,6 @@ document.onkeydown = function (evnt) {
 
                     chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
 
-                    // modularGrid.classList.remove(
-                    //     'user-supplied-bg-image'
-                    // );
                     modularGrid__Container.style.zIndex = '3';
 
                     break;
@@ -778,17 +774,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.removeAttribute('style');
                     modularGrid__Container.style.zIndex = '-1';
 
-                    // modularGrid.classList.add('user-supplied-bg-image');
-
                     break;
-
-                // case SHOWING_USER_SUPPLIED_BG_IMAGE:
-                //     modularGrid.classList.remove(
-                //         'user-supplied-bg-image'
-                //     );
-                //     modularGrid__Container.style.zIndex = '-1';
-                //
-                //     break;
                 }
 
                 if (SHOWING_ALL_GRIDS === gridChoice) {
