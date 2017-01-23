@@ -105,7 +105,6 @@ modularGrid__Container.appendChild(modularGrid);
 sideBarPopup__Instructions.className = 'message-box';
 sideBarPopup__ColumnAndPageInfo.className = 'message-box';
 sideBarPopup__OptionsLink.className = 'message-box';
-sideBarPopup__OptionsLink.classList.add('link');
 
 sideBarPopup__Instructions.innerHTML =
         'Toggle this section by typing <kbd>cntrl + shift</kbd>, and ' +
