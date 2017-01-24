@@ -153,7 +153,7 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
 document.getElementById('column--count-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnCountInputBox = /^([1-9]|[1-2][0-4])$/,
+    let patternForColumnCountInputBox = /^([1-9]|[1][0-9]|[2][0-4])$/,
         columnCountInputBox = document.getElementById('column--count-input').value,
         columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
