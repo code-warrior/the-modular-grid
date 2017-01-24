@@ -30,6 +30,7 @@ function saveOptions() {
                 document.getElementById('column--opacity-input').value;
 
     chrome.storage.sync.set({
+        isGridEnabled: false,
         gridColumn: gridColumn,
         gridGutter: gridGutter,
         baselineColor: baselineColor,
