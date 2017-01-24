@@ -118,7 +118,7 @@ chrome.storage.sync.get(
     },
     function(settings) {
         sideBarPopup__ColumnAndPageInfo.innerHTML =
-            'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
+            'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
             '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
             '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
     }
@@ -354,7 +354,7 @@ chrome.storage.sync.get(
             head.appendChild(stylesheet);
             body.insertBefore(modularGrid__Container, firstChildOfBody);
             sideBarPopup__ColumnAndPageInfo.innerHTML =
-                'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn,10) + parseInt(settings.gridGutter,10))) + '</strong>' +
+                'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn,10) + parseInt(settings.gridGutter,10))) + '</strong>' +
                 '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
 
@@ -632,7 +632,7 @@ function showColumnInfo() {
         },
         function(settings) {
             document.getElementById('column-and-page-info').innerHTML =
-                'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
+                'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
                 '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
         }
