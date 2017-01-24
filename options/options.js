@@ -16,6 +16,8 @@ function saveOptions() {
 
     let gridColumn =
                 document.getElementById('column--width-input').value,
+        gridColumnCount =
+                document.getElementById('column--count-input').value,
         gridGutter =
                 document.getElementById('gutter--width-input').value,
         baselineColor =
@@ -32,6 +34,7 @@ function saveOptions() {
     chrome.storage.sync.set({
         isGridEnabled: false,
         gridColumn: gridColumn,
+        gridColumnCount: gridColumnCount,
         gridGutter: gridGutter,
         baselineColor: baselineColor,
         baselineDistance: baselineDistance,
@@ -57,6 +60,7 @@ function retrieveOptions() {
 
     chrome.storage.sync.get({
         gridColumn: '60',
+        gridColumnCount: '16',
         gridGutter: '20',
         baselineColor: '#29abe2',
         baselineDistance: '24',
@@ -66,6 +70,8 @@ function retrieveOptions() {
     }, function (settings) {
         document.getElementById('column--width-input').value =
                 settings.gridColumn;
+        document.getElementById('column--count-input').value =
+                settings.gridColumnCount;
         document.getElementById('baseline--color-input').value =
                 settings.baselineColor;
         document.getElementById('baseline--color-input').title =

@@ -62,6 +62,7 @@ let html = document.querySelector('html'),
     gridColumn = 60,
     gridGutter = 20,
     splitGutterWidth = gridGutter / 2,
+    gridColumnCount = 16 * (gridColumn + gridGutter),
     userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height)
         ? document.height
@@ -339,6 +340,7 @@ chrome.storage.sync.get(
     {
         isGridEnabled: false,
         gridColumn: gridColumn,
+        gridColumnCount: gridColumnCount,
         gridGutter: gridGutter,
         baselineColor: colorGridBaseline,
         baselineDistance: baselineDistance,
@@ -366,6 +368,7 @@ chrome.storage.sync.get(
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         userWantsSplitGutters: userWantsSplitGutters,
                         columnColor: columnColor,
@@ -384,7 +387,8 @@ chrome.storage.sync.get(
                             convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                             settings.gridColumn + 'px, transparent 0); ' +
                             'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -395,6 +399,7 @@ chrome.storage.sync.get(
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance,
@@ -417,7 +422,8 @@ chrome.storage.sync.get(
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
                     }
                 );
 
@@ -427,6 +433,7 @@ chrome.storage.sync.get(
                 modularGrid.className = CSS__Classes.baselinegrid;
                 chrome.storage.sync.get(
                     {
+                        gridColumnCount: gridColumnCount,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance
                     },
@@ -435,7 +442,8 @@ chrome.storage.sync.get(
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px');
+                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -446,6 +454,7 @@ chrome.storage.sync.get(
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance,
@@ -468,7 +477,8 @@ chrome.storage.sync.get(
                             settings.baselineColor + ' 100%); ' +
                             'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -493,6 +503,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         userWantsSplitGutters: userWantsSplitGutters,
                         columnColor: columnColor,
@@ -511,7 +522,8 @@ chrome.extension.onMessage.addListener(function (msg) {
                                 convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                                 settings.gridColumn + 'px, transparent 0); ' +
                                 'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                                'background-position: ' + splitGutterWidth + 'px 0;');
+                                'background-position: ' + splitGutterWidth + 'px 0; ' +
+                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -522,6 +534,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance,
@@ -544,7 +557,8 @@ chrome.extension.onMessage.addListener(function (msg) {
                                 settings.baselineColor + ' 100%); ' +
                                 'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                                 settings.baselineDistance + 'px; ' +
-                                'background-position: ' + splitGutterWidth + 'px 0;');
+                                'background-position: ' + splitGutterWidth + 'px 0; ' +
+                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -554,6 +568,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 modularGrid.className = CSS__Classes.baselinegrid;
                 chrome.storage.sync.get(
                     {
+                        gridColumnCount: gridColumnCount,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance
                     },
@@ -562,7 +577,8 @@ chrome.extension.onMessage.addListener(function (msg) {
                                 'height: ' + pageHeight + 'px; ' +
                                 'background-image: linear-gradient(0deg, transparent 95%, ' +
                                 settings.baselineColor + ' 100%); ' +
-                                'background-size: 100% ' + settings.baselineDistance + 'px');
+                                'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                                'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
                     }
                 );
 
@@ -573,6 +589,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 chrome.storage.sync.get(
                     {
                         gridColumn: gridColumn,
+                        gridColumnCount: gridColumnCount,
                         gridGutter: gridGutter,
                         baselineColor: colorGridBaseline,
                         baselineDistance: baselineDistance,
@@ -595,7 +612,8 @@ chrome.extension.onMessage.addListener(function (msg) {
                                 settings.baselineColor + ' 100%); ' +
                                 'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                                 settings.baselineDistance + 'px; ' +
-                                'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                                'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
                     }
                 );
 
@@ -671,6 +689,7 @@ document.onkeydown = function (evnt) {
             {
                 isGridEnabled: false,
                 gridColumn: gridColumn,
+                gridColumnCount: gridColumnCount,
                 gridGutter: gridGutter,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
@@ -699,7 +718,8 @@ document.onkeydown = function (evnt) {
                             convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
                             settings.gridColumn + 'px, transparent 0); ' +
                             'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                         chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
 
@@ -723,7 +743,8 @@ document.onkeydown = function (evnt) {
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0;');
+                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                         chrome.storage.sync.set({currentGrid: CSS__Classes.modulargrid});
 
@@ -737,7 +758,8 @@ document.onkeydown = function (evnt) {
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px');
+                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                         chrome.storage.sync.set({currentGrid: CSS__Classes.baselinegrid});
 
@@ -761,7 +783,8 @@ document.onkeydown = function (evnt) {
                             settings.baselineColor + ' 100%); ' +
                             'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0;');
+                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                         chrome.storage.sync.set({currentGrid: CSS__Classes.allgrids});
 
