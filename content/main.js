@@ -11,7 +11,8 @@ const
     SHOWING_BASELINE_GRID = 3,
     SHOWING_ALL_GRIDS = 4;
 
-let body = document.querySelector('body'),
+let html = document.querySelector('html'),
+    body = document.querySelector('body'),
     firstChildOfBody = body.firstElementChild,
     head = document.querySelector('head'),
     stylesheet = document.createElement('link'),
@@ -118,7 +119,7 @@ chrome.storage.sync.get(
     function(settings) {
         sideBarPopup__ColumnAndPageInfo.innerHTML =
             'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
-            '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
+            '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
             '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
     }
 );
@@ -354,7 +355,7 @@ chrome.storage.sync.get(
             body.insertBefore(modularGrid__Container, firstChildOfBody);
             sideBarPopup__ColumnAndPageInfo.innerHTML =
                 'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn,10) + parseInt(settings.gridGutter,10))) + '</strong>' +
-                '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
+                '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
 
             body.appendChild(sideBarPopup__Container);
@@ -632,7 +633,7 @@ function showColumnInfo() {
         function(settings) {
             document.getElementById('column-and-page-info').innerHTML =
                 'Column count: <strong>' + Math.floor(body.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
-                '<br>Page width: <strong>' + body.clientWidth + 'px</strong>' +
+                '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
         }
     );
