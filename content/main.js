@@ -488,6 +488,10 @@ chrome.storage.sync.get(
     }
 );
 
+/**
+ * Invoked when the grid is enabled via the command shortcut or by clicking the
+ * browser action button.
+ */
 chrome.extension.onMessage.addListener(function (msg) {
     'use strict';
 
