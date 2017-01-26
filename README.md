@@ -31,26 +31,26 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
 1. Launch [GitHub Desktop](https://desktop.github.com/).
 
-3. Load the repo into GitHub Desktop by clicking the appropriate link for your operating system.
+2. Load the repo into GitHub Desktop by clicking the appropriate link for your operating system.
 
    **Mac**: [`github-mac://openRepo/https://github.com/code-warrior/the-modular-grid`](github-mac://openRepo/https://github.com/code-warrior/the-modular-grid)
 
    **Windows**: [`github-windows://openRepo/https://github.com/code-warrior/the-modular-grid`](github-windows://openRepo/https://github.com/code-warrior/the-modular-grid)
 
-4. Choose a name and location for the repo, then click the blue `Clone` button.
+3. Choose a name and location for the repo, then click the blue `Clone` button.
 
       ![](img/saving-repo.png)
 
-5. You should see something akin to the following:
+4. You should see something akin to the following:
 
       ![](img/extension-loaded-into-github-desktop.png)
 
-6. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `the-modular-grid` repo. In my case, it’s a folder called `GitHub`.
+5. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `the-modular-grid` repo. In my case, it’s a folder called `GitHub`.
 
       ![](img/folder-and-browser.png)
 
-7. Drag the `the-modular-grid` folder over the extensions page.
-8. The extension is now installed.
+6. Drag the `the-modular-grid` folder over the extensions page.
+7. The extension is now installed.
 
       ![](img/extension-installed.png)
 
