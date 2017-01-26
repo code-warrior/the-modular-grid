@@ -108,8 +108,8 @@ sideBarPopup__ColumnAndPageInfo.id = 'column-and-page-info';
 sideBarPopup__OptionsLink.className = 'message-box';
 
 sideBarPopup__Instructions.innerHTML =
-        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
-        'cycle through the grids by pressing <kbd>esc</kbd>.';
+    'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
+    'cycle through the grids by pressing <kbd>esc</kbd>.';
 
 chrome.storage.sync.get(
     {
