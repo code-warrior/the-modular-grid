@@ -45,7 +45,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
       ![](img/extension-loaded-into-github-desktop.png)
 
-5. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `the-modular-grid` repo. In my case, it’s a folder called `GitHub`.
+5. Open Chrome’s extensions page by typing [`chrome://extensions`](chrome://extensions) into the address bar, then open the folder into which you cloned the `the-modular-grid` repo from step 3.
 
       ![](img/folder-and-browser.png)
 
