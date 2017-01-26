@@ -30,11 +30,6 @@ Installing this extension requires downloading a folder and “feeding” it to 
 (Burden: ~5 minutes)
 
 1. Launch [GitHub Desktop](https://desktop.github.com/).
-2. Log in via the `Preferences…` page in Mac or the `Options…` page in Windows
-
-      ![](img/login-box--mac.png)
-
-      ![](img/login-box--windows.png)
 
 3. Load the repo into GitHub Desktop by clicking the appropriate link for your operating system.
 
