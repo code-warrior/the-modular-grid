@@ -338,19 +338,19 @@ function convertHexToRGBA(hex, opacity) {
  */
 chrome.storage.sync.get(
     {
-        isGridEnabled: false,
-        gridColumn: gridColumn,
-        gridColumnCount: gridColumnCount,
-        gridGutter: gridGutter,
-        baselineColor: colorGridBaseline,
-        baselineDistance: baselineDistance,
-        userWantsSplitGutters: userWantsSplitGutters,
-        columnColor: columnColor,
-        columnColorTransparency: columnColorTransparency,
-        currentGrid: SHOWING_ALL_GRIDS
     },
     function (settings) {
         'use strict';
+            baselineColor: colorGridBaseline,
+            baselineDistance: baselineDistance,
+            columnColor: columnColor,
+            columnColorTransparency: columnColorTransparency,
+            currentGrid: SHOWING_ALL_GRIDS,
+            gridColumn: gridColumn,
+            gridColumnCount: gridColumnCount,
+            gridGutter: gridGutter,
+            isGridEnabled: false,
+            userWantsSplitGutters: userWantsSplitGutters
 
         if (settings.isGridEnabled) {
             head.appendChild(stylesheet);
