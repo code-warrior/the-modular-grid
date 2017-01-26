@@ -37,7 +37,7 @@ Installing this extension requires downloading a folder and “feeding” it to 
 
    **Windows**: [`github-windows://openRepo/https://github.com/code-warrior/the-modular-grid`](github-windows://openRepo/https://github.com/code-warrior/the-modular-grid)
 
-3. Choose a name and location for the repo, then click the blue `Clone` button.
+3. Unless you choose a different name and location for the repo, click the blue `Clone` button.
 
       ![](img/saving-repo.png)
 
