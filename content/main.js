@@ -108,8 +108,8 @@ sideBarPopup__ColumnAndPageInfo.id = 'column-and-page-info';
 sideBarPopup__OptionsLink.className = 'message-box';
 
 sideBarPopup__Instructions.innerHTML =
-        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
-        'cycle through the grids by pressing <kbd>esc</kbd>.';
+    'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
+    'cycle through the grids by pressing <kbd>esc</kbd>.';
 
 chrome.storage.sync.get(
     {
@@ -336,27 +336,29 @@ function convertHexToRGBA(hex, opacity) {
 /**
  * Invoked when the page is loaded
  */
-chrome.storage.sync.get(
-    {
-        isGridEnabled: false,
-        gridColumn: gridColumn,
-        gridColumnCount: gridColumnCount,
-        gridGutter: gridGutter,
-        baselineColor: colorGridBaseline,
-        baselineDistance: baselineDistance,
-        userWantsSplitGutters: userWantsSplitGutters,
-        columnColor: columnColor,
-        columnColorTransparency: columnColorTransparency,
-        currentGrid: SHOWING_ALL_GRIDS
-    },
-    function (settings) {
-        'use strict';
+function updateGrid() {
+    'use strict';
 
-        if (settings.isGridEnabled) {
+    chrome.storage.sync.get(
+        {
+            baselineColor: colorGridBaseline,
+            baselineDistance: baselineDistance,
+            columnColor: columnColor,
+            columnColorTransparency: columnColorTransparency,
+            currentGrid: SHOWING_ALL_GRIDS,
+            gridColumn: gridColumn,
+            gridColumnCount: gridColumnCount,
+            gridGutter: gridGutter,
+            isGridEnabled: false,
+            userWantsSplitGutters: userWantsSplitGutters
+        },
+        function (settings) {
+            'use strict';
+
             head.appendChild(stylesheet);
             body.insertBefore(modularGrid__Container, firstChildOfBody);
             sideBarPopup__ColumnAndPageInfo.innerHTML =
-                'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn,10) + parseInt(settings.gridGutter,10))) + '</strong>' +
+                'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
                 '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
 
@@ -365,129 +367,88 @@ chrome.storage.sync.get(
             switch (settings.currentGrid) {
             case 'column-grid':
                 modularGrid.className = CSS__Classes.columngrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
 
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-                    }
-                );
+                if ('true' === settings.userWantsSplitGutters) {
+                    splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                } else {
+                    splitGutterWidth = 0;
+                }
+
+                document.getElementById('modular-grid').setAttribute('style',
+                    'height: ' + pageHeight + 'px; ' +
+                    'background-image: linear-gradient(90deg, ' +
+                    convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                    settings.gridColumn + 'px, transparent 0); ' +
+                    'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                    'background-position: ' + splitGutterWidth + 'px 0; ' +
+                    'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
 
             case 'modular-grid':
                 modularGrid.className = CSS__Classes.modulargrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
 
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
-                    }
-                );
+                if ('true' === settings.userWantsSplitGutters) {
+                    splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                } else {
+                    splitGutterWidth = 0;
+                }
+
+                document.getElementById('modular-grid').setAttribute('style',
+                    'height: ' + pageHeight + 'px; ' +
+                    'background-image: linear-gradient(90deg, ' +
+                    convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                    settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                    settings.baselineColor + ' 100%); ' +
+                    'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                    settings.baselineDistance + 'px; ' +
+                    'background-position: ' + splitGutterWidth + 'px 0; ' +
+                    'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
 
             case 'baseline-grid':
                 modularGrid.className = CSS__Classes.baselinegrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumnCount: gridColumnCount,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance
-                    },
-                    function (settings) {
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-                    }
-                );
+
+                document.getElementById('modular-grid').setAttribute('style',
+                    'height: ' + pageHeight + 'px; ' +
+                    'background-image: linear-gradient(0deg, transparent 95%, ' +
+                    settings.baselineColor + ' 100%); ' +
+                    'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                    'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
 
             case 'all-grids':
                 modularGrid.className = CSS__Classes.allgrids;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
 
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: none, linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-                    }
-                );
+                if ('true' === settings.userWantsSplitGutters) {
+                    splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                } else {
+                    splitGutterWidth = 0;
+                }
+
+                document.getElementById('modular-grid').setAttribute('style',
+                    'height: ' + pageHeight + 'px; ' +
+                    'background-image: none, linear-gradient(90deg, ' +
+                    convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                    settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                    settings.baselineColor + ' 100%); ' +
+                    'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                    settings.baselineDistance + 'px; ' +
+                    'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                    'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
             }
         }
-    }
-);
+    );
+}
 
+/**
+ * Invoked when the grid is enabled via the command shortcut or by clicking the
+ * browser action button.
+ */
 chrome.extension.onMessage.addListener(function (msg) {
     'use strict';
 
@@ -496,130 +457,97 @@ chrome.extension.onMessage.addListener(function (msg) {
         body.insertBefore(modularGrid__Container, firstChildOfBody);
         body.appendChild(sideBarPopup__Container);
 
-        chrome.storage.sync.get({currentGrid: 'all-grids'}, function (settings) {
-            switch (settings.currentGrid) {
-            case 'column-grid':
-                modularGrid.className = CSS__Classes.columngrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
+        chrome.storage.sync.get(
+            {
+                currentGrid: 'all-grids',
+                gridColumn: gridColumn,
+                gridColumnCount: gridColumnCount,
+                gridGutter: gridGutter,
+                userWantsSplitGutters: userWantsSplitGutters,
+                columnColor: columnColor,
+                baselineColor: colorGridBaseline,
+                baselineDistance: baselineDistance,
+                columnColorTransparency: columnColorTransparency
+            },
+            function (settings) {
+                switch (settings.currentGrid) {
+                case 'column-grid':
+                    modularGrid.className = CSS__Classes.columngrid;
 
-                        document.getElementById('modular-grid').setAttribute('style',
-                                'height: ' + pageHeight + 'px; ' +
-                                'background-image: linear-gradient(90deg, ' +
-                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                                settings.gridColumn + 'px, transparent 0); ' +
-                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                                'background-position: ' + splitGutterWidth + 'px 0; ' +
-                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
                     }
-                );
 
-                break;
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0); ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
-            case 'modular-grid':
-                modularGrid.className = CSS__Classes.modulargrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
+                    break;
 
-                        document.getElementById('modular-grid').setAttribute('style',
-                                'height: ' + pageHeight + 'px; ' +
-                                'background-image: linear-gradient(90deg, ' +
-                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                                settings.baselineColor + ' 100%); ' +
-                                'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                                settings.baselineDistance + 'px; ' +
-                                'background-position: ' + splitGutterWidth + 'px 0; ' +
-                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                case 'modular-grid':
+                    modularGrid.className = CSS__Classes.modulargrid;
+
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
                     }
-                );
 
-                break;
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        settings.baselineDistance + 'px; ' +
+                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
-            case 'baseline-grid':
-                modularGrid.className = CSS__Classes.baselinegrid;
-                chrome.storage.sync.get(
-                    {
-                        gridColumnCount: gridColumnCount,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance
-                    },
-                    function (settings) {
-                        document.getElementById('modular-grid').setAttribute('style',
-                                'height: ' + pageHeight + 'px; ' +
-                                'background-image: linear-gradient(0deg, transparent 95%, ' +
-                                settings.baselineColor + ' 100%); ' +
-                                'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                                'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
+                    break;
+
+                case 'baseline-grid':
+                    modularGrid.className = CSS__Classes.baselinegrid;
+
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                        'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
+
+                    break;
+
+                case 'all-grids':
+                    modularGrid.className = CSS__Classes.allgrids;
+
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
                     }
-                );
 
-                break;
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: none, linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        settings.baselineDistance + 'px; ' +
+                        'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
-            case 'all-grids':
-                modularGrid.className = CSS__Classes.allgrids;
-                chrome.storage.sync.get(
-                    {
-                        gridColumn: gridColumn,
-                        gridColumnCount: gridColumnCount,
-                        gridGutter: gridGutter,
-                        baselineColor: colorGridBaseline,
-                        baselineDistance: baselineDistance,
-                        userWantsSplitGutters: userWantsSplitGutters,
-                        columnColor: columnColor,
-                        columnColorTransparency: columnColorTransparency
-                    },
-                    function (settings) {
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
-
-                        document.getElementById('modular-grid').setAttribute('style',
-                                'height: ' + pageHeight + 'px; ' +
-                                'background-image: none, linear-gradient(90deg, ' +
-                                convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                                settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                                settings.baselineColor + ' 100%); ' +
-                                'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                                settings.baselineDistance + 'px; ' +
-                                'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
-                                'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-                    }
-                );
-
-                break;
-            }
-        });
+                    break;
+                }
+            });
     } else {
         modularGrid__Container.parentNode.removeChild(modularGrid__Container);
         sideBarPopup__Container.parentNode.removeChild(sideBarPopup__Container);
@@ -701,113 +629,111 @@ document.onkeydown = function (evnt) {
             function (settings) {
                 'use strict';
 
-                if (settings.isGridEnabled) {
-                    switch (gridChoice) {
-                    case SHOWING_NO_GRID:
-                        modularGrid.classList.add(CSS__Classes.columngrid);
+                switch (gridChoice) {
+                case SHOWING_NO_GRID:
+                    modularGrid.classList.add(CSS__Classes.columngrid);
 
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
-
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-
-                        chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
-
-                        break;
-
-                    case SHOWING_COLUMN_GRID:
-                        modularGrid.classList.remove(CSS__Classes.columngrid);
-                        modularGrid.classList.add(CSS__Classes.modulargrid);
-
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
-
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-
-                        chrome.storage.sync.set({currentGrid: CSS__Classes.modulargrid});
-
-                        break;
-
-                    case SHOWING_MODULAR_GRID:
-                        modularGrid.classList.remove(CSS__Classes.modulargrid);
-                        modularGrid.classList.add(CSS__Classes.baselinegrid);
-
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-
-                        chrome.storage.sync.set({currentGrid: CSS__Classes.baselinegrid});
-
-                        break;
-
-                    case SHOWING_BASELINE_GRID:
-                        modularGrid.classList.remove(CSS__Classes.baselinegrid);
-                        modularGrid.classList.add(CSS__Classes.allgrids);
-
-                        if ('true' === settings.userWantsSplitGutters) {
-                            splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
-                        } else {
-                            splitGutterWidth = 0;
-                        }
-
-                        document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
-                            'background-image: none, linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
-                            'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
-
-                        chrome.storage.sync.set({currentGrid: CSS__Classes.allgrids});
-
-                        break;
-
-                    case SHOWING_ALL_GRIDS:
-                        modularGrid.classList.remove(CSS__Classes.allgrids);
-                        modularGrid.removeAttribute('style');
-
-                        chrome.storage.sync.set({currentGrid: CSS__Classes.none});
-
-                        break;
-
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
                     }
 
-                    if (SHOWING_ALL_GRIDS === gridChoice) {
-                        gridChoice = -1;
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0); ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+
+                    chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
+
+                    break;
+
+                case SHOWING_COLUMN_GRID:
+                    modularGrid.classList.remove(CSS__Classes.columngrid);
+                    modularGrid.classList.add(CSS__Classes.modulargrid);
+
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
                     }
 
-                    gridChoice += 1;
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        settings.baselineDistance + 'px; ' +
+                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
 
-                    showColumnInfo();
+                    chrome.storage.sync.set({currentGrid: CSS__Classes.modulargrid});
+
+                    break;
+
+                case SHOWING_MODULAR_GRID:
+                    modularGrid.classList.remove(CSS__Classes.modulargrid);
+                    modularGrid.classList.add(CSS__Classes.baselinegrid);
+
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: 100% ' + settings.baselineDistance + 'px; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+
+                    chrome.storage.sync.set({currentGrid: CSS__Classes.baselinegrid});
+
+                    break;
+
+                case SHOWING_BASELINE_GRID:
+                    modularGrid.classList.remove(CSS__Classes.baselinegrid);
+                    modularGrid.classList.add(CSS__Classes.allgrids);
+
+                    if ('true' === settings.userWantsSplitGutters) {
+                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    } else {
+                        splitGutterWidth = 0;
+                    }
+
+                    document.getElementById('modular-grid').setAttribute('style',
+                        'height: ' + pageHeight + 'px; ' +
+                        'background-image: none, linear-gradient(90deg, ' +
+                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        settings.baselineColor + ' 100%); ' +
+                        'background-size: auto auto, ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        settings.baselineDistance + 'px; ' +
+                        'background-position: 0 0, ' + splitGutterWidth + 'px 0, 0 0; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+
+                    chrome.storage.sync.set({currentGrid: CSS__Classes.allgrids});
+
+                    break;
+
+                case SHOWING_ALL_GRIDS:
+                    modularGrid.classList.remove(CSS__Classes.allgrids);
+                    modularGrid.removeAttribute('style');
+
+                    chrome.storage.sync.set({currentGrid: CSS__Classes.none});
+
+                    break;
+
                 }
+
+                if (SHOWING_ALL_GRIDS === gridChoice) {
+                    gridChoice = -1;
+                }
+
+                gridChoice += 1;
+
+                showColumnInfo();
             }
         );
 
@@ -823,3 +749,5 @@ document.onkeydown = function (evnt) {
         shiftKeyPressed = false;
     }
 };
+
+chrome.storage.onChanged.addListener(updateGrid);
