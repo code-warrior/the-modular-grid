@@ -1,7 +1,7 @@
 # The Modular Grid — A Chrome Extension
 (v1.0.0)
 
-This extension provides a grid overlay to web pages in order for web authors to see how pages in development compare against the grid used in design. Some key options include the ability for the user to change column colors and opacity, column widths, gutter widths, and baseline/leading distance. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
+This extension provides a series of grid overlays in web pages so web authors can better implement design translations into web pages. Some key options include the ability to change column widths and colors, gutter widths, and baseline/leading distances. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
 
 - [Installation](#installation)
    * [Via GitHub Desktop Client](#github-desktop-installation)
