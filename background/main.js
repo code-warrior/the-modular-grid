@@ -23,7 +23,7 @@ let isGridEnabled = false;
 //
 chrome.storage.sync.set(
     {
-        currentGrid: 'all-grids',
+        currentGrid: 'modular-grid',
         isGridEnabled: false
     }
 );
