@@ -88,7 +88,7 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 `Alt+Shift+E` toggles the extension in Windows 10.
 
-`Ctrl+Shift+E` toggles the extension in Fedora Linux.
+`Alt+Shift+E` toggles the extension in Fedora Linux.
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
 

@@ -55,7 +55,7 @@
                 "mac": "Ctrl+Shift+E",
                 "default": "Ctrl+Shift+E",
                 "windows": "Alt+Shift+E",
-                "linux": "Ctrl+Shift+E"
+                "linux": "Alt+Shift+E"
             }
         }
     },
