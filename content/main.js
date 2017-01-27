@@ -113,14 +113,23 @@ chrome.storage.sync.get(
     {
         currentGrid: CSS__Classes.modulargrid,
         gridColumn: gridColumn,
+        gridColumnCount: gridColumnCount,
         gridGutter: gridGutter
     },
     function (settings) {
         'use strict';
 
+        let viewportWidth = html.clientWidth,
+            widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+            columnCount = parseInt(settings.gridColumnCount, 10);
+
+        if (viewportWidth < widthOfAllColumns) {
+            columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+        }
+
         sideBarPopup__ColumnAndPageInfo.innerHTML =
-                'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
-                '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
+                'Column count: <strong>' + columnCount + '</strong>' +
+                '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
                 '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
     }
 );
@@ -357,9 +366,18 @@ function updateGrid() {
         function (settings) {
             head.appendChild(stylesheet);
             body.insertBefore(modularGrid__Container, firstChildOfBody);
+
+            let viewportWidth = html.clientWidth,
+                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+                columnCount = parseInt(settings.gridColumnCount, 10);
+
+            if (viewportWidth < widthOfAllColumns) {
+                columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+            }
+
             sideBarPopup__ColumnAndPageInfo.innerHTML =
-                    'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
-                    '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
+                    'Column count: <strong>' + columnCount + '</strong>' +
+                    '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
                     '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
 
             body.appendChild(sideBarPopup__Container);
@@ -531,12 +549,21 @@ function showColumnInfo() {
         {
             currentGrid: CSS__Classes.modulargrid,
             gridColumn: gridColumn,
+            gridColumnCount: gridColumnCount,
             gridGutter: gridGutter
         },
         function (settings) {
-            document.getElementById('column-and-page-info').innerHTML =
-                    'Column count: <strong>' + Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + '</strong>' +
-                    '<br>Page width: <strong>' + html.clientWidth + 'px</strong>' +
+            let viewportWidth = html.clientWidth,
+                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+                columnCount = parseInt(settings.gridColumnCount, 10);
+
+            if (viewportWidth < widthOfAllColumns) {
+                columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+            }
+
+            sideBarPopup__ColumnAndPageInfo.innerHTML =
+                    'Column count: <strong>' + columnCount + '</strong>' +
+                    '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
                     '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
         }
     );
