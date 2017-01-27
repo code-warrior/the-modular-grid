@@ -84,11 +84,11 @@ Installing this extension requires downloading a folder and “feeding” it to 
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically. In your CLI, simply `git pull`, and in the GitHub Desktop client, click the `Sync` icon in the upper right hand corner.
 
 ### <a name="keyboard-shortcuts">Keyboard Shortcuts</a>
-`Command+Shift+A` toggles the extension in Mac.
+`Command+Shift+E` toggles the extension in Mac.
 
-`Ctrl+Shift+A` toggles the extension in Windows 10.
+`Alt+Shift+E` toggles the extension in Windows 10.
 
-`Ctrl+Shift+A` toggles the extension in Fedora Linux.
+`Ctrl+Shift+E` toggles the extension in Fedora Linux.
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
 

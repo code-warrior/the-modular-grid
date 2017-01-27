@@ -45,17 +45,17 @@
     "commands": {
         "toggle-feature": {
             "suggested_key": {
-                "default": "Ctrl+Shift+A",
-                "mac": "Ctrl+Shift+A"
+                "default": "Ctrl+Shift+E",
+                "mac": "Ctrl+Shift+E"
             },
             "description": "Enable and disable the extension"
         },
         "_execute_browser_action": {
             "suggested_key": {
-                "mac": "Ctrl+Shift+A",
-                "default": "Ctrl+Shift+A",
-                "windows": "Ctrl+Shift+A",
-                "linux": "Ctrl+Shift+A"
+                "mac": "Ctrl+Shift+E",
+                "default": "Ctrl+Shift+E",
+                "windows": "Alt+Shift+E",
+                "linux": "Ctrl+Shift+E"
             }
         }
     },
