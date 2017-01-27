@@ -239,7 +239,7 @@ function convertHexToRGBA(hex, opacity) {
     // TODO: Error-check the opacity variable, then remove the devel JSLint flag
     //
 
-    let patternForHex = /^#([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}([0-9]|[a-fA-F]){1}$/;
+    let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/;
     let currentNumberInNibble = 0;
     let previousNumberInNibble = 0;
     let calculateNibble = 0;
