@@ -97,7 +97,7 @@ chrome.commands.onCommand.addListener(function () {
 /**
  *
  */
-chrome.runtime.onMessage.addListener(function(response){
+chrome.runtime.onMessage.addListener(function (response) {
     'use strict';
 
     if ('openOptions' === response) {
