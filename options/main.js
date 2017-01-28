@@ -169,16 +169,30 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
     'use strict';
 
     document.onkeydown = function (evnt) {
+        let gutterWidthInput = document.getElementById('gutter--width-input').value;
+
         switch (evnt.keyCode) {
             case UP_ARROW_KEY:
-                document.getElementById('gutter--width-input').value++;
-                saveOptions();
+                gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
+
+                if (gutterWidthInput > GUTTER_WIDTH_MAX) {
+                    gutterWidthInput = gutterWidthInput - 1;
+                } else {
+                    document.getElementById('gutter--width-input').value = gutterWidthInput;
+                    saveOptions();
+                }
 
                 break;
 
             case DOWN_ARROW_KEY:
-                document.getElementById('gutter--width-input').value--;
-                saveOptions();
+                gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
+
+                if (gutterWidthInput < GUTTER_WIDTH_MIN) {
+                    gutterWidthInput = gutterWidthInput + 1;
+                } else {
+                    document.getElementById('gutter--width-input').value = gutterWidthInput;
+                    saveOptions();
+                }
 
                 break;
         }
