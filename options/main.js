@@ -247,16 +247,30 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
     'use strict';
 
     document.onkeydown = function (evnt) {
+        let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
+
         switch (evnt.keyCode) {
             case UP_ARROW_KEY:
-                document.getElementById('baseline--vertical-distance-input').value++;
-                saveOptions();
+                baselineDistance = parseInt(baselineDistance, 10) + 1;
+
+                if (baselineDistance > BASELINE_DISTANCE_MAX) {
+                    baselineDistance = baselineDistance - 1;
+                } else {
+                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                    saveOptions();
+                }
 
                 break;
 
             case DOWN_ARROW_KEY:
-                document.getElementById('baseline--vertical-distance-input').value--;
-                saveOptions();
+                baselineDistance = parseInt(baselineDistance, 10) - 1;
+
+                if (baselineDistance < BASELINE_DISTANCE_MIN) {
+                    baselineDistance = baselineDistance + 1;
+                } else {
+                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                    saveOptions();
+                }
 
                 break;
         }
