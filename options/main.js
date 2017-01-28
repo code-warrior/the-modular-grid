@@ -8,6 +8,10 @@ let inputErrorsIn = {
     baselineVerticalDistance: false
 };
 
+const
+    UP_ARROW_KEY = 38,
+    DOWN_ARROW_KEY = 40;
+
 /**
  * Save options.
  */
@@ -114,6 +118,27 @@ function toggleSaveButtonBasedOnInputErrors() {
     }
 }
 
+document.getElementById('column--width-input').addEventListener('focus', function () {
+    'use strict';
+
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+            case UP_ARROW_KEY:
+                document.getElementById('column--width-input').value++;
+                saveOptions();
+
+                break;
+
+            case DOWN_ARROW_KEY:
+                document.getElementById('column--width-input').value--;
+                saveOptions();
+
+                break;
+        }
+    };
+
+}, false);
+
 document.getElementById('column--width-input').addEventListener('blur', function () {
     'use strict';
 
@@ -131,6 +156,27 @@ document.getElementById('column--width-input').addEventListener('blur', function
 
     toggleSaveButtonBasedOnInputErrors();
 });
+
+document.getElementById('gutter--width-input').addEventListener('focus', function () {
+    'use strict';
+
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+            case UP_ARROW_KEY:
+                document.getElementById('gutter--width-input').value++;
+                saveOptions();
+
+                break;
+
+            case DOWN_ARROW_KEY:
+                document.getElementById('gutter--width-input').value--;
+                saveOptions();
+
+                break;
+        }
+    };
+
+}, false);
 
 document.getElementById('gutter--width-input').addEventListener('blur', function () {
     'use strict';
@@ -150,6 +196,27 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('column--count-input').addEventListener('focus', function () {
+    'use strict';
+
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+            case UP_ARROW_KEY:
+                document.getElementById('column--count-input').value++;
+                saveOptions();
+
+                break;
+
+            case DOWN_ARROW_KEY:
+                document.getElementById('column--count-input').value--;
+                saveOptions();
+
+                break;
+        }
+    };
+
+}, false);
+
 document.getElementById('column--count-input').addEventListener('blur', function () {
     'use strict';
 
@@ -167,6 +234,27 @@ document.getElementById('column--count-input').addEventListener('blur', function
 
     toggleSaveButtonBasedOnInputErrors();
 });
+
+document.getElementById('baseline--vertical-distance-input').addEventListener('focus', function () {
+    'use strict';
+
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+            case UP_ARROW_KEY:
+                document.getElementById('baseline--vertical-distance-input').value++;
+                saveOptions();
+
+                break;
+
+            case DOWN_ARROW_KEY:
+                document.getElementById('baseline--vertical-distance-input').value--;
+                saveOptions();
+
+                break;
+        }
+    };
+
+}, false);
 
 document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
     'use strict';

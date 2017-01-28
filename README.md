@@ -92,6 +92,8 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
 
+All text input boxes in the options page can be updates with the `↑` and `↓` arrow keys. Options are saved automatically.
+
 ## <a name="development">Development</a>
 
 ### <a name="development--compiling">Compiling</a>
