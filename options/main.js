@@ -10,7 +10,15 @@ let inputErrorsIn = {
 
 const
     UP_ARROW_KEY = 38,
-    DOWN_ARROW_KEY = 40;
+    DOWN_ARROW_KEY = 40,
+    COLUMN_WIDTH_MIN = 1.0,
+    COLUMN_WIDTH_MAX = 128.9,
+    COLUMN_COUNT_MIN = 1,
+    COLUMN_COUNT_MAX = 24,
+    GUTTER_WIDTH_MIN = 1.0,
+    GUTTER_WIDTH_MAX = 128.9,
+    BASELINE_DISTANCE_MIN = 12,
+    BASELINE_DISTANCE_MAX = 128;
 
 /**
  * Save options.
