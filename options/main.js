@@ -208,16 +208,30 @@ document.getElementById('column--count-input').addEventListener('focus', functio
     'use strict';
 
     document.onkeydown = function (evnt) {
+        let columnCount = document.getElementById('column--count-input').value;
+
         switch (evnt.keyCode) {
             case UP_ARROW_KEY:
-                document.getElementById('column--count-input').value++;
-                saveOptions();
+                columnCount = parseInt(columnCount, 10) + 1;
+
+                if (columnCount > COLUMN_COUNT_MAX) {
+                    columnCount = columnCount - 1;
+                } else {
+                    document.getElementById('column--count-input').value = columnCount;
+                    saveOptions();
+                }
 
                 break;
 
             case DOWN_ARROW_KEY:
-                document.getElementById('column--count-input').value--;
-                saveOptions();
+                columnCount = parseInt(columnCount, 10) - 1;
+
+                if (columnCount < COLUMN_COUNT_MIN) {
+                    columnCount = columnCount + 1;
+                } else {
+                    document.getElementById('column--count-input').value = columnCount;
+                    saveOptions();
+                }
 
                 break;
         }
