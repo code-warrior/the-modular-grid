@@ -325,7 +325,8 @@ function convertHexToRGBA(hex, opacity) {
                 rgbColor = rgbColor + calculateNibble;
 
                 //
-                // And, if we’re not at the end of the hex string, append a comma and a space.
+                // And, if we’re not at the end of the hex string, append a comma and
+                // a space.
                 //
                 if (0 !== (index % (END_OF_HEX + 2))) {
                     rgbColor = rgbColor + ', ';
@@ -333,14 +334,15 @@ function convertHexToRGBA(hex, opacity) {
             }
 
             //
-            // Keep track of the previous nibble in order to carry out the conversion in the beginning of the if
-            // statement.
+            // Keep track of the previous nibble in order to carry out the conversion
+            // in the beginning of the if statement.
             //
             previousNumberInNibble = currentNumberInNibble;
         }
 
         //
-        // We’ve arrived at the end of the conversion, so append the opacity and the closing of the string.
+        // We’ve arrived at the end of the conversion, so append the opacity and the
+        // closing of the string.
         //
         rgbColor = rgbColor + opacity + ')';
     } else {
