@@ -81,10 +81,10 @@ p {
 }
 
 #notification {
-   margin: 24px !important;
+   margin: 18px !important;
    border: 1px solid get-color('background', 'primary') !important;
    border-radius: 8px !important;
-   padding: 24px !important;
+   padding: 24px 24px 52px !important;
    text-align: center !important;
    line-height: 1.4 !important;
    font-size: 1.2rem !important;
@@ -92,10 +92,10 @@ p {
 
 #status {
    position: fixed !important;
-   right: -4px !important;
-   bottom: 100px !important;
+   right: 0 !important;
+   bottom: 58px !important;
    z-index: 3 !important;
-   margin: 24px !important;
+   margin: 12px !important;
 }
 
 #save-options {
@@ -105,10 +105,10 @@ p {
    border: 0 !important;
    box-shadow: 0 0 10px 10px get-color('grid', 'column') !important;
    background-color: get-color('grid', 'column') !important;
-   padding: 24px !important;
+   padding: 4px !important;
    color: get-color('background', 'primary') !important;
    font-family: $font--stack !important;
-   font-size: 1.5rem !important;
+   font-size: 1.1rem !important;
 }
 
 .error-message {

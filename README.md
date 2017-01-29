@@ -3,6 +3,10 @@
 
 This extension provides a series of grid overlays in web pages so web authors can better implement design translations into web pages. Some key options include the ability to change column widths and colors, gutter widths, and baseline/leading distances. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
 
+## Warning
+
+There are currently some strange UX bugs in the extension when used in multiple tabs. These will be resolved by 11 February, if not sooner. It’s advisable to *remove* the extension altogether after use. To do so, context-click The Modular Grid’s extension icon next to the address bar, then choose “Remove from Chrome…”.
+
 - [Installation](#installation)
    * [Via GitHub Desktop Client](#github-desktop-installation)
    * [Via The Command Line](#command-line-installation)
@@ -80,13 +84,15 @@ Installing this extension requires downloading a folder and “feeding” it to 
 Once the project is stable, it will be released via the Chrome Web Store. In the meantime, you can pull updates periodically. In your CLI, simply `git pull`, and in the GitHub Desktop client, click the `Sync` icon in the upper right hand corner.
 
 ### <a name="keyboard-shortcuts">Keyboard Shortcuts</a>
-`Command+Shift+A` toggles the extension in Mac.
+`Command+Shift+E` toggles the extension in Mac.
 
-`Ctrl+Shift+A` toggles the extension in Windows 10.
+`Alt+Shift+E` toggles the extension in Windows 10.
 
-`Ctrl+Shift+A` toggles the extension in Fedora Linux.
+`Alt+Shift+E` toggles the extension in Fedora Linux.
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
+
+All text input boxes in the options page can be updates with the `↑` and `↓` arrow keys. Options are saved automatically.
 
 ## <a name="development">Development</a>
 
