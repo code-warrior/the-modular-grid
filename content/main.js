@@ -120,17 +120,23 @@ chrome.storage.sync.get(
         'use strict';
 
         let viewportWidth = html.clientWidth,
-            widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+            widthOfAllColumns =
+                    parseInt(settings.gridColumnCount, 10) *
+                    (parseInt(settings.gridColumn, 10) +
+                    parseInt(settings.gridGutter, 10)),
             columnCount = parseInt(settings.gridColumnCount, 10);
 
         if (viewportWidth < widthOfAllColumns) {
-            columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+            columnCount =
+                    Math.floor(html.clientWidth /
+                    (parseInt(settings.gridColumn, 10) +
+                    parseInt(settings.gridGutter, 10)));
         }
 
         sideBarPopup__ColumnAndPageInfo.innerHTML =
-                'Column count: <strong>' + columnCount + '</strong>' +
-                '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
-                '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
+                'Column count: <strong>' + columnCount + '</strong><br>' +
+                'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
+                'Current grid layer: <strong>' + settings.currentGrid + '</strong>';
     }
 );
 
