@@ -181,13 +181,17 @@ function getLargestZIndexOfNonStaticElements(node) {
 
     function calculateLargestZIndex(node) {
         if (HTML_ELEMENT === node.nodeType) {
-            positionOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue('position');
+            positionOfCurrentHTMLElement = window.document.defaultView
+                .getComputedStyle(node, null)
+                .getPropertyValue('position');
 
             if ('static' !== positionOfCurrentHTMLElement) {
-                zIndexOfCurrentHTMLElement = window.document.defaultView.getComputedStyle(node, null).getPropertyValue('z-index');
+                zIndexOfCurrentHTMLElement = window.document.defaultView
+                    .getComputedStyle(node, null).getPropertyValue('z-index');
 
                 if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
-                    zIndexOfCurrentHTMLElement = parseInt(zIndexOfCurrentHTMLElement, 10);
+                    zIndexOfCurrentHTMLElement =
+                            parseInt(zIndexOfCurrentHTMLElement, 10);
 
                     if (null === largestZIndexThusFar) {
                         largestZIndexThusFar = zIndexOfCurrentHTMLElement;
@@ -317,7 +321,8 @@ function convertHexToRGBA(hex, opacity) {
                 //
                 // Perform the math to convert from hex to decimal…
                 //
-                calculateNibble = (Math.pow(HEX, 1) * previousNumberInNibble + Math.pow(HEX, 0) * currentNumberInNibble);
+                calculateNibble = (Math.pow(HEX, 1) * previousNumberInNibble +
+                        Math.pow(HEX, 0) * currentNumberInNibble);
 
                 //
                 // Append the result to the running calculation of the string…
@@ -376,17 +381,22 @@ function updateGrid() {
             body.insertBefore(modularGrid__Container, firstChildOfBody);
 
             let viewportWidth = html.clientWidth,
-                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
-                columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+                columnCount = Math.floor(html.clientWidth /
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)));
             }
 
             sideBarPopup__ColumnAndPageInfo.innerHTML =
-                    'Column count: <strong>' + columnCount + '</strong>' +
-                    '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
-                    '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
+                    'Column count: <strong>' + columnCount + '</strong><br>' +
+                    'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
+                    'Current grid layer: <strong>' + settings.currentGrid +
+                    '</strong>';
 
             body.appendChild(sideBarPopup__Container);
 
@@ -403,11 +413,15 @@ function updateGrid() {
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                        convertHexToRGBA(settings.columnColor,
+                        settings.columnColorTransparency) + ' ' +
                         settings.gridColumn + 'px, transparent 0); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
 
@@ -423,13 +437,18 @@ function updateGrid() {
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                        convertHexToRGBA(settings.columnColor,
+                        settings.columnColorTransparency) + ' ' +
+                        settings.gridColumn + 'px, transparent 0), ' +
+                        'linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        'background-size: ' + (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
 
@@ -440,8 +459,11 @@ function updateGrid() {
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
-                        'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                        'background-size: 100% ' +
+                        settings.baselineDistance + 'px; ' +
+                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
             }
@@ -487,11 +509,16 @@ chrome.extension.onMessage.addListener(function (msg) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                            convertHexToRGBA(settings.columnColor,
+                            settings.columnColorTransparency) + ' ' +
                             settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                            'background-size: ' +
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
 
@@ -507,13 +534,19 @@ chrome.extension.onMessage.addListener(function (msg) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                            convertHexToRGBA(settings.columnColor,
+                            settings.columnColorTransparency) + ' ' +
+                            settings.gridColumn + 'px, transparent 0), ' +
+                            'linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            'background-size: ' +
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
 
@@ -522,10 +555,13 @@ chrome.extension.onMessage.addListener(function (msg) {
 
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                            'max-width: ' + parseInt(settings.gridColumnCount, 10) + 'px');
+                            'background-image: linear-gradient(0deg, ' +
+                            'transparent 95%, ' + settings.baselineColor +
+                            ' 100%); ' +
+                            'background-size: 100% ' + settings.baselineDistance +
+                            'px; ' +
+                            'max-width: ' +
+                            parseInt(settings.gridColumnCount, 10) + 'px');
 
                     break;
                 }
@@ -562,17 +598,22 @@ function showColumnInfo() {
         },
         function (settings) {
             let viewportWidth = html.clientWidth,
-                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)),
+                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
-                columnCount = Math.floor(html.clientWidth / (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)));
+                columnCount = Math.floor(html.clientWidth /
+                        (parseInt(settings.gridColumn, 10) +
+                        parseInt(settings.gridGutter, 10)));
             }
 
             sideBarPopup__ColumnAndPageInfo.innerHTML =
-                    'Column count: <strong>' + columnCount + '</strong>' +
-                    '<br>Page width: <strong>' + viewportWidth + 'px</strong>' +
-                    '<br>Current grid layer: <strong>' + settings.currentGrid + '</strong>';
+                    'Column count: <strong>' + columnCount + '</strong><br>' +
+                    'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
+                    'Current grid layer: <strong>' + settings.currentGrid +
+                    '</strong>';
         }
     );
 }
@@ -632,13 +673,20 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
+                            convertHexToRGBA(settings.columnColor,
+                            settings.columnColorTransparency) + ' ' +
                             settings.gridColumn + 'px, transparent 0); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                            'background-size: ' +
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
-                    chrome.storage.sync.set({currentGrid: CSS__Classes.columngrid});
+                    chrome.storage.sync.set(
+                        {currentGrid: CSS__Classes.columngrid}
+                    );
 
                     break;
 
@@ -655,15 +703,24 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor, settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' +
+                            convertHexToRGBA(settings.columnColor,
+                            settings.columnColorTransparency) + ' ' +
+                            settings.gridColumn + 'px, transparent 0), ' +
+                            'linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
-                            'background-size: ' + (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            'background-size: ' +
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                            'max-width: ' +
+                            (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
-                    chrome.storage.sync.set({currentGrid: CSS__Classes.modulargrid});
+                    chrome.storage.sync.set(
+                        {currentGrid: CSS__Classes.modulargrid}
+                    );
 
                     break;
 
@@ -673,12 +730,18 @@ document.onkeydown = function (evnt) {
 
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' +
+                            'background-image: linear-gradient(0deg, ' +
+                            'transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance + 'px; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumn, 10) + parseInt(settings.gridGutter, 10))) + 'px;');
+                            'background-size: 100% ' + settings.baselineDistance +
+                            'px; ' +
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
-                    chrome.storage.sync.set({currentGrid: CSS__Classes.baselinegrid});
+                    chrome.storage.sync.set(
+                        {currentGrid: CSS__Classes.baselinegrid}
+                    );
 
                     break;
 
@@ -686,7 +749,9 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.remove(CSS__Classes.baselinegrid);
                     modularGrid.removeAttribute('style');
 
-                    chrome.storage.sync.set({currentGrid: CSS__Classes.none});
+                    chrome.storage.sync.set(
+                        {currentGrid: CSS__Classes.none}
+                    );
 
                     break;
 
