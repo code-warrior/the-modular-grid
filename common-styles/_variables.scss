@@ -62,11 +62,6 @@ $width--grid-column-full:  $width--grid-column + $width--grid-gutter; // 80px
 $height--leading:          24px;
 
 ///
-/// Responsive Breakpoints
-///
-$width--16u: 16 * $width--grid-column-full;
-
-///
 /// Styles specific to the info side bar created when the grid is shown to the user.
 ///
 $offset-sidebar: 14px;
