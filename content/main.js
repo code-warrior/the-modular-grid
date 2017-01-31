@@ -61,7 +61,7 @@ let html = document.querySelector('html'),
     gridColumn = 60,
     gridGutter = 20,
     splitGutterWidth = gridGutter / 2,
-    gridColumnCount = 16 * (gridColumn + gridGutter),
+    gridColumnCount = 16,
     userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height)
         ? document.height
