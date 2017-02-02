@@ -51,7 +51,7 @@ function saveOptions() {
         isGridEnabled: false,
         gridColumnWidth: gridColumn,
         gridColumnCount: gridColumnCount,
-        gridGutter: gridGutter,
+        gridGutterWidth: gridGutter,
         baselineColor: baselineColor,
         baselineDistance: baselineDistance,
         userWantsSplitGutters: userWantsSplitGutters,
@@ -77,7 +77,7 @@ function retrieveOptions() {
     chrome.storage.sync.get({
         gridColumnWidth: '60',
         gridColumnCount: '16',
-        gridGutter: '20',
+        gridGutterWidth: '20',
         baselineColor: '#29abe2',
         baselineDistance: '24',
         userWantsSplitGutters: 'true',
@@ -95,7 +95,7 @@ function retrieveOptions() {
         document.getElementById('baseline--vertical-distance-input').value =
                 settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
-                settings.gridGutter;
+                settings.gridGutterWidth;
         document.getElementById('margins--split-gutter-input').value =
                 settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =

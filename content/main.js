@@ -116,7 +116,7 @@ chrome.storage.sync.get(
         currentGrid: CSS__Classes.modulargrid,
         gridColumnWidth: defaultSettingFor.gridColumnWidth,
         gridColumnCount: defaultSettingFor.gridColumnCount,
-        gridGutter: defaultSettingFor.gridGutterWidth
+        gridGutterWidth: defaultSettingFor.gridGutterWidth
     },
     function (settings) {
         'use strict';
@@ -125,14 +125,14 @@ chrome.storage.sync.get(
             widthOfAllColumns =
                     parseInt(settings.gridColumnCount, 10) *
                     (parseInt(settings.gridColumnWidth, 10) +
-                    parseInt(settings.gridGutter, 10)),
+                    parseInt(settings.gridGutterWidth, 10)),
             columnCount = parseInt(settings.gridColumnCount, 10);
 
         if (viewportWidth < widthOfAllColumns) {
             columnCount =
                     Math.floor(html.clientWidth /
                     (parseInt(settings.gridColumnWidth, 10) +
-                    parseInt(settings.gridGutter, 10)));
+                    parseInt(settings.gridGutterWidth, 10)));
         }
 
         sideBarPopup__ColumnAndPageInfo.innerHTML =
@@ -375,7 +375,7 @@ function updateGrid() {
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumnWidth: defaultSettingFor.gridColumnWidth,
             gridColumnCount: defaultSettingFor.gridColumnCount,
-            gridGutter: defaultSettingFor.gridGutterWidth,
+            gridGutterWidth: defaultSettingFor.gridGutterWidth,
             isGridEnabled: false,
             userWantsSplitGutters: userWantsSplitGutters
         },
@@ -386,13 +386,13 @@ function updateGrid() {
             let viewportWidth = html.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)),
+                        parseInt(settings.gridGutterWidth, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
                 columnCount = Math.floor(html.clientWidth /
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)));
+                        parseInt(settings.gridGutterWidth, 10)));
             }
 
             sideBarPopup__ColumnAndPageInfo.innerHTML =
@@ -408,7 +408,7 @@ function updateGrid() {
                 modularGrid.className = CSS__Classes.columngrid;
 
                 if ('true' === settings.userWantsSplitGutters) {
-                    splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                 } else {
                     splitGutterWidth = 0;
                 }
@@ -420,11 +420,11 @@ function updateGrid() {
                         settings.columnColorTransparency) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                        parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                 break;
 
@@ -432,7 +432,7 @@ function updateGrid() {
                 modularGrid.className = CSS__Classes.modulargrid;
 
                 if ('true' === settings.userWantsSplitGutters) {
-                    splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                    splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                 } else {
                     splitGutterWidth = 0;
                 }
@@ -446,12 +446,12 @@ function updateGrid() {
                         'linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                        parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                 break;
 
@@ -466,7 +466,7 @@ function updateGrid() {
                         settings.baselineDistance + 'px; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                 break;
             }
@@ -491,7 +491,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 currentGrid: CSS__Classes.modulargrid,
                 gridColumnWidth: defaultSettingFor.gridColumnWidth,
                 gridColumnCount: defaultSettingFor.gridColumnCount,
-                gridGutter: defaultSettingFor.gridGutterWidth,
+                gridGutterWidth: defaultSettingFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
                 gridColumnColor: defaultSettingFor.gridColumnColor,
                 baselineColor: defaultSettingFor.gridBaselineColor,
@@ -504,7 +504,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                     modularGrid.className = CSS__Classes.columngrid;
 
                     if ('true' === settings.userWantsSplitGutters) {
-                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
                     }
@@ -517,11 +517,11 @@ chrome.extension.onMessage.addListener(function (msg) {
                             settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     break;
 
@@ -529,7 +529,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                     modularGrid.className = CSS__Classes.modulargrid;
 
                     if ('true' === settings.userWantsSplitGutters) {
-                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
                     }
@@ -544,12 +544,12 @@ chrome.extension.onMessage.addListener(function (msg) {
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     break;
 
@@ -565,7 +565,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     break;
                 }
@@ -598,19 +598,19 @@ function showColumnInfo() {
             currentGrid: CSS__Classes.modulargrid,
             gridColumnWidth: defaultSettingFor.gridColumnWidth,
             gridColumnCount: defaultSettingFor.gridColumnCount,
-            gridGutter: defaultSettingFor.gridGutterWidth
+            gridGutterWidth: defaultSettingFor.gridGutterWidth
         },
         function (settings) {
             let viewportWidth = html.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)),
+                        parseInt(settings.gridGutterWidth, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
                 columnCount = Math.floor(html.clientWidth /
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutter, 10)));
+                        parseInt(settings.gridGutterWidth, 10)));
             }
 
             sideBarPopup__ColumnAndPageInfo.innerHTML =
@@ -655,7 +655,7 @@ document.onkeydown = function (evnt) {
                 isGridEnabled: false,
                 gridColumnWidth: defaultSettingFor.gridColumnWidth,
                 gridColumnCount: defaultSettingFor.gridColumnCount,
-                gridGutter: defaultSettingFor.gridGutterWidth,
+                gridGutterWidth: defaultSettingFor.gridGutterWidth,
                 baselineColor: defaultSettingFor.gridBaselineColor,
                 baselineDistance: defaultSettingFor.gridBaselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
@@ -669,7 +669,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.add(CSS__Classes.columngrid);
 
                     if ('true' === settings.userWantsSplitGutters) {
-                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
                     }
@@ -682,11 +682,11 @@ document.onkeydown = function (evnt) {
                             settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.columngrid}
@@ -699,7 +699,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.add(CSS__Classes.modulargrid);
 
                     if ('true' === settings.userWantsSplitGutters) {
-                        splitGutterWidth = (parseInt(settings.gridGutter, 10) / 2);
+                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
                     }
@@ -714,13 +714,13 @@ document.onkeydown = function (evnt) {
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' +
                             (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.modulargrid}
@@ -741,7 +741,7 @@ document.onkeydown = function (evnt) {
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutter, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.baselinegrid}
