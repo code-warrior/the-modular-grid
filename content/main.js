@@ -84,11 +84,7 @@ let html = document.querySelector('html'),
         gridMarginGutterSplit: true,
         gridBaselineColor: '#29abe2',
         gridBaselineDistance: 24
-    },
-
-    colorGridBaseline = '#29abe2',
-
-    baselineDistance = 24;
+    };
 
 stylesheet.href = chrome.extension.getURL('content/main.css');
 stylesheet.rel = 'stylesheet';
