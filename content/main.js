@@ -81,7 +81,7 @@ let html = document.querySelector('html'),
         gridColumnWidth: 60,
         gridColumnCount: 16,
         gridColumnColor: '#c80000',
-        gridColumnColorTransparency: 0.2,
+        gridColumnColorTransparency: 0.2, // TODO: Consider changing this to gridColumnColorOpacity
         gridGutterWidth: 20,
         gridMarginGutterSplit: true,
         gridBaselineColor: '#29abe2',
