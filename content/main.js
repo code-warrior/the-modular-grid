@@ -81,7 +81,7 @@ let html = document.querySelector('html'),
         gridColumnWidth: 60,
         gridColumnCount: 16,
         gridColumnColor: '#c80000',
-        gridColumnColorTransparency: 0.2, // TODO: Consider changing this to gridColumnColorOpacity
+        gridColumnColorOpacity: 0.2,
         gridGutterWidth: 20,
         gridMarginGutterSplit: true,
         gridBaselineColor: '#29abe2',
@@ -378,7 +378,7 @@ function updateGrid() {
             baselineColor: colorGridBaseline,
             baselineDistance: baselineDistance,
             columnColor: initialSettingsFor.gridColumnColor,
-            columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
+            columnColorTransparency: initialSettingsFor.gridColumnColorOpacity,
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: initialSettingsFor.gridColumnCount,
@@ -503,7 +503,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 columnColor: initialSettingsFor.gridColumnColor,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
-                columnColorTransparency: initialSettingsFor.gridColumnColorTransparency
+                columnColorTransparency: initialSettingsFor.gridColumnColorOpacity
             },
             function (settings) {
                 switch (settings.currentGrid) {
@@ -666,7 +666,7 @@ document.onkeydown = function (evnt) {
                 baselineDistance: baselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: initialSettingsFor.gridColumnColor,
-                columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
+                columnColorTransparency: initialSettingsFor.gridColumnColorOpacity,
                 currentGrid: SHOWING_MODULAR_GRID
             },
             function (settings) {
