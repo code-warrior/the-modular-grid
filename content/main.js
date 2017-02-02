@@ -89,7 +89,6 @@ let html = document.querySelector('html'),
     },
 
     columnColor = '#c80000',
-    columnColorTransparency = 0.2,
     colorGridBaseline = '#29abe2',
 
     baselineDistance = 24;
@@ -161,6 +160,7 @@ sideBarPopup__OptionsLink.addEventListener('click', function () {
 
     chrome.runtime.sendMessage('openOptions');
 });
+
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
@@ -379,7 +379,7 @@ function updateGrid() {
             baselineColor: colorGridBaseline,
             baselineDistance: baselineDistance,
             columnColor: columnColor,
-            columnColorTransparency: columnColorTransparency,
+            columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: initialSettingsFor.gridColumnCount,
@@ -504,7 +504,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 columnColor: columnColor,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
-                columnColorTransparency: columnColorTransparency
+                columnColorTransparency: initialSettingsFor.gridColumnColorTransparency
             },
             function (settings) {
                 switch (settings.currentGrid) {
@@ -667,7 +667,7 @@ document.onkeydown = function (evnt) {
                 baselineDistance: baselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: columnColor,
-                columnColorTransparency: columnColorTransparency,
+                columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
                 currentGrid: SHOWING_MODULAR_GRID
             },
             function (settings) {
