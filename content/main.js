@@ -389,7 +389,7 @@ function updateGrid() {
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.gridColumnColor,
-                        settings.columnColorTransparency) + ' ' +
+                        settings.gridColumnColorOpacity) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
@@ -413,7 +413,7 @@ function updateGrid() {
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.gridColumnColor,
-                        settings.columnColorTransparency) + ' ' +
+                        settings.gridColumnColorOpacity) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0), ' +
                         'linear-gradient(0deg, transparent 95%, ' +
                         settings.gridBaselineColor + ' 100%); ' +
@@ -475,7 +475,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
-                            settings.columnColorTransparency) + ' ' +
+                            settings.gridColumnColorOpacity) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
@@ -500,7 +500,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
-                            settings.columnColorTransparency) + ' ' +
+                            settings.gridColumnColorOpacity) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
                             settings.gridBaselineColor + ' 100%); ' +
