@@ -100,12 +100,7 @@ sideBarPopup__Instructions.innerHTML =
         'cycle through the grids by pressing <kbd>esc</kbd>.';
 
 chrome.storage.sync.get(
-    {
-        currentGrid: CSS__Classes.modulargrid,
-        gridColumnWidth: defaultSettingFor.gridColumnWidth,
-        gridColumnCount: defaultSettingFor.gridColumnCount,
-        gridGutterWidth: defaultSettingFor.gridGutterWidth
-    },
+    null,
     function (settings) {
         'use strict';
 
@@ -355,18 +350,7 @@ function updateGrid() {
     'use strict';
 
     chrome.storage.sync.get(
-        {
-            gridBaselineColor: defaultSettingFor.gridBaselineColor,
-            baselineDistance: defaultSettingFor.gridBaselineDistance,
-            gridColumnColor: defaultSettingFor.gridColumnColor,
-            columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
-            currentGrid: SHOWING_MODULAR_GRID,
-            gridColumnWidth: defaultSettingFor.gridColumnWidth,
-            gridColumnCount: defaultSettingFor.gridColumnCount,
-            gridGutterWidth: defaultSettingFor.gridGutterWidth,
-            isGridEnabled: false,
-            userWantsSplitGutters: userWantsSplitGutters
-        },
+        null,
         function (settings) {
             head.appendChild(stylesheet);
             body.insertBefore(modularGrid__Container, firstChildOfBody);
@@ -475,17 +459,7 @@ chrome.extension.onMessage.addListener(function (msg) {
         body.appendChild(sideBarPopup__Container);
 
         chrome.storage.sync.get(
-            {
-                currentGrid: CSS__Classes.modulargrid,
-                gridColumnWidth: defaultSettingFor.gridColumnWidth,
-                gridColumnCount: defaultSettingFor.gridColumnCount,
-                gridGutterWidth: defaultSettingFor.gridGutterWidth,
-                userWantsSplitGutters: userWantsSplitGutters,
-                gridColumnColor: defaultSettingFor.gridColumnColor,
-                gridBaselineColor: defaultSettingFor.gridBaselineColor,
-                baselineDistance: defaultSettingFor.gridBaselineDistance,
-                columnColorTransparency: defaultSettingFor.gridColumnColorOpacity
-            },
+            null,
             function (settings) {
                 switch (settings.currentGrid) {
                 case 'column-grid':
@@ -582,12 +556,7 @@ function showColumnInfo() {
     'use strict';
 
     chrome.storage.sync.get(
-        {
-            currentGrid: CSS__Classes.modulargrid,
-            gridColumnWidth: defaultSettingFor.gridColumnWidth,
-            gridColumnCount: defaultSettingFor.gridColumnCount,
-            gridGutterWidth: defaultSettingFor.gridGutterWidth
-        },
+        null,
         function (settings) {
             let viewportWidth = html.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
@@ -639,18 +608,7 @@ document.onkeydown = function (evnt) {
 
     case ESCAPE_KEY:
         chrome.storage.sync.get(
-            {
-                isGridEnabled: false,
-                gridColumnWidth: defaultSettingFor.gridColumnWidth,
-                gridColumnCount: defaultSettingFor.gridColumnCount,
-                gridGutterWidth: defaultSettingFor.gridGutterWidth,
-                gridBaselineColor: defaultSettingFor.gridBaselineColor,
-                baselineDistance: defaultSettingFor.gridBaselineDistance,
-                userWantsSplitGutters: userWantsSplitGutters,
-                gridColumnColor: defaultSettingFor.gridColumnColor,
-                columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
-                currentGrid: SHOWING_MODULAR_GRID
-            },
+            null,
             function (settings) {
                 switch (gridChoice) {
                 case SHOWING_NO_GRID:
