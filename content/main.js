@@ -74,7 +74,7 @@ let html = document.querySelector('html'),
         none: 'none'
     },
 
-    initialSettingsFor = {
+    initialSettingFor = {
         gridColumnWidth: 60,
         gridColumnCount: 16,
         gridColumnColor: '#c80000',
@@ -114,9 +114,9 @@ sideBarPopup__Instructions.innerHTML =
 chrome.storage.sync.get(
     {
         currentGrid: CSS__Classes.modulargrid,
-        gridColumn: initialSettingsFor.gridColumnWidth,
-        gridColumnCount: initialSettingsFor.gridColumnCount,
-        gridGutter: initialSettingsFor.gridGutterWidth
+        gridColumn: initialSettingFor.gridColumnWidth,
+        gridColumnCount: initialSettingFor.gridColumnCount,
+        gridGutter: initialSettingFor.gridGutterWidth
     },
     function (settings) {
         'use strict';
@@ -368,14 +368,14 @@ function updateGrid() {
 
     chrome.storage.sync.get(
         {
-            baselineColor: initialSettingsFor.gridBaselineColor,
-            baselineDistance: initialSettingsFor.gridBaselineDistance,
-            columnColor: initialSettingsFor.gridColumnColor,
-            columnColorTransparency: initialSettingsFor.gridColumnColorOpacity,
+            baselineColor: initialSettingFor.gridBaselineColor,
+            baselineDistance: initialSettingFor.gridBaselineDistance,
+            columnColor: initialSettingFor.gridColumnColor,
+            columnColorTransparency: initialSettingFor.gridColumnColorOpacity,
             currentGrid: SHOWING_MODULAR_GRID,
-            gridColumn: initialSettingsFor.gridColumnWidth,
-            gridColumnCount: initialSettingsFor.gridColumnCount,
-            gridGutter: initialSettingsFor.gridGutterWidth,
+            gridColumn: initialSettingFor.gridColumnWidth,
+            gridColumnCount: initialSettingFor.gridColumnCount,
+            gridGutter: initialSettingFor.gridGutterWidth,
             isGridEnabled: false,
             userWantsSplitGutters: userWantsSplitGutters
         },
@@ -489,14 +489,14 @@ chrome.extension.onMessage.addListener(function (msg) {
         chrome.storage.sync.get(
             {
                 currentGrid: CSS__Classes.modulargrid,
-                gridColumn: initialSettingsFor.gridColumnWidth,
-                gridColumnCount: initialSettingsFor.gridColumnCount,
-                gridGutter: initialSettingsFor.gridGutterWidth,
+                gridColumn: initialSettingFor.gridColumnWidth,
+                gridColumnCount: initialSettingFor.gridColumnCount,
+                gridGutter: initialSettingFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: initialSettingsFor.gridColumnColor,
-                baselineColor: initialSettingsFor.gridBaselineColor,
-                baselineDistance: initialSettingsFor.gridBaselineDistance,
-                columnColorTransparency: initialSettingsFor.gridColumnColorOpacity
+                columnColor: initialSettingFor.gridColumnColor,
+                baselineColor: initialSettingFor.gridBaselineColor,
+                baselineDistance: initialSettingFor.gridBaselineDistance,
+                columnColorTransparency: initialSettingFor.gridColumnColorOpacity
             },
             function (settings) {
                 switch (settings.currentGrid) {
@@ -595,9 +595,9 @@ function showColumnInfo() {
     chrome.storage.sync.get(
         {
             currentGrid: CSS__Classes.modulargrid,
-            gridColumn: initialSettingsFor.gridColumnWidth,
-            gridColumnCount: initialSettingsFor.gridColumnCount,
-            gridGutter: initialSettingsFor.gridGutterWidth
+            gridColumn: initialSettingFor.gridColumnWidth,
+            gridColumnCount: initialSettingFor.gridColumnCount,
+            gridGutter: initialSettingFor.gridGutterWidth
         },
         function (settings) {
             let viewportWidth = html.clientWidth,
@@ -652,14 +652,14 @@ document.onkeydown = function (evnt) {
         chrome.storage.sync.get(
             {
                 isGridEnabled: false,
-                gridColumn: initialSettingsFor.gridColumnWidth,
-                gridColumnCount: initialSettingsFor.gridColumnCount,
-                gridGutter: initialSettingsFor.gridGutterWidth,
-                baselineColor: initialSettingsFor.gridBaselineColor,
-                baselineDistance: initialSettingsFor.gridBaselineDistance,
+                gridColumn: initialSettingFor.gridColumnWidth,
+                gridColumnCount: initialSettingFor.gridColumnCount,
+                gridGutter: initialSettingFor.gridGutterWidth,
+                baselineColor: initialSettingFor.gridBaselineColor,
+                baselineDistance: initialSettingFor.gridBaselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: initialSettingsFor.gridColumnColor,
-                columnColorTransparency: initialSettingsFor.gridColumnColorOpacity,
+                columnColor: initialSettingFor.gridColumnColor,
+                columnColorTransparency: initialSettingFor.gridColumnColorOpacity,
                 currentGrid: SHOWING_MODULAR_GRID
             },
             function (settings) {
