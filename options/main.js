@@ -30,33 +30,30 @@ const
 function saveOptions() {
     'use strict';
 
-    let gridColumn =
-                document.getElementById('column--width-input').value,
-        gridColumnCount =
-                document.getElementById('column--count-input').value,
-        gridGutter =
-                document.getElementById('gutter--width-input').value,
-        baselineColor =
-                document.getElementById('baseline--color-input').value,
-        baselineDistance =
-                document.getElementById('baseline--vertical-distance-input').value,
-        userWantsSplitGutters =
-                document.getElementById('margins--split-gutter-input').value,
-        columnColor =
-                document.getElementById('column--color-input').value,
-        columnColorTransparency =
-                document.getElementById('column--opacity-input').value;
-
     chrome.storage.sync.set({
-        isGridEnabled: false,
-        gridColumnWidth: gridColumn,
-        gridColumnCount: gridColumnCount,
-        gridGutterWidth: gridGutter,
-        gridBaselineColor: baselineColor,
-        baselineDistance: baselineDistance,
-        userWantsSplitGutters: userWantsSplitGutters,
-        gridColumnColor: columnColor,
-        columnColorTransparency: columnColorTransparency
+        gridColumnWidth:
+            document.getElementById('column--width-input').value,
+
+        gridColumnCount:
+            document.getElementById('column--count-input').value,
+
+        gridGutterWidth:
+            document.getElementById('gutter--width-input').value,
+
+        gridBaselineColor:
+            document.getElementById('baseline--color-input').value,
+
+        gridBaselineDistance:
+            document.getElementById('baseline--vertical-distance-input').value,
+
+        marginsAreEnabled:
+            document.getElementById('margins--split-gutter-input').value,
+
+        gridColumnColor:
+            document.getElementById('column--color-input').value,
+
+        gridColumnColorOpacity:
+            document.getElementById('column--opacity-input').value
     }, function () {
         let status = document.getElementById('status');
 
