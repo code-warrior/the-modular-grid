@@ -114,7 +114,7 @@ sideBarPopup__Instructions.innerHTML =
 chrome.storage.sync.get(
     {
         currentGrid: CSS__Classes.modulargrid,
-        gridColumn: defaultSettingFor.gridColumnWidth,
+        gridColumnWidth: defaultSettingFor.gridColumnWidth,
         gridColumnCount: defaultSettingFor.gridColumnCount,
         gridGutter: defaultSettingFor.gridGutterWidth
     },
@@ -124,14 +124,14 @@ chrome.storage.sync.get(
         let viewportWidth = html.clientWidth,
             widthOfAllColumns =
                     parseInt(settings.gridColumnCount, 10) *
-                    (parseInt(settings.gridColumn, 10) +
+                    (parseInt(settings.gridColumnWidth, 10) +
                     parseInt(settings.gridGutter, 10)),
             columnCount = parseInt(settings.gridColumnCount, 10);
 
         if (viewportWidth < widthOfAllColumns) {
             columnCount =
                     Math.floor(html.clientWidth /
-                    (parseInt(settings.gridColumn, 10) +
+                    (parseInt(settings.gridColumnWidth, 10) +
                     parseInt(settings.gridGutter, 10)));
         }
 
@@ -373,7 +373,7 @@ function updateGrid() {
             columnColor: defaultSettingFor.gridColumnColor,
             columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
             currentGrid: SHOWING_MODULAR_GRID,
-            gridColumn: defaultSettingFor.gridColumnWidth,
+            gridColumnWidth: defaultSettingFor.gridColumnWidth,
             gridColumnCount: defaultSettingFor.gridColumnCount,
             gridGutter: defaultSettingFor.gridGutterWidth,
             isGridEnabled: false,
@@ -385,13 +385,13 @@ function updateGrid() {
 
             let viewportWidth = html.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
                 columnCount = Math.floor(html.clientWidth /
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)));
             }
 
@@ -418,12 +418,12 @@ function updateGrid() {
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.columnColor,
                         settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) +
+                        settings.gridColumnWidth + 'px, transparent 0); ' +
+                        'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
@@ -442,15 +442,15 @@ function updateGrid() {
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.columnColor,
                         settings.columnColorTransparency) + ' ' +
-                        settings.gridColumn + 'px, transparent 0), ' +
+                        settings.gridColumnWidth + 'px, transparent 0), ' +
                         'linear-gradient(0deg, transparent 95%, ' +
                         settings.baselineColor + ' 100%); ' +
-                        'background-size: ' + (parseInt(settings.gridColumn, 10) +
+                        'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
@@ -465,7 +465,7 @@ function updateGrid() {
                         'background-size: 100% ' +
                         settings.baselineDistance + 'px; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10))) + 'px;');
 
                 break;
@@ -489,7 +489,7 @@ chrome.extension.onMessage.addListener(function (msg) {
         chrome.storage.sync.get(
             {
                 currentGrid: CSS__Classes.modulargrid,
-                gridColumn: defaultSettingFor.gridColumnWidth,
+                gridColumnWidth: defaultSettingFor.gridColumnWidth,
                 gridColumnCount: defaultSettingFor.gridColumnCount,
                 gridGutter: defaultSettingFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
@@ -514,13 +514,13 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.columnColor,
                             settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
+                            settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
@@ -539,16 +539,16 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.columnColor,
                             settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), ' +
+                            settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' +
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
@@ -564,7 +564,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-size: 100% ' + settings.baselineDistance +
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
@@ -596,20 +596,20 @@ function showColumnInfo() {
     chrome.storage.sync.get(
         {
             currentGrid: CSS__Classes.modulargrid,
-            gridColumn: defaultSettingFor.gridColumnWidth,
+            gridColumnWidth: defaultSettingFor.gridColumnWidth,
             gridColumnCount: defaultSettingFor.gridColumnCount,
             gridGutter: defaultSettingFor.gridGutterWidth
         },
         function (settings) {
             let viewportWidth = html.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
                 columnCount = Math.floor(html.clientWidth /
-                        (parseInt(settings.gridColumn, 10) +
+                        (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutter, 10)));
             }
 
@@ -653,7 +653,7 @@ document.onkeydown = function (evnt) {
         chrome.storage.sync.get(
             {
                 isGridEnabled: false,
-                gridColumn: defaultSettingFor.gridColumnWidth,
+                gridColumnWidth: defaultSettingFor.gridColumnWidth,
                 gridColumnCount: defaultSettingFor.gridColumnCount,
                 gridGutter: defaultSettingFor.gridGutterWidth,
                 baselineColor: defaultSettingFor.gridBaselineColor,
@@ -679,13 +679,13 @@ document.onkeydown = function (evnt) {
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.columnColor,
                             settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0); ' +
+                            settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10)) + 'px 100%; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     chrome.storage.sync.set(
@@ -709,17 +709,17 @@ document.onkeydown = function (evnt) {
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.columnColor,
                             settings.columnColorTransparency) + ' ' +
-                            settings.gridColumn + 'px, transparent 0), ' +
+                            settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
                             settings.baselineColor + ' 100%); ' +
                             'background-size: ' +
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10)) + 'px 100%, 100% ' +
                             settings.baselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' +
                             (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     chrome.storage.sync.set(
@@ -740,7 +740,7 @@ document.onkeydown = function (evnt) {
                             'background-size: 100% ' + settings.baselineDistance +
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumn, 10) +
+                            (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutter, 10))) + 'px;');
 
                     chrome.storage.sync.set(

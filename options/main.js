@@ -55,7 +55,7 @@ function saveOptions() {
         baselineColor: baselineColor,
         baselineDistance: baselineDistance,
         userWantsSplitGutters: userWantsSplitGutters,
-        columnColor: columnColor,
+        gridColumnColor: columnColor,
         columnColorTransparency: columnColorTransparency
     }, function () {
         let status = document.getElementById('status');
@@ -85,7 +85,7 @@ function retrieveOptions() {
         columnColorTransparency: 0.2
     }, function (settings) {
         document.getElementById('column--width-input').value =
-                settings.gridColumn;
+                settings.gridColumnWidth;
         document.getElementById('column--count-input').value =
                 settings.gridColumnCount;
         document.getElementById('baseline--color-input').value =
