@@ -58,10 +58,8 @@ let html = document.querySelector('html'),
     // Grid-related variables, of which gridColumn and gridGutter will be updated by
     // the user when choosing the size of columns and gutters.
     //
-    gridColumn = 60,
     gridGutter = 20,
     splitGutterWidth = gridGutter / 2,
-    gridColumnCount = 16,
     userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height)
         ? document.height
