@@ -118,9 +118,11 @@ function toggleSaveButtonBasedOnInputErrors() {
     }
 }
 
-document.getElementById('column--width-input').addEventListener('focus', function () {
-    'use strict';
+document.getElementById('column--width-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
 
+document.getElementById('column--width-input').addEventListener('focus', function () {
     document.onkeydown = function (evnt) {
         let columnWidth = document.getElementById('column--width-input').value;
 
@@ -169,6 +171,10 @@ document.getElementById('column--width-input').addEventListener('blur', function
 
     toggleSaveButtonBasedOnInputErrors();
 });
+
+document.getElementById('gutter--width-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
 
 document.getElementById('gutter--width-input').addEventListener('focus', function () {
     'use strict';
@@ -223,6 +229,10 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('column--count-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
+
 document.getElementById('column--count-input').addEventListener('focus', function () {
     'use strict';
 
@@ -275,6 +285,10 @@ document.getElementById('column--count-input').addEventListener('blur', function
 
     toggleSaveButtonBasedOnInputErrors();
 });
+
+document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
 
 document.getElementById('baseline--vertical-distance-input').addEventListener('focus', function () {
     'use strict';
