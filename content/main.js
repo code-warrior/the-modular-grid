@@ -419,7 +419,7 @@ function updateGrid() {
                         settings.gridBaselineColor + ' 100%); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                        settings.baselineDistance + 'px; ' +
+                        settings.gridBaselineDistance + 'px; ' +
                         'background-position: ' + splitGutterWidth + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
@@ -435,7 +435,7 @@ function updateGrid() {
                         'background-image: linear-gradient(0deg, transparent 95%, ' +
                         settings.gridBaselineColor + ' 100%); ' +
                         'background-size: 100% ' +
-                        settings.baselineDistance + 'px; ' +
+                        settings.gridBaselineDistance + 'px; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -507,7 +507,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
+                            settings.gridBaselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
@@ -523,7 +523,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-image: linear-gradient(0deg, ' +
                             'transparent 95%, ' + settings.gridBaselineColor +
                             ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance +
+                            'background-size: 100% ' + settings.gridBaselineDistance +
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
@@ -661,7 +661,7 @@ document.onkeydown = function (evnt) {
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.baselineDistance + 'px; ' +
+                            settings.gridBaselineDistance + 'px; ' +
                             'background-position: ' + splitGutterWidth + 'px 0; ' +
                             'max-width: ' +
                             (parseInt(settings.gridColumnCount, 10) *
@@ -683,7 +683,7 @@ document.onkeydown = function (evnt) {
                             'background-image: linear-gradient(0deg, ' +
                             'transparent 95%, ' +
                             settings.gridBaselineColor + ' 100%); ' +
-                            'background-size: 100% ' + settings.baselineDistance +
+                            'background-size: 100% ' + settings.gridBaselineDistance +
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
