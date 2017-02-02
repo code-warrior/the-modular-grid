@@ -66,9 +66,9 @@ function saveOptions() {
 }
 
 /**
- * Retrieve options.
+ * Retrieve the options from storage and fill the options form with those values.
  */
-function retrieveOptions() {
+function fillOptionsFormWithOptions() {
     'use strict';
 
     chrome.storage.sync.get({
@@ -159,7 +159,6 @@ document.getElementById('column--width-input').addEventListener('focus', functio
             break;
         }
     };
-
 }, false);
 
 document.getElementById('column--width-input').addEventListener('blur', function () {
@@ -339,5 +338,5 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     toggleSaveButtonBasedOnInputErrors();
 });
 
-document.addEventListener('DOMContentLoaded', retrieveOptions);
+document.addEventListener('DOMContentLoaded', fillOptionsFormWithOptions);
 document.getElementById('save-options').addEventListener('click', saveOptions);
