@@ -49,7 +49,7 @@ function saveOptions() {
 
     chrome.storage.sync.set({
         isGridEnabled: false,
-        gridColumn: gridColumn,
+        gridColumnWidth: gridColumn,
         gridColumnCount: gridColumnCount,
         gridGutter: gridGutter,
         baselineColor: baselineColor,
@@ -75,7 +75,7 @@ function retrieveOptions() {
     'use strict';
 
     chrome.storage.sync.get({
-        gridColumn: '60',
+        gridColumnWidth: '60',
         gridColumnCount: '16',
         gridGutter: '20',
         baselineColor: '#29abe2',
