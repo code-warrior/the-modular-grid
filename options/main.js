@@ -71,17 +71,8 @@ function saveOptions() {
 function fillOptionsFormWithOptions() {
     'use strict';
 
-    chrome.storage.sync.get({
-        gridColumnWidth: '60',
-        gridColumnCount: '16',
-        gridGutterWidth: '20',
-        gridBaselineColor: '#29abe2',
-        baselineDistance: '24',
-        userWantsSplitGutters: 'true',
-        gridColumnColor: '#c80000',
-        columnColorTransparency: 0.2
-    }, function (settings) {
-        document.getElementById('column--width-input').value =
+    chrome.storage.sync.get(
+        null,
                 settings.gridColumnWidth;
         document.getElementById('column--count-input').value =
                 settings.gridColumnCount;
