@@ -59,7 +59,6 @@ let html = document.querySelector('html'),
     // the user when choosing the size of columns and gutters.
     //
     splitGutterWidth = 10,
-    userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height)
         ? document.height
         : document.body.offsetHeight,
@@ -72,17 +71,6 @@ let html = document.querySelector('html'),
         modulargrid: 'modular-grid',
         baselinegrid: 'baseline-grid',
         none: 'none'
-    },
-
-    defaultSettingFor = {
-        gridColumnWidth: 60,
-        gridColumnCount: 16,
-        gridColumnColor: '#c80000',
-        gridColumnColorOpacity: 0.2,
-        gridGutterWidth: 20,
-        gridMarginGutterSplit: true,
-        gridBaselineColor: '#29abe2',
-        gridBaselineDistance: 24
     };
 
 stylesheet.href = chrome.extension.getURL('content/main.css');
