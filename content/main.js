@@ -88,7 +88,6 @@ let html = document.querySelector('html'),
         gridBaselineDistance: 24
     },
 
-    columnColor = '#c80000',
     colorGridBaseline = '#29abe2',
 
     baselineDistance = 24;
@@ -378,7 +377,7 @@ function updateGrid() {
         {
             baselineColor: colorGridBaseline,
             baselineDistance: baselineDistance,
-            columnColor: columnColor,
+            columnColor: initialSettingsFor.gridColumnColor,
             columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumn: initialSettingsFor.gridColumnWidth,
@@ -501,7 +500,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 gridColumnCount: initialSettingsFor.gridColumnCount,
                 gridGutter: gridGutter,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: columnColor,
+                columnColor: initialSettingsFor.gridColumnColor,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
                 columnColorTransparency: initialSettingsFor.gridColumnColorTransparency
@@ -666,7 +665,7 @@ document.onkeydown = function (evnt) {
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: columnColor,
+                columnColor: initialSettingsFor.gridColumnColor,
                 columnColorTransparency: initialSettingsFor.gridColumnColorTransparency,
                 currentGrid: SHOWING_MODULAR_GRID
             },
