@@ -73,28 +73,41 @@ function fillOptionsFormWithOptions() {
 
     chrome.storage.sync.get(
         null,
+        function (settings) {
+            document.getElementById('column--width-input').value =
                 settings.gridColumnWidth;
-        document.getElementById('column--count-input').value =
+
+            document.getElementById('column--count-input').value =
                 settings.gridColumnCount;
-        document.getElementById('baseline--color-input').value =
+
+            document.getElementById('baseline--color-input').value =
                 settings.gridBaselineColor;
-        document.getElementById('baseline--color-input').title =
-            settings.gridBaselineColor;
-        document.getElementById('baseline--vertical-distance-input').value =
-                settings.baselineDistance;
-        document.getElementById('gutter--width-input').value =
+
+            document.getElementById('baseline--color-input').title =
+                settings.gridBaselineColor;
+
+            document.getElementById('baseline--vertical-distance-input').value =
+                settings.gridBaselineDistance;
+
+            document.getElementById('gutter--width-input').value =
                 settings.gridGutterWidth;
-        document.getElementById('margins--split-gutter-input').value =
-                settings.userWantsSplitGutters;
-        document.getElementById('column--color-input').value =
+
+            document.getElementById('margins--split-gutter-input').value =
+                settings.marginsAreEnabled;
+
+            document.getElementById('column--color-input').value =
                 settings.gridColumnColor;
-        document.getElementById('column--color-input').title =
+
+            document.getElementById('column--color-input').title =
                 settings.gridColumnColor;
-        document.getElementById('column--opacity-input').value =
-                settings.columnColorTransparency;
-        document.getElementById('column--opacity-input').title =
-            settings.columnColorTransparency;
-    });
+
+            document.getElementById('column--opacity-input').value =
+                settings.gridColumnColorOpacity;
+
+            document.getElementById('column--opacity-input').title =
+                settings.gridColumnColorOpacity;
+        }
+    );
 }
 
 function toggleSaveButtonBasedOnInputErrors() {
