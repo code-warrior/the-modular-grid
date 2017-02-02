@@ -373,7 +373,7 @@ function updateGrid() {
 
     chrome.storage.sync.get(
         {
-            baselineColor: colorGridBaseline,
+            baselineColor: initialSettingsFor.gridBaselineColor,
             baselineDistance: baselineDistance,
             columnColor: initialSettingsFor.gridColumnColor,
             columnColorTransparency: initialSettingsFor.gridColumnColorOpacity,
@@ -499,7 +499,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 gridGutter: gridGutter,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: initialSettingsFor.gridColumnColor,
-                baselineColor: colorGridBaseline,
+                baselineColor: initialSettingsFor.gridBaselineColor,
                 baselineDistance: baselineDistance,
                 columnColorTransparency: initialSettingsFor.gridColumnColorOpacity
             },
@@ -660,7 +660,7 @@ document.onkeydown = function (evnt) {
                 gridColumn: initialSettingsFor.gridColumnWidth,
                 gridColumnCount: initialSettingsFor.gridColumnCount,
                 gridGutter: gridGutter,
-                baselineColor: colorGridBaseline,
+                baselineColor: initialSettingsFor.gridBaselineColor,
                 baselineDistance: baselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: initialSettingsFor.gridColumnColor,
