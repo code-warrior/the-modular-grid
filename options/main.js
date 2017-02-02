@@ -1,6 +1,10 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
+//
+// TODO: The settings here should drive the form, not the other way around.
+//
+
 let inputErrorsIn = {
     columnWidth: false,
     gutterWidth: false,
