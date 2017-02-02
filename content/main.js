@@ -75,7 +75,7 @@ let html = document.querySelector('html'),
     },
 
     initialSettingsFor = {
-        gridColumnWidth: 60,q
+        gridColumnWidth: 60,
         gridColumnCount: 16,
         gridColumnColor: '#c80000',
         gridColumnColorOpacity: 0.2,
