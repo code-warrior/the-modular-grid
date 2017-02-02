@@ -58,8 +58,7 @@ let html = document.querySelector('html'),
     // Grid-related variables, of which gridColumn and gridGutter will be updated by
     // the user when choosing the size of columns and gutters.
     //
-    gridGutter = 20,
-    splitGutterWidth = gridGutter / 2,
+    splitGutterWidth = 10,
     userWantsSplitGutters = true,
     pageHeight = (undefined !== document.height)
         ? document.height
@@ -76,7 +75,7 @@ let html = document.querySelector('html'),
     },
 
     initialSettingsFor = {
-        gridColumnWidth: 60,
+        gridColumnWidth: 60,q
         gridColumnCount: 16,
         gridColumnColor: '#c80000',
         gridColumnColorOpacity: 0.2,
@@ -117,7 +116,7 @@ chrome.storage.sync.get(
         currentGrid: CSS__Classes.modulargrid,
         gridColumn: initialSettingsFor.gridColumnWidth,
         gridColumnCount: initialSettingsFor.gridColumnCount,
-        gridGutter: gridGutter
+        gridGutter: initialSettingsFor.gridGutterWidth
     },
     function (settings) {
         'use strict';
@@ -376,7 +375,7 @@ function updateGrid() {
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: initialSettingsFor.gridColumnCount,
-            gridGutter: gridGutter,
+            gridGutter: initialSettingsFor.gridGutterWidth,
             isGridEnabled: false,
             userWantsSplitGutters: userWantsSplitGutters
         },
@@ -492,7 +491,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 currentGrid: CSS__Classes.modulargrid,
                 gridColumn: initialSettingsFor.gridColumnWidth,
                 gridColumnCount: initialSettingsFor.gridColumnCount,
-                gridGutter: gridGutter,
+                gridGutter: initialSettingsFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: initialSettingsFor.gridColumnColor,
                 baselineColor: initialSettingsFor.gridBaselineColor,
@@ -598,7 +597,7 @@ function showColumnInfo() {
             currentGrid: CSS__Classes.modulargrid,
             gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: initialSettingsFor.gridColumnCount,
-            gridGutter: gridGutter
+            gridGutter: initialSettingsFor.gridGutterWidth
         },
         function (settings) {
             let viewportWidth = html.clientWidth,
@@ -655,7 +654,7 @@ document.onkeydown = function (evnt) {
                 isGridEnabled: false,
                 gridColumn: initialSettingsFor.gridColumnWidth,
                 gridColumnCount: initialSettingsFor.gridColumnCount,
-                gridGutter: gridGutter,
+                gridGutter: initialSettingsFor.gridGutterWidth,
                 baselineColor: initialSettingsFor.gridBaselineColor,
                 baselineDistance: initialSettingsFor.gridBaselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
