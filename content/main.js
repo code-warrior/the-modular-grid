@@ -379,7 +379,7 @@ function updateGrid() {
             case 'column-grid':
                 modularGrid.className = CSS__Classes.columngrid;
 
-                if ('true' === settings.userWantsSplitGutters) {
+                if ('true' === settings.marginsAreEnabled) {
                     splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                 } else {
                     splitGutterWidth = 0;
@@ -403,7 +403,7 @@ function updateGrid() {
             case 'modular-grid':
                 modularGrid.className = CSS__Classes.modulargrid;
 
-                if ('true' === settings.userWantsSplitGutters) {
+                if ('true' === settings.marginsAreEnabled) {
                     splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                 } else {
                     splitGutterWidth = 0;
@@ -465,7 +465,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 case 'column-grid':
                     modularGrid.className = CSS__Classes.columngrid;
 
-                    if ('true' === settings.userWantsSplitGutters) {
+                    if ('true' === settings.marginsAreEnabled) {
                         splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
@@ -490,7 +490,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 case 'modular-grid':
                     modularGrid.className = CSS__Classes.modulargrid;
 
-                    if ('true' === settings.userWantsSplitGutters) {
+                    if ('true' === settings.marginsAreEnabled) {
                         splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
@@ -614,7 +614,7 @@ document.onkeydown = function (evnt) {
                 case SHOWING_NO_GRID:
                     modularGrid.classList.add(CSS__Classes.columngrid);
 
-                    if ('true' === settings.userWantsSplitGutters) {
+                    if ('true' === settings.marginsAreEnabled) {
                         splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
@@ -644,7 +644,7 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.remove(CSS__Classes.columngrid);
                     modularGrid.classList.add(CSS__Classes.modulargrid);
 
-                    if ('true' === settings.userWantsSplitGutters) {
+                    if ('true' === settings.marginsAreEnabled) {
                         splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
                     } else {
                         splitGutterWidth = 0;
