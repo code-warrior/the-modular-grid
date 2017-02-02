@@ -660,8 +660,8 @@ document.onkeydown = function (evnt) {
         chrome.storage.sync.get(
             {
                 isGridEnabled: false,
-                gridColumn: gridColumn,
                 gridColumnCount: gridColumnCount,
+                gridColumn: initialSettingsFor.gridColumnWidth,
                 gridGutter: gridGutter,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
