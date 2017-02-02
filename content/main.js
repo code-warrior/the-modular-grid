@@ -370,7 +370,7 @@ function updateGrid() {
         {
             baselineColor: defaultSettingFor.gridBaselineColor,
             baselineDistance: defaultSettingFor.gridBaselineDistance,
-            columnColor: defaultSettingFor.gridColumnColor,
+            gridColumnColor: defaultSettingFor.gridColumnColor,
             columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumnWidth: defaultSettingFor.gridColumnWidth,
@@ -416,7 +416,7 @@ function updateGrid() {
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor,
+                        convertHexToRGBA(settings.gridColumnColor,
                         settings.columnColorTransparency) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
@@ -440,7 +440,7 @@ function updateGrid() {
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.columnColor,
+                        convertHexToRGBA(settings.gridColumnColor,
                         settings.columnColorTransparency) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0), ' +
                         'linear-gradient(0deg, transparent 95%, ' +
@@ -493,7 +493,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 gridColumnCount: defaultSettingFor.gridColumnCount,
                 gridGutter: defaultSettingFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: defaultSettingFor.gridColumnColor,
+                gridColumnColor: defaultSettingFor.gridColumnColor,
                 baselineColor: defaultSettingFor.gridBaselineColor,
                 baselineDistance: defaultSettingFor.gridBaselineDistance,
                 columnColorTransparency: defaultSettingFor.gridColumnColorOpacity
@@ -512,7 +512,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor,
+                            convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
@@ -537,7 +537,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor,
+                            convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
@@ -659,7 +659,7 @@ document.onkeydown = function (evnt) {
                 baselineColor: defaultSettingFor.gridBaselineColor,
                 baselineDistance: defaultSettingFor.gridBaselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
-                columnColor: defaultSettingFor.gridColumnColor,
+                gridColumnColor: defaultSettingFor.gridColumnColor,
                 columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
                 currentGrid: SHOWING_MODULAR_GRID
             },
@@ -677,7 +677,7 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor,
+                            convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0); ' +
                             'background-size: ' +
@@ -707,7 +707,7 @@ document.onkeydown = function (evnt) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.columnColor,
+                            convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +

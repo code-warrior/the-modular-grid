@@ -81,7 +81,7 @@ function retrieveOptions() {
         baselineColor: '#29abe2',
         baselineDistance: '24',
         userWantsSplitGutters: 'true',
-        columnColor: '#c80000',
+        gridColumnColor: '#c80000',
         columnColorTransparency: 0.2
     }, function (settings) {
         document.getElementById('column--width-input').value =
@@ -99,9 +99,9 @@ function retrieveOptions() {
         document.getElementById('margins--split-gutter-input').value =
                 settings.userWantsSplitGutters;
         document.getElementById('column--color-input').value =
-                settings.columnColor;
+                settings.gridColumnColor;
         document.getElementById('column--color-input').title =
-                settings.columnColor;
+                settings.gridColumnColor;
         document.getElementById('column--opacity-input').value =
                 settings.columnColorTransparency;
         document.getElementById('column--opacity-input').title =
