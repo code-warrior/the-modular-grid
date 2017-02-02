@@ -124,7 +124,7 @@ chrome.storage.sync.get(
     {
         currentGrid: CSS__Classes.modulargrid,
         gridColumn: initialSettingsFor.gridColumnWidth,
-        gridColumnCount: gridColumnCount,
+        gridColumnCount: initialSettingsFor.gridColumnCount,
         gridGutter: gridGutter
     },
     function (settings) {
@@ -382,7 +382,7 @@ function updateGrid() {
             columnColorTransparency: columnColorTransparency,
             currentGrid: SHOWING_MODULAR_GRID,
             gridColumn: initialSettingsFor.gridColumnWidth,
-            gridColumnCount: gridColumnCount,
+            gridColumnCount: initialSettingsFor.gridColumnCount,
             gridGutter: gridGutter,
             isGridEnabled: false,
             userWantsSplitGutters: userWantsSplitGutters
@@ -498,7 +498,7 @@ chrome.extension.onMessage.addListener(function (msg) {
             {
                 currentGrid: CSS__Classes.modulargrid,
                 gridColumn: initialSettingsFor.gridColumnWidth,
-                gridColumnCount: gridColumnCount,
+                gridColumnCount: initialSettingsFor.gridColumnCount,
                 gridGutter: gridGutter,
                 userWantsSplitGutters: userWantsSplitGutters,
                 columnColor: columnColor,
@@ -604,7 +604,7 @@ function showColumnInfo() {
         {
             currentGrid: CSS__Classes.modulargrid,
             gridColumn: initialSettingsFor.gridColumnWidth,
-            gridColumnCount: gridColumnCount,
+            gridColumnCount: initialSettingsFor.gridColumnCount,
             gridGutter: gridGutter
         },
         function (settings) {
@@ -660,8 +660,8 @@ document.onkeydown = function (evnt) {
         chrome.storage.sync.get(
             {
                 isGridEnabled: false,
-                gridColumnCount: gridColumnCount,
                 gridColumn: initialSettingsFor.gridColumnWidth,
+                gridColumnCount: initialSettingsFor.gridColumnCount,
                 gridGutter: gridGutter,
                 baselineColor: colorGridBaseline,
                 baselineDistance: baselineDistance,
