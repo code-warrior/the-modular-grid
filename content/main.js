@@ -563,8 +563,9 @@ chrome.extension.onMessage.addListener(function (msg) {
                             ' 100%); ' +
                             'background-size: 100% ' + settings.baselineDistance +
                             'px; ' +
-                            'max-width: ' +
-                            parseInt(settings.gridColumnCount, 10) + 'px');
+                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
+                            (parseInt(settings.gridColumn, 10) +
+                            parseInt(settings.gridGutter, 10))) + 'px;');
 
                     break;
                 }
