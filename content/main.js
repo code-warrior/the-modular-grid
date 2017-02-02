@@ -77,6 +77,17 @@ let html = document.querySelector('html'),
         none: 'none'
     },
 
+    initialSettingsFor = {
+        gridColumnWidth: 60,
+        gridColumnCount: 16,
+        gridColumnColor: '#c80000',
+        gridColumnColorTransparency: 0.2,
+        gridGutterWidth: 20,
+        gridMarginGutterSplit: true,
+        gridBaselineColor: '#29abe2',
+        gridBaselineDistance: 24
+    },
+
     columnColor = '#c80000',
     columnColorTransparency = 0.2,
     colorGridBaseline = '#29abe2',
