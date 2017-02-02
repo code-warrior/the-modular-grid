@@ -137,29 +137,29 @@ document.getElementById('column--width-input').addEventListener('focus', functio
         let columnWidth = document.getElementById('column--width-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                columnWidth = parseInt(columnWidth, 10) + 1;
+        case UP_ARROW_KEY:
+            columnWidth = parseInt(columnWidth, 10) + 1;
 
-                if (columnWidth > COLUMN_WIDTH_MAX) {
-                    columnWidth = columnWidth - 1;
-                } else {
-                    document.getElementById('column--width-input').value++;
-                    saveOptions();
-                }
+            if (columnWidth > COLUMN_WIDTH_MAX) {
+                columnWidth = columnWidth - 1;
+            } else {
+                document.getElementById('column--width-input').value++;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                columnWidth = parseInt(columnWidth, 10) - 1;
+        case DOWN_ARROW_KEY:
+            columnWidth = parseInt(columnWidth, 10) - 1;
 
-                if (columnWidth < COLUMN_WIDTH_MIN) {
-                    columnWidth = columnWidth - 1;
-                } else {
-                    document.getElementById('column--width-input').value = columnWidth;
-                    saveOptions();
-                }
+            if (columnWidth < COLUMN_WIDTH_MIN) {
+                columnWidth = columnWidth - 1;
+            } else {
+                document.getElementById('column--width-input').value = columnWidth;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -190,29 +190,29 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
         let gutterWidthInput = document.getElementById('gutter--width-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
+        case UP_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
 
-                if (gutterWidthInput > GUTTER_WIDTH_MAX) {
-                    gutterWidthInput = gutterWidthInput - 1;
-                } else {
-                    document.getElementById('gutter--width-input').value = gutterWidthInput;
-                    saveOptions();
-                }
+            if (gutterWidthInput > GUTTER_WIDTH_MAX) {
+                gutterWidthInput = gutterWidthInput - 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
+        case DOWN_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
 
-                if (gutterWidthInput < GUTTER_WIDTH_MIN) {
-                    gutterWidthInput = gutterWidthInput + 1;
-                } else {
-                    document.getElementById('gutter--width-input').value = gutterWidthInput;
-                    saveOptions();
-                }
+            if (gutterWidthInput < GUTTER_WIDTH_MIN) {
+                gutterWidthInput = gutterWidthInput + 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -243,29 +243,29 @@ document.getElementById('column--count-input').addEventListener('focus', functio
         let columnCount = document.getElementById('column--count-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                columnCount = parseInt(columnCount, 10) + 1;
+        case UP_ARROW_KEY:
+            columnCount = parseInt(columnCount, 10) + 1;
 
-                if (columnCount > COLUMN_COUNT_MAX) {
-                    columnCount = columnCount - 1;
-                } else {
-                    document.getElementById('column--count-input').value = columnCount;
-                    saveOptions();
-                }
+            if (columnCount > COLUMN_COUNT_MAX) {
+                columnCount = columnCount - 1;
+            } else {
+                document.getElementById('column--count-input').value = columnCount;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                columnCount = parseInt(columnCount, 10) - 1;
+        case DOWN_ARROW_KEY:
+            columnCount = parseInt(columnCount, 10) - 1;
 
-                if (columnCount < COLUMN_COUNT_MIN) {
-                    columnCount = columnCount + 1;
-                } else {
-                    document.getElementById('column--count-input').value = columnCount;
-                    saveOptions();
-                }
+            if (columnCount < COLUMN_COUNT_MIN) {
+                columnCount = columnCount + 1;
+            } else {
+                document.getElementById('column--count-input').value = columnCount;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -296,29 +296,29 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
         let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                baselineDistance = parseInt(baselineDistance, 10) + 1;
+        case UP_ARROW_KEY:
+            baselineDistance = parseInt(baselineDistance, 10) + 1;
 
-                if (baselineDistance > BASELINE_DISTANCE_MAX) {
-                    baselineDistance = baselineDistance - 1;
-                } else {
-                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                    saveOptions();
-                }
+            if (baselineDistance > BASELINE_DISTANCE_MAX) {
+                baselineDistance = baselineDistance - 1;
+            } else {
+                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                baselineDistance = parseInt(baselineDistance, 10) - 1;
+        case DOWN_ARROW_KEY:
+            baselineDistance = parseInt(baselineDistance, 10) - 1;
 
-                if (baselineDistance < BASELINE_DISTANCE_MIN) {
-                    baselineDistance = baselineDistance + 1;
-                } else {
-                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                    saveOptions();
-                }
+            if (baselineDistance < BASELINE_DISTANCE_MIN) {
+                baselineDistance = baselineDistance + 1;
+            } else {
+                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
