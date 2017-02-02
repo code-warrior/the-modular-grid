@@ -368,7 +368,7 @@ function updateGrid() {
 
     chrome.storage.sync.get(
         {
-            baselineColor: defaultSettingFor.gridBaselineColor,
+            gridBaselineColor: defaultSettingFor.gridBaselineColor,
             baselineDistance: defaultSettingFor.gridBaselineDistance,
             gridColumnColor: defaultSettingFor.gridColumnColor,
             columnColorTransparency: defaultSettingFor.gridColumnColorOpacity,
@@ -444,7 +444,7 @@ function updateGrid() {
                         settings.columnColorTransparency) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0), ' +
                         'linear-gradient(0deg, transparent 95%, ' +
-                        settings.baselineColor + ' 100%); ' +
+                        settings.gridBaselineColor + ' 100%); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                         settings.baselineDistance + 'px; ' +
@@ -461,7 +461,7 @@ function updateGrid() {
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(0deg, transparent 95%, ' +
-                        settings.baselineColor + ' 100%); ' +
+                        settings.gridBaselineColor + ' 100%); ' +
                         'background-size: 100% ' +
                         settings.baselineDistance + 'px; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
@@ -494,7 +494,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                 gridGutterWidth: defaultSettingFor.gridGutterWidth,
                 userWantsSplitGutters: userWantsSplitGutters,
                 gridColumnColor: defaultSettingFor.gridColumnColor,
-                baselineColor: defaultSettingFor.gridBaselineColor,
+                gridBaselineColor: defaultSettingFor.gridBaselineColor,
                 baselineDistance: defaultSettingFor.gridBaselineDistance,
                 columnColorTransparency: defaultSettingFor.gridColumnColorOpacity
             },
@@ -541,7 +541,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
@@ -559,7 +559,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(0deg, ' +
-                            'transparent 95%, ' + settings.baselineColor +
+                            'transparent 95%, ' + settings.gridBaselineColor +
                             ' 100%); ' +
                             'background-size: 100% ' + settings.baselineDistance +
                             'px; ' +
@@ -656,7 +656,7 @@ document.onkeydown = function (evnt) {
                 gridColumnWidth: defaultSettingFor.gridColumnWidth,
                 gridColumnCount: defaultSettingFor.gridColumnCount,
                 gridGutterWidth: defaultSettingFor.gridGutterWidth,
-                baselineColor: defaultSettingFor.gridBaselineColor,
+                gridBaselineColor: defaultSettingFor.gridBaselineColor,
                 baselineDistance: defaultSettingFor.gridBaselineDistance,
                 userWantsSplitGutters: userWantsSplitGutters,
                 gridColumnColor: defaultSettingFor.gridColumnColor,
@@ -711,7 +711,7 @@ document.onkeydown = function (evnt) {
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%); ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
@@ -736,7 +736,7 @@ document.onkeydown = function (evnt) {
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(0deg, ' +
                             'transparent 95%, ' +
-                            settings.baselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%); ' +
                             'background-size: 100% ' + settings.baselineDistance +
                             'px; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *

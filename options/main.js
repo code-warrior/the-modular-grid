@@ -52,7 +52,7 @@ function saveOptions() {
         gridColumnWidth: gridColumn,
         gridColumnCount: gridColumnCount,
         gridGutterWidth: gridGutter,
-        baselineColor: baselineColor,
+        gridBaselineColor: baselineColor,
         baselineDistance: baselineDistance,
         userWantsSplitGutters: userWantsSplitGutters,
         gridColumnColor: columnColor,
@@ -78,7 +78,7 @@ function retrieveOptions() {
         gridColumnWidth: '60',
         gridColumnCount: '16',
         gridGutterWidth: '20',
-        baselineColor: '#29abe2',
+        gridBaselineColor: '#29abe2',
         baselineDistance: '24',
         userWantsSplitGutters: 'true',
         gridColumnColor: '#c80000',
@@ -89,9 +89,9 @@ function retrieveOptions() {
         document.getElementById('column--count-input').value =
                 settings.gridColumnCount;
         document.getElementById('baseline--color-input').value =
-                settings.baselineColor;
+                settings.gridBaselineColor;
         document.getElementById('baseline--color-input').title =
-            settings.baselineColor;
+            settings.gridBaselineColor;
         document.getElementById('baseline--vertical-distance-input').value =
                 settings.baselineDistance;
         document.getElementById('gutter--width-input').value =
