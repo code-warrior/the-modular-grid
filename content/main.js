@@ -123,7 +123,7 @@ sideBarPopup__Instructions.innerHTML =
 chrome.storage.sync.get(
     {
         currentGrid: CSS__Classes.modulargrid,
-        gridColumn: gridColumn,
+        gridColumn: initialSettingsFor.gridColumnWidth,
         gridColumnCount: gridColumnCount,
         gridGutter: gridGutter
     },
@@ -381,7 +381,7 @@ function updateGrid() {
             columnColor: columnColor,
             columnColorTransparency: columnColorTransparency,
             currentGrid: SHOWING_MODULAR_GRID,
-            gridColumn: gridColumn,
+            gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: gridColumnCount,
             gridGutter: gridGutter,
             isGridEnabled: false,
@@ -497,7 +497,7 @@ chrome.extension.onMessage.addListener(function (msg) {
         chrome.storage.sync.get(
             {
                 currentGrid: CSS__Classes.modulargrid,
-                gridColumn: gridColumn,
+                gridColumn: initialSettingsFor.gridColumnWidth,
                 gridColumnCount: gridColumnCount,
                 gridGutter: gridGutter,
                 userWantsSplitGutters: userWantsSplitGutters,
@@ -603,7 +603,7 @@ function showColumnInfo() {
     chrome.storage.sync.get(
         {
             currentGrid: CSS__Classes.modulargrid,
-            gridColumn: gridColumn,
+            gridColumn: initialSettingsFor.gridColumnWidth,
             gridColumnCount: gridColumnCount,
             gridGutter: gridGutter
         },
