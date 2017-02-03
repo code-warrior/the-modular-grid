@@ -21,12 +21,19 @@ let isGridEnabled = false;
 //
 // Initiate the default settings
 //
-chrome.storage.sync.set(
-    {
-        currentGrid: 'modular-grid',
-        isGridEnabled: false
-    }
-);
+chrome.storage.sync.set({
+    gridIsEnabled: false,
+    gridColumnWidth: 60,
+    gridColumnCount: 16,
+    gridColumnColor: '#c80000',
+    gridGutterWidth: 20,
+    gridBaselineColor: '#29abe2',
+    gridBaselineDistance: 24,
+    gridColumnColorOpacity: 0.2,
+    gridMargin: 10,
+    marginsAreEnabled: true,
+    currentGrid: 'modular-grid'
+});
 
 chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 

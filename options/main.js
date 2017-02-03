@@ -26,83 +26,104 @@ const
 function saveOptions() {
     'use strict';
 
-    let gridColumn =
-                document.getElementById('column--width-input').value,
-        gridColumnCount =
-                document.getElementById('column--count-input').value,
-        gridGutter =
-                document.getElementById('gutter--width-input').value,
-        baselineColor =
-                document.getElementById('baseline--color-input').value,
-        baselineDistance =
-                document.getElementById('baseline--vertical-distance-input').value,
-        userWantsSplitGutters =
-                document.getElementById('margins--split-gutter-input').value,
-        columnColor =
-                document.getElementById('column--color-input').value,
-        columnColorTransparency =
-                document.getElementById('column--opacity-input').value;
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+            let marginsAreEnabled = document.getElementById('margins--split-gutter-input').value,
+                gridMargin = 0;
 
-    chrome.storage.sync.set({
-        isGridEnabled: false,
-        gridColumn: gridColumn,
-        gridColumnCount: gridColumnCount,
-        gridGutter: gridGutter,
-        baselineColor: baselineColor,
-        baselineDistance: baselineDistance,
-        userWantsSplitGutters: userWantsSplitGutters,
-        columnColor: columnColor,
-        columnColorTransparency: columnColorTransparency
-    }, function () {
-        let status = document.getElementById('status');
+            if ('true' === marginsAreEnabled) {
+                gridMargin = parseFloat(settings.gridGutterWidth) / 2;
+                marginsAreEnabled = 'true';
+            } else {
+                gridMargin = 0;
+                marginsAreEnabled = 'false';
+            }
 
-        status.textContent = 'Options saved.';
+            chrome.storage.sync.set({
+                gridColumnWidth:
+                    document.getElementById('column--width-input').value,
 
-        setTimeout(function () {
-            status.textContent = '';
-        }, 1500);
-    });
+                gridColumnCount:
+                    document.getElementById('column--count-input').value,
+
+                gridGutterWidth:
+                    document.getElementById('gutter--width-input').value,
+
+                gridBaselineColor:
+                    document.getElementById('baseline--color-input').value,
+
+                gridBaselineDistance:
+                    document.getElementById('baseline--vertical-distance-input').value,
+
+                marginsAreEnabled:
+                    marginsAreEnabled,
+
+                gridColumnColor:
+                    document.getElementById('column--color-input').value,
+
+                gridColumnColorOpacity:
+                    document.getElementById('column--opacity-input').value,
+
+                gridMargin:
+                    gridMargin
+
+            }, function () {
+                let status = document.getElementById('status');
+
+                status.textContent = 'Options saved.';
+
+                setTimeout(function () {
+                    status.textContent = '';
+                }, 1500);
+            });
+        }
+    );
 }
 
 /**
- * Retrieve options.
+ * Retrieve the options from storage and fill the options form with those values.
  */
-function retrieveOptions() {
+function populateOptionsFormWithStorageOptions() {
     'use strict';
 
-    chrome.storage.sync.get({
-        gridColumn: '60',
-        gridColumnCount: '16',
-        gridGutter: '20',
-        baselineColor: '#29abe2',
-        baselineDistance: '24',
-        userWantsSplitGutters: 'true',
-        columnColor: '#c80000',
-        columnColorTransparency: 0.2
-    }, function (settings) {
-        document.getElementById('column--width-input').value =
-                settings.gridColumn;
-        document.getElementById('column--count-input').value =
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+            document.getElementById('column--width-input').value =
+                settings.gridColumnWidth;
+
+            document.getElementById('column--count-input').value =
                 settings.gridColumnCount;
-        document.getElementById('baseline--color-input').value =
-                settings.baselineColor;
-        document.getElementById('baseline--color-input').title =
-            settings.baselineColor;
-        document.getElementById('baseline--vertical-distance-input').value =
-                settings.baselineDistance;
-        document.getElementById('gutter--width-input').value =
-                settings.gridGutter;
-        document.getElementById('margins--split-gutter-input').value =
-                settings.userWantsSplitGutters;
-        document.getElementById('column--color-input').value =
-                settings.columnColor;
-        document.getElementById('column--color-input').title =
-                settings.columnColor;
-        document.getElementById('column--opacity-input').value =
-                settings.columnColorTransparency;
-        document.getElementById('column--opacity-input').title =
-            settings.columnColorTransparency;
-    });
+
+            document.getElementById('baseline--color-input').value =
+                settings.gridBaselineColor;
+
+            document.getElementById('baseline--color-input').title =
+                settings.gridBaselineColor;
+
+            document.getElementById('baseline--vertical-distance-input').value =
+                settings.gridBaselineDistance;
+
+            document.getElementById('gutter--width-input').value =
+                settings.gridGutterWidth;
+
+            document.getElementById('margins--split-gutter-input').value =
+                settings.marginsAreEnabled;
+
+            document.getElementById('column--color-input').value =
+                settings.gridColumnColor;
+
+            document.getElementById('column--color-input').title =
+                settings.gridColumnColor;
+
+            document.getElementById('column--opacity-input').value =
+                settings.gridColumnColorOpacity;
+
+            document.getElementById('column--opacity-input').title =
+                settings.gridColumnColorOpacity;
+        }
+    );
 }
 
 function toggleSaveButtonBasedOnInputErrors() {
@@ -126,39 +147,40 @@ function toggleSaveButtonBasedOnInputErrors() {
     }
 }
 
-document.getElementById('column--width-input').addEventListener('focus', function () {
-    'use strict';
+document.getElementById('column--width-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
 
+document.getElementById('column--width-input').addEventListener('focus', function () {
     document.onkeydown = function (evnt) {
         let columnWidth = document.getElementById('column--width-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                columnWidth = parseInt(columnWidth, 10) + 1;
+        case UP_ARROW_KEY:
+            columnWidth = parseInt(columnWidth, 10) + 1;
 
-                if (columnWidth > COLUMN_WIDTH_MAX) {
-                    columnWidth = columnWidth - 1;
-                } else {
-                    document.getElementById('column--width-input').value++;
-                    saveOptions();
-                }
+            if (columnWidth > COLUMN_WIDTH_MAX) {
+                columnWidth = columnWidth - 1;
+            } else {
+                document.getElementById('column--width-input').value++;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                columnWidth = parseInt(columnWidth, 10) - 1;
+        case DOWN_ARROW_KEY:
+            columnWidth = parseInt(columnWidth, 10) - 1;
 
-                if (columnWidth < COLUMN_WIDTH_MIN) {
-                    columnWidth = columnWidth - 1;
-                } else {
-                    document.getElementById('column--width-input').value = columnWidth;
-                    saveOptions();
-                }
+            if (columnWidth < COLUMN_WIDTH_MIN) {
+                columnWidth = columnWidth - 1;
+            } else {
+                document.getElementById('column--width-input').value = columnWidth;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
-
 }, false);
 
 document.getElementById('column--width-input').addEventListener('blur', function () {
@@ -179,6 +201,10 @@ document.getElementById('column--width-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('gutter--width-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
+
 document.getElementById('gutter--width-input').addEventListener('focus', function () {
     'use strict';
 
@@ -186,29 +212,29 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
         let gutterWidthInput = document.getElementById('gutter--width-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
+        case UP_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
 
-                if (gutterWidthInput > GUTTER_WIDTH_MAX) {
-                    gutterWidthInput = gutterWidthInput - 1;
-                } else {
-                    document.getElementById('gutter--width-input').value = gutterWidthInput;
-                    saveOptions();
-                }
+            if (gutterWidthInput > GUTTER_WIDTH_MAX) {
+                gutterWidthInput = gutterWidthInput - 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
+        case DOWN_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
 
-                if (gutterWidthInput < GUTTER_WIDTH_MIN) {
-                    gutterWidthInput = gutterWidthInput + 1;
-                } else {
-                    document.getElementById('gutter--width-input').value = gutterWidthInput;
-                    saveOptions();
-                }
+            if (gutterWidthInput < GUTTER_WIDTH_MIN) {
+                gutterWidthInput = gutterWidthInput + 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -232,6 +258,10 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('column--count-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
+
 document.getElementById('column--count-input').addEventListener('focus', function () {
     'use strict';
 
@@ -239,29 +269,29 @@ document.getElementById('column--count-input').addEventListener('focus', functio
         let columnCount = document.getElementById('column--count-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                columnCount = parseInt(columnCount, 10) + 1;
+        case UP_ARROW_KEY:
+            columnCount = parseInt(columnCount, 10) + 1;
 
-                if (columnCount > COLUMN_COUNT_MAX) {
-                    columnCount = columnCount - 1;
-                } else {
-                    document.getElementById('column--count-input').value = columnCount;
-                    saveOptions();
-                }
+            if (columnCount > COLUMN_COUNT_MAX) {
+                columnCount = columnCount - 1;
+            } else {
+                document.getElementById('column--count-input').value = columnCount;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                columnCount = parseInt(columnCount, 10) - 1;
+        case DOWN_ARROW_KEY:
+            columnCount = parseInt(columnCount, 10) - 1;
 
-                if (columnCount < COLUMN_COUNT_MIN) {
-                    columnCount = columnCount + 1;
-                } else {
-                    document.getElementById('column--count-input').value = columnCount;
-                    saveOptions();
-                }
+            if (columnCount < COLUMN_COUNT_MIN) {
+                columnCount = columnCount + 1;
+            } else {
+                document.getElementById('column--count-input').value = columnCount;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -285,6 +315,10 @@ document.getElementById('column--count-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
+
 document.getElementById('baseline--vertical-distance-input').addEventListener('focus', function () {
     'use strict';
 
@@ -292,29 +326,29 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
         let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
 
         switch (evnt.keyCode) {
-            case UP_ARROW_KEY:
-                baselineDistance = parseInt(baselineDistance, 10) + 1;
+        case UP_ARROW_KEY:
+            baselineDistance = parseInt(baselineDistance, 10) + 1;
 
-                if (baselineDistance > BASELINE_DISTANCE_MAX) {
-                    baselineDistance = baselineDistance - 1;
-                } else {
-                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                    saveOptions();
-                }
+            if (baselineDistance > BASELINE_DISTANCE_MAX) {
+                baselineDistance = baselineDistance - 1;
+            } else {
+                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                saveOptions();
+            }
 
-                break;
+            break;
 
-            case DOWN_ARROW_KEY:
-                baselineDistance = parseInt(baselineDistance, 10) - 1;
+        case DOWN_ARROW_KEY:
+            baselineDistance = parseInt(baselineDistance, 10) - 1;
 
-                if (baselineDistance < BASELINE_DISTANCE_MIN) {
-                    baselineDistance = baselineDistance + 1;
-                } else {
-                    document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                    saveOptions();
-                }
+            if (baselineDistance < BASELINE_DISTANCE_MIN) {
+                baselineDistance = baselineDistance + 1;
+            } else {
+                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
+                saveOptions();
+            }
 
-                break;
+            break;
         }
     };
 
@@ -338,5 +372,5 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     toggleSaveButtonBasedOnInputErrors();
 });
 
-document.addEventListener('DOMContentLoaded', retrieveOptions);
+document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
 document.getElementById('save-options').addEventListener('click', saveOptions);
