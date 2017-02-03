@@ -30,39 +30,58 @@ const
 function saveOptions() {
     'use strict';
 
-    chrome.storage.sync.set({
-        gridColumnWidth:
-            document.getElementById('column--width-input').value,
+    chrome.storage.sync.get(null,
+        function (settings) {
+            let marginsAreEnabled = document.getElementById('margins--split-gutter-input').value,
+                gridMargin = 0;
 
-        gridColumnCount:
-            document.getElementById('column--count-input').value,
+            if ('true' === marginsAreEnabled) {
+                gridMargin = parseFloat(settings.gridGutterWidth) / 2;
+                marginsAreEnabled = 'true';
+            } else {
+                gridMargin = 0;
+                marginsAreEnabled = 'false';
+            }
 
-        gridGutterWidth:
-            document.getElementById('gutter--width-input').value,
+            chrome.storage.sync.set({
+                gridColumnWidth:
+                    document.getElementById('column--width-input').value,
 
-        gridBaselineColor:
-            document.getElementById('baseline--color-input').value,
+                gridColumnCount:
+                    document.getElementById('column--count-input').value,
 
-        gridBaselineDistance:
-            document.getElementById('baseline--vertical-distance-input').value,
+                gridGutterWidth:
+                    document.getElementById('gutter--width-input').value,
 
-        marginsAreEnabled:
-            document.getElementById('margins--split-gutter-input').value,
+                gridBaselineColor:
+                    document.getElementById('baseline--color-input').value,
 
-        gridColumnColor:
-            document.getElementById('column--color-input').value,
+                gridBaselineDistance:
+                    document.getElementById('baseline--vertical-distance-input').value,
 
-        gridColumnColorOpacity:
-            document.getElementById('column--opacity-input').value
-    }, function () {
-        let status = document.getElementById('status');
+                marginsAreEnabled:
+                    marginsAreEnabled,
 
-        status.textContent = 'Options saved.';
+                gridColumnColor:
+                    document.getElementById('column--color-input').value,
 
-        setTimeout(function () {
-            status.textContent = '';
-        }, 1500);
-    });
+                gridColumnColorOpacity:
+                    document.getElementById('column--opacity-input').value,
+
+                gridMargin:
+                    gridMargin
+
+            }, function () {
+                let status = document.getElementById('status');
+
+                status.textContent = 'Options saved.';
+
+                setTimeout(function () {
+                    status.textContent = '';
+                }, 1500);
+            });
+        }
+    );
 }
 
 /**
