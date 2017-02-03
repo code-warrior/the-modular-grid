@@ -421,4 +421,3 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 });
 
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
-document.getElementById('save-options').addEventListener('click', saveOptions);
