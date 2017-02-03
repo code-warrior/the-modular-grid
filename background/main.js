@@ -30,6 +30,7 @@ chrome.storage.sync.set({
     gridBaselineColor: '#29abe2',
     gridBaselineDistance: 24,
     gridColumnColorOpacity: 0.2,
+    gridMargin: 10,
     marginsAreEnabled: true,
     currentGrid: 'modular-grid'
 });

@@ -54,11 +54,6 @@ let html = document.querySelector('html'),
     //
     sideBarPopup__IsShowing = false,
 
-    //
-    // Grid-related variables, of which gridColumn and gridGutter will be updated by
-    // the user when choosing the size of columns and gutters.
-    //
-    splitGutterWidth = 10,
     pageHeight = (undefined !== document.height)
         ? document.height
         : document.body.offsetHeight,
@@ -379,12 +374,6 @@ function updateGrid() {
             case 'column-grid':
                 modularGrid.className = CSS__Classes.columngrid;
 
-                if ('true' === settings.marginsAreEnabled) {
-                    splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                } else {
-                    splitGutterWidth = 0;
-                }
-
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
                         'background-image: linear-gradient(90deg, ' +
@@ -393,7 +382,7 @@ function updateGrid() {
                         settings.gridColumnWidth + 'px, transparent 0); ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -402,12 +391,6 @@ function updateGrid() {
 
             case 'modular-grid':
                 modularGrid.className = CSS__Classes.modulargrid;
-
-                if ('true' === settings.marginsAreEnabled) {
-                    splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                } else {
-                    splitGutterWidth = 0;
-                }
 
                 document.getElementById('modular-grid').setAttribute('style',
                         'height: ' + pageHeight + 'px; ' +
@@ -420,7 +403,7 @@ function updateGrid() {
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                         settings.gridBaselineDistance + 'px; ' +
-                        'background-position: ' + splitGutterWidth + 'px 0; ' +
+                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -465,12 +448,6 @@ chrome.extension.onMessage.addListener(function (msg) {
                 case 'column-grid':
                     modularGrid.className = CSS__Classes.columngrid;
 
-                    if ('true' === settings.marginsAreEnabled) {
-                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                    } else {
-                        splitGutterWidth = 0;
-                    }
-
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
@@ -480,7 +457,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -489,12 +466,6 @@ chrome.extension.onMessage.addListener(function (msg) {
 
                 case 'modular-grid':
                     modularGrid.className = CSS__Classes.modulargrid;
-
-                    if ('true' === settings.marginsAreEnabled) {
-                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                    } else {
-                        splitGutterWidth = 0;
-                    }
 
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
@@ -508,7 +479,7 @@ chrome.extension.onMessage.addListener(function (msg) {
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                             settings.gridBaselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -614,12 +585,6 @@ document.onkeydown = function (evnt) {
                 case SHOWING_NO_GRID:
                     modularGrid.classList.add(CSS__Classes.columngrid);
 
-                    if ('true' === settings.marginsAreEnabled) {
-                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                    } else {
-                        splitGutterWidth = 0;
-                    }
-
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
@@ -629,7 +594,7 @@ document.onkeydown = function (evnt) {
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10))) + 'px;');
@@ -644,12 +609,6 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.remove(CSS__Classes.columngrid);
                     modularGrid.classList.add(CSS__Classes.modulargrid);
 
-                    if ('true' === settings.marginsAreEnabled) {
-                        splitGutterWidth = (parseInt(settings.gridGutterWidth, 10) / 2);
-                    } else {
-                        splitGutterWidth = 0;
-                    }
-
                     document.getElementById('modular-grid').setAttribute('style',
                             'height: ' + pageHeight + 'px; ' +
                             'background-image: linear-gradient(90deg, ' +
@@ -662,7 +621,7 @@ document.onkeydown = function (evnt) {
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
                             settings.gridBaselineDistance + 'px; ' +
-                            'background-position: ' + splitGutterWidth + 'px 0; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
                             'max-width: ' +
                             (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
