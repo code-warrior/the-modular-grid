@@ -26,7 +26,8 @@ const
 function saveOptions() {
     'use strict';
 
-    chrome.storage.sync.get(null,
+    chrome.storage.sync.get(
+        null,
         function (settings) {
             let marginsAreEnabled = document.getElementById('margins--split-gutter-input').value,
                 gridMargin = 0;
