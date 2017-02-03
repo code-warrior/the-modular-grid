@@ -68,7 +68,7 @@ function saveOptions() {
 /**
  * Retrieve the options from storage and fill the options form with those values.
  */
-function fillOptionsFormWithOptions() {
+function populateOptionsFormWithStorageOptions() {
     'use strict';
 
     chrome.storage.sync.get(
@@ -356,5 +356,5 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     toggleSaveButtonBasedOnInputErrors();
 });
 
-document.addEventListener('DOMContentLoaded', fillOptionsFormWithOptions);
+document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
 document.getElementById('save-options').addEventListener('click', saveOptions);
