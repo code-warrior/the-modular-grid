@@ -91,13 +91,17 @@ p {
 }
 
 #status {
+   display: none;
+   text-align: center;
+   background-color: get-color('grid', 'column') !important;
+   font-size: 1.4rem;
    position: fixed !important;
-   right: 0 !important;
-   bottom: 58px !important;
    z-index: 3 !important;
-   margin: 12px !important;
-}
-
+   bottom: 24px !important;
+   right: calc(50% - 124px) !important;
+   margin: 0 !important;
+   padding: 24px !important;
+   width: 200px !important;
 }
 
 .error-message {
