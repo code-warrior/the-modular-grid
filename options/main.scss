@@ -91,24 +91,17 @@ p {
 }
 
 #status {
-   position: fixed !important;
-   right: 0 !important;
-   bottom: 58px !important;
-   z-index: 3 !important;
-   margin: 12px !important;
-}
-
-#save-options {
-   position: fixed !important;
-   right: 20px !important;
-   bottom: 20px !important;
-   border: 0 !important;
-   box-shadow: 0 0 10px 10px get-color('grid', 'column') !important;
+   display: none;
+   text-align: center;
    background-color: get-color('grid', 'column') !important;
-   padding: 4px !important;
-   color: get-color('background', 'primary') !important;
-   font-family: $font--stack !important;
-   font-size: 1.1rem !important;
+   font-size: 1.4rem;
+   position: fixed !important;
+   z-index: 3 !important;
+   bottom: 24px !important;
+   right: calc(50% - 124px) !important;
+   margin: 0 !important;
+   padding: 24px !important;
+   width: 200px !important;
 }
 
 .error-message {

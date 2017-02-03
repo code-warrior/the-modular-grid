@@ -71,10 +71,10 @@ function saveOptions() {
             }, function () {
                 let status = document.getElementById('status');
 
-                status.textContent = 'Options saved.';
+                status.style.display = 'block';
 
                 setTimeout(function () {
-                    status.textContent = '';
+                    status.style.display = 'none';
                 }, 1500);
             });
         }
@@ -421,4 +421,3 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 });
 
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
-document.getElementById('save-options').addEventListener('click', saveOptions);
