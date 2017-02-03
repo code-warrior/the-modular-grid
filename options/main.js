@@ -147,6 +147,10 @@ function toggleSaveButtonBasedOnInputErrors() {
     }
 }
 
+//
+// Columns
+// — Width
+//
 document.getElementById('column--width-input').addEventListener('keyup', function () {
     saveOptions();
 }, false);
@@ -201,63 +205,10 @@ document.getElementById('column--width-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
-document.getElementById('gutter--width-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
-document.getElementById('gutter--width-input').addEventListener('focus', function () {
-    'use strict';
-
-    document.onkeydown = function (evnt) {
-        let gutterWidthInput = document.getElementById('gutter--width-input').value;
-
-        switch (evnt.keyCode) {
-        case UP_ARROW_KEY:
-            gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
-
-            if (gutterWidthInput > GUTTER_WIDTH_MAX) {
-                gutterWidthInput = gutterWidthInput - 1;
-            } else {
-                document.getElementById('gutter--width-input').value = gutterWidthInput;
-                saveOptions();
-            }
-
-            break;
-
-        case DOWN_ARROW_KEY:
-            gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
-
-            if (gutterWidthInput < GUTTER_WIDTH_MIN) {
-                gutterWidthInput = gutterWidthInput + 1;
-            } else {
-                document.getElementById('gutter--width-input').value = gutterWidthInput;
-                saveOptions();
-            }
-
-            break;
-        }
-    };
-
-}, false);
-
-document.getElementById('gutter--width-input').addEventListener('blur', function () {
-    'use strict';
-
-    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
-        gutterWidthInputBox = document.getElementById('gutter--width-input').value,
-        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
-
-    if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
-        gutterWidthInputBox__ErrorMessage.style.display = 'none';
-        inputErrorsIn.gutterWidth = false;
-    } else {
-        gutterWidthInputBox__ErrorMessage.style.display = 'inline';
-        inputErrorsIn.gutterWidth = true;
-    }
-
-    toggleSaveButtonBasedOnInputErrors();
-});
-
+//
+// Columns
+// — Count
+//
 document.getElementById('column--count-input').addEventListener('keyup', function () {
     saveOptions();
 }, false);
@@ -315,6 +266,103 @@ document.getElementById('column--count-input').addEventListener('blur', function
     toggleSaveButtonBasedOnInputErrors();
 });
 
+//
+// Columns
+// — Color
+//
+document.getElementById('column--color-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+//
+// Columns
+// — Color opacity
+//
+document.getElementById('column--opacity-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+//
+// Columns
+// — Width
+//
+document.getElementById('gutter--width-input').addEventListener('keyup', function () {
+    saveOptions();
+}, false);
+
+document.getElementById('gutter--width-input').addEventListener('focus', function () {
+    'use strict';
+
+    document.onkeydown = function (evnt) {
+        let gutterWidthInput = document.getElementById('gutter--width-input').value;
+
+        switch (evnt.keyCode) {
+        case UP_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
+
+            if (gutterWidthInput > GUTTER_WIDTH_MAX) {
+                gutterWidthInput = gutterWidthInput - 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
+
+            break;
+
+        case DOWN_ARROW_KEY:
+            gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
+
+            if (gutterWidthInput < GUTTER_WIDTH_MIN) {
+                gutterWidthInput = gutterWidthInput + 1;
+            } else {
+                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                saveOptions();
+            }
+
+            break;
+        }
+    };
+
+}, false);
+
+document.getElementById('gutter--width-input').addEventListener('blur', function () {
+    'use strict';
+
+    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
+        gutterWidthInputBox = document.getElementById('gutter--width-input').value,
+        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
+
+    if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
+        gutterWidthInputBox__ErrorMessage.style.display = 'none';
+        inputErrorsIn.gutterWidth = false;
+    } else {
+        gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+        inputErrorsIn.gutterWidth = true;
+    }
+
+    toggleSaveButtonBasedOnInputErrors();
+});
+
+//
+// Margins
+// — Split gutters
+//
+document.getElementById('margins--split-gutter-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+//
+// Basline
+// — Color
+//
+document.getElementById('baseline--color-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+//
+// Basline
+// — Vertical distance
+//
 document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
     saveOptions();
 }, false);
@@ -371,22 +419,6 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 
     toggleSaveButtonBasedOnInputErrors();
 });
-
-document.getElementById('column--color-input').addEventListener('change', function () {
-    saveOptions();
-}, false);
-
-document.getElementById('column--opacity-input').addEventListener('change', function () {
-    saveOptions();
-}, false);
-
-document.getElementById('margins--split-gutter-input').addEventListener('change', function () {
-    saveOptions();
-}, false);
-
-document.getElementById('baseline--color-input').addEventListener('change', function () {
-    saveOptions();
-}, false);
 
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
 document.getElementById('save-options').addEventListener('click', saveOptions);
