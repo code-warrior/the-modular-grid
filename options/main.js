@@ -372,5 +372,21 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     toggleSaveButtonBasedOnInputErrors();
 });
 
+document.getElementById('column--color-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+document.getElementById('column--opacity-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+document.getElementById('margins--split-gutter-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
+document.getElementById('baseline--color-input').addEventListener('change', function () {
+    saveOptions();
+}, false);
+
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
 document.getElementById('save-options').addEventListener('click', saveOptions);
