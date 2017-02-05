@@ -4,6 +4,7 @@ let gulp = require('gulp'),
     del = require('del'),
     renameFile = require("gulp-rename"),
     htmlMinifier = require('gulp-htmlmin'),
+    htmlValidator = require('gulp-html'),
     config = require('./config.json'),
     colors = config.colors;
 
@@ -18,6 +19,13 @@ gulp.task('minifyHTML', function () {
         .pipe(renameFile('options.html'))
         .pipe(gulp.dest('extension'));
 });
+
+gulp.task('validateHTML', function () {
+    'use strict';
+
+    return gulp.src(['src/options/index.html']).pipe(htmlValidator());
+});
+
 gulp.task('copyRawFilesToExtensionFolder', function () {
     'use strict';
 
