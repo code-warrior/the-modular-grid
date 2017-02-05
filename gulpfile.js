@@ -2,6 +2,7 @@
 
 let gulp = require('gulp'),
     del = require('del'),
+    renameFile = require("gulp-rename"),
     config = require('./config.json'),
     colors = config.colors;
 

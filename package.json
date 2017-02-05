@@ -37,6 +37,7 @@
   "homepage": "https://github.com/code-warrior/the-modular-grid#readme",
   "devDependencies": {
     "del": "^2.2.2",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2"
   }
 }
