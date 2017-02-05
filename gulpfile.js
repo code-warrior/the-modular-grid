@@ -27,6 +27,32 @@ gulp.task('validateHTML', function () {
     return gulp.src(['src/options/index.html']).pipe(htmlValidator());
 });
 
+gulp.task('compileOptionsCSS', function () {
+    'use strict';
+
+    return gulp.src('src/options/main.scss')
+        .pipe(sass({
+            outputStyle: 'compressed',
+            precision: 10
+        }).on('error', sass.logError))
+        .pipe(renameFile('options.css'))
+        .pipe(gulp.dest('extension'));
+});
+
+gulp.task('compileContentCSS', function () {
+    'use strict';
+
+    return gulp.src('src/content/main.scss')
+        .pipe(sass({
+            outputStyle: 'compressed',
+            precision: 10
+        }).on('error', sass.logError))
+        .pipe(renameFile('content.css'))
+        .pipe(gulp.dest('extension'));
+});
+
+gulp.task('compileCSS', ['compileOptionsCSS', 'compileContentCSS']);
+
 gulp.task('copyRawFilesToExtensionFolder', function () {
     'use strict';
 
