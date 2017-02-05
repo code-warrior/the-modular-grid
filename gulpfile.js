@@ -7,6 +7,7 @@ let gulp = require('gulp'),
     htmlValidator = require('gulp-html'),
     sass = require('gulp-sass'),
     sassLint = require('gulp-sass-lint'),
+    jsLinter = require('gulp-eslint'),
     config = require('./config.json'),
     colors = config.colors;
 
@@ -77,6 +78,35 @@ gulp.task('compileContentCSS', function () {
 });
 
 gulp.task('compileCSS', ['compileOptionsCSS', 'compileContentCSS']);
+
+gulp.task('lintBackgroundJS', function () {
+    'use strict';
+
+    return gulp.src('src/background/main.js')
+        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter.format())
+        .pipe(jsLinter.failAfterError());
+});
+
+gulp.task('lintContentJS', function () {
+    'use strict';
+
+    return gulp.src('src/content/main.js')
+        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter.format())
+        .pipe(jsLinter.failAfterError());
+});
+
+gulp.task('lintOptionsJS', function () {
+    'use strict';
+
+    return gulp.src('src/options/main.js')
+        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter.format())
+        .pipe(jsLinter.failAfterError());
+});
+
+gulp.task('lintJS', ['lintBackgroundJS', 'lintContentJS', 'lintOptionsJS']);
 
 gulp.task('copyRawFilesToExtensionFolder', function () {
     'use strict';
