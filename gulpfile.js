@@ -1,6 +1,7 @@
 /*jslint node: true */
 
 var gulp = require('gulp'),
+    del = require('del'),
     config = require('./config.json'),
     colors = config.colors;
 
