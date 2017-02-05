@@ -6,6 +6,7 @@ let gulp = require('gulp'),
     htmlMinifier = require('gulp-htmlmin'),
     htmlValidator = require('gulp-html'),
     sass = require('gulp-sass'),
+    sassLint = require('gulp-sass-lint'),
     config = require('./config.json'),
     colors = config.colors;
 
@@ -26,6 +27,30 @@ gulp.task('validateHTML', function () {
 
     return gulp.src(['src/options/index.html']).pipe(htmlValidator());
 });
+
+gulp.task('lintOptionsSass', function () {
+    'use strict';
+
+    return gulp.src('src/options/main.scss')
+        .pipe(sassLint({
+            configFile: './.sass-lint.yml'
+        }))
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
+});
+
+gulp.task('lintContentSass', function () {
+    'use strict';
+
+    return gulp.src('src/content/main.scss')
+        .pipe(sassLint({
+            configFile: './.sass-lint.yml'
+        }))
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
+});
+
+gulp.task('lintSass', ['lintOptionsSass', 'lintContentSass']);
 
 gulp.task('compileOptionsCSS', function () {
     'use strict';
