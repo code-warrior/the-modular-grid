@@ -4,11 +4,6 @@ var gulp = require('gulp'),
     config = require('./config.json'),
     colors = config.colors;
 
-/**
- * DEFAULT
- *
- * This task does nothing but list the available tasks in this file.
- */
 gulp.task('default', function () {
     'use strict';
 
