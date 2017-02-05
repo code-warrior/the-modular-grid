@@ -1,4 +1,4 @@
-/*jslint node: true */
+/*jslint node: true, for */
 
 var gulp = require('gulp'),
     del = require('del'),
@@ -36,16 +36,16 @@ gulp.task('clean', function () {
         try {
             fs.accessSync(expendableFolders[i], fs.F_OK);
             process.stdout.write('\n\tThe ' + colors.green + expendableFolders[i] +
-                colors.default + ' directory was found and ' + colors.green +
-                'will' + colors.default + ' be deleted.\n');
+                    colors.default + ' directory was found and ' + colors.green +
+                    'will' + colors.default + ' be deleted.\n');
             del(expendableFolders[i]);
         } catch (error) {
             if (error) {
                 process.stdout.write('\n\tThe ' + colors.red +
-                    expendableFolders[i] + colors.default +
-                    ' directory does ' + colors.red + 'not' + colors.default +
-                    ' exist or is ' + colors.red + 'not' + colors.default +
-                    ' accessible.\n');
+                        expendableFolders[i] + colors.default +
+                        ' directory does ' + colors.red + 'not' + colors.default +
+                        ' exist or is ' + colors.red + 'not' + colors.default +
+                        ' accessible.\n');
             }
         }
     }
@@ -62,16 +62,16 @@ gulp.task('default', function () {
     exec('gulp --tasks', function (error, stdout, stderr) {
         if (null !== error) {
             process.stdout.write('An error was likely generated when invoking ' +
-                'the `exec` program in the default task.');
+                    'the `exec` program in the default task.');
         }
 
         if ('' !== stderr) {
             process.stdout.write('Content has been written to the stderr stream ' +
-                'when invoking the `exec` program in the default task.');
+                    'when invoking the `exec` program in the default task.');
         }
 
         process.stdout.write('\n\tThis default task does ' + colors.red +
-            'nothing' + colors.default + ' but generate this message. The ' +
-            'available tasks are:\n\n' + stdout);
+                'nothing' + colors.default + ' but generate this message. The ' +
+                'available tasks are:\n\n' + stdout);
     });
 });
