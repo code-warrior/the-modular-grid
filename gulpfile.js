@@ -25,6 +25,35 @@ gulp.task('copyRawFilesToExtensionFolder', function () {
     ], {base: './src/'}).pipe(gulp.dest('extension'));
 });
 
+gulp.task('clean', function () {
+    'use strict';
+
+    var fs = require('fs'),
+        i,
+        expendableFolders = ['extension'];
+
+    for (i = 0; i < expendableFolders.length; i += 1) {
+        try {
+            fs.accessSync(expendableFolders[i], fs.F_OK);
+            process.stdout.write('\n\tThe ' + colors.green + expendableFolders[i] +
+                colors.default + ' directory was found and ' + colors.green +
+                'will' + colors.default + ' be deleted.\n');
+            del(expendableFolders[i]);
+        } catch (error) {
+            if (error) {
+                process.stdout.write('\n\tThe ' + colors.red +
+                    expendableFolders[i] + colors.default +
+                    ' directory does ' + colors.red + 'not' + colors.default +
+                    ' exist or is ' + colors.red + 'not' + colors.default +
+                    ' accessible.\n');
+            }
+        }
+    }
+
+    process.stdout.write('\n');
+});
+
+
 gulp.task('default', function () {
     'use strict';
 
