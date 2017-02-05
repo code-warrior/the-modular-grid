@@ -1,6 +1,6 @@
 /*jslint node: true, for */
 
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     del = require('del'),
     config = require('./config.json'),
     colors = config.colors;
@@ -28,7 +28,7 @@ gulp.task('copyRawFilesToExtensionFolder', function () {
 gulp.task('clean', function () {
     'use strict';
 
-    var fs = require('fs'),
+    let fs = require('fs'),
         i,
         expendableFolders = ['extension'];
 
@@ -53,11 +53,10 @@ gulp.task('clean', function () {
     process.stdout.write('\n');
 });
 
-
 gulp.task('default', function () {
     'use strict';
 
-    var exec = require('child_process').exec;
+    let exec = require('child_process').exec;
 
     exec('gulp --tasks', function (error, stdout, stderr) {
         if (null !== error) {
