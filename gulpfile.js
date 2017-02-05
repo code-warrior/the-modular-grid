@@ -3,9 +3,21 @@
 let gulp = require('gulp'),
     del = require('del'),
     renameFile = require("gulp-rename"),
+    htmlMinifier = require('gulp-htmlmin'),
     config = require('./config.json'),
     colors = config.colors;
 
+gulp.task('minifyHTML', function () {
+    'use strict';
+
+    return gulp.src(['src/options/index.html'])
+        .pipe(htmlMinifier({
+            removeComments: true,
+            collapseWhitespace: true
+        }))
+        .pipe(renameFile('options.html'))
+        .pipe(gulp.dest('extension'));
+});
 gulp.task('copyRawFilesToExtensionFolder', function () {
     'use strict';
 
