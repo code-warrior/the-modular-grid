@@ -5,6 +5,7 @@ let gulp = require('gulp'),
     renameFile = require("gulp-rename"),
     htmlMinifier = require('gulp-htmlmin'),
     htmlValidator = require('gulp-html'),
+    sass = require('gulp-sass'),
     config = require('./config.json'),
     colors = config.colors;
 
