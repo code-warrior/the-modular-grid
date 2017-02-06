@@ -85,7 +85,7 @@ gulp.task('lintBackgroundJS', function () {
     'use strict';
 
     return gulp.src('src/background/main.js')
-        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter({configFile: '.eslintrc.json'}))
         .pipe(jsLinter.format())
         .pipe(jsLinter.failAfterError())
         .pipe(renameFile('background.js'))
@@ -96,7 +96,7 @@ gulp.task('lintContentJS', function () {
     'use strict';
 
     return gulp.src('src/content/main.js')
-        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter({configFile: '.eslintrc.json'}))
         .pipe(jsLinter.format())
         .pipe(jsLinter.failAfterError())
         .pipe(renameFile('content.js'))
@@ -107,7 +107,7 @@ gulp.task('lintOptionsJS', function () {
     'use strict';
 
     return gulp.src('src/options/main.js')
-        .pipe(jsLinter({'configFile':'.eslintrc.json'}))
+        .pipe(jsLinter({configFile: '.eslintrc.json'}))
         .pipe(jsLinter.format())
         .pipe(jsLinter.failAfterError())
         .pipe(renameFile('options.js'))
@@ -136,58 +136,61 @@ gulp.task('copyRawFilesToExtensionFolder', function () {
     ], {base: './src/'}).pipe(gulp.dest('extension'));
 });
 
-gulp.task('serve',
-    [
-        'validateHTML',
-        'minifyHTML',
-        'lintSass',
-        'compileCSS',
-        'lintJS',
-        'copyRawFilesToExtensionFolder'
-    ], function () {
+gulp.task('serve', [
+    'validateHTML',
+    'minifyHTML',
+    'lintSass',
+    'compileCSS',
+    'lintJS',
+    'copyRawFilesToExtensionFolder'
+], function () {
     'use strict';
 
-        gulp.watch(
-            ['src/options/index.html'],
-            ['validateHTML', 'minifyHTML'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/options/index.html'],
+        ['validateHTML', 'minifyHTML']
+    )
+        .on('change', reload);
 
-        gulp.watch(
-            ['src/options/main.js'],
-            ['lintContentJS'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/options/main.js'],
+        ['lintContentJS']
+    )
+        .on('change', reload);
 
-        gulp.watch(
-            ['src/options/main.scss'],
-            ['lintOptionsSass', 'compileOptionsCSS'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/options/main.scss'],
+        ['lintOptionsSass', 'compileOptionsCSS']
+    )
+        .on('change', reload);
 
-        gulp.watch(
-            ['src/background/main.js'],
-            ['lintBackgroundJS'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/background/main.js'],
+        ['lintBackgroundJS']
+    )
+        .on('change', reload);
 
-        gulp.watch(
-            ['src/content/main.js'],
-            ['lintContentJS'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/content/main.js'],
+        ['lintContentJS']
+    )
+        .on('change', reload);
 
-        gulp.watch(
-            ['src/content/main.scss'],
-            ['lintContentSass', 'compileContentCSS'])
-            .on('change', reload);
+    gulp.watch(
+        ['src/content/main.scss'],
+        ['lintContentSass', 'compileContentCSS']
+    )
+        .on('change', reload);
 });
 
-gulp.task('build',
-    [
-        'validateHTML',
-        'minifyHTML',
-        'lintSass',
-        'compileCSS',
-        'lintJS',
-        'copyRawFilesToExtensionFolder'
-    ]
-);
+gulp.task('build', [
+    'validateHTML',
+    'minifyHTML',
+    'lintSass',
+    'compileCSS',
+    'lintJS',
+    'copyRawFilesToExtensionFolder'
+]);
 
 gulp.task('clean', function () {
     'use strict';
