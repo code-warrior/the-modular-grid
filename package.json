@@ -1,0 +1,49 @@
+{
+  "name": "the-modular-grid",
+  "version": "1.0.0",
+  "description": "A Chrome extension that superimposes a grid over your web dev mockups.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-warrior/the-modular-grid.git"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "design",
+    "grid",
+    "pixel",
+    "layout"
+  ],
+  "author": "Roy Vanegas",
+  "license": "ISC",
+  "contributors": [
+    {
+      "name": "Roy Vanegas",
+      "email": "roy@thecodeeducators.com",
+      "url": "http://roy.vanegas.org"
+    },
+    {
+      "name": "Saman Tehrani",
+      "email": "samanrtehrani@gmail.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/code-warrior/the-modular-grid/issues"
+  },
+  "homepage": "https://github.com/code-warrior/the-modular-grid#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-html": "^0.4.5",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.2"
+  }
+}
