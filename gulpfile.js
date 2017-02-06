@@ -87,7 +87,9 @@ gulp.task('lintBackgroundJS', function () {
     return gulp.src('src/background/main.js')
         .pipe(jsLinter({'configFile':'.eslintrc.json'}))
         .pipe(jsLinter.format())
-        .pipe(jsLinter.failAfterError());
+        .pipe(jsLinter.failAfterError())
+        .pipe(renameFile('background.js'))
+        .pipe(gulp.dest('extension'));
 });
 
 gulp.task('lintContentJS', function () {
@@ -96,7 +98,9 @@ gulp.task('lintContentJS', function () {
     return gulp.src('src/content/main.js')
         .pipe(jsLinter({'configFile':'.eslintrc.json'}))
         .pipe(jsLinter.format())
-        .pipe(jsLinter.failAfterError());
+        .pipe(jsLinter.failAfterError())
+        .pipe(renameFile('content.js'))
+        .pipe(gulp.dest('extension'));
 });
 
 gulp.task('lintOptionsJS', function () {
@@ -105,7 +109,9 @@ gulp.task('lintOptionsJS', function () {
     return gulp.src('src/options/main.js')
         .pipe(jsLinter({'configFile':'.eslintrc.json'}))
         .pipe(jsLinter.format())
-        .pipe(jsLinter.failAfterError());
+        .pipe(jsLinter.failAfterError())
+        .pipe(renameFile('options.js'))
+        .pipe(gulp.dest('extension'));
 });
 
 gulp.task('lintJS', ['lintBackgroundJS', 'lintContentJS', 'lintOptionsJS']);
