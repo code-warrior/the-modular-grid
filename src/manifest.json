@@ -11,7 +11,7 @@
     "homepage_url": "https://github.com/code-warrior/the-modular-grid",
     "web_accessible_resources": [
         "fonts/*.woff2",
-        "content/*.css"
+        "*.css"
     ],
     "offline_enabled": true,
     "incognito": "not_allowed",

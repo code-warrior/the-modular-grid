@@ -68,7 +68,7 @@ let html = document.querySelector('html'),
         none: 'none'
     };
 
-stylesheet.href = chrome.extension.getURL('content/main.css');
+stylesheet.href = chrome.extension.getURL('content.css');
 stylesheet.rel = 'stylesheet';
 stylesheet.id = 'modular-grid-css';
 

@@ -108,6 +108,6 @@ chrome.runtime.onMessage.addListener(function (response) {
     'use strict';
 
     if ('openOptions' === response) {
-        chrome.tabs.create({url: chrome.extension.getURL('options/index.html')});
+        chrome.tabs.create({url: chrome.extension.getURL('options.html')});
     }
 });
