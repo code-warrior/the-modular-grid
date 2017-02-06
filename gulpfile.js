@@ -8,6 +8,8 @@ let gulp = require('gulp'),
     sass = require('gulp-sass'),
     sassLint = require('gulp-sass-lint'),
     jsLinter = require('gulp-eslint'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload,
     config = require('./config.json'),
     colors = config.colors;
 
@@ -126,6 +128,48 @@ gulp.task('copyRawFilesToExtensionFolder', function () {
         '!src/img/screenshot--settings-1.png',
         '!src/img/screenshot--settings-2.png'
     ], {base: './src/'}).pipe(gulp.dest('extension'));
+});
+
+gulp.task('serve',
+    [
+        'validateHTML',
+        'minifyHTML',
+        'lintSass',
+        'compileCSS',
+        'lintJS',
+        'copyRawFilesToExtensionFolder'
+    ], function () {
+    'use strict';
+
+        gulp.watch(
+            ['src/options/index.html'],
+            ['validateHTML', 'minifyHTML'])
+            .on('change', reload);
+
+        gulp.watch(
+            ['src/options/main.js'],
+            ['lintContentJS'])
+            .on('change', reload);
+
+        gulp.watch(
+            ['src/options/main.scss'],
+            ['lintOptionsSass', 'compileOptionsCSS'])
+            .on('change', reload);
+
+        gulp.watch(
+            ['src/background/main.js'],
+            ['lintBackgroundJS'])
+            .on('change', reload);
+
+        gulp.watch(
+            ['src/content/main.js'],
+            ['lintContentJS'])
+            .on('change', reload);
+
+        gulp.watch(
+            ['src/content/main.scss'],
+            ['lintContentSass', 'compileContentCSS'])
+            .on('change', reload);
 });
 
 gulp.task('clean', function () {
