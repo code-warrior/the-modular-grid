@@ -13,10 +13,6 @@ There are currently some strange UX bugs in the extension when used in multiple 
 - [Updates](#updates)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Development](#development)
-   * [Compiling](#development--compiling)
-      * [Sass](#development--compiling__sass)
-   * [Linting](#development--linting)
-      * [Sass](#development--linting__sass)
 
 ![](img/screenshot--baseline-grid.png)
 
@@ -96,22 +92,8 @@ All text input boxes in the options page can be updates with the `↑` and `↓`
 
 ## <a name="development">Development</a>
 
-### <a name="development--compiling">Compiling</a>
+All development is now done via Gulp. This includes compiling CSS via Sass, compressing HTML and CSS, and linting JavaScript via ESLint.
 
-#### <a name="development--compiling__sass">Sass</a>
-````bash
-\sass \
-   --sourcemap=none \
-   --unix-newlines \
-   --no-cache \
-   --style compressed \
-   --watch content/main.scss:content/main.css \
-      options/main.scss:options/main.css
-````
+Make sure to have Java installed, then proceed with the [installation of Node](https://nodejs.org/en/) and [Gulp](http://gulpjs.com/).
 
-### <a name="development--linting">Linting</a>
-
-#### <a name="development--linting__sass">Sass</a>
-````bash
-sass-lint -c .sass-lint.yml -v -s .
-````
+Lastly, run `npm install` to install the `node_modules`, then run `gulp serve`. (Run `gulp --tasks` to see all the available development tasks.)
