@@ -178,6 +178,17 @@ gulp.task('serve',
             .on('change', reload);
 });
 
+gulp.task('build',
+    [
+        'validateHTML',
+        'minifyHTML',
+        'lintSass',
+        'compileCSS',
+        'lintJS',
+        'copyRawFilesToExtensionFolder'
+    ]
+);
+
 gulp.task('clean', function () {
     'use strict';
 
