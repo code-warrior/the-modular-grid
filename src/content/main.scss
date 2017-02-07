@@ -9,6 +9,13 @@
    padding: 0 !important;
 }
 
+#modular-grid--container {
+   position: absolute !important;
+   width: 99% !important;
+   border: 0 !important;
+   padding: 0 !important;
+}
+
 #info-sidebar {
    display: none;
    border: 0 !important;
@@ -66,12 +73,6 @@
    }
 }
 
-#modular-grid--container {
-   position: absolute !important;
-   width: 99% !important;
-   border: 0 !important;
-   padding: 0 !important;
-}
 // TODO: Add a namespaced class/ID here
 kbd {
    border-radius: 8px !important;
