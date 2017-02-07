@@ -127,6 +127,7 @@ gulp.task('copyRawFilesToExtensionFolder', function () {
     ], {base: './src/'}).pipe(gulp.dest('extension'));
 });
 
+// TODO: add more files to watch here. For example, none of the files in the common-styles folder is being polled.
 gulp.task('serve', [
     'validateHTML',
     'minifyHTML',
