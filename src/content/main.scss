@@ -3,8 +3,10 @@
 @import '../common-styles/functions';
 
 #modular-grid {
-   position: relative;
-   margin: 0 auto;
+   position: relative !important;
+   margin: 0 auto !important;
+   border: 0 !important;
+   padding: 0 !important;
 }
 
 .user-supplied-bg-image {
@@ -17,6 +19,7 @@
 
 #info-sidebar {
    display: none;
+   border: 0 !important;
    position: fixed !important;
    top: $offset-sidebar !important;
    right: $offset-sidebar !important;
@@ -72,8 +75,10 @@
 }
 
 #modular-grid--container {
-   position: absolute;
-   width: 99%;
+   position: absolute !important;
+   width: 99% !important;
+   border: 0 !important;
+   padding: 0 !important;
 }
 
 kbd {

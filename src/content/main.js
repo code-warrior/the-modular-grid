@@ -375,17 +375,17 @@ function updateGrid() {
                 modularGrid.className = CSS__Classes.columngrid;
 
                 document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
+                        'height: ' + pageHeight + 'px !important; ' +
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.gridColumnColor,
                         settings.gridColumnColorOpacity) + ' ' +
-                        settings.gridColumnWidth + 'px, transparent 0); ' +
+                        settings.gridColumnWidth + 'px, transparent 0) !important; ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                        parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
+                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                 break;
 
@@ -393,20 +393,20 @@ function updateGrid() {
                 modularGrid.className = CSS__Classes.modulargrid;
 
                 document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
+                        'height: ' + pageHeight + 'px !important; ' +
                         'background-image: linear-gradient(90deg, ' +
                         convertHexToRGBA(settings.gridColumnColor,
                         settings.gridColumnColorOpacity) + ' ' +
                         settings.gridColumnWidth + 'px, transparent 0), ' +
                         'linear-gradient(0deg, transparent 95%, ' +
-                        settings.gridBaselineColor + ' 100%); ' +
+                        settings.gridBaselineColor + ' 100%) !important; ' +
                         'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                        settings.gridBaselineDistance + 'px; ' +
-                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                        settings.gridBaselineDistance + 'px !important; ' +
+                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                 break;
 
@@ -414,14 +414,14 @@ function updateGrid() {
                 modularGrid.className = CSS__Classes.baselinegrid;
 
                 document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px; ' +
+                        'height: ' + pageHeight + 'px !important; ' +
                         'background-image: linear-gradient(0deg, transparent 95%, ' +
-                        settings.gridBaselineColor + ' 100%); ' +
+                        settings.gridBaselineColor + ' 100%) !important; ' +
                         'background-size: 100% ' +
-                        settings.gridBaselineDistance + 'px; ' +
+                        settings.gridBaselineDistance + 'px !important; ' +
                         'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                 break;
             }
@@ -449,18 +449,18 @@ chrome.extension.onMessage.addListener(function (msg) {
                     modularGrid.className = CSS__Classes.columngrid;
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
                             settings.gridColumnColorOpacity) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0); ' +
+                            settings.gridColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     break;
 
@@ -468,21 +468,21 @@ chrome.extension.onMessage.addListener(function (msg) {
                     modularGrid.className = CSS__Classes.modulargrid;
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
                             settings.gridColumnColorOpacity) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%) !important; ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.gridBaselineDistance + 'px; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                            settings.gridBaselineDistance + 'px !important; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     break;
 
@@ -490,15 +490,15 @@ chrome.extension.onMessage.addListener(function (msg) {
                     modularGrid.className = CSS__Classes.baselinegrid;
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, ' +
                             'transparent 95%, ' + settings.gridBaselineColor +
-                            ' 100%); ' +
+                            ' 100%) !important; ' +
                             'background-size: 100% ' + settings.gridBaselineDistance +
-                            'px; ' +
+                            'px !important; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     break;
                 }
@@ -586,18 +586,18 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.add(CSS__Classes.columngrid);
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0); ' +
+                            settings.gridColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                            parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.columngrid}
@@ -610,22 +610,22 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.add(CSS__Classes.modulargrid);
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' +
                             convertHexToRGBA(settings.gridColumnColor,
                             settings.columnColorTransparency) + ' ' +
                             settings.gridColumnWidth + 'px, transparent 0), ' +
                             'linear-gradient(0deg, transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%) !important; ' +
                             'background-size: ' +
                             (parseInt(settings.gridColumnWidth, 10) +
                             parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.gridBaselineDistance + 'px; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0; ' +
+                            settings.gridBaselineDistance + 'px !important; ' +
+                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
                             'max-width: ' +
                             (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.modulargrid}
@@ -638,15 +638,15 @@ document.onkeydown = function (evnt) {
                     modularGrid.classList.add(CSS__Classes.baselinegrid);
 
                     document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px; ' +
+                            'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, ' +
                             'transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%); ' +
+                            settings.gridBaselineColor + ' 100%) !important; ' +
                             'background-size: 100% ' + settings.gridBaselineDistance +
-                            'px; ' +
+                            'px !important; ' +
                             'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
                             (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px;');
+                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
 
                     chrome.storage.sync.set(
                         {currentGrid: CSS__Classes.baselinegrid}
