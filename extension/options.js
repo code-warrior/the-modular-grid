@@ -1,20 +1,11 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-let inputErrorsIn = {
-    columnWidth: false,
-    gutterWidth: false,
-    columnCount: false,
-    baselineVerticalDistance: false
-};
-
 const
     UP_ARROW_KEY = 38,
     DOWN_ARROW_KEY = 40,
     COLUMN_WIDTH_MIN = 1.0,
-    COLUMN_WIDTH_MAX = 128.9,
     COLUMN_COUNT_MIN = 1,
-    COLUMN_COUNT_MAX = 24,
     GUTTER_WIDTH_MIN = 1.0,
     GUTTER_WIDTH_MAX = 128.9,
     BASELINE_DISTANCE_MIN = 12,
@@ -130,35 +121,39 @@ function populateOptionsFormWithStorageOptions() {
 // Columns
 // — Width
 //
-document.getElementById('column--width-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('column--width-input').addEventListener('focus', function () {
     document.onkeydown = function (evnt) {
-        let columnWidth = document.getElementById('column--width-input').value;
+        let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
+            columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
+
+        columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            columnWidth = parseInt(columnWidth, 10) + 1;
-
-            if (columnWidth > COLUMN_WIDTH_MAX) {
-                columnWidth = columnWidth - 1;
+            if (isNaN(columnWidthInputBoxValue)) {
+                columnWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--width-input').value++;
+                columnWidthInputBox__ErrorMessage.style.display = 'none';
+                columnWidthInputBoxValue = columnWidthInputBoxValue + 1;
+                document.getElementById('column--width-input').value = columnWidthInputBoxValue;
                 saveOptions();
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            columnWidth = parseInt(columnWidth, 10) - 1;
-
-            if (columnWidth < COLUMN_WIDTH_MIN) {
-                columnWidth = columnWidth - 1;
+            if (isNaN(columnWidthInputBoxValue)) {
+                columnWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--width-input').value = columnWidth;
-                saveOptions();
+                if (columnWidthInputBoxValue < (COLUMN_WIDTH_MIN + 1)) {
+                    columnWidthInputBox__ErrorMessage.style.display = 'inline';
+                    columnWidthInputBoxValue = columnWidthInputBoxValue - 1;
+                } else {
+                    columnWidthInputBox__ErrorMessage.style.display = 'none';
+                    columnWidthInputBoxValue = columnWidthInputBoxValue - 1;
+                    document.getElementById('column--width-input').value = columnWidthInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
@@ -169,14 +164,16 @@ document.getElementById('column--width-input').addEventListener('focus', functio
 document.getElementById('column--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
-        columnWidthInputBox = document.getElementById('column--width-input').value,
+    let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
         columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
-    if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
-        columnWidthInputBox__ErrorMessage.style.display = 'none';
-    } else {
+    columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
+
+    if (isNaN(columnWidthInputBoxValue)) {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
+    } else {
+        columnWidthInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     }
 });
 
@@ -184,37 +181,41 @@ document.getElementById('column--width-input').addEventListener('blur', function
 // Columns
 // — Count
 //
-document.getElementById('column--count-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('column--count-input').addEventListener('focus', function () {
     'use strict';
 
     document.onkeydown = function (evnt) {
-        let columnCount = document.getElementById('column--count-input').value;
+        let columnCountInputBoxValue = document.getElementById('column--count-input').value,
+            columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
+
+        columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            columnCount = parseInt(columnCount, 10) + 1;
-
-            if (columnCount > COLUMN_COUNT_MAX) {
-                columnCount = columnCount - 1;
+            if (isNaN(columnCountInputBoxValue)) {
+                columnCountInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--count-input').value = columnCount;
+                columnCountInputBox__ErrorMessage.style.display = 'none';
+                columnCountInputBoxValue = columnCountInputBoxValue + 1;
+                document.getElementById('column--count-input').value = columnCountInputBoxValue;
                 saveOptions();
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            columnCount = parseInt(columnCount, 10) - 1;
-
-            if (columnCount < COLUMN_COUNT_MIN) {
-                columnCount = columnCount + 1;
+            if (isNaN(columnCountInputBoxValue)) {
+                columnCountInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--count-input').value = columnCount;
-                saveOptions();
+                if (columnCountInputBoxValue < (COLUMN_COUNT_MIN + 1)) {
+                    columnCountInputBox__ErrorMessage.style.display = 'inline';
+                    columnCountInputBoxValue = columnCountInputBoxValue - 1;
+                } else {
+                    columnCountInputBox__ErrorMessage.style.display = 'none';
+                    columnCountInputBoxValue = columnCountInputBoxValue - 1;
+                    document.getElementById('column--count-input').value = columnCountInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
@@ -226,14 +227,16 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 document.getElementById('column--count-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnCountInputBox = /^([1-9]|[1][0-9]|[2][0-4])$/,
-        columnCountInputBox = document.getElementById('column--count-input').value,
+    let columnCountInputBoxValue = document.getElementById('column--count-input').value,
         columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
-    if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
-        columnCountInputBox__ErrorMessage.style.display = 'none';
-    } else {
+    columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
+
+    if (isNaN(columnCountInputBoxValue)) {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
+    } else {
+        columnCountInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     }
 });
 
@@ -257,10 +260,6 @@ document.getElementById('column--opacity-input').addEventListener('change', func
 // Columns
 // — Width
 //
-document.getElementById('gutter--width-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('gutter--width-input').addEventListener('focus', function () {
     'use strict';
 
