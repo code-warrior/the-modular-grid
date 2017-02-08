@@ -348,6 +348,8 @@ function updateGrid() {
         null,
         function (settings) {
             head.appendChild(stylesheet);
+
+            // TODO: This is a dangerous move, as it continuously injects CSS into the <head> without ever removing it.
             body.insertBefore(modularGrid__Container, firstChildOfBody);
 
             let viewportWidth = html.clientWidth,
@@ -438,6 +440,8 @@ chrome.extension.onMessage.addListener(function (msg) {
 
     if (msg.isGridEnabledViaBrowserAction) {
         head.appendChild(stylesheet);
+
+        // TODO: This is a dangerous move, as it continuously injects CSS into the <head> without ever removing it.
         body.insertBefore(modularGrid__Container, firstChildOfBody);
         body.appendChild(sideBarPopup__Container);
 
