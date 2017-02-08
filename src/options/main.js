@@ -182,10 +182,6 @@ document.getElementById('column--width-input').addEventListener('blur', function
 // Columns
 // — Count
 //
-document.getElementById('column--count-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('column--count-input').addEventListener('focus', function () {
     'use strict';
 
@@ -255,10 +251,6 @@ document.getElementById('column--opacity-input').addEventListener('change', func
 // Columns
 // — Width
 //
-document.getElementById('gutter--width-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('gutter--width-input').addEventListener('focus', function () {
     'use strict';
 
