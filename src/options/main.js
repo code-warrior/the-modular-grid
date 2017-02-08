@@ -1,13 +1,6 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-let inputErrorsIn = {
-    columnWidth: false,
-    gutterWidth: false,
-    columnCount: false,
-    baselineVerticalDistance: false
-};
-
 const
     UP_ARROW_KEY = 38,
     DOWN_ARROW_KEY = 40,
@@ -126,27 +119,6 @@ function populateOptionsFormWithStorageOptions() {
     );
 }
 
-function toggleSaveButtonBasedOnInputErrors() {
-    'use strict';
-
-    let saveOptionsSubmitButton = document.getElementById('save-options'),
-        errorFound = false;
-
-    for (let key in inputErrorsIn) {
-        if (true === inputErrorsIn[key]) {
-            errorFound = true;
-
-            break;
-        }
-    }
-
-    if (errorFound) {
-        saveOptionsSubmitButton.style.display = 'none';
-    } else {
-        saveOptionsSubmitButton.style.display = 'inline';
-    }
-}
-
 //
 // Columns
 // — Width
@@ -196,13 +168,9 @@ document.getElementById('column--width-input').addEventListener('blur', function
 
     if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
         columnWidthInputBox__ErrorMessage.style.display = 'none';
-        inputErrorsIn.columnWidth = false;
     } else {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
-        inputErrorsIn.columnWidth = true;
     }
-
-    toggleSaveButtonBasedOnInputErrors();
 });
 
 //
@@ -257,13 +225,9 @@ document.getElementById('column--count-input').addEventListener('blur', function
 
     if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
         columnCountInputBox__ErrorMessage.style.display = 'none';
-        inputErrorsIn.columnCount = false;
     } else {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
-        inputErrorsIn.columnCount = true;
     }
-
-    toggleSaveButtonBasedOnInputErrors();
 });
 
 //
@@ -334,13 +298,9 @@ document.getElementById('gutter--width-input').addEventListener('blur', function
 
     if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
-        inputErrorsIn.gutterWidth = false;
     } else {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
-        inputErrorsIn.gutterWidth = true;
     }
-
-    toggleSaveButtonBasedOnInputErrors();
 });
 
 //
@@ -411,13 +371,9 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
 
     if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
-        inputErrorsIn.baselineVerticalDistance = false;
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
-        inputErrorsIn.baselineVerticalDistance = true;
     }
-
-    toggleSaveButtonBasedOnInputErrors();
 });
 
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
