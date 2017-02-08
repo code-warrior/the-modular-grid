@@ -122,10 +122,6 @@ function populateOptionsFormWithStorageOptions() {
 // Columns
 // — Width
 //
-document.getElementById('column--width-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('column--width-input').addEventListener('focus', function () {
     document.onkeydown = function (evnt) {
         let columnWidth = document.getElementById('column--width-input').value;
