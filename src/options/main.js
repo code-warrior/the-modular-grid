@@ -165,14 +165,16 @@ document.getElementById('column--width-input').addEventListener('focus', functio
 document.getElementById('column--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
-        columnWidthInputBox = document.getElementById('column--width-input').value,
+    let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
         columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
-    if (null !== columnWidthInputBox.match(patternForColumnWidthInputBox)) {
-        columnWidthInputBox__ErrorMessage.style.display = 'none';
-    } else {
+    columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
+
+    if (isNaN(columnWidthInputBoxValue)) {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
+    } else {
+        columnWidthInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     }
 });
 
