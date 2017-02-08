@@ -124,29 +124,37 @@ function populateOptionsFormWithStorageOptions() {
 //
 document.getElementById('column--width-input').addEventListener('focus', function () {
     document.onkeydown = function (evnt) {
-        let columnWidth = document.getElementById('column--width-input').value;
+        let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
+            columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
+
+        columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            columnWidth = parseInt(columnWidth, 10) + 1;
-
-            if (columnWidth > COLUMN_WIDTH_MAX) {
-                columnWidth = columnWidth - 1;
+            if (isNaN(columnWidthInputBoxValue)) {
+                columnWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--width-input').value++;
+                columnWidthInputBox__ErrorMessage.style.display = 'none';
+                columnWidthInputBoxValue = columnWidthInputBoxValue + 1;
+                document.getElementById('column--width-input').value = columnWidthInputBoxValue;
                 saveOptions();
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            columnWidth = parseInt(columnWidth, 10) - 1;
-
-            if (columnWidth < COLUMN_WIDTH_MIN) {
-                columnWidth = columnWidth - 1;
+            if (isNaN(columnWidthInputBoxValue)) {
+                columnWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--width-input').value = columnWidth;
-                saveOptions();
+                if (columnWidthInputBoxValue < (COLUMN_WIDTH_MIN + 1)) {
+                    columnWidthInputBox__ErrorMessage.style.display = 'inline';
+                    columnWidthInputBoxValue = columnWidthInputBoxValue - 1;
+                } else {
+                    columnWidthInputBox__ErrorMessage.style.display = 'none';
+                    columnWidthInputBoxValue = columnWidthInputBoxValue - 1;
+                    document.getElementById('column--width-input').value = columnWidthInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
