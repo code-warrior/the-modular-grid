@@ -185,29 +185,37 @@ document.getElementById('column--count-input').addEventListener('focus', functio
     'use strict';
 
     document.onkeydown = function (evnt) {
-        let columnCount = document.getElementById('column--count-input').value;
+        let columnCountInputBoxValue = document.getElementById('column--count-input').value,
+            columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
+
+        columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            columnCount = parseInt(columnCount, 10) + 1;
-
-            if (columnCount > COLUMN_COUNT_MAX) {
-                columnCount = columnCount - 1;
+            if (isNaN(columnCountInputBoxValue)) {
+                columnCountInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--count-input').value = columnCount;
+                columnCountInputBox__ErrorMessage.style.display = 'none';
+                columnCountInputBoxValue = columnCountInputBoxValue + 1;
+                document.getElementById('column--count-input').value = columnCountInputBoxValue;
                 saveOptions();
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            columnCount = parseInt(columnCount, 10) - 1;
-
-            if (columnCount < COLUMN_COUNT_MIN) {
-                columnCount = columnCount + 1;
+            if (isNaN(columnCountInputBoxValue)) {
+                columnCountInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('column--count-input').value = columnCount;
-                saveOptions();
+                if (columnCountInputBoxValue < (COLUMN_COUNT_MIN + 1)) {
+                    columnCountInputBox__ErrorMessage.style.display = 'inline';
+                    columnCountInputBoxValue = columnCountInputBoxValue - 1;
+                } else {
+                    columnCountInputBox__ErrorMessage.style.display = 'none';
+                    columnCountInputBoxValue = columnCountInputBoxValue - 1;
+                    document.getElementById('column--count-input').value = columnCountInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
