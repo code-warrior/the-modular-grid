@@ -227,14 +227,16 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 document.getElementById('column--count-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForColumnCountInputBox = /^([1-9]|[1][0-9]|[2][0-4])$/,
-        columnCountInputBox = document.getElementById('column--count-input').value,
+    let columnCountInputBoxValue = document.getElementById('column--count-input').value,
         columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
-    if (null !== columnCountInputBox.match(patternForColumnCountInputBox)) {
-        columnCountInputBox__ErrorMessage.style.display = 'none';
-    } else {
+    columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
+
+    if (isNaN(columnCountInputBoxValue)) {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
+    } else {
+        columnCountInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     }
 });
 
