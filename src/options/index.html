@@ -16,14 +16,14 @@
          <h2>Columns</h2>
          <div>
             <h3>Width</h3>
-            <p><label for="column--width-input">How wide, in pixels, would you like each column to be? (Range: 1.0&#8202;–&#8202;128.9)</label></p>
-            <input type="text" id="column--width-input" placeholder="60" autofocus> px <span id="width-input--error-message" class="error-message">This option only accepts values between 1.0&#8202;–&#8202;128.9.</span>
+            <p><label for="column--width-input">How wide, in pixels, would you like each column to be?</label></p><!-- TODO: Maintain consistency with ID of error messages -->
+            <input type="text" id="column--width-input" placeholder="60" autofocus> px <span id="width-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
          </div>
 
          <div>
             <h3>Count</h3>
-            <p><label for="column--count-input">How many columns would you like? (Range: 1&#8202;–&#8202;24)</label></p>
-            <input type="text" id="column--count-input" placeholder="16"> <span id="column-count-input--error-message" class="error-message">This option only accepts values between 1&#8202;–&#8202;24.</span>
+            <p><label for="column--count-input">How many columns would you like?</label></p>
+            <input type="text" id="column--count-input" placeholder="16"> <span id="column-count-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
          </div>
 
          <div>
@@ -43,8 +43,8 @@
          <h2>Gutters</h2>
          <div>
             <h3>Width</h3>
-            <p><label for="gutter--width-input">How wide, in pixels, would you like your gutters? (Range: 1.0&#8202;–&#8202;128.9)</label></p>
-            <input type="text" id="gutter--width-input" placeholder="20"> px <span id="gutter-width-input--error-message" class="error-message">This option only accepts values between 1.0&#8202;–&#8202;128.9.</span>
+            <p><label for="gutter--width-input">How wide, in pixels, would you like your gutters?</label></p>
+            <input type="text" id="gutter--width-input" placeholder="20"> px <span id="gutter-width-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
          </div>
       </section>
 

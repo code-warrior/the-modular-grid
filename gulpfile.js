@@ -146,7 +146,7 @@ gulp.task('serve', [
 
     gulp.watch(
         ['src/options/main.js'],
-        ['lintContentJS']
+        ['lintOptionsJS']
     )
         .on('change', reload);
 
