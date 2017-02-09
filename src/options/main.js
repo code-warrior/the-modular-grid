@@ -1,6 +1,10 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
+// TODO: Up/down arrow keys remain bound to the previous input box. Consequently, when the page is scrolled with the up and down arrow keys, that input box’s value is incremented and decremented, also.
+
+// TODO: Only save all the options when none of the input boxes contain errors.
+
 const
     UP_ARROW_KEY = 38,
     DOWN_ARROW_KEY = 40,
