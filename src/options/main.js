@@ -125,6 +125,8 @@ function populateOptionsFormWithStorageOptions() {
 // — Width
 //
 document.getElementById('column--width-input').addEventListener('focus', function () {
+    'use strict';
+
     document.onkeydown = function (evnt) {
         let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
             columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
@@ -248,6 +250,8 @@ document.getElementById('column--count-input').addEventListener('change', functi
 // — Color
 //
 document.getElementById('column--color-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -256,6 +260,8 @@ document.getElementById('column--color-input').addEventListener('change', functi
 // — Color opacity
 //
 document.getElementById('column--opacity-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -331,6 +337,8 @@ document.getElementById('gutter--width-input').addEventListener('change', functi
 // — Split gutters
 //
 document.getElementById('margins--split-gutter-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -339,6 +347,8 @@ document.getElementById('margins--split-gutter-input').addEventListener('change'
 // — Color
 //
 document.getElementById('baseline--color-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -347,6 +357,8 @@ document.getElementById('baseline--color-input').addEventListener('change', func
 // — Vertical distance
 //
 document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
