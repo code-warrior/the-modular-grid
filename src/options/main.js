@@ -308,14 +308,16 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 document.getElementById('gutter--width-input').addEventListener('blur', function () {
     'use strict';
 
-    let patternForGutterWidthInputBox = /^([1-9]|[1-9][0-9]|[1][0-2][0-8])([.][0-9])?$/,
-        gutterWidthInputBox = document.getElementById('gutter--width-input').value,
-        gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
+    let gutterWidthInputBoxValue =
+            document.getElementById('gutter--width-input').value,
+        gutterWidthInputBox__ErrorMessage =
+            document.getElementById('gutter-width-input--error-message');
 
-    if (null !== gutterWidthInputBox.match(patternForGutterWidthInputBox)) {
-        gutterWidthInputBox__ErrorMessage.style.display = 'none';
-    } else {
+    if (isNaN(gutterWidthInputBoxValue)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+    } else {
+        gutterWidthInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     }
 });
 
