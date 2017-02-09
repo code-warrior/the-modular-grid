@@ -264,29 +264,40 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
     'use strict';
 
     document.onkeydown = function (evnt) {
-        let gutterWidthInput = document.getElementById('gutter--width-input').value;
+        let gutterWidthInputBoxValue =
+                document.getElementById('gutter--width-input').value,
+            gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
+
+        gutterWidthInputBoxValue = parseFloat(gutterWidthInputBoxValue);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            gutterWidthInput = parseInt(gutterWidthInput, 10) + 1;
-
-            if (gutterWidthInput > GUTTER_WIDTH_MAX) {
-                gutterWidthInput = gutterWidthInput - 1;
+            if (isNaN(gutterWidthInputBoxValue)) {
+                gutterWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('gutter--width-input').value = gutterWidthInput;
+                gutterWidthInputBox__ErrorMessage.style.display = 'none';
+                gutterWidthInputBoxValue = gutterWidthInputBoxValue + 1;
+                document.getElementById('gutter--width-input').value =
+                    gutterWidthInputBoxValue;
                 saveOptions();
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            gutterWidthInput = parseInt(gutterWidthInput, 10) - 1;
-
-            if (gutterWidthInput < GUTTER_WIDTH_MIN) {
-                gutterWidthInput = gutterWidthInput + 1;
+            if (isNaN(gutterWidthInputBoxValue)) {
+                gutterWidthInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('gutter--width-input').value = gutterWidthInput;
-                saveOptions();
+                if (gutterWidthInputBoxValue < (GUTTER_WIDTH_MIN + 1)) {
+                    gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+                    gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
+                } else {
+                    gutterWidthInputBox__ErrorMessage.style.display = 'none';
+                    gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
+                    document.getElementById('gutter--width-input').value =
+                        gutterWidthInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
