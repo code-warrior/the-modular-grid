@@ -36,31 +36,31 @@ function saveOptions() {
 
             chrome.storage.sync.set({
                 gridColumnWidth:
-                    document.getElementById('column--width-input').value,
+                        document.getElementById('column--width-input').value,
 
                 gridColumnCount:
-                    document.getElementById('column--count-input').value,
+                        document.getElementById('column--count-input').value,
 
                 gridGutterWidth:
-                    document.getElementById('gutter--width-input').value,
+                        document.getElementById('gutter--width-input').value,
 
                 gridBaselineColor:
-                    document.getElementById('baseline--color-input').value,
+                        document.getElementById('baseline--color-input').value,
 
                 gridBaselineDistance:
-                    document.getElementById('baseline--vertical-distance-input').value,
+                        document.getElementById('baseline--vertical-distance-input').value,
 
                 marginsAreEnabled:
-                    marginsAreEnabled,
+                        marginsAreEnabled,
 
                 gridColumnColor:
-                    document.getElementById('column--color-input').value,
+                        document.getElementById('column--color-input').value,
 
                 gridColumnColorOpacity:
-                    document.getElementById('column--opacity-input').value,
+                        document.getElementById('column--opacity-input').value,
 
                 gridMargin:
-                    gridMargin
+                        gridMargin
 
             }, function () {
                 let status = document.getElementById('status');
@@ -85,37 +85,37 @@ function populateOptionsFormWithStorageOptions() {
         null,
         function (settings) {
             document.getElementById('column--width-input').value =
-                settings.gridColumnWidth;
+                    settings.gridColumnWidth;
 
             document.getElementById('column--count-input').value =
-                settings.gridColumnCount;
+                    settings.gridColumnCount;
 
             document.getElementById('baseline--color-input').value =
-                settings.gridBaselineColor;
+                    settings.gridBaselineColor;
 
             document.getElementById('baseline--color-input').title =
-                settings.gridBaselineColor;
+                    settings.gridBaselineColor;
 
             document.getElementById('baseline--vertical-distance-input').value =
-                settings.gridBaselineDistance;
+                    settings.gridBaselineDistance;
 
             document.getElementById('gutter--width-input').value =
-                settings.gridGutterWidth;
+                    settings.gridGutterWidth;
 
             document.getElementById('margins--split-gutter-input').value =
-                settings.marginsAreEnabled;
+                    settings.marginsAreEnabled;
 
             document.getElementById('column--color-input').value =
-                settings.gridColumnColor;
+                    settings.gridColumnColor;
 
             document.getElementById('column--color-input').title =
-                settings.gridColumnColor;
+                    settings.gridColumnColor;
 
             document.getElementById('column--opacity-input').value =
-                settings.gridColumnColorOpacity;
+                    settings.gridColumnColorOpacity;
 
             document.getElementById('column--opacity-input').title =
-                settings.gridColumnColorOpacity;
+                    settings.gridColumnColorOpacity;
         }
     );
 }
@@ -268,8 +268,9 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 
     document.onkeydown = function (evnt) {
         let gutterWidthInputBoxValue =
-                document.getElementById('gutter--width-input').value,
-            gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
+                    document.getElementById('gutter--width-input').value,
+            gutterWidthInputBox__ErrorMessage =
+                    document.getElementById('gutter-width-input--error-message');
 
         gutterWidthInputBoxValue = parseFloat(gutterWidthInputBoxValue);
 
@@ -281,7 +282,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
                 gutterWidthInputBox__ErrorMessage.style.display = 'none';
                 gutterWidthInputBoxValue = gutterWidthInputBoxValue + 1;
                 document.getElementById('gutter--width-input').value =
-                    gutterWidthInputBoxValue;
+                        gutterWidthInputBoxValue;
                 saveOptions();
             }
 
@@ -298,7 +299,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
                     gutterWidthInputBox__ErrorMessage.style.display = 'none';
                     gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
                     document.getElementById('gutter--width-input').value =
-                        gutterWidthInputBoxValue;
+                            gutterWidthInputBoxValue;
                     saveOptions();
                 }
             }
@@ -313,9 +314,9 @@ document.getElementById('gutter--width-input').addEventListener('change', functi
     'use strict';
 
     let gutterWidthInputBoxValue =
-            document.getElementById('gutter--width-input').value,
+                document.getElementById('gutter--width-input').value,
         gutterWidthInputBox__ErrorMessage =
-            document.getElementById('gutter-width-input--error-message');
+                document.getElementById('gutter-width-input--error-message');
 
     if (isNaN(gutterWidthInputBoxValue)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
