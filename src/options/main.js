@@ -160,7 +160,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
     };
 }, false);
 
-document.getElementById('column--width-input').addEventListener('blur', function () {
+document.getElementById('column--width-input').addEventListener('change', function () {
     'use strict';
 
     let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
@@ -223,7 +223,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('column--count-input').addEventListener('blur', function () {
+document.getElementById('column--count-input').addEventListener('change', function () {
     'use strict';
 
     let columnCountInputBoxValue = document.getElementById('column--count-input').value,
@@ -305,7 +305,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('gutter--width-input').addEventListener('blur', function () {
+document.getElementById('gutter--width-input').addEventListener('change', function () {
     'use strict';
 
     let gutterWidthInputBoxValue =
