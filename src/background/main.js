@@ -18,7 +18,21 @@ chrome.storage.sync.set({
     currentGrid: 'modular-grid'
 });
 
-chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+/**
+ * Set the browser action icon based on whether the grid has been enabled/disabled.
+ */
+chrome.storage.sync.get(
+    {gridIsEnabled: false},
+    function (settings) {
+        'use strict';
+
+        if (settings.gridIsEnabled) {
+            chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
+        } else {
+            chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+        }
+    }
+);
 
 /**
  * Fired when the browser action icon is clicked, this method enables/disables the
