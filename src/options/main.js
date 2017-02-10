@@ -356,12 +356,6 @@ document.getElementById('baseline--color-input').addEventListener('change', func
 // Basline
 // — Vertical distance
 //
-document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
-    'use strict';
-
-    saveOptions();
-}, false);
-
 document.getElementById('baseline--vertical-distance-input').addEventListener('focus', function () {
     'use strict';
 
