@@ -1,9 +1,9 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-//
-// Initiate the default settings
-//
+/**
+ * Initiate the default settings.
+ */
 chrome.storage.sync.set({
     gridIsEnabled: false,
     gridColumnWidth: 60,
