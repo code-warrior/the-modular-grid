@@ -166,7 +166,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
     };
 }, false);
 
-document.getElementById('column--width-input').addEventListener('change', function () {
+document.getElementById('column--width-input').addEventListener('input', function () {
     'use strict';
 
     let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
@@ -229,7 +229,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('column--count-input').addEventListener('change', function () {
+document.getElementById('column--count-input').addEventListener('input', function () {
     'use strict';
 
     let columnCountInputBoxValue = document.getElementById('column--count-input').value,
@@ -316,7 +316,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('gutter--width-input').addEventListener('change', function () {
+document.getElementById('gutter--width-input').addEventListener('input', function () {
     'use strict';
 
     let gutterWidthInputBoxValue =
@@ -391,7 +391,7 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
 
 }, false);
 
-document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
+document.getElementById('baseline--vertical-distance-input').addEventListener('input', function () {
     'use strict';
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
