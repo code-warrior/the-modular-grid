@@ -92,7 +92,7 @@ chrome.commands.onCommand.addListener(function () {
 });
 
 /**
- *
+ * Open the options page in a new tab.
  */
 chrome.runtime.onMessage.addListener(function (response) {
     'use strict';
