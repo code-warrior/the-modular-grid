@@ -44,15 +44,9 @@ let html = document.querySelector('html'),
     shiftKeyPressed = false,
 
     //
-    // Turn on the sidebar popup by default
+    // This variable is used to toggle the sidebar popup by the user.
     //
-    sideBarPopup__IsInitiallyShowing = true,
-
-    //
-    // Closely related to the sideBarPopup__IsInitiallyShowing Boolean, this variable
-    // is used to toggle the sidebar popup by the user.
-    //
-    sideBarPopup__IsShowing = false,
+    sideBarPopup__IsShowing = true,
 
     pageHeight = (undefined !== document.height)
         ? document.height
@@ -73,11 +67,7 @@ stylesheet.rel = 'stylesheet';
 stylesheet.id = 'modular-grid-css';
 
 sideBarPopup__Container.id = 'info-sidebar';
-
-if (sideBarPopup__IsInitiallyShowing) {
-    sideBarPopup__Container.style.display = 'block';
-    sideBarPopup__IsShowing = true;
-}
+sideBarPopup__Container.style.display = 'block';
 
 modularGrid.id = 'modular-grid';
 modularGrid.className = SHOWING_MODULAR_GRID;
