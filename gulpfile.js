@@ -1,5 +1,7 @@
 /*jslint node: true, for */
 
+'use strict';
+
 let gulp = require('gulp'),
     del = require('del'),
     renameFile = require("gulp-rename"),
