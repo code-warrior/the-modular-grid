@@ -125,6 +125,8 @@ function populateOptionsFormWithStorageOptions() {
 // — Width
 //
 document.getElementById('column--width-input').addEventListener('focus', function () {
+    'use strict';
+
     document.onkeydown = function (evnt) {
         let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
             columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
@@ -164,7 +166,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
     };
 }, false);
 
-document.getElementById('column--width-input').addEventListener('change', function () {
+document.getElementById('column--width-input').addEventListener('input', function () {
     'use strict';
 
     let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
@@ -178,7 +180,7 @@ document.getElementById('column--width-input').addEventListener('change', functi
         columnWidthInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Columns
@@ -227,7 +229,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('column--count-input').addEventListener('change', function () {
+document.getElementById('column--count-input').addEventListener('input', function () {
     'use strict';
 
     let columnCountInputBoxValue = document.getElementById('column--count-input').value,
@@ -241,13 +243,15 @@ document.getElementById('column--count-input').addEventListener('change', functi
         columnCountInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Columns
 // — Color
 //
 document.getElementById('column--color-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -256,6 +260,8 @@ document.getElementById('column--color-input').addEventListener('change', functi
 // — Color opacity
 //
 document.getElementById('column--opacity-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -268,8 +274,9 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 
     document.onkeydown = function (evnt) {
         let gutterWidthInputBoxValue =
-                document.getElementById('gutter--width-input').value,
-            gutterWidthInputBox__ErrorMessage = document.getElementById('gutter-width-input--error-message');
+                    document.getElementById('gutter--width-input').value,
+            gutterWidthInputBox__ErrorMessage =
+                    document.getElementById('gutter-width-input--error-message');
 
         gutterWidthInputBoxValue = parseFloat(gutterWidthInputBoxValue);
 
@@ -281,7 +288,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
                 gutterWidthInputBox__ErrorMessage.style.display = 'none';
                 gutterWidthInputBoxValue = gutterWidthInputBoxValue + 1;
                 document.getElementById('gutter--width-input').value =
-                    gutterWidthInputBoxValue;
+                        gutterWidthInputBoxValue;
                 saveOptions();
             }
 
@@ -298,7 +305,7 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
                     gutterWidthInputBox__ErrorMessage.style.display = 'none';
                     gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
                     document.getElementById('gutter--width-input').value =
-                        gutterWidthInputBoxValue;
+                            gutterWidthInputBoxValue;
                     saveOptions();
                 }
             }
@@ -309,13 +316,13 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
 
 }, false);
 
-document.getElementById('gutter--width-input').addEventListener('change', function () {
+document.getElementById('gutter--width-input').addEventListener('input', function () {
     'use strict';
 
     let gutterWidthInputBoxValue =
-            document.getElementById('gutter--width-input').value,
+                document.getElementById('gutter--width-input').value,
         gutterWidthInputBox__ErrorMessage =
-            document.getElementById('gutter-width-input--error-message');
+                document.getElementById('gutter-width-input--error-message');
 
     if (isNaN(gutterWidthInputBoxValue)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
@@ -323,13 +330,15 @@ document.getElementById('gutter--width-input').addEventListener('change', functi
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Margins
 // — Split gutters
 //
 document.getElementById('margins--split-gutter-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -338,6 +347,8 @@ document.getElementById('margins--split-gutter-input').addEventListener('change'
 // — Color
 //
 document.getElementById('baseline--color-input').addEventListener('change', function () {
+    'use strict';
+
     saveOptions();
 }, false);
 
@@ -345,10 +356,6 @@ document.getElementById('baseline--color-input').addEventListener('change', func
 // Basline
 // — Vertical distance
 //
-document.getElementById('baseline--vertical-distance-input').addEventListener('keyup', function () {
-    saveOptions();
-}, false);
-
 document.getElementById('baseline--vertical-distance-input').addEventListener('focus', function () {
     'use strict';
 
@@ -384,7 +391,7 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
 
 }, false);
 
-document.getElementById('baseline--vertical-distance-input').addEventListener('blur', function () {
+document.getElementById('baseline--vertical-distance-input').addEventListener('input', function () {
     'use strict';
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
@@ -396,6 +403,6 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('b
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
     }
-});
+}, false);
 
-document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
+document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions, false);
