@@ -27,7 +27,7 @@ chrome.storage.sync.set({
 chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
 
 /**
- * Fired when the browser action icon is clicked, this method enabled/disables the
+ * Fired when the browser action icon is clicked, this method enables/disables the
  * grid.
  */
 chrome.browserAction.onClicked.addListener(function () {
