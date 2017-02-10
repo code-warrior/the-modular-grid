@@ -180,7 +180,7 @@ document.getElementById('column--width-input').addEventListener('input', functio
         columnWidthInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Columns
@@ -243,7 +243,7 @@ document.getElementById('column--count-input').addEventListener('input', functio
         columnCountInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Columns
@@ -330,7 +330,7 @@ document.getElementById('gutter--width-input').addEventListener('input', functio
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
         saveOptions();
     }
-});
+}, false);
 
 //
 // Margins
@@ -403,6 +403,6 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('i
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
     }
-});
+}, false);
 
-document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions);
+document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions, false);
