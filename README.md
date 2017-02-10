@@ -99,7 +99,7 @@ Once the project is stable, it will be released via the Chrome Web Store. In the
 
 `Ctrl+Shift` toggles the sidebar info boxes in the upper right hand corner when the extension is enabled. This shortcut is universal across all operating systems.
 
-All text input boxes in the options page can be updated with the `↑` and `↓` arrow keys. Options are saved automatically.
+All text input boxes in the options page can be updated with the `↑` and `↓` arrow keys, and all options are automatically saved when values are changed.
 
 ## <a name="development">Development</a>
 
@@ -107,4 +107,4 @@ All development is now done via Gulp. This includes compiling CSS via Sass, comp
 
 Make sure to have Java installed, then proceed with the [installation of Node](https://nodejs.org/en/) and [Gulp](http://gulpjs.com/).
 
-Lastly, run `npm install` to install the `node_modules`, then run `gulp serve`. (Run `gulp --tasks` to see all the available development tasks.)
+Lastly, run `npm install` to install the `node_modules`, then `gulp serve`. (Run `gulp --tasks` to see all the available development tasks.)
