@@ -61,28 +61,37 @@ chrome.browserAction.onClicked.addListener(function () {
 });
 
 /**
- *
+ * Fired when the three-key command defined in manifest.json is executed, this method
+ * enables/disables the grid.
  */
 chrome.commands.onCommand.addListener(function () {
     'use strict';
 
-    if (isGridEnabled) {
-        chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
-    } else {
-        chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
-    }
+    chrome.storage.sync.get(
+        {gridIsEnabled: false},
+        function (settings) {
+            let _gridIsEnabled = settings.gridIsEnabled;
 
-    isGridEnabled = !isGridEnabled;
-
-    chrome.storage.sync.set({isGridEnabled: isGridEnabled});
-    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-        chrome.tabs.sendMessage(
-            tabs[0].id,
-            {
-                isGridEnabledViaBrowserAction: isGridEnabled
+            if (_gridIsEnabled) {
+                chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+            } else {
+                chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
             }
-        );
-    });
+
+            _gridIsEnabled = !settings.gridIsEnabled;
+
+            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+                chrome.tabs.sendMessage(
+                    tabs[0].id,
+                    {
+                        isGridEnabledViaBrowserAction: _gridIsEnabled
+                    }
+                );
+            });
+
+            chrome.storage.sync.set({gridIsEnabled: _gridIsEnabled});
+        }
+    );
 });
 
 /**
