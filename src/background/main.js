@@ -2,12 +2,6 @@
 /*global window, chrome */
 
 //
-// TODO: This variable should be removed in favor of inspecting the settings variable
-// isGridEnabled in chrome.browserAction.onClicked and chrome.commands.onCommand
-//
-let isGridEnabled = false;
-
-//
 // Initiate the default settings
 //
 chrome.storage.sync.set({
