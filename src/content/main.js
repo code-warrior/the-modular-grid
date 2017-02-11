@@ -27,9 +27,9 @@ let html = document.querySelector('html'),
     modularGrid__ZIndex = null,
 
     //
-    // sideBarPopup__Container is the container for the popup box that appears in the
-    // upper right hand corner. (Note: Do not confuse the use of “popup” here with
-    // the popup feature endemic to a Chrome extension.)
+    // sideBarPopup__Container is the container for the popup boxes that appear in
+    // the upper right hand corner. (Note: Do not confuse the use of “popup” here
+    // with the popup feature endemic to a Chrome extension.)
     //
     sideBarPopup__Container = document.createElement('div'),
     sideBarPopup__Instructions = document.createElement('span'),
