@@ -501,6 +501,11 @@ chrome.extension.onMessage.addListener(function (msg) {
     }
 });
 
+/**
+ * Toggles the info section popup box in the upper right hand corner based on the
+ * value of the Boolean userHasEnabledInfoSection that is set in chrome.storage
+ * (settings).
+ */
 function toggleGridInfo() {
     'use strict';
 
