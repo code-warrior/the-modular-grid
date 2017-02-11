@@ -1,6 +1,84 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
+/**
+ * Returns the largest z-index of all non-static elements in the tree whose root is
+ * at the HTML element named in node.
+ *
+ * @example
+ * let body = document.getElementsByTagName('body')[0],
+ *     largestZIndex = getLargestZIndexOfNonStaticElements(body);
+ *
+ * @param node is the root node at which to start traversing the DOM, inspecting for
+ * z-index values.
+ * @returns {*} an integer representing the largest z-index in the DOM, or null if
+ * one is not calculated.
+ */
+function getLargestZIndexOfNonStaticElements(node) {
+    'use strict';
+
+    let largestZIndexThusFar = null,
+        zIndexOfCurrentHTMLElement = 0,
+        occurrencesOfAuto = 0,
+        positionOfCurrentHTMLElement = '';
+
+    const HTML_ELEMENT = 1;
+
+    if (undefined === node.nodeType) {
+        console.error(node + ' is not a valid HTML node.');
+
+        return;
+    }
+
+    function calculateLargestZIndex(node) {
+        if (HTML_ELEMENT === node.nodeType) {
+            positionOfCurrentHTMLElement = window.document.defaultView
+                .getComputedStyle(node, null)
+                .getPropertyValue('position');
+
+            if ('static' !== positionOfCurrentHTMLElement) {
+                zIndexOfCurrentHTMLElement = window.document.defaultView
+                    .getComputedStyle(node, null).getPropertyValue('z-index');
+
+                if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
+                    zIndexOfCurrentHTMLElement =
+                            parseInt(zIndexOfCurrentHTMLElement, 10);
+
+                    if (null === largestZIndexThusFar) {
+                        largestZIndexThusFar = zIndexOfCurrentHTMLElement;
+                    } else {
+                        if (zIndexOfCurrentHTMLElement > largestZIndexThusFar) {
+                            largestZIndexThusFar = zIndexOfCurrentHTMLElement;
+                        }
+                    }
+                } else {
+                    //
+                    // Note: The “inherit” case is not handled.
+                    //
+                    if ('auto' === zIndexOfCurrentHTMLElement) {
+                        occurrencesOfAuto = occurrencesOfAuto + 1;
+                    }
+                }
+            }
+
+            node = node.firstChild;
+
+            while (node) {
+                calculateLargestZIndex(node);
+                node = node.nextSibling;
+            }
+        }
+    }
+
+    calculateLargestZIndex(node);
+
+    if (null === largestZIndexThusFar) {
+        return occurrencesOfAuto;
+    } else {
+        return largestZIndexThusFar + occurrencesOfAuto;
+    }
+}
+
 const
     SHIFT_KEY = 16,
     CONTROL_KEY = 17,
@@ -113,84 +191,6 @@ infoSection__OptionsLink.addEventListener('click', function () {
 
     chrome.runtime.sendMessage('openOptions');
 });
-
-/**
- * Returns the largest z-index of all non-static elements in the tree whose root is
- * at the HTML element named in node.
- *
- * @example
- * let body = document.getElementsByTagName('body')[0],
- *     largestZIndex = getLargestZIndexOfNonStaticElements(body);
- *
- * @param node is the root node at which to start traversing the DOM, inspecting for
- * z-index values.
- * @returns {*} an integer representing the largest z-index in the DOM, or null if
- * one is not calculated.
- */
-function getLargestZIndexOfNonStaticElements(node) {
-    'use strict';
-
-    let largestZIndexThusFar = null,
-        zIndexOfCurrentHTMLElement = 0,
-        occurrencesOfAuto = 0,
-        positionOfCurrentHTMLElement = '';
-
-    const HTML_ELEMENT = 1;
-
-    if (undefined === node.nodeType) {
-        console.error(node + ' is not a valid HTML node.');
-
-        return;
-    }
-
-    function calculateLargestZIndex(node) {
-        if (HTML_ELEMENT === node.nodeType) {
-            positionOfCurrentHTMLElement = window.document.defaultView
-                .getComputedStyle(node, null)
-                .getPropertyValue('position');
-
-            if ('static' !== positionOfCurrentHTMLElement) {
-                zIndexOfCurrentHTMLElement = window.document.defaultView
-                    .getComputedStyle(node, null).getPropertyValue('z-index');
-
-                if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
-                    zIndexOfCurrentHTMLElement =
-                            parseInt(zIndexOfCurrentHTMLElement, 10);
-
-                    if (null === largestZIndexThusFar) {
-                        largestZIndexThusFar = zIndexOfCurrentHTMLElement;
-                    } else {
-                        if (zIndexOfCurrentHTMLElement > largestZIndexThusFar) {
-                            largestZIndexThusFar = zIndexOfCurrentHTMLElement;
-                        }
-                    }
-                } else {
-                    //
-                    // Note: The “inherit” case is not handled.
-                    //
-                    if ('auto' === zIndexOfCurrentHTMLElement) {
-                        occurrencesOfAuto = occurrencesOfAuto + 1;
-                    }
-                }
-            }
-
-            node = node.firstChild;
-
-            while (node) {
-                calculateLargestZIndex(node);
-                node = node.nextSibling;
-            }
-        }
-    }
-
-    calculateLargestZIndex(node);
-
-    if (null === largestZIndexThusFar) {
-        return occurrencesOfAuto;
-    } else {
-        return largestZIndexThusFar + occurrencesOfAuto;
-    }
-}
 
 modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
 
