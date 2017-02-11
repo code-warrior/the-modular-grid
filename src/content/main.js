@@ -27,25 +27,20 @@ let html = document.querySelector('html'),
     modularGrid__ZIndex = null,
 
     //
-    // sideBarPopup__Container is the container for the popup boxes that appear in
-    // the upper right hand corner. (Note: Do not confuse the use of “popup” here
-    // with the popup feature endemic to a Chrome extension.)
+    // infoSection__Container is the container for the informational popup boxes that
+    // appear in the upper right hand corner. (Note: Do not confuse the use of
+    // “popup” here with the popup feature endemic to a Chrome extension.)
     //
-    sideBarPopup__Container = document.createElement('div'),
-    sideBarPopup__Instructions = document.createElement('span'),
-    sideBarPopup__ColumnAndPageInfo = document.createElement('span'),
-    sideBarPopup__OptionsLink = document.createElement('span'),
+    infoSection__Container = document.createElement('div'),
+    infoSection__Instructions = document.createElement('span'),
+    infoSection__ColumnAndPageInfo = document.createElement('span'),
+    infoSection__OptionsLink = document.createElement('span'),
 
     //
     // Keyboard-related Booleans
     //
     controlKeyPressed = false,
     shiftKeyPressed = false,
-
-    //
-    // This variable is used to toggle the sidebar popup by the user.
-    //
-    sideBarPopup__IsShowing = true,
 
     pageHeight = (undefined !== document.height)
         ? document.height
@@ -64,8 +59,8 @@ stylesheet.href = chrome.extension.getURL('content.css');
 stylesheet.rel = 'stylesheet';
 stylesheet.id = 'modular-grid-css';
 
-sideBarPopup__Container.id = 'info-sidebar';
-sideBarPopup__Container.style.display = 'block';
+infoSection__Container.id = 'info-sidebar';
+infoSection__Container.style.display = 'block';
 
 modularGrid.id = 'modular-grid';
 modularGrid.className = SHOWING_MODULAR_GRID;
@@ -73,12 +68,12 @@ modularGrid.className = SHOWING_MODULAR_GRID;
 modularGrid__Container.id = 'modular-grid--container';
 modularGrid__Container.appendChild(modularGrid);
 
-sideBarPopup__Instructions.className = 'message-box';
-sideBarPopup__ColumnAndPageInfo.className = 'message-box';
-sideBarPopup__ColumnAndPageInfo.id = 'column-and-page-info';
-sideBarPopup__OptionsLink.className = 'message-box';
+infoSection__Instructions.className = 'message-box';
+infoSection__ColumnAndPageInfo.className = 'message-box';
+infoSection__ColumnAndPageInfo.id = 'column-and-page-info';
+infoSection__OptionsLink.className = 'message-box';
 
-sideBarPopup__Instructions.innerHTML =
+infoSection__Instructions.innerHTML =
         'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
         'cycle through the grids by pressing <kbd>esc</kbd>.';
 
@@ -101,19 +96,19 @@ chrome.storage.sync.get(
                     parseInt(settings.gridGutterWidth, 10)));
         }
 
-        sideBarPopup__ColumnAndPageInfo.innerHTML =
+        infoSection__ColumnAndPageInfo.innerHTML =
                 'Column count: <strong>' + columnCount + '</strong><br>' +
                 'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
                 'Current grid layer: <strong>' + settings.currentGrid + '</strong>';
     }
 );
 
-sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
-sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
-sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
+infoSection__Container.appendChild(infoSection__Instructions);
+infoSection__Container.appendChild(infoSection__ColumnAndPageInfo);
+infoSection__Container.appendChild(infoSection__OptionsLink);
 
-sideBarPopup__OptionsLink.innerHTML = 'Options';
-sideBarPopup__OptionsLink.addEventListener('click', function () {
+infoSection__OptionsLink.innerHTML = 'Options';
+infoSection__OptionsLink.addEventListener('click', function () {
     'use strict';
 
     chrome.runtime.sendMessage('openOptions');
@@ -202,11 +197,11 @@ modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
 if (null !== modularGrid__ZIndex) {
     modularGrid__Container.style.zIndex = modularGrid__ZIndex;
     modularGrid.style.zIndex = modularGrid__ZIndex;
-    sideBarPopup__Container.style.zIndex = (modularGrid__ZIndex + 1);
+    infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
 } else {
     modularGrid__Container.style.zIndex = 'auto';
     modularGrid.style.zIndex = 'auto';
-    sideBarPopup__Container.style.zIndex = 'auto';
+    infoSection__Container.style.zIndex = 'auto';
 }
 
 /**
@@ -352,13 +347,15 @@ function updateGrid() {
                         parseInt(settings.gridGutterWidth, 10)));
             }
 
-            sideBarPopup__ColumnAndPageInfo.innerHTML =
+            infoSection__ColumnAndPageInfo.innerHTML =
                     'Column count: <strong>' + columnCount + '</strong><br>' +
                     'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
                     'Current grid layer: <strong>' + settings.currentGrid +
                     '</strong>';
 
-            body.appendChild(sideBarPopup__Container);
+            if (settings.userHasEnabledInfoSection) {
+                body.appendChild(infoSection__Container);
+            }
 
             switch (settings.currentGrid) {
             case 'modular-grid':
@@ -431,7 +428,7 @@ chrome.extension.onMessage.addListener(function (msg) {
 
         // TODO: This is a dangerous move, as it continuously injects CSS into the <head> without ever removing it.
         body.insertBefore(modularGrid__Container, firstChildOfBody);
-        body.appendChild(sideBarPopup__Container);
+        body.appendChild(infoSection__Container);
 
         chrome.storage.sync.get(
             null,
@@ -499,7 +496,7 @@ chrome.extension.onMessage.addListener(function (msg) {
         );
     } else {
         modularGrid__Container.parentNode.removeChild(modularGrid__Container);
-        sideBarPopup__Container.parentNode.removeChild(sideBarPopup__Container);
+        infoSection__Container.parentNode.removeChild(infoSection__Container);
         stylesheet.parentNode.removeChild(stylesheet);
     }
 });
@@ -507,13 +504,20 @@ chrome.extension.onMessage.addListener(function (msg) {
 function toggleGridInfo() {
     'use strict';
 
-    if (sideBarPopup__IsShowing) {
-        sideBarPopup__Container.style.display = 'none';
-        sideBarPopup__IsShowing = false;
-    } else {
-        sideBarPopup__Container.style.display = 'block';
-        sideBarPopup__IsShowing = true;
-    }
+    chrome.storage.sync.get(
+        {userHasEnabledInfoSection: true},
+        function (settings) {
+            if (settings.userHasEnabledInfoSection) {
+                infoSection__Container.style.display = 'none';
+            } else {
+                infoSection__Container.style.display = 'block';
+            }
+
+            chrome.storage.sync.set(
+                {userHasEnabledInfoSection: !settings.userHasEnabledInfoSection}
+            );
+        }
+    );
 }
 
 function showColumnInfo() {
@@ -534,7 +538,7 @@ function showColumnInfo() {
                         parseInt(settings.gridGutterWidth, 10)));
             }
 
-            sideBarPopup__ColumnAndPageInfo.innerHTML =
+            infoSection__ColumnAndPageInfo.innerHTML =
                     'Column count: <strong>' + columnCount + '</strong><br>' +
                     'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
                     'Current grid layer: <strong>' + settings.currentGrid +
