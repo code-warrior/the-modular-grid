@@ -20,6 +20,7 @@
 
 #info-sidebar {
    display: none;
+   width: auto !important;
    border: 0 !important;
    position: fixed !important;
    top: $offset-sidebar !important;
