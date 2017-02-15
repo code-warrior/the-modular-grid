@@ -14,7 +14,7 @@ chrome.storage.sync.set({
     gridBaselineDistance: 24,
     gridColumnColorOpacity: 0.2,
     gridMargin: 10,
-    userHasEnabledInfoSection: true,
+    infoSectionIsEnabled: true,
     marginsAreEnabled: true,
     currentGrid: 'modular-grid'
 });
@@ -48,7 +48,7 @@ chrome.browserAction.onClicked.addListener(function () {
                 chrome.tabs.sendMessage(
                     tabs[0].id,
                     {
-                        isGridEnabledViaBrowserAction: _gridIsEnabled
+                        gridIsEnabledByUser: _gridIsEnabled
                     }
                 );
             });
@@ -82,7 +82,7 @@ chrome.commands.onCommand.addListener(function () {
                 chrome.tabs.sendMessage(
                     tabs[0].id,
                     {
-                        isGridEnabledViaBrowserAction: _gridIsEnabled
+                        gridIsEnabledByUser: _gridIsEnabled
                     }
                 );
             });

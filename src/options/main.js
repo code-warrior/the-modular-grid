@@ -360,29 +360,44 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
     'use strict';
 
     document.onkeydown = function (evnt) {
-        let baselineDistance = document.getElementById('baseline--vertical-distance-input').value;
+        let baselineDistanceInputBoxValue = document.getElementById('baseline--vertical-distance-input').value,
+            baselineDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
+
+        baselineDistanceInputBoxValue = parseFloat(baselineDistanceInputBoxValue);
 
         switch (evnt.keyCode) {
         case UP_ARROW_KEY:
-            baselineDistance = parseInt(baselineDistance, 10) + 1;
-
-            if (baselineDistance > BASELINE_DISTANCE_MAX) {
-                baselineDistance = baselineDistance - 1;
+            if (isNaN(baselineDistanceInputBoxValue)) {
+                baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                saveOptions();
+                baselineDistanceInputBoxValue = baselineDistanceInputBoxValue + 1;
+
+                if (baselineDistanceInputBoxValue > BASELINE_DISTANCE_MAX) {
+                    baselineDistanceInputBoxValue = baselineDistanceInputBoxValue - 1;
+                    baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
+                } else {
+                    baselineDistanceInputBox__ErrorMessage.style.display = 'none';
+                    document.getElementById('baseline--vertical-distance-input').value = baselineDistanceInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
 
         case DOWN_ARROW_KEY:
-            baselineDistance = parseInt(baselineDistance, 10) - 1;
-
-            if (baselineDistance < BASELINE_DISTANCE_MIN) {
-                baselineDistance = baselineDistance + 1;
+            if (isNaN(baselineDistanceInputBoxValue)) {
+                baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
             } else {
-                document.getElementById('baseline--vertical-distance-input').value = baselineDistance;
-                saveOptions();
+                baselineDistanceInputBoxValue = baselineDistanceInputBoxValue - 1;
+
+                if (baselineDistanceInputBoxValue < BASELINE_DISTANCE_MIN) {
+                    baselineDistanceInputBoxValue = baselineDistanceInputBoxValue + 1;
+                    baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
+                } else {
+                    baselineDistanceInputBox__ErrorMessage.style.display = 'none';
+                    document.getElementById('baseline--vertical-distance-input').value = baselineDistanceInputBoxValue;
+                    saveOptions();
+                }
             }
 
             break;
@@ -395,11 +410,12 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('i
     'use strict';
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
-        baselineVerticalDistanceInputBox = document.getElementById('baseline--vertical-distance-input').value,
+        baselineVerticalDistanceInputBoxValue = document.getElementById('baseline--vertical-distance-input').value,
         baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
 
-    if (null !== baselineVerticalDistanceInputBox.match(patternForBaselineVerticalDistanceInputBox)) {
+    if (null !== baselineVerticalDistanceInputBoxValue.match(patternForBaselineVerticalDistanceInputBox)) {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
+        saveOptions();
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
     }
