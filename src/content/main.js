@@ -420,12 +420,31 @@ function paintGrid() {
     );
 }
 
+function removeGrid() {
     'use strict';
 
-    }
-});
+    // Remove all listeners, including the keyboard listener
 
-// THIS DOCUMENT SHOULD ONLY EVENT-RELATED VARIABLES, SUCH AS KEYBOARD
+    let _gridStyleSheet = document.getElementById('modular-grid-css'),
+        _modularGridContainer = document.getElementById('modular-grid--container'),
+        _infoSideBar = document.getElementById('info-sidebar');
+
+    //
+    // Only remove elements if they exist in the DOM.
+    //
+    if (null !== _gridStyleSheet) {
+        _gridStyleSheet.parentNode.removeChild(_gridStyleSheet);
+    }
+
+    if (null !== _modularGridContainer) {
+        _modularGridContainer.parentNode.removeChild(_modularGridContainer);
+    }
+
+    if (null !== _infoSideBar) {
+        _infoSideBar.parentNode.removeChild(_infoSideBar);
+    }
+}
+
 /**
  * This is the entry point to the grid.
  */
