@@ -539,10 +539,7 @@ chrome.storage.sync.get(
                 shiftKeyPressed = false;
             }
         } else {
-            /*
-            Retrieve references to IDs in grid and style sheet. if both exist, remove them. this is the very meaning of disabling the grid.
-             */
-            alert('Page loaded: grid DISABLED');
+            removeGrid();
         }
     }
 );
