@@ -484,28 +484,19 @@ chrome.storage.sync.get(
                 case ESCAPE_KEY:
                     switch (gridChoice) {
                     case SHOWING_MODULAR_GRID:
-                        chrome.storage.sync.set(
-                            {currentGrid: cssClasses.columnGrid}
-                        );
-
+                        chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
                         paintGrid();
 
                         break;
 
                     case SHOWING_COLUMN_GRID:
-                        chrome.storage.sync.set(
-                            {currentGrid: cssClasses.baselineGrid}
-                        );
-
+                        chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
                         paintGrid();
 
                         break;
 
                     case SHOWING_BASELINE_GRID:
-                        chrome.storage.sync.set(
-                            {currentGrid: cssClasses.modularGrid}
-                        );
-
+                        chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
                         paintGrid();
 
                         break;
