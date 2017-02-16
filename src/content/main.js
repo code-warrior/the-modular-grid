@@ -365,12 +365,12 @@ function paintGrid() {
                 infoSection__OptionsLink.className = 'message-box';
 
                 infoSection__Instructions.innerHTML =
-                    'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
-                    'cycle through the grids by pressing <kbd>esc</kbd>.';
+                        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
+                        'cycle through the grids by pressing <kbd>esc</kbd>.';
                 infoSection__ColumnAndPageInfo.innerHTML =
-                    'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
-                    'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
-                    'Current grid layer: <strong>' + _currentGrid + '</strong>';
+                        'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
+                        'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
+                        'Current grid layer: <strong>' + _currentGrid + '</strong>';
                 infoSection__OptionsLink.innerHTML = 'Options';
 
                 infoSection__Container.appendChild(infoSection__Instructions);
