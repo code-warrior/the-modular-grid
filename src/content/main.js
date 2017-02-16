@@ -549,6 +549,3 @@ chrome.storage.sync.get(
  * example, paint the grid anew.
  */
 chrome.storage.onChanged.addListener(paintGrid);
-
-// THIS MAY NEEDD TO BE MOVED. if grid is enabled, paint the grid
-paintGrid();
