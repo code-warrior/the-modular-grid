@@ -544,8 +544,10 @@ chrome.storage.sync.get(
     }
 );
 
-// Whenever a change is made to the options, which are stored in chrome.storage,
-// paint the grid anew.
+/**
+ * Each time a change is written to chrome.storage, via the options page, for
+ * example, paint the grid anew.
+ */
 chrome.storage.onChanged.addListener(paintGrid);
 
 // THIS MAY NEEDD TO BE MOVED. if grid is enabled, paint the grid
