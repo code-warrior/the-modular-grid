@@ -265,150 +265,156 @@ function paintGrid() {
     chrome.storage.sync.get(
         null,
         function (settings) {
-            let html = document.querySelector('html'), // Used by all cases.
-                viewportWidth = html.clientWidth, // Used by all cases.
-                body = document.querySelector('body'), // Used by all cases.
-                firstChildOfBody = body.firstElementChild, // PERHAPS NOT
+            if (settings.gridIsEnabled) {
+                removeGrid();
 
-                head = document.querySelector('head'),
-                gridStyleSheet = document.createElement('link'),
+                let html = document.querySelector('html'), // Used by all cases.
+                    viewportWidth = html.clientWidth, // Used by all cases.
+                    body = document.querySelector('body'), // Used by all cases.
+                    firstChildOfBody = body.firstElementChild, // PERHAPS NOT
 
-                pageHeight = (undefined !== document.height)
-                    ? document.height
-                    : document.body.offsetHeight,
+                    head = document.querySelector('head'),
+                    gridStyleSheet = document.createElement('link'),
 
-                // Settings
-                _gridColumnWidth = parseFloat(settings.gridColumnWidth),
-                _gridColumnCount = parseInt(settings.gridColumnCount, 10),
-                _gridColumnColor = settings.gridColumnColor,
-                _gridGutterWidth = parseFloat(settings.gridGutterWidth),
-                _gridBaselineColor = settings.gridBaselineColor,
-                _gridBaselineDistance = settings.gridBaselineDistance,
-                _gridColumnColorOpacity = settings.gridColumnColorOpacity,
-                _gridMargin = parseFloat(settings.gridMargin),
-                _infoSectionIsEnabled = settings.infoSectionIsEnabled,
-                _currentGrid = settings.currentGrid,
+                    pageHeight = (undefined !== document.height)
+                        ? document.height
+                        : document.body.offsetHeight,
 
-                gridUnit = (_gridColumnWidth + _gridGutterWidth),
-                widthOfAllColumns = _gridColumnCount * gridUnit,
-                gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
+                    // Settings
+                    _gridColumnWidth = parseFloat(settings.gridColumnWidth),
+                    _gridColumnCount = parseInt(settings.gridColumnCount, 10),
+                    _gridColumnColor = settings.gridColumnColor,
+                    _gridGutterWidth = parseFloat(settings.gridGutterWidth),
+                    _gridBaselineColor = settings.gridBaselineColor,
+                    _gridBaselineDistance = settings.gridBaselineDistance,
+                    _gridColumnColorOpacity = settings.gridColumnColorOpacity,
+                    _gridMargin = parseFloat(settings.gridMargin),
+                    _infoSectionIsEnabled = settings.infoSectionIsEnabled,
+                    _currentGrid = settings.currentGrid,
 
-                //
-                // modularGrid__Container is the container of the entire grid and is
-                // appended to the <body> element as its first child. The modularGrid
-                // variable is appended to modularGrid__Container and is the layer
-                // whose background contains the varying grids displayed to the user.
-                //
-                modularGrid__Container = document.createElement('div'),
-                modularGrid = document.createElement('div'),
+                    gridUnit = (_gridColumnWidth + _gridGutterWidth),
+                    widthOfAllColumns = _gridColumnCount * gridUnit,
+                    gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
 
-                modularGrid__ZIndex, // null is default
+                    //
+                    // modularGrid__Container is the container of the entire grid and is
+                    // appended to the <body> element as its first child. The modularGrid
+                    // variable is appended to modularGrid__Container and is the layer
+                    // whose background contains the varying grids displayed to the user.
+                    //
+                    modularGrid__Container = document.createElement('div'),
+                    modularGrid = document.createElement('div'),
 
-                //
-                // infoSection__Container is the container for the informational
-                // popup boxes that appear in the upper right hand corner. (Note: Do
-                // not confuse the use of “popup” here with the popup feature endemic
-                // to a Chrome extension.)
-                //
-                infoSection__Container = document.createElement('div'),
-                infoSection__Instructions = document.createElement('span'),
-                infoSection__ColumnAndPageInfo = document.createElement('span'),
-                infoSection__OptionsLink = document.createElement('span');
+                    modularGrid__ZIndex, // null is default
 
-            if (viewportWidth < widthOfAllColumns) {
-                _gridColumnCount = Math.floor(viewportWidth / (_gridColumnWidth + _gridGutterWidth));
-            }
+                    //
+                    // infoSection__Container is the container for the informational
+                    // popup boxes that appear in the upper right hand corner. (Note: Do
+                    // not confuse the use of “popup” here with the popup feature endemic
+                    // to a Chrome extension.)
+                    //
+                    infoSection__Container = document.createElement('div'),
+                    infoSection__Instructions = document.createElement('span'),
+                    infoSection__ColumnAndPageInfo = document.createElement('span'),
+                    infoSection__OptionsLink = document.createElement('span');
 
-            gridStyleSheet.href = chrome.extension.getURL('content.css');
-            gridStyleSheet.rel = 'stylesheet';
-            gridStyleSheet.id = 'modular-grid-css';
+                if (viewportWidth < widthOfAllColumns) {
+                    _gridColumnCount = Math.floor(viewportWidth / (_gridColumnWidth + _gridGutterWidth));
+                }
 
-            infoSection__Container.id = 'info-sidebar';
-            infoSection__Container.style.display = 'block';
+                gridStyleSheet.href = chrome.extension.getURL('content.css');
+                gridStyleSheet.rel = 'stylesheet';
+                gridStyleSheet.id = 'modular-grid-css';
 
-            modularGrid.id = 'modular-grid';
-            modularGrid.className = _currentGrid;
+                infoSection__Container.id = 'info-sidebar';
+                infoSection__Container.style.display = 'block';
 
-            modularGrid__Container.id = 'modular-grid--container';
-            modularGrid__Container.appendChild(modularGrid);
+                modularGrid.id = 'modular-grid';
+                modularGrid.className = _currentGrid;
 
-            infoSection__Instructions.className = 'message-box';
-            infoSection__ColumnAndPageInfo.className = 'message-box';
-            infoSection__ColumnAndPageInfo.id = 'column-and-page-info';
-            infoSection__OptionsLink.className = 'message-box';
+                modularGrid__Container.id = 'modular-grid--container';
+                modularGrid__Container.appendChild(modularGrid);
 
-            infoSection__Instructions.innerHTML =
+                infoSection__Instructions.className = 'message-box';
+                infoSection__ColumnAndPageInfo.className = 'message-box';
+                infoSection__ColumnAndPageInfo.id = 'column-and-page-info';
+                infoSection__OptionsLink.className = 'message-box';
+
+                infoSection__Instructions.innerHTML =
                     'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
                     'cycle through the grids by pressing <kbd>esc</kbd>.';
-            infoSection__ColumnAndPageInfo.innerHTML =
+                infoSection__ColumnAndPageInfo.innerHTML =
                     'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
                     'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
                     'Current grid layer: <strong>' + _currentGrid + '</strong>';
-            infoSection__OptionsLink.innerHTML = 'Options';
+                infoSection__OptionsLink.innerHTML = 'Options';
 
-            infoSection__Container.appendChild(infoSection__Instructions);
-            infoSection__Container.appendChild(infoSection__ColumnAndPageInfo);
-            infoSection__Container.appendChild(infoSection__OptionsLink);
+                infoSection__Container.appendChild(infoSection__Instructions);
+                infoSection__Container.appendChild(infoSection__ColumnAndPageInfo);
+                infoSection__Container.appendChild(infoSection__OptionsLink);
 
-            infoSection__OptionsLink.addEventListener('click', function () {
-                chrome.runtime.sendMessage('openOptions');
-            }, false);
+                infoSection__OptionsLink.addEventListener('click', function () {
+                    chrome.runtime.sendMessage('openOptions');
+                }, false);
 
-            modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
+                modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
 
-            if (null !== modularGrid__ZIndex) {
-                modularGrid__Container.style.zIndex = modularGrid__ZIndex;
-                modularGrid.style.zIndex = modularGrid__ZIndex;
-                infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
+                if (null !== modularGrid__ZIndex) {
+                    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
+                    modularGrid.style.zIndex = modularGrid__ZIndex;
+                    infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
+                } else {
+                    modularGrid__Container.style.zIndex = 'auto';
+                    modularGrid.style.zIndex = 'auto';
+                    infoSection__Container.style.zIndex = 'auto';
+                }
+
+                // Append ONLY if it’s not already in the tree.
+                head.appendChild(gridStyleSheet);
+                body.insertBefore(modularGrid__Container, firstChildOfBody);
+
+                if (_infoSectionIsEnabled) {
+                    body.appendChild(infoSection__Container);
+                }
+
+                switch (_currentGrid) {
+                case 'modular-grid':
+                    modularGrid.className = 'modular-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+
+                case 'column-grid':
+                    modularGrid.className = 'column-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0) !important; ' +
+                            'background-size: ' + gridUnit + 'px 100% !important; ' +
+                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+
+                case 'baseline-grid':
+                    modularGrid.className = 'baseline-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+                }
             } else {
-                modularGrid__Container.style.zIndex = 'auto';
-                modularGrid.style.zIndex = 'auto';
-                infoSection__Container.style.zIndex = 'auto';
-            }
-
-            // Append ONLY if it’s not already in the tree.
-            head.appendChild(gridStyleSheet);
-            body.insertBefore(modularGrid__Container, firstChildOfBody);
-
-            if (_infoSectionIsEnabled) {
-                body.appendChild(infoSection__Container);
-            }
-
-            switch (_currentGrid) {
-            case 'modular-grid':
-                modularGrid.className = 'modular-grid';
-
-                modularGrid.setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
-                        'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
-                        'background-position: ' + _gridMargin + 'px 0 !important; ' +
-                        'max-width: ' + widthOfAllColumns + 'px !important;');
-
-                break;
-
-            case 'column-grid':
-                modularGrid.className = 'column-grid';
-
-                modularGrid.setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0) !important; ' +
-                        'background-size: ' + gridUnit + 'px 100% !important; ' +
-                        'background-position: ' + _gridMargin + 'px 0 !important; ' +
-                        'max-width: ' + widthOfAllColumns + 'px !important;');
-
-                break;
-
-            case 'baseline-grid':
-                modularGrid.className = 'baseline-grid';
-
-                modularGrid.setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
-                        'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
-                        'max-width: ' + widthOfAllColumns + 'px !important;');
-
-                break;
+                removeGrid();
             }
         }
     );
