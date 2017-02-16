@@ -34,26 +34,13 @@ chrome.browserAction.onClicked.addListener(function () {
     chrome.storage.sync.get(
         {gridIsEnabled: false},
         function (settings) {
-            let _gridIsEnabled = settings.gridIsEnabled;
-
-            if (_gridIsEnabled) {
+            if (settings.gridIsEnabled) {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
             } else {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
             }
 
-            _gridIsEnabled = !settings.gridIsEnabled;
-
-            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                chrome.tabs.sendMessage(
-                    tabs[0].id,
-                    {
-                        gridIsEnabledByUser: _gridIsEnabled
-                    }
-                );
-            });
-
-            chrome.storage.sync.set({gridIsEnabled: _gridIsEnabled});
+            chrome.storage.sync.set({gridIsEnabled: !settings.gridIsEnabled});
         }
     );
 });
@@ -68,26 +55,13 @@ chrome.commands.onCommand.addListener(function () {
     chrome.storage.sync.get(
         {gridIsEnabled: false},
         function (settings) {
-            let _gridIsEnabled = settings.gridIsEnabled;
-
-            if (_gridIsEnabled) {
+            if (settings.gridIsEnabled) {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
             } else {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
             }
 
-            _gridIsEnabled = !settings.gridIsEnabled;
-
-            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-                chrome.tabs.sendMessage(
-                    tabs[0].id,
-                    {
-                        gridIsEnabledByUser: _gridIsEnabled
-                    }
-                );
-            });
-
-            chrome.storage.sync.set({gridIsEnabled: _gridIsEnabled});
+            chrome.storage.sync.set({gridIsEnabled: !settings.gridIsEnabled});
         }
     );
 });
