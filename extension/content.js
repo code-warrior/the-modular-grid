@@ -256,6 +256,9 @@ function showColumnInfo() {
     );
 }
 
+/**
+ * Remove the style sheet, grid, and info bar nodes from the page, if they exist.
+ */
 function removeGrid() {
     'use strict';
 
@@ -265,9 +268,6 @@ function removeGrid() {
         _modularGridContainer = document.getElementById('modular-grid--container'),
         _infoSideBar = document.getElementById('info-sidebar');
 
-    //
-    // Only remove elements if they exist in the DOM.
-    //
     if (null !== _gridStyleSheet) {
         _gridStyleSheet.parentNode.removeChild(_gridStyleSheet);
     }
@@ -527,16 +527,16 @@ chrome.storage.sync.get(
 
                     break;
                 }
-            };
 
-            if (shiftKeyPressed) {
-                if (controlKeyPressed) {
-                    toggleGridInfo();
+                if (shiftKeyPressed) {
+                    if (controlKeyPressed) {
+                        toggleGridInfo();
+                    }
+
+                    controlKeyPressed = false;
+                    shiftKeyPressed = false;
                 }
-
-                controlKeyPressed = false;
-                shiftKeyPressed = false;
-            }
+            };
         } else {
             removeGrid();
         }
