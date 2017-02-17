@@ -527,16 +527,16 @@ chrome.storage.sync.get(
 
                     break;
                 }
-            };
 
-            if (shiftKeyPressed) {
-                if (controlKeyPressed) {
-                    toggleGridInfo();
+                if (shiftKeyPressed) {
+                    if (controlKeyPressed) {
+                        toggleGridInfo();
+                    }
+
+                    controlKeyPressed = false;
+                    shiftKeyPressed = false;
                 }
-
-                controlKeyPressed = false;
-                shiftKeyPressed = false;
-            }
+            };
         } else {
             removeGrid();
         }
