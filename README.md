@@ -4,8 +4,7 @@
 This extension provides a series of grid overlays in web pages so web authors can better implement design translations into web pages. Some key options include the ability to change column widths and colors, gutter widths, and baseline/leading distances. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
 
 ## Warning
-
-There are currently some strange UX bugs in the extension when used in multiple tabs. These will be resolved by 11 February, if not sooner. It’s advisable to *remove* the extension altogether after use. To do so, context-click The Modular Grid’s extension icon next to the address bar, then choose “Remove from Chrome…”.
+There are currently some strange UX bugs in the extension when used in multiple tabs. These will be resolved by 28 February, if not sooner. It’s advisable to *disable* the extension in `chrome://extensions` after use.
 
 - [Installation](#installation)
    * [Via GitHub Desktop Client](#github-desktop-installation)
@@ -32,6 +31,8 @@ Late spring 2017
 
 ## <a name="installation">Installing the Beta</a>
 Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through the GitHub Desktop client and via a command line interface.
+
+**Note**: Like most extensions, this extension is not designed to work on the extensions page found at `chrome://extensions`. Thus, do not confuse this with a bug.
 
 ### <a name="github-desktop-installation">GitHub Desktop Installation</a>
 (Burden: ~8 minutes)
