@@ -33,6 +33,8 @@ Late spring 2017
 ## <a name="installation">Installing the Beta</a>
 Installing this extension requires downloading a folder and “feeding” it to Chrome. I’ll discuss how to do this through the GitHub Desktop client and via a command line interface.
 
+**Note**: Like most extensions, this extension is not designed to work on the extensions page found at `chrome://extensions`. Thus, do not confuse this with a bug.
+
 ### <a name="github-desktop-installation">GitHub Desktop Installation</a>
 (Burden: ~8 minutes)
 
