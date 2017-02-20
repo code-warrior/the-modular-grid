@@ -533,6 +533,8 @@ function addKeyboardListener() {
 }
 
 function removeKeyboardListener() {
+    'use strict';
+
     document.onkeydown = null;
     window.onresize = null;
 }
