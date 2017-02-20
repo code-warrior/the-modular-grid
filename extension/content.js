@@ -52,6 +52,7 @@ function getLargestZIndexOfNonStaticElements(node) {
                         }
                     }
                 } else {
+
                     //
                     // Note: The “inherit” case is not handled.
                     //
@@ -196,6 +197,13 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
+function removeKeyboardListener() {
+    'use strict';
+
+    document.onkeydown = null;
+    window.onresize = null;
+}
+
 /**
  * Toggles the info section popup box in the upper right hand corner based on the
  * value of the Boolean infoSectionIsEnabled that is set in chrome.storage
@@ -212,8 +220,6 @@ function toggleGridInfo() {
         function (settings) {
             if (settings.infoSectionIsEnabled) {
                 document.getElementById('info-sidebar').style.display = 'none';
-            } else {
-                document.getElementById('info-sidebar').style.display = 'block';
             }
 
             chrome.storage.sync.set(
@@ -262,8 +268,6 @@ function showColumnInfo() {
 function removeGrid() {
     'use strict';
 
-    // Remove all listeners, including the keyboard listener
-
     let _gridStyleSheet = document.getElementById('modular-grid-css'),
         _modularGridContainer = document.getElementById('modular-grid--container'),
         _infoSideBar = document.getElementById('info-sidebar');
@@ -280,9 +284,89 @@ function removeGrid() {
         _infoSideBar.parentNode.removeChild(_infoSideBar);
     }
 }
-/*
- This should only be called when the grid is enabled
- */
+
+function addKeyboardListener() {
+    'use strict';
+
+    const
+        SHIFT_KEY = 16,
+        CONTROL_KEY = 17,
+        ESCAPE_KEY = 27,
+        SHOWING_MODULAR_GRID = 0,
+        SHOWING_COLUMN_GRID = 1,
+        SHOWING_BASELINE_GRID = 2;
+
+    let
+        controlKeyPressed = false,
+        shiftKeyPressed = false,
+        gridChoice = SHOWING_MODULAR_GRID,
+        cssClasses = {
+            modularGrid: 'modular-grid',
+            columnGrid: 'column-grid',
+            baselineGrid: 'baseline-grid'
+        };
+
+    window.onresize = function () {
+        showColumnInfo();
+    };
+
+    /**
+     * Handles keyboard events that cycle through the various grids (using the `esc`
+     * key) and that toggle the sidebar information popup appearing in the upper
+     * right hand corner of the browser window (using the `Ctrl` + `Shift` keys).
+     *
+     * @param evnt is the keyboard event
+     */
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+        case SHIFT_KEY:
+            shiftKeyPressed = true;
+
+            break;
+
+        case CONTROL_KEY:
+            controlKeyPressed = true;
+
+            break;
+
+        case ESCAPE_KEY:
+            switch (gridChoice) {
+            case SHOWING_MODULAR_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
+
+                break;
+
+            case SHOWING_COLUMN_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
+
+                break;
+
+            case SHOWING_BASELINE_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
+
+                break;
+            }
+
+            if (SHOWING_BASELINE_GRID === gridChoice) {
+                gridChoice = -1;
+            }
+
+            gridChoice += 1;
+
+            break;
+        }
+
+        if (shiftKeyPressed) {
+            if (controlKeyPressed) {
+                toggleGridInfo();
+            }
+
+            controlKeyPressed = false;
+            shiftKeyPressed = false;
+        }
+    };
+}
+
 function paintGrid() {
     'use strict';
 
@@ -297,10 +381,10 @@ function paintGrid() {
                     chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
                 }
 
-                let html = document.querySelector('html'), // Used by all cases.
-                    viewportWidth = html.clientWidth, // Used by all cases.
-                    body = document.querySelector('body'), // Used by all cases.
-                    firstChildOfBody = body.firstElementChild, // PERHAPS NOT
+                let html = document.querySelector('html'),
+                    viewportWidth = html.clientWidth,
+                    body = document.querySelector('body'),
+                    firstChildOfBody = body.firstElementChild,
 
                     head = document.querySelector('head'),
                     gridStyleSheet = document.createElement('link'),
@@ -334,7 +418,7 @@ function paintGrid() {
                     modularGrid__Container = document.createElement('div'),
                     modularGrid = document.createElement('div'),
 
-                    modularGrid__ZIndex, // null is default
+                    modularGrid__ZIndex,
 
                     //
                     // infoSection__Container is the container for the informational
@@ -398,7 +482,6 @@ function paintGrid() {
                     infoSection__Container.style.zIndex = 'auto';
                 }
 
-                // Append ONLY if it’s not already in the tree.
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
 
@@ -454,94 +537,6 @@ function paintGrid() {
     );
 }
 
-function addKeyboardListener() {
-    'use strict';
-
-    const
-        SHIFT_KEY = 16,
-        CONTROL_KEY = 17,
-        ESCAPE_KEY = 27,
-        SHOWING_MODULAR_GRID = 0,
-        SHOWING_COLUMN_GRID = 1,
-        SHOWING_BASELINE_GRID = 2;
-
-    let
-        controlKeyPressed = false,
-        shiftKeyPressed = false,
-        gridChoice = SHOWING_MODULAR_GRID,
-        cssClasses = {
-            modularGrid: 'modular-grid',
-            columnGrid: 'column-grid',
-            baselineGrid: 'baseline-grid'
-        };
-
-    /**
-     * Handles keyboard events that cycle through the various grids (using the `esc`
-     * key) and that toggle the sidebar information popup appearing in the upper
-     * right hand corner of the browser window (using the `Ctrl` + `Shift` keys).
-     *
-     * @param evnt is the keyboard event
-     */
-    document.onkeydown = function (evnt) {
-        switch (evnt.keyCode) {
-        case SHIFT_KEY:
-            shiftKeyPressed = true;
-
-            break;
-
-        case CONTROL_KEY:
-            controlKeyPressed = true;
-
-            break;
-
-        case ESCAPE_KEY:
-            switch (gridChoice) {
-            case SHOWING_MODULAR_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
-                paintGrid();
-
-                break;
-
-            case SHOWING_COLUMN_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
-                paintGrid();
-
-                break;
-
-            case SHOWING_BASELINE_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
-                paintGrid();
-
-                break;
-            }
-
-            if (SHOWING_BASELINE_GRID === gridChoice) {
-                gridChoice = -1;
-            }
-
-            gridChoice += 1;
-
-            showColumnInfo();
-
-            break;
-        }
-
-        if (shiftKeyPressed) {
-            if (controlKeyPressed) {
-                toggleGridInfo();
-            }
-
-            controlKeyPressed = false;
-            shiftKeyPressed = false;
-        }
-    };
-}
-
-function removeKeyboardListener() {
-    document.onkeydown = null;
-    window.onresize = null;
-}
-
 /**
  * This is the entry point to the grid.
  */
@@ -560,9 +555,6 @@ chrome.storage.sync.get(
 
             showColumnInfo();
 
-            window.onresize = function () {
-                toggleGridInfo();
-            };
         } else {
             if (!settings.keyboardListenersEnabled) {
                 removeKeyboardListener();
