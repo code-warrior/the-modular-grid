@@ -306,6 +306,10 @@ function addKeyboardListener() {
             baselineGrid: 'baseline-grid'
         };
 
+    window.onresize = function () {
+        showColumnInfo();
+    };
+
     /**
      * Handles keyboard events that cycle through the various grids (using the `esc`
      * key) and that toggle the sidebar information popup appearing in the upper
@@ -348,8 +352,6 @@ function addKeyboardListener() {
             }
 
             gridChoice += 1;
-
-            showColumnInfo();
 
             break;
         }
