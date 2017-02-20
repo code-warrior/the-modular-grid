@@ -1,136 +1,6 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-const
-    SHIFT_KEY = 16,
-    CONTROL_KEY = 17,
-    ESCAPE_KEY = 27,
-    SHOWING_NO_GRID = 0,
-    SHOWING_COLUMN_GRID = 1,
-    SHOWING_MODULAR_GRID = 2,
-    SHOWING_BASELINE_GRID = 3;
-
-let html = document.querySelector('html'),
-    body = document.querySelector('body'),
-    firstChildOfBody = body.firstElementChild,
-    head = document.querySelector('head'),
-    stylesheet = document.createElement('link'),
-
-    //
-    // modularGrid__Container is the container of the entire grid and is appended
-    // to the <body> element as its first child. The modularGrid variable is appended
-    // to modularGrid__Container and is the layer whose background contains the
-    // varying grids displayed to the user.
-    //
-    modularGrid__Container = document.createElement('div'),
-    modularGrid = document.createElement('div'),
-
-    modularGrid__ZIndex = null,
-
-    //
-    // sideBarPopup__Container is the container for the popup box that appears in the
-    // upper right hand corner. (Note: Do not confuse the use of “popup” here with
-    // the popup feature endemic to a Chrome extension.)
-    //
-    sideBarPopup__Container = document.createElement('div'),
-    sideBarPopup__Instructions = document.createElement('span'),
-    sideBarPopup__ColumnAndPageInfo = document.createElement('span'),
-    sideBarPopup__OptionsLink = document.createElement('span'),
-
-    //
-    // Keyboard-related Booleans
-    //
-    controlKeyPressed = false,
-    shiftKeyPressed = false,
-
-    //
-    // Turn on the sidebar popup by default
-    //
-    sideBarPopup__IsInitiallyShowing = true,
-
-    //
-    // Closely related to the sideBarPopup__IsInitiallyShowing Boolean, this variable
-    // is used to toggle the sidebar popup by the user.
-    //
-    sideBarPopup__IsShowing = false,
-
-    pageHeight = (undefined !== document.height)
-        ? document.height
-        : document.body.offsetHeight,
-
-    // TODO: May not need this any more
-    gridChoice = SHOWING_MODULAR_GRID,
-
-    CSS__Classes = {
-        columngrid: 'column-grid',
-        modulargrid: 'modular-grid',
-        baselinegrid: 'baseline-grid',
-        none: 'none'
-    };
-
-stylesheet.href = chrome.extension.getURL('content.css');
-stylesheet.rel = 'stylesheet';
-stylesheet.id = 'modular-grid-css';
-
-sideBarPopup__Container.id = 'info-sidebar';
-
-if (sideBarPopup__IsInitiallyShowing) {
-    sideBarPopup__Container.style.display = 'block';
-    sideBarPopup__IsShowing = true;
-}
-
-modularGrid.id = 'modular-grid';
-modularGrid.className = SHOWING_MODULAR_GRID;
-
-modularGrid__Container.id = 'modular-grid--container';
-modularGrid__Container.appendChild(modularGrid);
-
-sideBarPopup__Instructions.className = 'message-box';
-sideBarPopup__ColumnAndPageInfo.className = 'message-box';
-sideBarPopup__ColumnAndPageInfo.id = 'column-and-page-info';
-sideBarPopup__OptionsLink.className = 'message-box';
-
-sideBarPopup__Instructions.innerHTML =
-        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
-        'cycle through the grids by pressing <kbd>esc</kbd>.';
-
-chrome.storage.sync.get(
-    null,
-    function (settings) {
-        'use strict';
-
-        let viewportWidth = html.clientWidth,
-            widthOfAllColumns =
-                    parseInt(settings.gridColumnCount, 10) *
-                    (parseInt(settings.gridColumnWidth, 10) +
-                    parseInt(settings.gridGutterWidth, 10)),
-            columnCount = parseInt(settings.gridColumnCount, 10);
-
-        if (viewportWidth < widthOfAllColumns) {
-            columnCount =
-                    Math.floor(html.clientWidth /
-                    (parseInt(settings.gridColumnWidth, 10) +
-                    parseInt(settings.gridGutterWidth, 10)));
-        }
-
-        sideBarPopup__ColumnAndPageInfo.innerHTML =
-                'Column count: <strong>' + columnCount + '</strong><br>' +
-                'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
-                'Current grid layer: <strong>' + settings.currentGrid + '</strong>';
-    }
-);
-
-sideBarPopup__Container.appendChild(sideBarPopup__Instructions);
-sideBarPopup__Container.appendChild(sideBarPopup__ColumnAndPageInfo);
-sideBarPopup__Container.appendChild(sideBarPopup__OptionsLink);
-
-sideBarPopup__OptionsLink.innerHTML = 'Options';
-sideBarPopup__OptionsLink.addEventListener('click', function () {
-    'use strict';
-
-    chrome.runtime.sendMessage('openOptions');
-});
-
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
@@ -182,6 +52,7 @@ function getLargestZIndexOfNonStaticElements(node) {
                         }
                     }
                 } else {
+
                     //
                     // Note: The “inherit” case is not handled.
                     //
@@ -207,18 +78,6 @@ function getLargestZIndexOfNonStaticElements(node) {
     } else {
         return largestZIndexThusFar + occurrencesOfAuto;
     }
-}
-
-modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
-
-if (null !== modularGrid__ZIndex) {
-    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
-    modularGrid.style.zIndex = modularGrid__ZIndex;
-    sideBarPopup__Container.style.zIndex = (modularGrid__ZIndex + 1);
-} else {
-    modularGrid__Container.style.zIndex = 'auto';
-    modularGrid.style.zIndex = 'auto';
-    sideBarPopup__Container.style.zIndex = 'auto';
 }
 
 /**
@@ -338,214 +197,63 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
+function removeKeyboardListener() {
+    'use strict';
+
+    document.onkeydown = null;
+    window.onresize = null;
+}
+
 /**
- * Invoked when the page is loaded
+ * Toggles the info section popup box in the upper right hand corner based on the
+ * value of the Boolean infoSectionIsEnabled that is set in chrome.storage
+ * (settings).
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
  */
-function updateGrid() {
+function toggleGridInfo() {
     'use strict';
 
     chrome.storage.sync.get(
-        null,
+        {infoSectionIsEnabled: true},
         function (settings) {
-            head.appendChild(stylesheet);
-
-            // TODO: This is a dangerous move, as it continuously injects CSS into the <head> without ever removing it.
-            body.insertBefore(modularGrid__Container, firstChildOfBody);
-
-            let viewportWidth = html.clientWidth,
-                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)),
-                columnCount = parseInt(settings.gridColumnCount, 10);
-
-            if (viewportWidth < widthOfAllColumns) {
-                columnCount = Math.floor(html.clientWidth /
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)));
+            if (settings.infoSectionIsEnabled) {
+                document.getElementById('info-sidebar').style.display = 'none';
             }
 
-            sideBarPopup__ColumnAndPageInfo.innerHTML =
-                    'Column count: <strong>' + columnCount + '</strong><br>' +
-                    'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
-                    'Current grid layer: <strong>' + settings.currentGrid +
-                    '</strong>';
-
-            body.appendChild(sideBarPopup__Container);
-
-            switch (settings.currentGrid) {
-            case 'column-grid':
-                modularGrid.className = CSS__Classes.columngrid;
-
-                document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.gridColumnColor,
-                        settings.gridColumnColorOpacity) + ' ' +
-                        settings.gridColumnWidth + 'px, transparent 0) !important; ' +
-                        'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
-                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                break;
-
-            case 'modular-grid':
-                modularGrid.className = CSS__Classes.modulargrid;
-
-                document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(90deg, ' +
-                        convertHexToRGBA(settings.gridColumnColor,
-                        settings.gridColumnColorOpacity) + ' ' +
-                        settings.gridColumnWidth + 'px, transparent 0), ' +
-                        'linear-gradient(0deg, transparent 95%, ' +
-                        settings.gridBaselineColor + ' 100%) !important; ' +
-                        'background-size: ' + (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                        settings.gridBaselineDistance + 'px !important; ' +
-                        'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                break;
-
-            case 'baseline-grid':
-                modularGrid.className = CSS__Classes.baselinegrid;
-
-                document.getElementById('modular-grid').setAttribute('style',
-                        'height: ' + pageHeight + 'px !important; ' +
-                        'background-image: linear-gradient(0deg, transparent 95%, ' +
-                        settings.gridBaselineColor + ' 100%) !important; ' +
-                        'background-size: 100% ' +
-                        settings.gridBaselineDistance + 'px !important; ' +
-                        'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                break;
-            }
+            chrome.storage.sync.set(
+                {infoSectionIsEnabled: !settings.infoSectionIsEnabled}
+            );
         }
     );
 }
 
 /**
- * Invoked when the grid is enabled via the command shortcut or by clicking the
- * browser action button.
+ * Shows the sidebar info content along the top right side when the grid is showing.
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
  */
-chrome.extension.onMessage.addListener(function (msg) {
-    'use strict';
-
-    if (msg.isGridEnabledViaBrowserAction) {
-        head.appendChild(stylesheet);
-
-        // TODO: This is a dangerous move, as it continuously injects CSS into the <head> without ever removing it.
-        body.insertBefore(modularGrid__Container, firstChildOfBody);
-        body.appendChild(sideBarPopup__Container);
-
-        chrome.storage.sync.get(
-            null,
-            function (settings) {
-                switch (settings.currentGrid) {
-                case 'column-grid':
-                    modularGrid.className = CSS__Classes.columngrid;
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.gridColumnColor,
-                            settings.gridColumnColorOpacity) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0) !important; ' +
-                            'background-size: ' +
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    break;
-
-                case 'modular-grid':
-                    modularGrid.className = CSS__Classes.modulargrid;
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.gridColumnColor,
-                            settings.gridColumnColorOpacity) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0), ' +
-                            'linear-gradient(0deg, transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%) !important; ' +
-                            'background-size: ' +
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.gridBaselineDistance + 'px !important; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    break;
-
-                case 'baseline-grid':
-                    modularGrid.className = CSS__Classes.baselinegrid;
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(0deg, ' +
-                            'transparent 95%, ' + settings.gridBaselineColor +
-                            ' 100%) !important; ' +
-                            'background-size: 100% ' + settings.gridBaselineDistance +
-                            'px !important; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    break;
-                }
-            }
-        );
-    } else {
-        modularGrid__Container.parentNode.removeChild(modularGrid__Container);
-        sideBarPopup__Container.parentNode.removeChild(sideBarPopup__Container);
-        stylesheet.parentNode.removeChild(stylesheet);
-    }
-});
-
-function toggleGridInfo() {
-    'use strict';
-
-    if (sideBarPopup__IsShowing) {
-        sideBarPopup__Container.style.display = 'none';
-        sideBarPopup__IsShowing = false;
-    } else {
-        sideBarPopup__Container.style.display = 'block';
-        sideBarPopup__IsShowing = true;
-    }
-}
-
 function showColumnInfo() {
     'use strict';
 
     chrome.storage.sync.get(
         null,
         function (settings) {
-            let viewportWidth = html.clientWidth,
+            let root = document.querySelector('html'),
+                viewportWidth = root.clientWidth,
                 widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
                         (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
-                columnCount = Math.floor(html.clientWidth /
+                columnCount = Math.floor(root.clientWidth /
                         (parseInt(settings.gridColumnWidth, 10) +
                         parseInt(settings.gridGutterWidth, 10)));
             }
 
-            sideBarPopup__ColumnAndPageInfo.innerHTML =
+            document.getElementById('column-and-page-info').innerHTML =
                     'Column count: <strong>' + columnCount + '</strong><br>' +
                     'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
                     'Current grid layer: <strong>' + settings.currentGrid +
@@ -554,143 +262,312 @@ function showColumnInfo() {
     );
 }
 
-window.onresize = function () {
-    'use strict';
-
-    showColumnInfo();
-};
-
 /**
- * Handles keyboard events that cycle through the various grids (using the `esc`
- * key) and that toggle the sidebar information popup appearing in the upper right
- * hand corner of the browser window (using the `Ctrl` + `Shift` keys).
- *
- * @param evnt is the keyboard event
+ * Remove the style sheet, grid, and info bar nodes from the page, if they exist.
  */
-document.onkeydown = function (evnt) {
+function removeGrid() {
     'use strict';
 
-    switch (evnt.keyCode) {
-    case SHIFT_KEY:
-        shiftKeyPressed = true;
+    let _gridStyleSheet = document.getElementById('modular-grid-css'),
+        _modularGridContainer = document.getElementById('modular-grid--container'),
+        _infoSideBar = document.getElementById('info-sidebar');
 
-        break;
-
-    case CONTROL_KEY:
-        controlKeyPressed = true;
-
-        break;
-
-    case ESCAPE_KEY:
-        chrome.storage.sync.get(
-            null,
-            function (settings) {
-                switch (gridChoice) {
-                case SHOWING_NO_GRID:
-                    modularGrid.classList.add(CSS__Classes.columngrid);
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.gridColumnColor,
-                            settings.columnColorTransparency) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0) !important; ' +
-                            'background-size: ' +
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100% !important; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    chrome.storage.sync.set(
-                        {currentGrid: CSS__Classes.columngrid}
-                    );
-
-                    break;
-
-                case SHOWING_COLUMN_GRID:
-                    modularGrid.classList.remove(CSS__Classes.columngrid);
-                    modularGrid.classList.add(CSS__Classes.modulargrid);
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' +
-                            convertHexToRGBA(settings.gridColumnColor,
-                            settings.columnColorTransparency) + ' ' +
-                            settings.gridColumnWidth + 'px, transparent 0), ' +
-                            'linear-gradient(0deg, transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%) !important; ' +
-                            'background-size: ' +
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10)) + 'px 100%, 100% ' +
-                            settings.gridBaselineDistance + 'px !important; ' +
-                            'background-position: ' + parseInt(settings.gridMargin, 10) + 'px 0 !important; ' +
-                            'max-width: ' +
-                            (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    chrome.storage.sync.set(
-                        {currentGrid: CSS__Classes.modulargrid}
-                    );
-
-                    break;
-
-                case SHOWING_MODULAR_GRID:
-                    modularGrid.classList.remove(CSS__Classes.modulargrid);
-                    modularGrid.classList.add(CSS__Classes.baselinegrid);
-
-                    document.getElementById('modular-grid').setAttribute('style',
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(0deg, ' +
-                            'transparent 95%, ' +
-                            settings.gridBaselineColor + ' 100%) !important; ' +
-                            'background-size: 100% ' + settings.gridBaselineDistance +
-                            'px !important; ' +
-                            'max-width: ' + (parseInt(settings.gridColumnCount, 10) *
-                            (parseInt(settings.gridColumnWidth, 10) +
-                            parseInt(settings.gridGutterWidth, 10))) + 'px !important;');
-
-                    chrome.storage.sync.set(
-                        {currentGrid: CSS__Classes.baselinegrid}
-                    );
-
-                    break;
-
-                case SHOWING_BASELINE_GRID:
-                    modularGrid.classList.remove(CSS__Classes.baselinegrid);
-                    modularGrid.removeAttribute('style');
-
-                    chrome.storage.sync.set(
-                        {currentGrid: CSS__Classes.none}
-                    );
-
-                    break;
-
-                }
-
-                if (SHOWING_BASELINE_GRID === gridChoice) {
-                    gridChoice = -1;
-                }
-
-                gridChoice += 1;
-
-                showColumnInfo();
-            }
-        );
-
-        break;
+    if (null !== _gridStyleSheet) {
+        _gridStyleSheet.parentNode.removeChild(_gridStyleSheet);
     }
 
-    if (shiftKeyPressed) {
-        if (controlKeyPressed) {
-            toggleGridInfo();
+    if (null !== _modularGridContainer) {
+        _modularGridContainer.parentNode.removeChild(_modularGridContainer);
+    }
+
+    if (null !== _infoSideBar) {
+        _infoSideBar.parentNode.removeChild(_infoSideBar);
+    }
+}
+
+function addKeyboardListener() {
+    'use strict';
+
+    const
+        SHIFT_KEY = 16,
+        CONTROL_KEY = 17,
+        ESCAPE_KEY = 27,
+        SHOWING_MODULAR_GRID = 0,
+        SHOWING_COLUMN_GRID = 1,
+        SHOWING_BASELINE_GRID = 2;
+
+    let
+        controlKeyPressed = false,
+        shiftKeyPressed = false,
+        gridChoice = SHOWING_MODULAR_GRID,
+        cssClasses = {
+            modularGrid: 'modular-grid',
+            columnGrid: 'column-grid',
+            baselineGrid: 'baseline-grid'
+        };
+
+    window.onresize = function () {
+        showColumnInfo();
+    };
+
+    /**
+     * Handles keyboard events that cycle through the various grids (using the `esc`
+     * key) and that toggle the sidebar information popup appearing in the upper
+     * right hand corner of the browser window (using the `Ctrl` + `Shift` keys).
+     *
+     * @param evnt is the keyboard event
+     */
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+        case SHIFT_KEY:
+            shiftKeyPressed = true;
+
+            break;
+
+        case CONTROL_KEY:
+            controlKeyPressed = true;
+
+            break;
+
+        case ESCAPE_KEY:
+            switch (gridChoice) {
+            case SHOWING_MODULAR_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
+
+                break;
+
+            case SHOWING_COLUMN_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
+
+                break;
+
+            case SHOWING_BASELINE_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
+
+                break;
+            }
+
+            if (SHOWING_BASELINE_GRID === gridChoice) {
+                gridChoice = -1;
+            }
+
+            gridChoice += 1;
+
+            break;
         }
 
-        controlKeyPressed = false;
-        shiftKeyPressed = false;
-    }
-};
+        if (shiftKeyPressed) {
+            if (controlKeyPressed) {
+                toggleGridInfo();
+            }
 
-chrome.storage.onChanged.addListener(updateGrid);
+            controlKeyPressed = false;
+            shiftKeyPressed = false;
+        }
+    };
+}
+
+function paintGrid() {
+    'use strict';
+
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+            if (settings.gridIsEnabled) {
+                removeGrid();
+
+                if (settings.keyboardListenersEnabled) {
+                    addKeyboardListener();
+                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                }
+
+                let html = document.querySelector('html'),
+                    viewportWidth = html.clientWidth,
+                    body = document.querySelector('body'),
+                    firstChildOfBody = body.firstElementChild,
+
+                    head = document.querySelector('head'),
+                    gridStyleSheet = document.createElement('link'),
+
+                    pageHeight = (undefined !== document.height)
+                        ? document.height
+                        : document.body.offsetHeight,
+
+                    // Settings
+                    _gridColumnWidth = parseFloat(settings.gridColumnWidth),
+                    _gridColumnCount = parseInt(settings.gridColumnCount, 10),
+                    _gridColumnColor = settings.gridColumnColor,
+                    _gridGutterWidth = parseFloat(settings.gridGutterWidth),
+                    _gridBaselineColor = settings.gridBaselineColor,
+                    _gridBaselineDistance = settings.gridBaselineDistance,
+                    _gridColumnColorOpacity = settings.gridColumnColorOpacity,
+                    _gridMargin = parseFloat(settings.gridMargin),
+                    _infoSectionIsEnabled = settings.infoSectionIsEnabled,
+                    _currentGrid = settings.currentGrid,
+
+                    gridUnit = (_gridColumnWidth + _gridGutterWidth),
+                    widthOfAllColumns = _gridColumnCount * gridUnit,
+                    gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
+
+                    //
+                    // modularGrid__Container is the container of the entire grid and is
+                    // appended to the <body> element as its first child. The modularGrid
+                    // variable is appended to modularGrid__Container and is the layer
+                    // whose background contains the varying grids displayed to the user.
+                    //
+                    modularGrid__Container = document.createElement('div'),
+                    modularGrid = document.createElement('div'),
+
+                    modularGrid__ZIndex,
+
+                    //
+                    // infoSection__Container is the container for the informational
+                    // popup boxes that appear in the upper right hand corner. (Note: Do
+                    // not confuse the use of “popup” here with the popup feature endemic
+                    // to a Chrome extension.)
+                    //
+                    infoSection__Container = document.createElement('div'),
+                    infoSection__Instructions = document.createElement('span'),
+                    infoSection__ColumnAndPageInfo = document.createElement('span'),
+                    infoSection__OptionsLink = document.createElement('span');
+
+                if (viewportWidth < widthOfAllColumns) {
+                    _gridColumnCount = Math.floor(viewportWidth / (_gridColumnWidth + _gridGutterWidth));
+                }
+
+                gridStyleSheet.href = chrome.extension.getURL('content.css');
+                gridStyleSheet.rel = 'stylesheet';
+                gridStyleSheet.id = 'modular-grid-css';
+
+                infoSection__Container.id = 'info-sidebar';
+                infoSection__Container.style.display = 'block';
+
+                modularGrid.id = 'modular-grid';
+                modularGrid.className = _currentGrid;
+
+                modularGrid__Container.id = 'modular-grid--container';
+                modularGrid__Container.appendChild(modularGrid);
+
+                infoSection__Instructions.className = 'message-box';
+                infoSection__ColumnAndPageInfo.className = 'message-box';
+                infoSection__ColumnAndPageInfo.id = 'column-and-page-info';
+                infoSection__OptionsLink.className = 'message-box';
+
+                infoSection__Instructions.innerHTML =
+                        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
+                        'cycle through the grids by pressing <kbd>esc</kbd>.';
+                infoSection__ColumnAndPageInfo.innerHTML =
+                        'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
+                        'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
+                        'Current grid layer: <strong>' + _currentGrid + '</strong>';
+                infoSection__OptionsLink.innerHTML = 'Options';
+
+                infoSection__Container.appendChild(infoSection__Instructions);
+                infoSection__Container.appendChild(infoSection__ColumnAndPageInfo);
+                infoSection__Container.appendChild(infoSection__OptionsLink);
+
+                infoSection__OptionsLink.addEventListener('click', function () {
+                    chrome.runtime.sendMessage('openOptions');
+                }, false);
+
+                modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
+
+                if (null !== modularGrid__ZIndex) {
+                    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
+                    modularGrid.style.zIndex = modularGrid__ZIndex;
+                    infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
+                } else {
+                    modularGrid__Container.style.zIndex = 'auto';
+                    modularGrid.style.zIndex = 'auto';
+                    infoSection__Container.style.zIndex = 'auto';
+                }
+
+                head.appendChild(gridStyleSheet);
+                body.insertBefore(modularGrid__Container, firstChildOfBody);
+
+                if (_infoSectionIsEnabled) {
+                    body.appendChild(infoSection__Container);
+                }
+
+                switch (_currentGrid) {
+                case 'modular-grid':
+                    modularGrid.className = 'modular-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+
+                case 'column-grid':
+                    modularGrid.className = 'column-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0) !important; ' +
+                            'background-size: ' + gridUnit + 'px 100% !important; ' +
+                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+
+                case 'baseline-grid':
+                    modularGrid.className = 'baseline-grid';
+
+                    modularGrid.setAttribute('style',
+                            'height: ' + pageHeight + 'px !important; ' +
+                            'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'max-width: ' + widthOfAllColumns + 'px !important;');
+
+                    break;
+                }
+            } else {
+                if (!settings.keyboardListenersEnabled) {
+                    removeKeyboardListener();
+                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                }
+
+                removeGrid();
+            }
+        }
+    );
+}
+
+/**
+ * This is the entry point to the grid.
+ */
+chrome.storage.sync.get(
+    null,
+    function (settings) {
+        'use strict';
+
+        if (settings.gridIsEnabled) {
+            paintGrid();
+
+            if (settings.keyboardListenersEnabled) {
+                addKeyboardListener();
+                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+            }
+
+            showColumnInfo();
+
+        } else {
+            if (!settings.keyboardListenersEnabled) {
+                removeKeyboardListener();
+                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+            }
+
+            removeGrid();
+        }
+    }
+);
+
+/**
+ * Each time a change is written to chrome.storage, via the options page, for
+ * example, paint the grid anew.
+ */
+chrome.storage.onChanged.addListener(paintGrid);

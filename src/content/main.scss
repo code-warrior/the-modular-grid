@@ -11,13 +11,17 @@
 
 #modular-grid--container {
    position: absolute !important;
-   width: 99% !important;
+   top: 0 !important;
+   left: 0 !important;
+   width: 100% !important;
    border: 0 !important;
    padding: 0 !important;
 }
 
 #info-sidebar {
+   overflow: visible !important;
    display: none;
+   width: auto !important;
    border: 0 !important;
    position: fixed !important;
    top: $offset-sidebar !important;
