@@ -292,6 +292,11 @@ function paintGrid() {
             if (settings.gridIsEnabled) {
                 removeGrid();
 
+                if (settings.keyboardListenersEnabled) {
+                    addKeyboardListener();
+                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                }
+
                 let html = document.querySelector('html'), // Used by all cases.
                     viewportWidth = html.clientWidth, // Used by all cases.
                     body = document.querySelector('body'), // Used by all cases.
@@ -438,6 +443,11 @@ function paintGrid() {
                     break;
                 }
             } else {
+                if (!settings.keyboardListenersEnabled) {
+                    removeKeyboardListener();
+                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                }
+
                 removeGrid();
             }
         }
@@ -542,14 +552,23 @@ chrome.storage.sync.get(
 
         if (settings.gridIsEnabled) {
             paintGrid();
-            addKeyboardListener();
+
+            if (settings.keyboardListenersEnabled) {
+                addKeyboardListener();
+                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+            }
+
             showColumnInfo();
 
             window.onresize = function () {
                 toggleGridInfo();
             };
         } else {
-            removeKeyboardListener();
+            if (!settings.keyboardListenersEnabled) {
+                removeKeyboardListener();
+                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+            }
+
             removeGrid();
         }
     }
