@@ -196,6 +196,13 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
+function removeKeyboardListener() {
+    'use strict';
+
+    document.onkeydown = null;
+    window.onresize = null;
+}
+
 /**
  * Toggles the info section popup box in the upper right hand corner based on the
  * value of the Boolean infoSectionIsEnabled that is set in chrome.storage
@@ -530,13 +537,6 @@ function addKeyboardListener() {
             shiftKeyPressed = false;
         }
     };
-}
-
-function removeKeyboardListener() {
-    'use strict';
-
-    document.onkeydown = null;
-    window.onresize = null;
 }
 
 /**
