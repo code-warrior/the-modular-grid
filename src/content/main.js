@@ -286,6 +286,86 @@ function removeGrid() {
     }
 }
 
+function addKeyboardListener() {
+    'use strict';
+
+    const
+        SHIFT_KEY = 16,
+        CONTROL_KEY = 17,
+        ESCAPE_KEY = 27,
+        SHOWING_MODULAR_GRID = 0,
+        SHOWING_COLUMN_GRID = 1,
+        SHOWING_BASELINE_GRID = 2;
+
+    let
+        controlKeyPressed = false,
+        shiftKeyPressed = false,
+        gridChoice = SHOWING_MODULAR_GRID,
+        cssClasses = {
+            modularGrid: 'modular-grid',
+            columnGrid: 'column-grid',
+            baselineGrid: 'baseline-grid'
+        };
+
+    /**
+     * Handles keyboard events that cycle through the various grids (using the `esc`
+     * key) and that toggle the sidebar information popup appearing in the upper
+     * right hand corner of the browser window (using the `Ctrl` + `Shift` keys).
+     *
+     * @param evnt is the keyboard event
+     */
+    document.onkeydown = function (evnt) {
+        switch (evnt.keyCode) {
+        case SHIFT_KEY:
+            shiftKeyPressed = true;
+
+            break;
+
+        case CONTROL_KEY:
+            controlKeyPressed = true;
+
+            break;
+
+        case ESCAPE_KEY:
+            switch (gridChoice) {
+            case SHOWING_MODULAR_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
+
+                break;
+
+            case SHOWING_COLUMN_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
+
+                break;
+
+            case SHOWING_BASELINE_GRID:
+                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
+
+                break;
+            }
+
+            if (SHOWING_BASELINE_GRID === gridChoice) {
+                gridChoice = -1;
+            }
+
+            gridChoice += 1;
+
+            showColumnInfo();
+
+            break;
+        }
+
+        if (shiftKeyPressed) {
+            if (controlKeyPressed) {
+                toggleGridInfo();
+            }
+
+            controlKeyPressed = false;
+            shiftKeyPressed = false;
+        }
+    };
+}
+
 function paintGrid() {
     'use strict';
 
@@ -454,89 +534,6 @@ function paintGrid() {
             }
         }
     );
-}
-
-function addKeyboardListener() {
-    'use strict';
-
-    const
-        SHIFT_KEY = 16,
-        CONTROL_KEY = 17,
-        ESCAPE_KEY = 27,
-        SHOWING_MODULAR_GRID = 0,
-        SHOWING_COLUMN_GRID = 1,
-        SHOWING_BASELINE_GRID = 2;
-
-    let
-        controlKeyPressed = false,
-        shiftKeyPressed = false,
-        gridChoice = SHOWING_MODULAR_GRID,
-        cssClasses = {
-            modularGrid: 'modular-grid',
-            columnGrid: 'column-grid',
-            baselineGrid: 'baseline-grid'
-        };
-
-    /**
-     * Handles keyboard events that cycle through the various grids (using the `esc`
-     * key) and that toggle the sidebar information popup appearing in the upper
-     * right hand corner of the browser window (using the `Ctrl` + `Shift` keys).
-     *
-     * @param evnt is the keyboard event
-     */
-    document.onkeydown = function (evnt) {
-        switch (evnt.keyCode) {
-        case SHIFT_KEY:
-            shiftKeyPressed = true;
-
-            break;
-
-        case CONTROL_KEY:
-            controlKeyPressed = true;
-
-            break;
-
-        case ESCAPE_KEY:
-            switch (gridChoice) {
-            case SHOWING_MODULAR_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
-                paintGrid();
-
-                break;
-
-            case SHOWING_COLUMN_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
-                paintGrid();
-
-                break;
-
-            case SHOWING_BASELINE_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
-                paintGrid();
-
-                break;
-            }
-
-            if (SHOWING_BASELINE_GRID === gridChoice) {
-                gridChoice = -1;
-            }
-
-            gridChoice += 1;
-
-            showColumnInfo();
-
-            break;
-        }
-
-        if (shiftKeyPressed) {
-            if (controlKeyPressed) {
-                toggleGridInfo();
-            }
-
-            controlKeyPressed = false;
-            shiftKeyPressed = false;
-        }
-    };
 }
 
 /**
