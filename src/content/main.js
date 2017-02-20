@@ -555,9 +555,6 @@ chrome.storage.sync.get(
 
             showColumnInfo();
 
-            window.onresize = function () {
-                toggleGridInfo();
-            };
         } else {
             if (!settings.keyboardListenersEnabled) {
                 removeKeyboardListener();
