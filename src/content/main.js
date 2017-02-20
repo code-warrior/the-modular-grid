@@ -220,8 +220,6 @@ function toggleGridInfo() {
         function (settings) {
             if (settings.infoSectionIsEnabled) {
                 document.getElementById('info-sidebar').style.display = 'none';
-            } else {
-                document.getElementById('info-sidebar').style.display = 'block';
             }
 
             chrome.storage.sync.set(
