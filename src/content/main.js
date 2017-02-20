@@ -52,6 +52,7 @@ function getLargestZIndexOfNonStaticElements(node) {
                         }
                     }
                 } else {
+
                     //
                     // Note: The “inherit” case is not handled.
                     //
