@@ -262,8 +262,6 @@ function showColumnInfo() {
 function removeGrid() {
     'use strict';
 
-    // Remove all listeners, including the keyboard listener
-
     let _gridStyleSheet = document.getElementById('modular-grid-css'),
         _modularGridContainer = document.getElementById('modular-grid--container'),
         _infoSideBar = document.getElementById('info-sidebar');
@@ -280,9 +278,7 @@ function removeGrid() {
         _infoSideBar.parentNode.removeChild(_infoSideBar);
     }
 }
-/*
- This should only be called when the grid is enabled
- */
+
 function paintGrid() {
     'use strict';
 
@@ -297,10 +293,10 @@ function paintGrid() {
                     chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
                 }
 
-                let html = document.querySelector('html'), // Used by all cases.
-                    viewportWidth = html.clientWidth, // Used by all cases.
-                    body = document.querySelector('body'), // Used by all cases.
-                    firstChildOfBody = body.firstElementChild, // PERHAPS NOT
+                let html = document.querySelector('html'),
+                    viewportWidth = html.clientWidth,
+                    body = document.querySelector('body'),
+                    firstChildOfBody = body.firstElementChild,
 
                     head = document.querySelector('head'),
                     gridStyleSheet = document.createElement('link'),
@@ -334,7 +330,7 @@ function paintGrid() {
                     modularGrid__Container = document.createElement('div'),
                     modularGrid = document.createElement('div'),
 
-                    modularGrid__ZIndex, // null is default
+                    modularGrid__ZIndex,
 
                     //
                     // infoSection__Container is the container for the informational
@@ -398,7 +394,6 @@ function paintGrid() {
                     infoSection__Container.style.zIndex = 'auto';
                 }
 
-                // Append ONLY if it’s not already in the tree.
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
 
