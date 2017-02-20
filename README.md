@@ -3,9 +3,6 @@
 
 This extension provides a series of grid overlays in web pages so web authors can better implement design translations into web pages. Some key options include the ability to change column widths and colors, gutter widths, and baseline/leading distances. The grid’s `options` page shows more, and feature requests are encouraged via GitHub issues.
 
-## Warning
-There are currently some strange UX bugs in the extension when used in multiple tabs. These will be resolved by 28 February, if not sooner. It’s advisable to *disable* the extension in `chrome://extensions` after use.
-
 - [Installation](#installation)
    * [Via GitHub Desktop Client](#github-desktop-installation)
    * [Via The Command Line](#command-line-installation)
