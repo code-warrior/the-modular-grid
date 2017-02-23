@@ -12,13 +12,16 @@ This extension provides a series of grid overlays in web pages so web authors ca
 
 ![](img/screenshot--baseline-grid.png)
 
+![](img/screenshot--column-grid.png)
+
 ![](img/screenshot--modular-grid.png)
 
-![](img/screenshot--column-grid.png)
+![](img/1x1-grid.png)
 
 ![](img/screenshot--settings-1.png)
 
 ![](img/screenshot--settings-2.png)
+
 
 ## Beta Release Date
 29 January 2017
