@@ -11,8 +11,12 @@ body {
    font: $light #{$font--base-size} / 1.4 $font--stack !important;
 }
 
-div {
-   margin: #{$options--width--input / 2} #{$options--width--input / 1.5} 0 !important;
+header {
+   position: fixed !important;
+   top: 0 !important;
+   left: 0 !important;
+   width: $options--width--header !important;
+   height: 100% !important;
 }
 
 h1 {
@@ -37,32 +41,14 @@ h3 {
    font-size: $font--size--h3 !important;
 }
 
-[type='color'],
-[type='text'],
-[type='range'] {
-   margin: #{$options--width--input / 4} 0 !important;
-   padding: #{$options--width--input / 12} 0 !important;
-   width: $options--width--input !important;
-   text-align: center !important;
-   font-size: $font--base-size !important;
-}
-
-[type='range'] {
-   width: $options--width--header !important;
+div {
+   margin: #{$options--width--input / 2} #{$options--width--input / 1.5} 0 !important;
 }
 
 section {
    margin: #{$options--width--input / 2} 0 !important;
    border-bottom: 1px solid get-color('background', 'quartenary') !important;
    padding: 0 #{$options--width--input / 2} #{$options--width--input / 2} !important;
-}
-
-header {
-   position: fixed !important;
-   top: 0 !important;
-   left: 0 !important;
-   width: $options--width--header !important;
-   height: 100% !important;
 }
 
 form {
@@ -78,6 +64,27 @@ p {
    &.pending {
       color: get-color('grid', 'column') !important;
    }
+}
+
+a {
+   border-bottom: 1px solid get-color('grid', 'column') !important;
+   padding-bottom: 4px !important;
+   text-decoration: none !important;
+   color: get-color('background', 'primary') !important;
+}
+
+[type='color'],
+[type='text'],
+[type='range'] {
+   margin: #{$options--width--input / 4} 0 !important;
+   padding: #{$options--width--input / 12} 0 !important;
+   width: $options--width--input !important;
+   text-align: center !important;
+   font-size: $font--base-size !important;
+}
+
+[type='range'] {
+   width: $options--width--header !important;
 }
 
 #notification {
@@ -113,13 +120,6 @@ p {
    padding: 12px !important;
    text-align: center !important;
    color: get-color('grid', 'column') !important;
-}
-
-a {
-   border-bottom: 1px solid get-color('grid', 'column') !important;
-   padding-bottom: 4px !important;
-   text-decoration: none !important;
-   color: get-color('background', 'primary') !important;
 }
 
 .highlight {
