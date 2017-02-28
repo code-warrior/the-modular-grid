@@ -30,7 +30,7 @@
     "browser_action": {
         "default_title": "Modular Grid",
         "default_icon": {
-            "19": "img/extension-icon-19.png",
+            "19": "img/icon19.png",
             "80": "img/icon80.png"
         }
     },

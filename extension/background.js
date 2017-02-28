@@ -38,7 +38,7 @@ chrome.browserAction.onClicked.addListener(function () {
             if (settings.gridIsEnabled) {
                 chrome.browserAction.setIcon({path: 'img/icon19-off.png'});
             } else {
-                chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
+                chrome.browserAction.setIcon({path: 'img/icon19.png'});
             }
 
             chrome.storage.sync.set({gridIsEnabled: !settings.gridIsEnabled});
@@ -59,7 +59,7 @@ chrome.commands.onCommand.addListener(function () {
             if (settings.gridIsEnabled) {
                 chrome.browserAction.setIcon({path: 'img/icon19-off.png'});
             } else {
-                chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
+                chrome.browserAction.setIcon({path: 'img/icon19.png'});
             }
 
             chrome.storage.sync.set({gridIsEnabled: !settings.gridIsEnabled});
