@@ -17,7 +17,7 @@
     "incognito": "not_allowed",
 
     "icons": {
-        "128": "img/extension-logo-128.png"
+        "128": "img/icon128.png"
     },
 
     "content_scripts": [
