@@ -23,7 +23,7 @@ chrome.storage.sync.set({
 /**
  * Set the off icon when the extension is initially installed.
  */
-chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+chrome.browserAction.setIcon({path: 'img/icon19-off.png'});
 
 /**
  * Fired when the browser action icon is clicked, this method enables/disables the
@@ -36,7 +36,7 @@ chrome.browserAction.onClicked.addListener(function () {
         {gridIsEnabled: false},
         function (settings) {
             if (settings.gridIsEnabled) {
-                chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+                chrome.browserAction.setIcon({path: 'img/icon19-off.png'});
             } else {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
             }
@@ -57,7 +57,7 @@ chrome.commands.onCommand.addListener(function () {
         {gridIsEnabled: false},
         function (settings) {
             if (settings.gridIsEnabled) {
-                chrome.browserAction.setIcon({path: 'img/extension-icon-19-off.png'});
+                chrome.browserAction.setIcon({path: 'img/icon19-off.png'});
             } else {
                 chrome.browserAction.setIcon({path: 'img/extension-icon-19.png'});
             }
