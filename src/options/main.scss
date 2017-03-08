@@ -43,6 +43,15 @@ h3 {
 
 div {
    margin: #{$options--width--input / 2} #{$options--width--input / 1.5} 0 !important;
+
+   &:nth-of-type(3) {
+      width: 280px !important;
+   }
+
+   &:nth-of-type(4) {
+      width: 280px !important;
+      margin: -126px 0 0 310px !important;
+   }
 }
 
 section {
