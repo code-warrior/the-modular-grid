@@ -568,9 +568,6 @@ function paintGrid() {
     );
 }
 
-/**
- * This is the entry point to the grid.
- */
 chrome.storage.sync.get(
     null,
     function (settings) {
@@ -597,8 +594,4 @@ chrome.storage.sync.get(
     }
 );
 
-/**
- * Each time a change is written to chrome.storage, via the options page, for
- * example, paint the grid anew.
- */
 chrome.storage.onChanged.addListener(paintGrid);
