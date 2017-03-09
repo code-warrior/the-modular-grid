@@ -322,12 +322,7 @@ function addKeyboardListener() {
     let
         controlKeyPressed = false,
         shiftKeyPressed = false,
-        gridChoice = SHOWING_MODULAR_GRID,
-        cssClasses = {
-            modularGrid: 'modular-grid',
-            columnGrid: 'column-grid',
-            baselineGrid: 'baseline-grid'
-        };
+        gridChoice = SHOWING_MODULAR_GRID;
 
     window.onresize = function () {
         showColumnInfo();
@@ -355,17 +350,17 @@ function addKeyboardListener() {
         case ESCAPE_KEY:
             switch (gridChoice) {
             case SHOWING_MODULAR_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
+                chrome.storage.sync.set({currentGrid: 'column-grid'});
 
                 break;
 
             case SHOWING_COLUMN_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
+                chrome.storage.sync.set({currentGrid: 'baseline-grid'});
 
                 break;
 
             case SHOWING_BASELINE_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
+                chrome.storage.sync.set({currentGrid: 'modular-grid'});
 
                 break;
             }
