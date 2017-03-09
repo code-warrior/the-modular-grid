@@ -297,6 +297,17 @@ function removeGrid() {
     }
 }
 
+/**
+ * Attaches a keyboard listener in order for 1) the user to employ the combination of
+ * the CONTROL_KEY and the SHIFT_KEY to toggle the upper right hand info boxes, and
+ * 2) to employ the ESCAPE_KEY to cycle through the grids.
+ *
+ * Note: Toggling the grid extension using the three-key combination is not defined
+ *       here. Instead, it’s implemented under the “commands” key in manifest.json.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
 function addKeyboardListener() {
     'use strict';
 
