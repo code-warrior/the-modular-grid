@@ -197,7 +197,7 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
-function removeKeyboardListener() {
+function removeEventListeners() {
     'use strict';
 
     document.onkeydown = null;
@@ -527,7 +527,7 @@ function paintGrid() {
                 }
             } else {
                 if (!settings.keyboardListenersEnabled) {
-                    removeKeyboardListener();
+                    removeEventListeners();
                     chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
                 }
 
@@ -557,7 +557,7 @@ chrome.storage.sync.get(
 
         } else {
             if (!settings.keyboardListenersEnabled) {
-                removeKeyboardListener();
+                removeEventListeners();
                 chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
             }
 
