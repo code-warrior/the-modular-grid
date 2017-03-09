@@ -197,7 +197,14 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
-function removeKeyboardListener() {
+/**
+ * “Delete” the event listeners by employing the only method resembling deletion:
+ * null assignment.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
+function removeEventListeners() {
     'use strict';
 
     document.onkeydown = null;
@@ -231,6 +238,7 @@ function toggleGridInfo() {
 
 /**
  * Shows the sidebar info content along the top right side when the grid is showing.
+ *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
@@ -263,7 +271,11 @@ function showColumnInfo() {
 }
 
 /**
- * Remove the style sheet, grid, and info bar nodes from the page, if they exist.
+ * Remove the grid, which is comprised of a style sheet, the grid node, and the info
+ * side bar, from the page, if either exists.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
  */
 function removeGrid() {
     'use strict';
@@ -285,6 +297,17 @@ function removeGrid() {
     }
 }
 
+/**
+ * Attaches a keyboard listener in order for 1) the user to employ the combination of
+ * the CONTROL_KEY and the SHIFT_KEY to toggle the upper right hand info boxes, and
+ * 2) to employ the ESCAPE_KEY to cycle through the grids.
+ *
+ * Note: Toggling the grid extension using the three-key combination is not defined
+ *       here. Instead, it’s implemented under the “commands” key in manifest.json.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
 function addKeyboardListener() {
     'use strict';
 
@@ -299,12 +322,7 @@ function addKeyboardListener() {
     let
         controlKeyPressed = false,
         shiftKeyPressed = false,
-        gridChoice = SHOWING_MODULAR_GRID,
-        cssClasses = {
-            modularGrid: 'modular-grid',
-            columnGrid: 'column-grid',
-            baselineGrid: 'baseline-grid'
-        };
+        gridChoice = SHOWING_MODULAR_GRID;
 
     window.onresize = function () {
         showColumnInfo();
@@ -332,17 +350,17 @@ function addKeyboardListener() {
         case ESCAPE_KEY:
             switch (gridChoice) {
             case SHOWING_MODULAR_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.columnGrid});
+                chrome.storage.sync.set({currentGrid: 'column-grid'});
 
                 break;
 
             case SHOWING_COLUMN_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.baselineGrid});
+                chrome.storage.sync.set({currentGrid: 'baseline-grid'});
 
                 break;
 
             case SHOWING_BASELINE_GRID:
-                chrome.storage.sync.set({currentGrid: cssClasses.modularGrid});
+                chrome.storage.sync.set({currentGrid: 'modular-grid'});
 
                 break;
             }
@@ -367,6 +385,13 @@ function addKeyboardListener() {
     };
 }
 
+/**
+ * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
+ * gridStyleSheet, and infoSection__Container.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
 function paintGrid() {
     'use strict';
 
@@ -410,10 +435,11 @@ function paintGrid() {
                     gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
 
                     //
-                    // modularGrid__Container is the container of the entire grid and is
-                    // appended to the <body> element as its first child. The modularGrid
-                    // variable is appended to modularGrid__Container and is the layer
-                    // whose background contains the varying grids displayed to the user.
+                    // modularGrid__Container is the container of the entire grid and
+                    // is appended to the <body> element as its first child. The
+                    // modularGrid variable is appended to modularGrid__Container and
+                    // is the layer whose background contains the varying grids
+                    // displayed to the user.
                     //
                     modularGrid__Container = document.createElement('div'),
                     modularGrid = document.createElement('div'),
@@ -422,9 +448,9 @@ function paintGrid() {
 
                     //
                     // infoSection__Container is the container for the informational
-                    // popup boxes that appear in the upper right hand corner. (Note: Do
-                    // not confuse the use of “popup” here with the popup feature endemic
-                    // to a Chrome extension.)
+                    // popup boxes that appear in the upper right hand corner. (Note:
+                    // Do not confuse the use of “popup” here with the popup feature
+                    // endemic to a Chrome extension.)
                     //
                     infoSection__Container = document.createElement('div'),
                     infoSection__Instructions = document.createElement('span'),
@@ -473,7 +499,7 @@ function paintGrid() {
                 modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
 
                 if (null !== modularGrid__ZIndex) {
-                    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
+                    modularGrid__Container.setAttribute('style', 'display: block !important; z-index: ' + modularGrid__ZIndex);
                     modularGrid.style.zIndex = modularGrid__ZIndex;
                     infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
                 } else {
@@ -494,6 +520,7 @@ function paintGrid() {
                     modularGrid.className = 'modular-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
@@ -506,6 +533,7 @@ function paintGrid() {
                     modularGrid.className = 'column-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
@@ -518,6 +546,7 @@ function paintGrid() {
                     modularGrid.className = 'baseline-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
                             'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
@@ -527,7 +556,7 @@ function paintGrid() {
                 }
             } else {
                 if (!settings.keyboardListenersEnabled) {
-                    removeKeyboardListener();
+                    removeEventListeners();
                     chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
                 }
 
@@ -537,9 +566,6 @@ function paintGrid() {
     );
 }
 
-/**
- * This is the entry point to the grid.
- */
 chrome.storage.sync.get(
     null,
     function (settings) {
@@ -557,7 +583,7 @@ chrome.storage.sync.get(
 
         } else {
             if (!settings.keyboardListenersEnabled) {
-                removeKeyboardListener();
+                removeEventListeners();
                 chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
             }
 
@@ -566,8 +592,4 @@ chrome.storage.sync.get(
     }
 );
 
-/**
- * Each time a change is written to chrome.storage, via the options page, for
- * example, paint the grid anew.
- */
 chrome.storage.onChanged.addListener(paintGrid);
