@@ -238,6 +238,7 @@ function toggleGridInfo() {
 
 /**
  * Shows the sidebar info content along the top right side when the grid is showing.
+ *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
