@@ -197,6 +197,13 @@ function convertHexToRGBA(hex, opacity) {
     return rgbColor;
 }
 
+/**
+ * “Delete” the event listeners by employing the only method resembling deletion:
+ * null assignment.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
 function removeEventListeners() {
     'use strict';
 
