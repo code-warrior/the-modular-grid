@@ -499,7 +499,7 @@ function paintGrid() {
                 modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
 
                 if (null !== modularGrid__ZIndex) {
-                    modularGrid__Container.style.zIndex = modularGrid__ZIndex;
+                    modularGrid__Container.setAttribute('style', 'display: block !important; z-index: ' + modularGrid__ZIndex);
                     modularGrid.style.zIndex = modularGrid__ZIndex;
                     infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
                 } else {
@@ -520,6 +520,7 @@ function paintGrid() {
                     modularGrid.className = 'modular-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
@@ -532,6 +533,7 @@ function paintGrid() {
                     modularGrid.className = 'column-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _gridColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
@@ -544,6 +546,7 @@ function paintGrid() {
                     modularGrid.className = 'baseline-grid';
 
                     modularGrid.setAttribute('style',
+                            'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
                             'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
