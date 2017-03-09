@@ -271,7 +271,11 @@ function showColumnInfo() {
 }
 
 /**
- * Remove the style sheet, grid, and info bar nodes from the page, if they exist.
+ * Remove the grid, which is comprised of a style sheet, the grid node, and the info
+ * side bar, from the page, if either exists.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
  */
 function removeGrid() {
     'use strict';
