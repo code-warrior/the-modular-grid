@@ -390,6 +390,13 @@ function addKeyboardListener() {
     };
 }
 
+/**
+ * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
+ * gridStyleSheet, and infoSection__Container.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
 function paintGrid() {
     'use strict';
 
