@@ -440,10 +440,11 @@ function paintGrid() {
                     gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
 
                     //
-                    // modularGrid__Container is the container of the entire grid and is
-                    // appended to the <body> element as its first child. The modularGrid
-                    // variable is appended to modularGrid__Container and is the layer
-                    // whose background contains the varying grids displayed to the user.
+                    // modularGrid__Container is the container of the entire grid and
+                    // is appended to the <body> element as its first child. The
+                    // modularGrid variable is appended to modularGrid__Container and
+                    // is the layer whose background contains the varying grids
+                    // displayed to the user.
                     //
                     modularGrid__Container = document.createElement('div'),
                     modularGrid = document.createElement('div'),
@@ -452,9 +453,9 @@ function paintGrid() {
 
                     //
                     // infoSection__Container is the container for the informational
-                    // popup boxes that appear in the upper right hand corner. (Note: Do
-                    // not confuse the use of “popup” here with the popup feature endemic
-                    // to a Chrome extension.)
+                    // popup boxes that appear in the upper right hand corner. (Note:
+                    // Do not confuse the use of “popup” here with the popup feature
+                    // endemic to a Chrome extension.)
                     //
                     infoSection__Container = document.createElement('div'),
                     infoSection__Instructions = document.createElement('span'),
