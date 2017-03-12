@@ -9,25 +9,20 @@ html {
 
 body {
    font: $light #{$font--base-size} / 1.4 $font--stack !important;
-}
-
-header {
-   position: fixed !important;
-   top: 0 !important;
-   left: 0 !important;
-   width: $options--width--header !important;
-   height: 100% !important;
+   padding: 10px 0 32px 12px !important;
 }
 
 h1 {
-   position: relative !important;
-   top: 97vh !important;
-   transform: rotate(-90deg) !important;
-   width: 97vh !important;
-   height: $options--width--header !important;
    text-align: center !important;
-   font: $bold #{$font--size--h1} / #{$options--width--header} $font--stack !important;
-   transform-origin: top left !important;
+   font: $bold #{$font--size--h1} $font--stack !important;
+   padding-bottom: 40px !important;
+   border-bottom: 1px solid get-color('background', 'quartenary') !important;
+
+   img {
+      position: relative !important;
+      top: 7px !important;
+      right: 12px !important;
+   }
 }
 
 h2 {
@@ -61,8 +56,6 @@ section {
 }
 
 form {
-   position: absolute !important;
-   left: $options--width--header !important;
    background-color: get-color('background', 'ternary') !important;
 }
 
