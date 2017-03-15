@@ -416,7 +416,7 @@ function paintGrid() {
 
                     pageHeight = (undefined !== document.height)
                         ? document.height
-                        : document.body.offsetHeight,
+                        : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
                     // Settings
                     _gridColumnWidth = parseFloat(settings.gridColumnWidth),
