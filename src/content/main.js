@@ -324,10 +324,6 @@ function addKeyboardListener() {
         shiftKeyPressed = false,
         gridChoice = SHOWING_MODULAR_GRID;
 
-    window.onresize = function () {
-        showColumnInfo();
-    };
-
     /**
      * Handles keyboard events that cycle through the various grids (using the `esc`
      * key) and that toggle the sidebar information popup appearing in the upper
@@ -386,6 +382,21 @@ function addKeyboardListener() {
 }
 
 /**
+ * Listen for the resizing of the viewport, updating the content in the upper right
+ * info popup box on resize.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
+function addViewportResizeListener() {
+    'use strict';
+
+    window.onresize = function () {
+        showColumnInfo();
+    };
+}
+
+/**
  * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
  * gridStyleSheet, and infoSection__Container.
  *
@@ -403,6 +414,7 @@ function paintGrid() {
 
                 if (settings.eventListenersEnabled) {
                     addKeyboardListener();
+                    addViewportResizeListener();
                     chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
