@@ -401,9 +401,9 @@ function paintGrid() {
             if (settings.gridIsEnabled) {
                 removeGrid();
 
-                if (settings.keyboardListenersEnabled) {
+                if (settings.eventListenersEnabled) {
                     addKeyboardListener();
-                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                    chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
                 let html = document.querySelector('html'),
@@ -555,9 +555,9 @@ function paintGrid() {
                     break;
                 }
             } else {
-                if (!settings.keyboardListenersEnabled) {
+                if (!settings.eventListenersEnabled) {
                     removeEventListeners();
-                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                    chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
                 removeGrid();
@@ -574,17 +574,18 @@ chrome.storage.sync.get(
         if (settings.gridIsEnabled) {
             paintGrid();
 
-            if (settings.keyboardListenersEnabled) {
+            if (settings.eventListenersEnabled) {
                 addKeyboardListener();
-                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                addViewportResizeListener();
+                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
             }
 
             showColumnInfo();
 
         } else {
-            if (!settings.keyboardListenersEnabled) {
+            if (!settings.eventListenersEnabled) {
                 removeEventListeners();
-                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
             }
 
             removeGrid();
