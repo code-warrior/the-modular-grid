@@ -149,6 +149,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
 
     document.onkeydown = function (evnt) {
         let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
+            columnWidth_SassGridValue = document.querySelector('pre > kbd:first-of-type > span'),
             columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
         columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
@@ -161,6 +162,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
                 columnWidthInputBox__ErrorMessage.style.display = 'none';
                 columnWidthInputBoxValue = columnWidthInputBoxValue + 1;
                 document.getElementById('column--width-input').value = columnWidthInputBoxValue;
+                columnWidth_SassGridValue.textContent = columnWidthInputBoxValue;
                 saveOptions();
             }
 
@@ -177,6 +179,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
                     columnWidthInputBox__ErrorMessage.style.display = 'none';
                     columnWidthInputBoxValue = columnWidthInputBoxValue - 1;
                     document.getElementById('column--width-input').value = columnWidthInputBoxValue;
+                    columnWidth_SassGridValue.textContent = columnWidthInputBoxValue;
                     saveOptions();
                 }
             }
