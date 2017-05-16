@@ -218,6 +218,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 
     document.onkeydown = function (evnt) {
         let columnCountInputBoxValue = document.getElementById('column--count-input').value,
+            columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(2) > span'),
             columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
         columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
@@ -226,10 +227,12 @@ document.getElementById('column--count-input').addEventListener('focus', functio
         case UP_ARROW_KEY:
             if (isNaN(columnCountInputBoxValue)) {
                 columnCountInputBox__ErrorMessage.style.display = 'inline';
+                columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
             } else {
                 columnCountInputBox__ErrorMessage.style.display = 'none';
                 columnCountInputBoxValue = columnCountInputBoxValue + 1;
                 document.getElementById('column--count-input').value = columnCountInputBoxValue;
+                columnCountGridVarValue.textContent = columnCountInputBoxValue;
                 saveOptions();
             }
 
@@ -242,10 +245,12 @@ document.getElementById('column--count-input').addEventListener('focus', functio
                 if (columnCountInputBoxValue < (COLUMN_COUNT_MIN + 1)) {
                     columnCountInputBox__ErrorMessage.style.display = 'inline';
                     columnCountInputBoxValue = columnCountInputBoxValue - 1;
+                    columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
                 } else {
                     columnCountInputBox__ErrorMessage.style.display = 'none';
                     columnCountInputBoxValue = columnCountInputBoxValue - 1;
                     document.getElementById('column--count-input').value = columnCountInputBoxValue;
+                    columnCountGridVarValue.textContent = columnCountInputBoxValue;
                     saveOptions();
                 }
             }
@@ -260,14 +265,17 @@ document.getElementById('column--count-input').addEventListener('input', functio
     'use strict';
 
     let columnCountInputBoxValue = document.getElementById('column--count-input').value,
+        columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(2) > span'),
         columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
     columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
 
     if (isNaN(columnCountInputBoxValue)) {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
+        columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
     } else {
         columnCountInputBox__ErrorMessage.style.display = 'none';
+        columnCountGridVarValue.textContent = columnCountInputBoxValue;
         saveOptions();
     }
 }, false);
