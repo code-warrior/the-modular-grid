@@ -120,6 +120,26 @@ function populateOptionsFormWithStorageOptions() {
     );
 }
 
+/**
+ * Fill the grid-related Sass variables section with values retrieved from storage.
+ */
+function populateSassGridVariablesWithStorageOptions() {
+    'use strict';
+
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+
+            let variableValues = document.querySelectorAll('pre span');
+
+            variableValues[0].textContent = settings.gridColumnWidth;
+            variableValues[1].textContent = settings.gridGutterWidth;
+            variableValues[2].textContent = settings.gridColumnCount;
+            variableValues[3].textContent = settings.gridBaselineDistance;
+        }
+    );
+}
+
 //
 // Columns
 // — Width
@@ -422,6 +442,7 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('i
 }, false);
 
 document.addEventListener('DOMContentLoaded', populateOptionsFormWithStorageOptions, false);
+document.addEventListener('DOMContentLoaded', populateSassGridVariablesWithStorageOptions, false);
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
