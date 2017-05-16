@@ -16,7 +16,7 @@ chrome.storage.sync.set({
     gridMargin: 10,
     infoSectionIsEnabled: true,
     marginsAreEnabled: true,
-    keyboardListenersEnabled: true,
+    eventListenersEnabled: true,
     currentGrid: 'modular-grid'
 });
 
