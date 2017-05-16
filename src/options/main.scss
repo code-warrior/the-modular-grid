@@ -119,6 +119,14 @@ a {
    padding: 12px !important;
    text-align: center !important;
    color: get-color('grid', 'column') !important;
+
+   &.in-a-tigher-space {
+      font-family: $font--stack !important;
+      font-size: .8rem !important;
+      display: inline !important;
+      margin: 0 8px 0 0 !important;
+      padding: 4px 4px 6px !important;
+   }
 }
 
 .highlight {

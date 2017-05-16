@@ -193,14 +193,18 @@ document.getElementById('column--width-input').addEventListener('input', functio
     'use strict';
 
     let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
+        columnWidthGridVarValue = document.querySelector('pre > kbd:first-of-type > span'),
         columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
 
     columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
+
     if (isNaN(columnWidthInputBoxValue)) {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
+        columnWidthGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column width entry </span>';
     } else {
         columnWidthInputBox__ErrorMessage.style.display = 'none';
+        columnWidthGridVarValue.textContent = columnWidthInputBoxValue;
         saveOptions();
     }
 }, false);
