@@ -8,15 +8,15 @@ html {
 }
 
 body {
-   font: $light #{$font--base-size} / 1.4 $font--stack !important;
    padding: 10px 0 32px 12px !important;
+   font: $light #{$font--base-size} / 1.4 $font--stack !important;
 }
 
 h1 {
+   border-bottom: 1px solid get-color('background', 'quartenary') !important;
+   padding-bottom: 40px !important;
    text-align: center !important;
    font: $bold #{$font--size--h1} $font--stack !important;
-   padding-bottom: 40px !important;
-   border-bottom: 1px solid get-color('background', 'quartenary') !important;
 
    img {
       position: relative !important;
@@ -44,8 +44,8 @@ div {
    }
 
    &:nth-of-type(4) {
-      width: 280px !important;
       margin: -126px 0 0 310px !important;
+      width: 280px !important;
    }
 }
 
@@ -98,16 +98,16 @@ a {
 
 #status {
    display: none;
-   text-align: center;
-   background-color: get-color('grid', 'column') !important;
-   font-size: 1.4rem;
    position: fixed !important;
-   z-index: 3 !important;
-   bottom: 24px !important;
    right: calc(50% - 124px) !important;
+   bottom: 24px !important;
+   z-index: 3 !important;
    margin: 0 !important;
+   background-color: get-color('grid', 'column') !important;
    padding: 24px !important;
    width: 200px !important;
+   text-align: center;
+   font-size: 1.4rem;
 }
 
 .error-message {
@@ -119,8 +119,28 @@ a {
    padding: 12px !important;
    text-align: center !important;
    color: get-color('grid', 'column') !important;
+
+   &.displayed-in-a-tighter-space {
+      font-family: $font--stack !important;
+      font-size: .8rem !important;
+      display: inline !important;
+      margin: 0 8px 0 0 !important;
+      padding: 4px 4px 6px !important;
+   }
 }
 
 .highlight {
    color: get-color('grid', 'column') !important;
+}
+
+pre {
+   font-size: 1.125rem !important;
+   margin-right: 14px !important;
+   background-color: get-color('background', 'quartenary') !important;
+   padding: 24px 32px !important;
+   line-height: 1.8 !important;
+}
+
+var {
+   font-style: normal !important;
 }
