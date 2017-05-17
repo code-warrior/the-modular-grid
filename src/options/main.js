@@ -218,7 +218,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
 
     document.onkeydown = function (evnt) {
         let columnCountInputBoxValue = document.getElementById('column--count-input').value,
-            columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(2) > span'),
+            columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(4) > span'),
             columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
         columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
@@ -265,7 +265,7 @@ document.getElementById('column--count-input').addEventListener('input', functio
     'use strict';
 
     let columnCountInputBoxValue = document.getElementById('column--count-input').value,
-        columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(2) > span'),
+        columnCountGridVarValue = document.querySelector('pre > kbd:nth-of-type(4) > span'),
         columnCountInputBox__ErrorMessage = document.getElementById('column-count-input--error-message');
 
     columnCountInputBoxValue = parseInt(columnCountInputBoxValue, 10);
