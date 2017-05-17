@@ -1,6 +1,8 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
+let infoSidebarIsShowing = true;
+
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
@@ -213,8 +215,7 @@ function removeEventListeners() {
 
 /**
  * Toggles the info section popup box in the upper right hand corner based on the
- * value of the Boolean infoSectionIsEnabled that is set in chrome.storage
- * (settings).
+ * value of the global Boolean infoSidebarIsShowing.
  *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
@@ -222,18 +223,13 @@ function removeEventListeners() {
 function toggleGridInfo() {
     'use strict';
 
-    chrome.storage.sync.get(
-        {infoSectionIsEnabled: true},
-        function (settings) {
-            if (settings.infoSectionIsEnabled) {
-                document.getElementById('info-sidebar').style.display = 'none';
-            }
-
-            chrome.storage.sync.set(
-                {infoSectionIsEnabled: !settings.infoSectionIsEnabled}
-            );
-        }
-    );
+    if (infoSidebarIsShowing) {
+        document.getElementById('info-sidebar').style.display = 'none';
+        infoSidebarIsShowing = !infoSidebarIsShowing;
+    } else {
+        document.getElementById('info-sidebar').style.display = 'block';
+        infoSidebarIsShowing = !infoSidebarIsShowing;
+    }
 }
 
 /**
@@ -324,10 +320,6 @@ function addKeyboardListener() {
         shiftKeyPressed = false,
         gridChoice = SHOWING_MODULAR_GRID;
 
-    window.onresize = function () {
-        showColumnInfo();
-    };
-
     /**
      * Handles keyboard events that cycle through the various grids (using the `esc`
      * key) and that toggle the sidebar information popup appearing in the upper
@@ -386,6 +378,21 @@ function addKeyboardListener() {
 }
 
 /**
+ * Listen for the resizing of the viewport, updating the content in the upper right
+ * info popup box on resize.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
+function addViewportResizeListener() {
+    'use strict';
+
+    window.onresize = function () {
+        showColumnInfo();
+    };
+}
+
+/**
  * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
  * gridStyleSheet, and infoSection__Container.
  *
@@ -401,9 +408,10 @@ function paintGrid() {
             if (settings.gridIsEnabled) {
                 removeGrid();
 
-                if (settings.keyboardListenersEnabled) {
+                if (settings.eventListenersEnabled) {
                     addKeyboardListener();
-                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                    addViewportResizeListener();
+                    chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
                 let html = document.querySelector('html'),
@@ -416,7 +424,7 @@ function paintGrid() {
 
                     pageHeight = (undefined !== document.height)
                         ? document.height
-                        : document.body.offsetHeight,
+                        : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
                     // Settings
                     _gridColumnWidth = parseFloat(settings.gridColumnWidth),
@@ -555,9 +563,9 @@ function paintGrid() {
                     break;
                 }
             } else {
-                if (!settings.keyboardListenersEnabled) {
+                if (!settings.eventListenersEnabled) {
                     removeEventListeners();
-                    chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                    chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
                 removeGrid();
@@ -574,17 +582,18 @@ chrome.storage.sync.get(
         if (settings.gridIsEnabled) {
             paintGrid();
 
-            if (settings.keyboardListenersEnabled) {
+            if (settings.eventListenersEnabled) {
                 addKeyboardListener();
-                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                addViewportResizeListener();
+                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
             }
 
             showColumnInfo();
 
         } else {
-            if (!settings.keyboardListenersEnabled) {
+            if (!settings.eventListenersEnabled) {
                 removeEventListeners();
-                chrome.storage.sync.set({keyboardListenersEnabled: !settings.keyboardListenersEnabled});
+                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
             }
 
             removeGrid();
