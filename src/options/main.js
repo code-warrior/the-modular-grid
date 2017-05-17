@@ -309,6 +309,8 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
     document.onkeydown = function (evnt) {
         let gutterWidthInputBoxValue =
                     document.getElementById('gutter--width-input').value,
+            gutterWidthGridVarValue =
+                    document.querySelector('pre > kbd:nth-of-type(2) > span'),
             gutterWidthInputBox__ErrorMessage =
                     document.getElementById('gutter-width-input--error-message');
 
@@ -318,11 +320,13 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
         case UP_ARROW_KEY:
             if (isNaN(gutterWidthInputBoxValue)) {
                 gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+                gutterWidthGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid gutter width entry </span>';
             } else {
                 gutterWidthInputBox__ErrorMessage.style.display = 'none';
                 gutterWidthInputBoxValue = gutterWidthInputBoxValue + 1;
                 document.getElementById('gutter--width-input').value =
                         gutterWidthInputBoxValue;
+                gutterWidthGridVarValue.textContent = gutterWidthInputBoxValue;
                 saveOptions();
             }
 
@@ -335,11 +339,13 @@ document.getElementById('gutter--width-input').addEventListener('focus', functio
                 if (gutterWidthInputBoxValue < (GUTTER_WIDTH_MIN + 1)) {
                     gutterWidthInputBox__ErrorMessage.style.display = 'inline';
                     gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
+                    gutterWidthGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid gutter width entry </span>';
                 } else {
                     gutterWidthInputBox__ErrorMessage.style.display = 'none';
                     gutterWidthInputBoxValue = gutterWidthInputBoxValue - 1;
                     document.getElementById('gutter--width-input').value =
                             gutterWidthInputBoxValue;
+                    gutterWidthGridVarValue.textContent = gutterWidthInputBoxValue;
                     saveOptions();
                 }
             }
@@ -355,13 +361,19 @@ document.getElementById('gutter--width-input').addEventListener('input', functio
 
     let gutterWidthInputBoxValue =
                 document.getElementById('gutter--width-input').value,
+        gutterWidthGridVarValue =
+            document.querySelector('pre > kbd:nth-of-type(2) > span'),
         gutterWidthInputBox__ErrorMessage =
                 document.getElementById('gutter-width-input--error-message');
 
+    gutterWidthInputBoxValue = parseFloat(gutterWidthInputBoxValue);
+
     if (isNaN(gutterWidthInputBoxValue)) {
         gutterWidthInputBox__ErrorMessage.style.display = 'inline';
+        gutterWidthGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid gutter width entry </span>';
     } else {
         gutterWidthInputBox__ErrorMessage.style.display = 'none';
+        gutterWidthGridVarValue.textContent = gutterWidthInputBoxValue;
         saveOptions();
     }
 }, false);
