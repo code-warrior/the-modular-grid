@@ -198,7 +198,6 @@ document.getElementById('column--width-input').addEventListener('input', functio
 
     columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
-
     if (isNaN(columnWidthInputBoxValue)) {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
         columnWidthGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid column width entry </span>';
