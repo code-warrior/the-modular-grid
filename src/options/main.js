@@ -407,6 +407,8 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
 
     document.onkeydown = function (evnt) {
         let baselineDistanceInputBoxValue = document.getElementById('baseline--vertical-distance-input').value,
+            baselineDistanceGridVarValue =
+                document.querySelector('pre > kbd:nth-of-type(5) > span'),
             baselineDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
 
         baselineDistanceInputBoxValue = parseFloat(baselineDistanceInputBoxValue);
@@ -421,9 +423,11 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
                 if (baselineDistanceInputBoxValue > BASELINE_DISTANCE_MAX) {
                     baselineDistanceInputBoxValue = baselineDistanceInputBoxValue - 1;
                     baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
+                    baselineDistanceGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid leading distance entry</span>';
                 } else {
                     baselineDistanceInputBox__ErrorMessage.style.display = 'none';
                     document.getElementById('baseline--vertical-distance-input').value = baselineDistanceInputBoxValue;
+                    baselineDistanceGridVarValue.textContent = baselineDistanceInputBoxValue;
                     saveOptions();
                 }
             }
@@ -439,9 +443,11 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('f
                 if (baselineDistanceInputBoxValue < BASELINE_DISTANCE_MIN) {
                     baselineDistanceInputBoxValue = baselineDistanceInputBoxValue + 1;
                     baselineDistanceInputBox__ErrorMessage.style.display = 'inline';
+                    baselineDistanceGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid leading distance entry</span>';
                 } else {
                     baselineDistanceInputBox__ErrorMessage.style.display = 'none';
                     document.getElementById('baseline--vertical-distance-input').value = baselineDistanceInputBoxValue;
+                    baselineDistanceGridVarValue.textContent = baselineDistanceInputBoxValue;
                     saveOptions();
                 }
             }
@@ -456,14 +462,18 @@ document.getElementById('baseline--vertical-distance-input').addEventListener('i
     'use strict';
 
     let patternForBaselineVerticalDistanceInputBox = /^([1][2-9]|[2-9][0-9]|[1][0-2][0-8])$/,
+        baselineVerticalDistanceGridVarValue =
+            document.querySelector('pre > kbd:nth-of-type(5) > span'),
         baselineVerticalDistanceInputBoxValue = document.getElementById('baseline--vertical-distance-input').value,
         baselineVerticalDistanceInputBox__ErrorMessage = document.getElementById('baseline-vertical-distance-input--error-message');
 
     if (null !== baselineVerticalDistanceInputBoxValue.match(patternForBaselineVerticalDistanceInputBox)) {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'none';
+        baselineVerticalDistanceGridVarValue.textContent = baselineVerticalDistanceInputBoxValue;
         saveOptions();
     } else {
         baselineVerticalDistanceInputBox__ErrorMessage.style.display = 'inline';
+        baselineVerticalDistanceGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid leading distance entry</span>';
     }
 }, false);
 
