@@ -201,7 +201,7 @@ document.getElementById('column--width-input').addEventListener('input', functio
 
     if (isNaN(columnWidthInputBoxValue)) {
         columnWidthInputBox__ErrorMessage.style.display = 'inline';
-        columnWidthGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column width entry </span>';
+        columnWidthGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid column width entry </span>';
     } else {
         columnWidthInputBox__ErrorMessage.style.display = 'none';
         columnWidthGridVarValue.textContent = columnWidthInputBoxValue;
@@ -227,7 +227,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
         case UP_ARROW_KEY:
             if (isNaN(columnCountInputBoxValue)) {
                 columnCountInputBox__ErrorMessage.style.display = 'inline';
-                columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
+                columnCountGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid column count entry </span>';
             } else {
                 columnCountInputBox__ErrorMessage.style.display = 'none';
                 columnCountInputBoxValue = columnCountInputBoxValue + 1;
@@ -245,7 +245,7 @@ document.getElementById('column--count-input').addEventListener('focus', functio
                 if (columnCountInputBoxValue < (COLUMN_COUNT_MIN + 1)) {
                     columnCountInputBox__ErrorMessage.style.display = 'inline';
                     columnCountInputBoxValue = columnCountInputBoxValue - 1;
-                    columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
+                    columnCountGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid column count entry </span>';
                 } else {
                     columnCountInputBox__ErrorMessage.style.display = 'none';
                     columnCountInputBoxValue = columnCountInputBoxValue - 1;
@@ -272,7 +272,7 @@ document.getElementById('column--count-input').addEventListener('input', functio
 
     if (isNaN(columnCountInputBoxValue)) {
         columnCountInputBox__ErrorMessage.style.display = 'inline';
-        columnCountGridVarValue.innerHTML = '<span class="error-message in-a-tigher-space">Invalid column count entry </span>';
+        columnCountGridVarValue.innerHTML = '<span class="error-message displayed-in-a-tighter-space">Invalid column count entry </span>';
     } else {
         columnCountInputBox__ErrorMessage.style.display = 'none';
         columnCountGridVarValue.textContent = columnCountInputBoxValue;
