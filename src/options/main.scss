@@ -8,7 +8,7 @@ html {
 }
 
 body {
-   padding: 10px 0 32px 12px !important;
+   padding: 10px 12px 32px !important;
    font: $light #{$font--base-size} / 1.4 $font--stack !important;
 }
 
@@ -75,6 +75,18 @@ a {
    color: get-color('background', 'primary') !important;
 }
 
+pre {
+   margin-right: 14px !important;
+   background-color: get-color('background', 'quartenary') !important;
+   padding: 24px 32px !important;
+   line-height: 1.8 !important;
+   font-size: 1.125rem !important;
+}
+
+var {
+   font-style: normal !important;
+}
+
 [type='color'],
 [type='text'],
 [type='range'] {
@@ -132,26 +144,14 @@ a {
    color: get-color('grid', 'column') !important;
 
    &.displayed-in-a-tighter-space {
-      font-family: $font--stack !important;
-      font-size: .8rem !important;
       display: inline !important;
       margin: 0 8px 0 0 !important;
       padding: 4px 4px 6px !important;
+      font-family: $font--stack !important;
+      font-size: .8rem !important;
    }
 }
 
 .highlight {
    color: get-color('grid', 'column') !important;
-}
-
-pre {
-   font-size: 1.125rem !important;
-   margin-right: 14px !important;
-   background-color: get-color('background', 'quartenary') !important;
-   padding: 24px 32px !important;
-   line-height: 1.8 !important;
-}
-
-var {
-   font-style: normal !important;
 }
