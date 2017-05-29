@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>The Modular Grid Options</title>
+   <link href="options.css" rel="stylesheet">
+</head>
+<body>
+   <header>
+      <h1><img src="img/icon80.png" width="31" alt="">Options</h1>
+   </header>
+   <div id="status">Options saved</div>
+   <form>
+      <section>
+         <h2>Columns</h2>
+         <div>
+            <h3>Width</h3>
+            <p><label for="column--width-input">How wide, in pixels, would you like each column to be?</label></p><!-- TODO: Maintain consistency with ID of error messages -->
+            <input type="text" id="column--width-input" autofocus> px <span id="width-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
+         </div>
+
+         <div>
+            <h3>Count</h3>
+            <p><label for="column--count-input">How many columns would you like?</label></p>
+            <input type="text" id="column--count-input"> <span id="column-count-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
+         </div>
+
+         <div>
+            <h3>Color</h3>
+            <p><label for="column--color-input">What color would you like the columns to be?</label></p>
+            <input type="color" id="column--color-input" value="#c80000" title="#c80000">
+         </div>
+
+         <div>
+            <h3>Opacity</h3>
+            <p><label for="column--opacity-input">How opaque would you like the column colors to be? (Range: 0.0&#8202;–&#8202;1.0)</label></p>
+            <input type="range" id="column--opacity-input" min="0.0" max="1.0" step="0.1" value="0.2" title="0.2">
+         </div>
+      </section>
+
+      <section>
+         <h2>Gutters</h2>
+         <div>
+            <h3>Width</h3>
+            <p><label for="gutter--width-input">How wide, in pixels, would you like your gutters?</label></p>
+            <input type="text" id="gutter--width-input"> px <span id="gutter-width-input--error-message" class="error-message">Value must be a number and must be greater than 0.</span>
+         </div>
+      </section>
+
+      <section>
+         <h2>Margins</h2>
+         <div>
+            <h3>Use Split Gutters?</h3>
+            <select id="margins--split-gutter-input">
+               <option value="true" selected>Yes</option>
+               <option value="false">No</option>
+            </select>
+         </div>
+      </section>
+
+      <section>
+         <h2>Leading/Baseline</h2>
+         <div>
+            <h3>Color</h3>
+            <p><label for="baseline--color-input">What color would you like your baseline to be?</label></p>
+            <input type="color" id="baseline--color-input" value="#29abe2" title="#29abe2">
+         </div>
+
+         <div>
+            <h3>Vertical Distance</h3>
+            <p><label for="baseline--vertical-distance-input">Define your leading, or the distance between two baselines.</label>&nbsp;(Range: 12&#8202;–&#8202;128)</p>
+            <input type="text" id="baseline--vertical-distance-input" value="24"> px <span id="baseline-vertical-distance-input--error-message" class="error-message">This option only accepts values between 12&#8202;–&#8202;128.</span>
+         </div>
+      </section>
+
+   </form>
+   <section>
+      <h2>Sass Grid Variables</h2>
+<pre><kbd><var>$grid--column-width</var>: <span>60</span>px;</kbd>
+<kbd><var>$grid--gutter-width</var>: <span>20</span>px;</kbd>
+<kbd><var>$grid--unit</var>: ($grid--column-width + $grid--gutter-width);</kbd>
+<kbd><var>$grid--column-count</var>: <span>16</span>;</kbd>
+<kbd><var>$grid--leading</var>: <span>24</span>px;</kbd></pre>
+   </section>
+   <p id="notification">Report issues and submit <a href="https://github.com/code-warrior/the-modular-grid/issues" target="_blank">feature requests on <img alt="" src="img/the-octocat.png"></a></p>
+   <p id="analytics-disclosure"><strong>Note</strong>: This extension uses Google Analytics to track its usage as a tool in web development. No identifying personal information is collected, neither is target URL data. Read more at <a href="http://www.the-modular-grid.org/privacy-policy.html" target="_blank">http://www.the-modular-grid.org/privacy-policy.html</a>.</p>
+   <script src="options.js"></script>
+</body>
+</html>

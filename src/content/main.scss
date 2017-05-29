@@ -3,20 +3,26 @@
 @import '../common-styles/functions';
 
 #modular-grid {
-   position: relative;
-   margin: 0 auto;
+   position: relative !important;
+   margin: 0 auto !important;
+   border: 0 !important;
+   padding: 0 !important;
 }
 
-.user-supplied-bg-image {
-   background-attachment: $users-image--attachment;
-   background-color: $users-image--color;
-   background-repeat: $users-image--repeat;
-   background-position: $users-image--position-x $users-image--position-y;
-   background-size: $users-image--size-x $users-image--size-y;
+#modular-grid--container {
+   position: absolute !important;
+   top: 0 !important;
+   left: 0 !important;
+   width: 100% !important;
+   border: 0 !important;
+   padding: 0 !important;
 }
 
 #info-sidebar {
+   overflow: visible !important;
    display: none;
+   width: auto !important;
+   border: 0 !important;
    position: fixed !important;
    top: $offset-sidebar !important;
    right: $offset-sidebar !important;
@@ -59,23 +65,10 @@
          }
          content: '' !important;
       }
-
-      // TODO: Remove this, as it’s no longer needed
-      &.link {
-         a {
-            border-bottom: 0 !important;
-            text-decoration: none !important;
-            color: get-color('grid', 'baseline') !important;
-         }
-      }
    }
 }
 
-#modular-grid--container {
-   position: absolute;
-   width: 99%;
-}
-
+// TODO: Add a namespaced class/ID here
 kbd {
    border-radius: 8px !important;
    background-color: get-color('background', 'quartenary') !important;

@@ -1,0 +1,157 @@
+@import '../common-styles/fonts';
+@import '../common-styles/variables';
+@import '../common-styles/functions';
+
+html {
+   background-color: get-color('background', 'ternary') !important;
+   color: get-color('background', 'primary') !important;
+}
+
+body {
+   padding: 10px 12px 32px !important;
+   font: $light #{$font--base-size} / 1.4 $font--stack !important;
+}
+
+h1 {
+   border-bottom: 1px solid get-color('background', 'quartenary') !important;
+   padding-bottom: 40px !important;
+   text-align: center !important;
+   font: $bold #{$font--size--h1} $font--stack !important;
+
+   img {
+      position: relative !important;
+      top: 7px !important;
+      right: 12px !important;
+   }
+}
+
+h2 {
+   margin: #{$options--width--input / 2} 0 !important;
+   font-size: $font--size--h2 !important;
+}
+
+h3 {
+   margin: 0 !important;
+   padding: 0 !important;
+   font-size: $font--size--h3 !important;
+}
+
+div {
+   margin: #{$options--width--input / 2} #{$options--width--input / 1.5} 0 !important;
+
+   &:nth-of-type(3) {
+      width: 280px !important;
+   }
+
+   &:nth-of-type(4) {
+      margin: -126px 0 0 310px !important;
+      width: 280px !important;
+   }
+}
+
+section {
+   margin: #{$options--width--input / 2} 0 !important;
+   border-bottom: 1px solid get-color('background', 'quartenary') !important;
+   padding: 0 #{$options--width--input / 2} #{$options--width--input / 2} !important;
+}
+
+form {
+   background-color: get-color('background', 'ternary') !important;
+}
+
+p {
+   margin: 0 !important;
+   padding: 0 !important;
+
+   &.pending {
+      color: get-color('grid', 'column') !important;
+   }
+}
+
+a {
+   border-bottom: 1px solid get-color('grid', 'column') !important;
+   padding-bottom: 4px !important;
+   text-decoration: none !important;
+   color: get-color('background', 'primary') !important;
+}
+
+pre {
+   margin-right: 14px !important;
+   background-color: get-color('background', 'quartenary') !important;
+   padding: 24px 32px !important;
+   line-height: 1.8 !important;
+   font-size: 1.125rem !important;
+}
+
+var {
+   font-style: normal !important;
+}
+
+[type='color'],
+[type='text'],
+[type='range'] {
+   margin: #{$options--width--input / 4} 0 !important;
+   padding: #{$options--width--input / 12} 0 !important;
+   width: $options--width--input !important;
+   text-align: center !important;
+   font-size: $font--base-size !important;
+}
+
+[type='range'] {
+   width: $options--width--header !important;
+}
+
+#notification {
+   margin: 18px 18px 58px !important;
+   text-align: center !important;
+   line-height: 1.4 !important;
+   font-size: 1.2rem !important;
+}
+
+#analytics-disclosure {
+   border-top: 1px solid get-color('background', 'quartenary') !important;
+   padding: {
+      top: 34px !important;
+      right: 24px !important;
+      left: 24px !important;
+   }
+   line-height: 1.6 !important;
+   font-size: .8rem !important;
+}
+
+#status {
+   display: none;
+   position: fixed !important;
+   right: calc(50% - 124px) !important;
+   bottom: 24px !important;
+   z-index: 3 !important;
+   margin: 0 !important;
+   background-color: get-color('grid', 'column') !important;
+   padding: 24px !important;
+   width: 200px !important;
+   text-align: center;
+   font-size: 1.4rem;
+}
+
+.error-message {
+   display: none;
+   margin: 24px !important;
+   border: 1px solid get-color('grid', 'column') !important;
+   border-radius: 8px !important;
+   background-color: get-color('background', 'primary') !important;
+   padding: 12px !important;
+   text-align: center !important;
+   color: get-color('grid', 'column') !important;
+
+   &.displayed-in-a-tighter-space {
+      display: inline !important;
+      margin: 0 8px 0 0 !important;
+      padding: 4px 4px 6px !important;
+      font-family: $font--stack !important;
+      font-size: .8rem !important;
+   }
+}
+
+.highlight {
+   color: get-color('grid', 'column') !important;
+}
