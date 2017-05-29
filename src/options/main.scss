@@ -132,11 +132,11 @@ a {
    color: get-color('grid', 'column') !important;
 
    &.displayed-in-a-tighter-space {
-      font-family: $font--stack !important;
-      font-size: .8rem !important;
       display: inline !important;
       margin: 0 8px 0 0 !important;
       padding: 4px 4px 6px !important;
+      font-family: $font--stack !important;
+      font-size: .8rem !important;
    }
 }
 
@@ -145,11 +145,11 @@ a {
 }
 
 pre {
-   font-size: 1.125rem !important;
    margin-right: 14px !important;
    background-color: get-color('background', 'quartenary') !important;
    padding: 24px 32px !important;
    line-height: 1.8 !important;
+   font-size: 1.125rem !important;
 }
 
 var {
