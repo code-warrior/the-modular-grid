@@ -75,6 +75,18 @@ a {
    color: get-color('background', 'primary') !important;
 }
 
+pre {
+   margin-right: 14px !important;
+   background-color: get-color('background', 'quartenary') !important;
+   padding: 24px 32px !important;
+   line-height: 1.8 !important;
+   font-size: 1.125rem !important;
+}
+
+var {
+   font-style: normal !important;
+}
+
 [type='color'],
 [type='text'],
 [type='range'] {
@@ -142,16 +154,4 @@ a {
 
 .highlight {
    color: get-color('grid', 'column') !important;
-}
-
-pre {
-   margin-right: 14px !important;
-   background-color: get-color('background', 'quartenary') !important;
-   padding: 24px 32px !important;
-   line-height: 1.8 !important;
-   font-size: 1.125rem !important;
-}
-
-var {
-   font-style: normal !important;
 }
