@@ -507,6 +507,11 @@ function paintGrid() {
 
                 if (_infoSectionIsEnabled) {
                     body.appendChild(infoSection__Container);
+                    if (infoSidebarIsShowing) {
+                        infoSection__Container.style.display = 'block';
+                    } else {
+                        infoSection__Container.style.display = 'none';
+                    }
                 }
 
                 switch (_currentGrid) {
