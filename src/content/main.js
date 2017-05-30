@@ -309,15 +309,12 @@ function addKeyboardListener() {
 
     const
         SHIFT_KEY = 16,
-        CONTROL_KEY = 17,
         ESCAPE_KEY = 27,
         SHOWING_MODULAR_GRID = 0,
         SHOWING_COLUMN_GRID = 1,
         SHOWING_BASELINE_GRID = 2;
 
-    let
-        controlKeyPressed = false,
-        shiftKeyPressed = false,
+    let controlKeyPressed = false,
         gridChoice = SHOWING_MODULAR_GRID;
 
     /**
@@ -328,18 +325,18 @@ function addKeyboardListener() {
      * @param evnt is the keyboard event
      */
     document.onkeydown = function (evnt) {
-        switch (evnt.keyCode) {
-        case SHIFT_KEY:
-            shiftKeyPressed = true;
 
-            break;
+        let key = window.event.keyCode;
 
-        case CONTROL_KEY:
-            controlKeyPressed = true;
+        controlKeyPressed = !!window.event.ctrlKey;
 
-            break;
+        if (controlKeyPressed) {
+            if (SHIFT_KEY === key) {
+                toggleGridInfo();
+            }
+        }
 
-        case ESCAPE_KEY:
+        if (ESCAPE_KEY === evnt.keyCode) {
             switch (gridChoice) {
             case SHOWING_MODULAR_GRID:
                 chrome.storage.sync.set({currentGrid: 'column-grid'});
@@ -362,17 +359,6 @@ function addKeyboardListener() {
             }
 
             gridChoice += 1;
-
-            break;
-        }
-
-        if (shiftKeyPressed) {
-            if (controlKeyPressed) {
-                toggleGridInfo();
-            }
-
-            controlKeyPressed = false;
-            shiftKeyPressed = false;
         }
     };
 }
@@ -521,6 +507,11 @@ function paintGrid() {
 
                 if (_infoSectionIsEnabled) {
                     body.appendChild(infoSection__Container);
+                    if (infoSidebarIsShowing) {
+                        infoSection__Container.style.display = 'block';
+                    } else {
+                        infoSection__Container.style.display = 'none';
+                    }
                 }
 
                 switch (_currentGrid) {
