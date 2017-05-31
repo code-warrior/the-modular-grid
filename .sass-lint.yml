@@ -52,7 +52,7 @@ rules:
 
   # Name Formats
   class-name-format:             # Modified 25 December 2016
-    - 3
+    - 2
     -
       convention: hyphenatedbem
   function-name-format: 1
@@ -78,11 +78,11 @@ rules:
   max-line-length: 0
   max-file-line-count: 0
   nesting-depth:                 # Modified 25 December 2016
-    - 3
+    - 2
     -
       max-depth: 3
   property-sort-order:           # Modified 25 December 2016
-    - 3
+    - 2
     -
       order: concentric
   pseudo-element: 1
@@ -90,7 +90,7 @@ rules:
   shorthand-values: 1
   url-quotes: 1
   variable-for-property: 1
-  zero-unit: 3                   # Modified 25 December 2016
+  zero-unit: 2                   # Modified 25 December 2016
 
   # Inner Spacing
   space-after-comma: 1
@@ -103,5 +103,5 @@ rules:
   space-around-operator: 1
 
   # Final Items
-  trailing-semicolon: 3          # Modified 25 December 2016
-  final-newline: 3               # Modified 25 December 2016
+  trailing-semicolon: 2          # Modified 25 December 2016
+  final-newline: 2               # Modified 25 December 2016
