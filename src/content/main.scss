@@ -13,27 +13,23 @@
    position: absolute !important;
    top: 0 !important;
    left: 0 !important;
-   width: 100% !important;
    border: 0 !important;
    padding: 0 !important;
+   width: 100% !important;
 }
 
 #info-sidebar {
-   overflow: visible !important;
    display: none;
-   width: auto !important;
-   border: 0 !important;
    position: fixed !important;
    top: $offset-sidebar !important;
    right: $offset-sidebar !important;
+   border: 0 !important;
+   width: auto !important;
+   overflow: visible !important;
    text-align: left !important; // To over-ride body.default-theme.des-mat added by Chrome
    font: .9875rem / 1.6 $font--stack !important;
 
    .message-box {
-      font: {
-         family: inherit !important;
-         size: inherit !important;
-      }
       display: block !important;
       position: relative !important;
       margin-bottom: $offset-sidebar !important;
@@ -41,6 +37,10 @@
       padding: $offset-sidebar !important;
       width: 4 * $width--grid-column !important;
       color: get-color('background', 'primary') !important;
+      font: {
+         family: inherit !important;
+         size: inherit !important;
+      }
 
       strong {
          color: get-color('background', 'primary') !important;
@@ -48,9 +48,9 @@
       }
 
       &:last-of-type {
-         text-align: center !important;
-         cursor: pointer !important;
          margin-bottom: 0 !important;
+         cursor: pointer !important;
+         text-align: center !important;
       }
 
       &::after {
