@@ -259,9 +259,7 @@ function showColumnInfo() {
 
             document.getElementById('column-and-page-info').innerHTML =
                     'Column count: <strong>' + columnCount + '</strong><br>' +
-                    'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
-                    'Current grid layer: <strong>' + settings.currentGrid +
-                    '</strong>';
+                    'Page width: <strong>' + viewportWidth + 'px</strong>';
         }
     );
 }
@@ -474,12 +472,11 @@ function paintGrid() {
                 infoSection__OptionsLink.className = 'message-box';
 
                 infoSection__Instructions.innerHTML =
-                        'Toggle this section by typing <kbd>Ctrl + Shift</kbd>, and ' +
-                        'cycle through the grids by pressing <kbd>esc</kbd>.';
+                        'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
+                        'Press <kbd>esc</kbd> to cycle through the grids.';
                 infoSection__ColumnAndPageInfo.innerHTML =
                         'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
-                        'Page width: <strong>' + viewportWidth + 'px</strong><br>' +
-                        'Current grid layer: <strong>' + _currentGrid + '</strong>';
+                        'Page width: <strong>' + viewportWidth + 'px</strong>';
                 infoSection__OptionsLink.innerHTML = 'Options';
 
                 infoSection__Container.appendChild(infoSection__Instructions);
