@@ -150,7 +150,7 @@ document.getElementById('column--width-input').addEventListener('focus', functio
     document.onkeydown = function (evnt) {
         let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
             columnWidthGridVarValue = document.querySelector('pre > kbd:first-of-type > span'),
-            columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
+            columnWidthInputBox__ErrorMessage = document.getElementById('column-width-input--error-message');
 
         columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
@@ -194,7 +194,7 @@ document.getElementById('column--width-input').addEventListener('input', functio
 
     let columnWidthInputBoxValue = document.getElementById('column--width-input').value,
         columnWidthGridVarValue = document.querySelector('pre > kbd:first-of-type > span'),
-        columnWidthInputBox__ErrorMessage = document.getElementById('width-input--error-message');
+        columnWidthInputBox__ErrorMessage = document.getElementById('column-width-input--error-message');
 
     columnWidthInputBoxValue = parseFloat(columnWidthInputBoxValue);
 
