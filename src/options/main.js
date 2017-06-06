@@ -296,6 +296,8 @@ document.getElementById('column--color-input').addEventListener('change', functi
 document.getElementById('column--opacity-input').addEventListener('change', function () {
     'use strict';
 
+    document.getElementById('column--opacity-input').setAttribute('title', document.getElementById('column--opacity-input').value);
+
     saveOptions();
 }, false);
 
