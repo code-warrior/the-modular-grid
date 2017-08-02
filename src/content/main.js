@@ -460,7 +460,17 @@ function paintGrid() {
                 gridStyleSheet.id = 'modular-grid-css';
 
                 infoSection__Container.id = 'info-sidebar';
-                infoSection__Container.style.display = 'block';
+
+                chrome.storage.sync.get(
+                    null,
+                    function (settings) {
+                        if (settings.infoSectionIsEnabled) {
+                            infoSection__Container.style.display = 'block';
+                        } else {
+                            infoSection__Container.style.display = 'none';
+                        }
+                    }
+                );
 
                 modularGrid.id = 'modular-grid';
                 modularGrid.className = _currentGrid;
