@@ -513,6 +513,7 @@ function paintGrid() {
 
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
+                body.appendChild(infoSection__Container);
 
                 switch (_currentGrid) {
                 case 'modular-grid':
