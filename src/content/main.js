@@ -221,6 +221,18 @@ function removeEventListeners() {
 function toggleGridInfo() {
     'use strict';
 
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+            if (settings.infoSectionIsEnabled) {
+                document.getElementById('info-sidebar').style.display = 'none';
+                chrome.storage.sync.set({infoSectionIsEnabled: false});
+            } else {
+                document.getElementById('info-sidebar').style.display = 'block';
+                chrome.storage.sync.set({infoSectionIsEnabled: true});
+            }
+        }
+    );
 }
 
 /**
