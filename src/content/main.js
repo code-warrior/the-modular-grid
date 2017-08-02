@@ -573,22 +573,12 @@ chrome.storage.sync.get(
 
         if (settings.gridIsEnabled) {
             paintGrid();
-
-            if (settings.eventListenersEnabled) {
-                addKeyboardListener();
-                addViewportResizeListener();
-                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
-            }
-
-            showColumnInfo();
-
+            addKeyboardListener();
+            addViewportResizeListener();
+            chrome.storage.sync.set({eventListenersEnabled: true});
         } else {
-            if (!settings.eventListenersEnabled) {
-                removeEventListeners();
-                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
-            }
-
-            removeGrid();
+            removeEventListeners();
+            chrome.storage.sync.set({eventListenersEnabled: false});
         }
     }
 );
