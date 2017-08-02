@@ -422,7 +422,6 @@ function paintGrid() {
                     _gridBaselineDistance = settings.gridBaselineDistance,
                     _gridColumnColorOpacity = settings.gridColumnColorOpacity,
                     _gridMargin = parseFloat(settings.gridMargin),
-                    _infoSectionIsEnabled = settings.infoSectionIsEnabled,
                     _currentGrid = settings.currentGrid,
 
                     gridUnit = (_gridColumnWidth + _gridGutterWidth),
@@ -504,15 +503,6 @@ function paintGrid() {
 
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
-
-                if (_infoSectionIsEnabled) {
-                    body.appendChild(infoSection__Container);
-                    if (infoSidebarIsShowing) {
-                        infoSection__Container.style.display = 'block';
-                    } else {
-                        infoSection__Container.style.display = 'none';
-                    }
-                }
 
                 switch (_currentGrid) {
                 case 'modular-grid':
