@@ -1,8 +1,6 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-let infoSidebarIsShowing = true;
-
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
@@ -223,13 +221,6 @@ function removeEventListeners() {
 function toggleGridInfo() {
     'use strict';
 
-    if (infoSidebarIsShowing) {
-        document.getElementById('info-sidebar').style.display = 'none';
-        infoSidebarIsShowing = !infoSidebarIsShowing;
-    } else {
-        document.getElementById('info-sidebar').style.display = 'block';
-        infoSidebarIsShowing = !infoSidebarIsShowing;
-    }
 }
 
 /**
