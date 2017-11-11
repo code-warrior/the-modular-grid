@@ -1,8 +1,6 @@
 /*jslint browser, es6, single, for, devel, multivar */
 /*global window, chrome */
 
-let infoSidebarIsShowing = true;
-
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
  * at the HTML element named in node.
@@ -223,13 +221,18 @@ function removeEventListeners() {
 function toggleGridInfo() {
     'use strict';
 
-    if (infoSidebarIsShowing) {
-        document.getElementById('info-sidebar').style.display = 'none';
-        infoSidebarIsShowing = !infoSidebarIsShowing;
-    } else {
-        document.getElementById('info-sidebar').style.display = 'block';
-        infoSidebarIsShowing = !infoSidebarIsShowing;
-    }
+    chrome.storage.sync.get(
+        null,
+        function (settings) {
+            if (settings.infoSectionIsEnabled) {
+                document.getElementById('info-sidebar').style.display = 'none';
+                chrome.storage.sync.set({infoSectionIsEnabled: false});
+            } else {
+                document.getElementById('info-sidebar').style.display = 'block';
+                chrome.storage.sync.set({infoSectionIsEnabled: true});
+            }
+        }
+    );
 }
 
 /**
@@ -419,7 +422,6 @@ function paintGrid() {
                     _gridBaselineDistance = settings.gridBaselineDistance,
                     _gridColumnColorOpacity = settings.gridColumnColorOpacity,
                     _gridMargin = parseFloat(settings.gridMargin),
-                    _infoSectionIsEnabled = settings.infoSectionIsEnabled,
                     _currentGrid = settings.currentGrid,
 
                     gridUnit = (_gridColumnWidth + _gridGutterWidth),
@@ -458,7 +460,17 @@ function paintGrid() {
                 gridStyleSheet.id = 'modular-grid-css';
 
                 infoSection__Container.id = 'info-sidebar';
-                infoSection__Container.style.display = 'block';
+
+                chrome.storage.sync.get(
+                    null,
+                    function (settings) {
+                        if (settings.infoSectionIsEnabled) {
+                            infoSection__Container.style.display = 'block';
+                        } else {
+                            infoSection__Container.style.display = 'none';
+                        }
+                    }
+                );
 
                 modularGrid.id = 'modular-grid';
                 modularGrid.className = _currentGrid;
@@ -501,15 +513,7 @@ function paintGrid() {
 
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
-
-                if (_infoSectionIsEnabled) {
-                    body.appendChild(infoSection__Container);
-                    if (infoSidebarIsShowing) {
-                        infoSection__Container.style.display = 'block';
-                    } else {
-                        infoSection__Container.style.display = 'none';
-                    }
-                }
+                body.appendChild(infoSection__Container);
 
                 switch (_currentGrid) {
                 case 'modular-grid':
@@ -569,22 +573,12 @@ chrome.storage.sync.get(
 
         if (settings.gridIsEnabled) {
             paintGrid();
-
-            if (settings.eventListenersEnabled) {
-                addKeyboardListener();
-                addViewportResizeListener();
-                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
-            }
-
-            showColumnInfo();
-
+            addKeyboardListener();
+            addViewportResizeListener();
+            chrome.storage.sync.set({eventListenersEnabled: true});
         } else {
-            if (!settings.eventListenersEnabled) {
-                removeEventListeners();
-                chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
-            }
-
-            removeGrid();
+            removeEventListeners();
+            chrome.storage.sync.set({eventListenersEnabled: false});
         }
     }
 );
