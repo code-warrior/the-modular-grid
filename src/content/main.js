@@ -458,9 +458,9 @@ function paintGrid() {
                     // endemic to a Chrome extension.)
                     //
                     modularGrid__InfoSidebar__Container = document.createElement('div'),
-                    infoSection__Instructions = document.createElement('span'),
-                    infoSection__ColumnAndPageInfo = document.createElement('span'),
-                    infoSection__OptionsLink = document.createElement('span');
+                    infoSection__Instructions = document.createElement('p'),
+                    infoSection__ColumnAndPageInfo = document.createElement('p'),
+                    infoSection__OptionsLink = document.createElement('p');
 
                 if (viewportWidth < widthOfAllColumns) {
                     _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _gridGutterWidth));
