@@ -419,7 +419,7 @@ function paintGrid() {
                     _modularGrid__ColumnWidth = parseFloat(settings.gridColumnWidth),
                     _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
                     _modularGrid__ColumnColor = settings.gridColumnColor,
-                    _gridGutterWidth = parseFloat(settings.gridGutterWidth),
+                    _modularGrid__GutterWidth = parseFloat(settings.gridGutterWidth),
                     _gridBaselineColor = settings.gridBaselineColor,
                     _gridBaselineDistance = settings.gridBaselineDistance,
                     _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
@@ -433,7 +433,7 @@ function paintGrid() {
                         ? document.height
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
-                    gridUnit = (_modularGrid__ColumnWidth + _gridGutterWidth),
+                    gridUnit = (_modularGrid__ColumnWidth + _modularGrid__GutterWidth),
                     widthOfAllColumns = _modularGrid__ColumnCount * gridUnit,
                     gridColumnColorRGBA = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
 
@@ -457,7 +457,7 @@ function paintGrid() {
                     modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
 
                 if (viewportWidth < widthOfAllColumns) {
-                    _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _gridGutterWidth));
+                    _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _modularGrid__GutterWidth));
                 }
 
                 gridStyleSheet.href = chrome.extension.getURL('content.css');
