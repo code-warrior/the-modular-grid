@@ -458,7 +458,7 @@ function paintGrid() {
                     // endemic to a Chrome extension.)
                     //
                     modularGrid__InfoSidebar__Container = document.createElement('div'),
-                    infoSection__Instructions = document.createElement('p'),
+                    modularGrid__InfoSidebar__Instructions = document.createElement('p'),
                     infoSection__ColumnAndPageInfo = document.createElement('p'),
                     infoSection__OptionsLink = document.createElement('p');
 
@@ -489,12 +489,12 @@ function paintGrid() {
                 modularGrid__Container.id = 'modular-grid--container';
                 modularGrid__Container.appendChild(modularGrid);
 
-                infoSection__Instructions.className = 'message-box';
+                modularGrid__InfoSidebar__Instructions.className = 'message-box';
                 infoSection__ColumnAndPageInfo.className = 'message-box';
                 infoSection__ColumnAndPageInfo.id = 'column-and-page-info';
                 infoSection__OptionsLink.className = 'message-box';
 
-                infoSection__Instructions.innerHTML =
+                modularGrid__InfoSidebar__Instructions.innerHTML =
                         'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
                         'Press <kbd>esc</kbd> to cycle through the grids.';
                 infoSection__ColumnAndPageInfo.innerHTML =
@@ -502,7 +502,7 @@ function paintGrid() {
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
                 infoSection__OptionsLink.innerHTML = 'Options';
 
-                modularGrid__InfoSidebar__Container.appendChild(infoSection__Instructions);
+                modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__Instructions);
                 modularGrid__InfoSidebar__Container.appendChild(infoSection__ColumnAndPageInfo);
                 modularGrid__InfoSidebar__Container.appendChild(infoSection__OptionsLink);
 
