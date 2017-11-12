@@ -392,7 +392,7 @@ function addViewportResizeListener() {
 
 /**
  * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
- * gridStyleSheet, and infoSection__Container.
+ * gridStyleSheet, and modularGrid__InfoSidebar__Container.
  *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
@@ -452,12 +452,12 @@ function paintGrid() {
                     modularGrid__ZIndex,
 
                     //
-                    // infoSection__Container is the container for the informational
+                    // modularGrid__InfoSidebar__Container is the container for the informational
                     // popup boxes that appear in the upper right hand corner. (Note:
                     // Do not confuse the use of “popup” here with the popup feature
                     // endemic to a Chrome extension.)
                     //
-                    infoSection__Container = document.createElement('div'),
+                    modularGrid__InfoSidebar__Container = document.createElement('div'),
                     infoSection__Instructions = document.createElement('span'),
                     infoSection__ColumnAndPageInfo = document.createElement('span'),
                     infoSection__OptionsLink = document.createElement('span');
@@ -470,15 +470,15 @@ function paintGrid() {
                 gridStyleSheet.rel = 'stylesheet';
                 gridStyleSheet.id = 'modular-grid-css';
 
-                infoSection__Container.id = 'info-sidebar';
+                modularGrid__InfoSidebar__Container.id = 'info-sidebar';
 
                 chrome.storage.sync.get(
                     null,
                     function (settings) {
                         if (settings.infoSectionIsEnabled) {
-                            infoSection__Container.style.display = 'block';
+                            modularGrid__InfoSidebar__Container.style.display = 'block';
                         } else {
-                            infoSection__Container.style.display = 'none';
+                            modularGrid__InfoSidebar__Container.style.display = 'none';
                         }
                     }
                 );
@@ -502,9 +502,9 @@ function paintGrid() {
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
                 infoSection__OptionsLink.innerHTML = 'Options';
 
-                infoSection__Container.appendChild(infoSection__Instructions);
-                infoSection__Container.appendChild(infoSection__ColumnAndPageInfo);
-                infoSection__Container.appendChild(infoSection__OptionsLink);
+                modularGrid__InfoSidebar__Container.appendChild(infoSection__Instructions);
+                modularGrid__InfoSidebar__Container.appendChild(infoSection__ColumnAndPageInfo);
+                modularGrid__InfoSidebar__Container.appendChild(infoSection__OptionsLink);
 
                 infoSection__OptionsLink.addEventListener('click', function () {
                     chrome.runtime.sendMessage('openOptions');
@@ -515,16 +515,16 @@ function paintGrid() {
                 if (null !== modularGrid__ZIndex) {
                     modularGrid__Container.setAttribute('style', 'display: block !important; z-index: ' + modularGrid__ZIndex);
                     modularGrid.style.zIndex = modularGrid__ZIndex;
-                    infoSection__Container.style.zIndex = (modularGrid__ZIndex + 1);
+                    modularGrid__InfoSidebar__Container.style.zIndex = (modularGrid__ZIndex + 1);
                 } else {
                     modularGrid__Container.style.zIndex = 'auto';
                     modularGrid.style.zIndex = 'auto';
-                    infoSection__Container.style.zIndex = 'auto';
+                    modularGrid__InfoSidebar__Container.style.zIndex = 'auto';
                 }
 
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
-                body.appendChild(infoSection__Container);
+                body.appendChild(modularGrid__InfoSidebar__Container);
 
                 switch (_currentGrid) {
                 case 'modular-grid':
