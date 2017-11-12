@@ -424,7 +424,6 @@ function paintGrid() {
                         ? document.height
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
-                    // Settings
                     _gridColumnWidth = parseFloat(settings.gridColumnWidth),
                     _gridColumnCount = parseInt(settings.gridColumnCount, 10),
                     _gridColumnColor = settings.gridColumnColor,
