@@ -101,18 +101,17 @@ function convertHexToRGBA(hex, opacity) {
         previousNumberInNibble = 0,
         calculateNibble = 0,
         rgba = 'rgba(',
-        index,
-        _opacity = opacity;
+        index;
 
     const
         HEX = 16,
         END_OF_HEX = 6,
         HEX_LENGTH = hex.length;
 
-    if (!Number.isNaN(Number(_opacity))) {
-        _opacity = parseFloat(_opacity, 10);
+    if (!Number.isNaN(Number(opacity))) {
+        opacity = parseFloat(opacity, 10);
 
-        if ((_opacity < 0.0) || (_opacity > 1.0)) {
+        if ((opacity < 0.0) || (opacity > 1.0)) {
             console.error('The opacity variable must fall within the range of 0.0 – 1.0');
 
             return;
@@ -203,7 +202,7 @@ function convertHexToRGBA(hex, opacity) {
         // We’ve arrived at the end of the conversion, so append the opacity and the
         // closing of the string.
         //
-        rgba = rgba + _opacity + ')';
+        rgba = rgba + opacity + ')';
     } else {
         return -1;
     }
