@@ -96,10 +96,6 @@ function getLargestZIndexOfNonStaticElements(node) {
 function convertHexToRGBA(hex, opacity) {
     'use strict';
 
-    //
-    // TODO: Error-check the opacity variable, then remove the devel JSLint flag
-    //
-
     let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/;
     let currentNumberInNibble = 0;
     let previousNumberInNibble = 0;
