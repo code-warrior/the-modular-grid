@@ -414,7 +414,6 @@ function paintGrid() {
 
                 let html = document.querySelector('html'),
                     viewportWidth = html.clientWidth,
-                    body = document.querySelector('body'),
                     firstChildOfBody = body.firstElementChild,
 
                     head = document.querySelector('head'),
@@ -423,6 +422,7 @@ function paintGrid() {
                     pageHeight = (undefined !== document.height)
                         ? document.height
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
+                    body = document.querySelector('body'),
 
                     _gridColumnWidth = parseFloat(settings.gridColumnWidth),
                     _gridColumnCount = parseInt(settings.gridColumnCount, 10),
