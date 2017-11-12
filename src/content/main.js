@@ -3,18 +3,18 @@
 
 /**
  * Returns the largest z-index of all non-static elements in the tree whose root is
- * at the HTML element named in node.
+ * at the HTML element named in rootNode.
  *
  * @example
  * let body = document.getElementsByTagName('body')[0],
  *     largestZIndex = getLargestZIndexOfNonStaticElements(body);
  *
- * @param node is the root node at which to start traversing the DOM, inspecting for
- * z-index values.
+ * @param rootNode is the root node at which to start traversing the DOM, inspecting
+ * for z-index values.
  * @returns {*} an integer representing the largest z-index in the DOM, or null if
  * one is not calculated.
  */
-function getLargestZIndexOfNonStaticElements(node) {
+function getLargestZIndexOfNonStaticElements(rootNode) {
     'use strict';
 
     let largestZIndexThusFar = null,
@@ -24,21 +24,21 @@ function getLargestZIndexOfNonStaticElements(node) {
 
     const HTML_ELEMENT = 1;
 
-    if (undefined === node.nodeType) {
-        console.error(node + ' is not a valid HTML node.');
+    if (undefined === rootNode.nodeType) {
+        console.error(rootNode + ' is not a valid HTML node.');
 
         return;
     }
 
-    function calculateLargestZIndex(node) {
-        if (HTML_ELEMENT === node.nodeType) {
+    function calculateLargestZIndex(rootNode) {
+        if (HTML_ELEMENT === rootNode.nodeType) {
             positionOfCurrentHTMLElement = window.document.defaultView
-                .getComputedStyle(node, null)
+                .getComputedStyle(rootNode, null)
                 .getPropertyValue('position');
 
             if ('static' !== positionOfCurrentHTMLElement) {
                 zIndexOfCurrentHTMLElement = window.document.defaultView
-                    .getComputedStyle(node, null).getPropertyValue('z-index');
+                    .getComputedStyle(rootNode, null).getPropertyValue('z-index');
 
                 if (!Number.isNaN(Number(zIndexOfCurrentHTMLElement))) {
                     zIndexOfCurrentHTMLElement =
@@ -62,16 +62,16 @@ function getLargestZIndexOfNonStaticElements(node) {
                 }
             }
 
-            node = node.firstChild;
+            rootNode = rootNode.firstChild;
 
-            while (node) {
-                calculateLargestZIndex(node);
-                node = node.nextSibling;
+            while (rootNode) {
+                calculateLargestZIndex(rootNode);
+                rootNode = rootNode.nextSibling;
             }
         }
     }
 
-    calculateLargestZIndex(node);
+    calculateLargestZIndex(rootNode);
 
     if (null === largestZIndexThusFar) {
         return occurrencesOfAuto;
