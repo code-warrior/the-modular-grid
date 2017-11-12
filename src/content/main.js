@@ -392,7 +392,7 @@ function addViewportResizeListener() {
 
 /**
  * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
- * gridStyleSheet, and infoSidebar__Container.
+ * styleSheet, and infoSidebar__Container.
  *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
@@ -437,7 +437,7 @@ function paintGrid() {
                     widthOfAllGridUnits = settings__ColumnCount * gridUnit,
                     gridColumnColor = convertHexToRGBA(settings__ColumnColor, settings__ColumnColorOpacity),
 
-                    gridStyleSheet = document.createElement('link'),
+                    styleSheet = document.createElement('link'),
 
                     //
                     // modularGrid__Container is the container of the entire grid and
@@ -460,9 +460,9 @@ function paintGrid() {
                     settings__ColumnCount = Math.floor(viewportWidth / (settings__ColumnWidth + settings__GutterWidth));
                 }
 
-                gridStyleSheet.href = chrome.extension.getURL('content.css');
-                gridStyleSheet.rel = 'stylesheet';
-                gridStyleSheet.id = 'modular-grid-css';
+                styleSheet.href = chrome.extension.getURL('content.css');
+                styleSheet.rel = 'stylesheet';
+                styleSheet.id = 'modular-grid-css';
 
                 infoSidebar__Container.id = 'info-sidebar';
 
@@ -516,7 +516,7 @@ function paintGrid() {
                     infoSidebar__Container.style.zIndex = 'auto';
                 }
 
-                head.appendChild(gridStyleSheet);
+                head.appendChild(styleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
                 body.appendChild(infoSidebar__Container);
 
