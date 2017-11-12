@@ -452,9 +452,9 @@ function paintGrid() {
                     modularGrid__ZIndex,
 
                     infoSidebar__Container = document.createElement('div'),
-                    modularGrid__InfoSidebar__Instructions = document.createElement('p'),
-                    modularGrid__InfoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
-                    modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
+                    infoSidebar__Instructions = document.createElement('p'),
+                    infoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
+                    infoSidebar__OptionsLink = document.createElement('p');
 
                 if (viewportWidth < widthOfAllGridUnits) {
                     settings__ColumnCount = Math.floor(viewportWidth / (settings__ColumnWidth + settings__GutterWidth));
@@ -483,24 +483,24 @@ function paintGrid() {
                 modularGrid__Container.id = 'modular-grid--container';
                 modularGrid__Container.appendChild(modularGrid);
 
-                modularGrid__InfoSidebar__Instructions.className = 'message-box';
-                modularGrid__InfoSidebar__ColumnAndPageWidthInfo.className = 'message-box';
-                modularGrid__InfoSidebar__ColumnAndPageWidthInfo.id = 'column-and-page-info';
-                modularGrid__InfoSidebar__OptionsLink.className = 'message-box';
+                infoSidebar__Instructions.className = 'message-box';
+                infoSidebar__ColumnAndPageWidthInfo.className = 'message-box';
+                infoSidebar__ColumnAndPageWidthInfo.id = 'column-and-page-info';
+                infoSidebar__OptionsLink.className = 'message-box';
 
-                modularGrid__InfoSidebar__Instructions.innerHTML =
+                infoSidebar__Instructions.innerHTML =
                         'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
                         'Press <kbd>esc</kbd> to cycle through the grids.';
-                modularGrid__InfoSidebar__ColumnAndPageWidthInfo.innerHTML =
+                infoSidebar__ColumnAndPageWidthInfo.innerHTML =
                         'Column count: <strong>' + settings__ColumnCount + '</strong><br>' +
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
-                modularGrid__InfoSidebar__OptionsLink.innerHTML = 'Options';
+                infoSidebar__OptionsLink.innerHTML = 'Options';
 
-                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__Instructions);
-                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__ColumnAndPageWidthInfo);
-                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__OptionsLink);
+                infoSidebar__Container.appendChild(infoSidebar__Instructions);
+                infoSidebar__Container.appendChild(infoSidebar__ColumnAndPageWidthInfo);
+                infoSidebar__Container.appendChild(infoSidebar__OptionsLink);
 
-                modularGrid__InfoSidebar__OptionsLink.addEventListener('click', function () {
+                infoSidebar__OptionsLink.addEventListener('click', function () {
                     chrome.runtime.sendMessage('openOptions');
                 }, false);
 
