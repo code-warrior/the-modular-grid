@@ -416,15 +416,15 @@ function paintGrid() {
                     head = document.querySelector('head'),
                     body = document.querySelector('body'),
 
-                    _modularGrid__ColumnWidth = parseFloat(settings.gridColumnWidth),
-                    _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
-                    _modularGrid__ColumnColor = settings.gridColumnColor,
-                    _modularGrid__GutterWidth = parseFloat(settings.gridGutterWidth),
-                    _modularGrid__BaselineColor = settings.gridBaselineColor,
-                    _modularGrid__BaselineDistance = settings.gridBaselineDistance,
-                    _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
-                    _modularGrid__LeftMargin = parseFloat(settings.gridMargin),
-                    _modularGrid__CurrentGrid = settings.currentGrid,
+                    settings__ColumnWidth = parseFloat(settings.gridColumnWidth),
+                    settings__ColumnCount = parseInt(settings.gridColumnCount, 10),
+                    settings__ColumnColor = settings.gridColumnColor,
+                    settings__GutterWidth = parseFloat(settings.gridGutterWidth),
+                    settings__BaselineColor = settings.gridBaselineColor,
+                    settings__BaselineDistance = settings.gridBaselineDistance,
+                    settings__ColumnColorOpacity = settings.gridColumnColorOpacity,
+                    settings__LeftMargin = parseFloat(settings.gridMargin),
+                    settings__CurrentGrid = settings.currentGrid,
 
                     viewportWidth = html.clientWidth,
                     firstChildOfBody = body.firstElementChild,
@@ -433,9 +433,9 @@ function paintGrid() {
                         ? document.height
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
-                    gridUnit = (_modularGrid__ColumnWidth + _modularGrid__GutterWidth),
-                    widthOfAllGridUnits = _modularGrid__ColumnCount * gridUnit,
-                    gridColumnColor = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
+                    gridUnit = (settings__ColumnWidth + settings__GutterWidth),
+                    widthOfAllGridUnits = settings__ColumnCount * gridUnit,
+                    gridColumnColor = convertHexToRGBA(settings__ColumnColor, settings__ColumnColorOpacity),
 
                     gridStyleSheet = document.createElement('link'),
 
@@ -457,7 +457,7 @@ function paintGrid() {
                     modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
 
                 if (viewportWidth < widthOfAllGridUnits) {
-                    _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _modularGrid__GutterWidth));
+                    settings__ColumnCount = Math.floor(viewportWidth / (settings__ColumnWidth + settings__GutterWidth));
                 }
 
                 gridStyleSheet.href = chrome.extension.getURL('content.css');
@@ -478,7 +478,7 @@ function paintGrid() {
                 );
 
                 modularGrid.id = 'modular-grid';
-                modularGrid.className = _modularGrid__CurrentGrid;
+                modularGrid.className = settings__CurrentGrid;
 
                 modularGrid__Container.id = 'modular-grid--container';
                 modularGrid__Container.appendChild(modularGrid);
@@ -492,7 +492,7 @@ function paintGrid() {
                         'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
                         'Press <kbd>esc</kbd> to cycle through the grids.';
                 modularGrid__InfoSidebar__ColumnAndPageWidthInfo.innerHTML =
-                        'Column count: <strong>' + _modularGrid__ColumnCount + '</strong><br>' +
+                        'Column count: <strong>' + settings__ColumnCount + '</strong><br>' +
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
                 modularGrid__InfoSidebar__OptionsLink.innerHTML = 'Options';
 
@@ -520,16 +520,16 @@ function paintGrid() {
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
                 body.appendChild(modularGrid__InfoSidebar__Container);
 
-                switch (_modularGrid__CurrentGrid) {
+                switch (settings__CurrentGrid) {
                 case 'modular-grid':
                     modularGrid.className = 'modular-grid';
 
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
-                            'background-size: ' + gridUnit + 'px 100%, 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
-                            'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
+                            'background-size: ' + gridUnit + 'px 100%, 100% ' + settings__BaselineDistance + 'px !important; ' +
+                            'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
@@ -540,9 +540,9 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0) !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
-                            'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
+                            'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
@@ -553,8 +553,8 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
-                            'background-size: 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
+                            'background-image: linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
+                            'background-size: 100% ' + settings__BaselineDistance + 'px !important; ' +
                             'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
