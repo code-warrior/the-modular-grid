@@ -104,7 +104,7 @@ function convertHexToRGBA(hex, opacity) {
     let currentNumberInNibble = 0;
     let previousNumberInNibble = 0;
     let calculateNibble = 0;
-    let rgbColor = 'rgba(';
+    let rgba = 'rgba(';
     let index;
 
     const HEX = 16;
@@ -167,14 +167,14 @@ function convertHexToRGBA(hex, opacity) {
                 //
                 // Append the result to the running calculation of the string…
                 //
-                rgbColor = rgbColor + calculateNibble;
+                rgba = rgba + calculateNibble;
 
                 //
                 // And, if we’re not at the end of the hex string, append a comma and
                 // a space.
                 //
                 if (0 !== (index % (END_OF_HEX + 2))) {
-                    rgbColor = rgbColor + ', ';
+                    rgba = rgba + ', ';
                 }
             }
 
@@ -189,12 +189,12 @@ function convertHexToRGBA(hex, opacity) {
         // We’ve arrived at the end of the conversion, so append the opacity and the
         // closing of the string.
         //
-        rgbColor = rgbColor + opacity + ')';
+        rgba = rgba + opacity + ')';
     } else {
         return -1;
     }
 
-    return rgbColor;
+    return rgba;
 }
 
 /**
