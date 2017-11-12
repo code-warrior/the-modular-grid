@@ -451,12 +451,6 @@ function paintGrid() {
 
                     modularGrid__ZIndex,
 
-                    //
-                    // modularGrid__InfoSidebar__Container is the container for the informational
-                    // popup boxes that appear in the upper right hand corner. (Note:
-                    // Do not confuse the use of “popup” here with the popup feature
-                    // endemic to a Chrome extension.)
-                    //
                     modularGrid__InfoSidebar__Container = document.createElement('div'),
                     modularGrid__InfoSidebar__Instructions = document.createElement('p'),
                     modularGrid__InfoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
