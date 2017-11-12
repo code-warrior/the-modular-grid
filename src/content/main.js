@@ -7,14 +7,14 @@
  *
  * @example
  * let body = document.getElementsByTagName('body')[0],
- *     largestZIndex = getLargestZIndexOfNonStaticElements(body);
+ *     largestZIndex = getLargestZIndexOfElementsIn(body);
  *
  * @param rootNode is the root node at which to start traversing the DOM, inspecting
  * for z-index values.
  * @returns {*} an integer representing the largest z-index in the DOM, or null if
  * one is not calculated.
  */
-function getLargestZIndexOfNonStaticElements(rootNode) {
+function getLargestZIndexOfElementsIn(rootNode) {
     'use strict';
 
     let largestZIndexThusFar = null,
@@ -508,7 +508,7 @@ function paintGrid() {
                     chrome.runtime.sendMessage('openOptions');
                 }, false);
 
-                modularGrid__ZIndex = getLargestZIndexOfNonStaticElements(body);
+                modularGrid__ZIndex = getLargestZIndexOfElementsIn(body);
 
                 if (null !== modularGrid__ZIndex) {
                     modularGrid__Container.setAttribute('style', 'display: block !important; z-index: ' + modularGrid__ZIndex);
