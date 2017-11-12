@@ -418,11 +418,11 @@ function paintGrid() {
 
                     _modularGrid__ColumnWidth = parseFloat(settings.gridColumnWidth),
                     _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
-                    _gridColumnColor = settings.gridColumnColor,
+                    _modularGrid__ColumnColor = settings.gridColumnColor,
                     _gridGutterWidth = parseFloat(settings.gridGutterWidth),
                     _gridBaselineColor = settings.gridBaselineColor,
                     _gridBaselineDistance = settings.gridBaselineDistance,
-                    _gridColumnColorOpacity = settings.gridColumnColorOpacity,
+                    _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
                     _gridMargin = parseFloat(settings.gridMargin),
                     _currentGrid = settings.currentGrid,
 
@@ -435,7 +435,7 @@ function paintGrid() {
 
                     gridUnit = (_modularGrid__ColumnWidth + _gridGutterWidth),
                     widthOfAllColumns = _modularGrid__ColumnCount * gridUnit,
-                    gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
+                    gridColumnColorRGBA = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
 
                     gridStyleSheet = document.createElement('link'),
 
