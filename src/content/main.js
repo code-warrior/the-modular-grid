@@ -414,7 +414,6 @@ function paintGrid() {
 
                 let html = document.querySelector('html'),
                     head = document.querySelector('head'),
-                    gridStyleSheet = document.createElement('link'),
 
                     pageHeight = (undefined !== document.height)
                         ? document.height
@@ -436,6 +435,8 @@ function paintGrid() {
                     gridUnit = (_gridColumnWidth + _gridGutterWidth),
                     widthOfAllColumns = _gridColumnCount * gridUnit,
                     gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
+
+                    gridStyleSheet = document.createElement('link'),
 
                     //
                     // modularGrid__Container is the container of the entire grid and
