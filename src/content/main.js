@@ -416,6 +416,10 @@ function paintGrid() {
                     head = document.querySelector('head'),
                     body = document.querySelector('body'),
 
+                    //
+                    // Variables beginning with an underscore are local copies of
+                    // retrieved chrome.storage variables
+                    //
                     _modularGrid__ColumnWidth = parseFloat(settings.gridColumnWidth),
                     _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
                     _modularGrid__ColumnColor = settings.gridColumnColor,
