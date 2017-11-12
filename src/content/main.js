@@ -96,13 +96,13 @@ function getLargestZIndexOfNonStaticElements(node) {
 function convertHexToRGBA(hex, opacity) {
     'use strict';
 
-    let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/;
-    let currentNumberInNibble = 0;
-    let previousNumberInNibble = 0;
-    let calculateNibble = 0;
-    let rgba = 'rgba(';
-    let index;
-    let _opacity = opacity;
+    let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/,
+        currentNumberInNibble = 0,
+        previousNumberInNibble = 0,
+        calculateNibble = 0,
+        rgba = 'rgba(',
+        index,
+        _opacity = opacity;
 
     if (!Number.isNaN(Number(_opacity))) {
         _opacity = parseFloat(_opacity, 10);
