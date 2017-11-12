@@ -438,7 +438,7 @@ function paintGrid() {
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
                     gridUnit = (_modularGrid__ColumnWidth + _modularGrid__GutterWidth),
-                    widthOfAllColumns = _modularGrid__ColumnCount * gridUnit,
+                    widthOfAllGridUnits = _modularGrid__ColumnCount * gridUnit,
                     gridColumnColorRGBA = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
 
                     gridStyleSheet = document.createElement('link'),
@@ -460,7 +460,7 @@ function paintGrid() {
                     modularGrid__InfoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
                     modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
 
-                if (viewportWidth < widthOfAllColumns) {
+                if (viewportWidth < widthOfAllGridUnits) {
                     _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _modularGrid__GutterWidth));
                 }
 
@@ -534,7 +534,7 @@ function paintGrid() {
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
                             'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
-                            'max-width: ' + widthOfAllColumns + 'px !important;');
+                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
 
@@ -547,7 +547,7 @@ function paintGrid() {
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
                             'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
-                            'max-width: ' + widthOfAllColumns + 'px !important;');
+                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
 
@@ -559,7 +559,7 @@ function paintGrid() {
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
-                            'max-width: ' + widthOfAllColumns + 'px !important;');
+                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
 
                     break;
                 }
