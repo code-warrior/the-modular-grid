@@ -428,7 +428,7 @@ function paintGrid() {
                     _modularGrid__BaselineDistance = settings.gridBaselineDistance,
                     _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
                     _modularGrid__LeftMargin = parseFloat(settings.gridMargin),
-                    _currentGrid = settings.currentGrid,
+                    _modularGrid__CurrentGrid = settings.currentGrid,
 
                     viewportWidth = html.clientWidth,
                     firstChildOfBody = body.firstElementChild,
@@ -482,7 +482,7 @@ function paintGrid() {
                 );
 
                 modularGrid.id = 'modular-grid';
-                modularGrid.className = _currentGrid;
+                modularGrid.className = _modularGrid__CurrentGrid;
 
                 modularGrid__Container.id = 'modular-grid--container';
                 modularGrid__Container.appendChild(modularGrid);
@@ -524,7 +524,7 @@ function paintGrid() {
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
                 body.appendChild(modularGrid__InfoSidebar__Container);
 
-                switch (_currentGrid) {
+                switch (_modularGrid__CurrentGrid) {
                 case 'modular-grid':
                     modularGrid.className = 'modular-grid';
 
