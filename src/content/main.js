@@ -104,7 +104,8 @@ function convertHexToRGBA(hex, opacity) {
         index,
         _opacity = opacity;
 
-    const HEX = 16,
+    const
+        HEX = 16,
         END_OF_HEX = 6,
         HEX_LENGTH = hex.length;
 
@@ -172,8 +173,10 @@ function convertHexToRGBA(hex, opacity) {
                 //
                 // Perform the math to convert from hex to decimal…
                 //
-                calculateNibble = (Math.pow(HEX, 1) * previousNumberInNibble +
-                        Math.pow(HEX, 0) * currentNumberInNibble);
+                calculateNibble = (
+                    Math.pow(HEX, 1) * previousNumberInNibble +
+                    Math.pow(HEX, 0) * currentNumberInNibble
+                );
 
                 //
                 // Append the result to the running calculation of the string…
@@ -260,15 +263,11 @@ function showColumnInfo() {
         function (settings) {
             let root = document.querySelector('html'),
                 viewportWidth = root.clientWidth,
-                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) *
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)),
+                widthOfAllColumns = parseInt(settings.gridColumnCount, 10) * (parseInt(settings.gridColumnWidth, 10) + parseInt(settings.gridGutterWidth, 10)),
                 columnCount = parseInt(settings.gridColumnCount, 10);
 
             if (viewportWidth < widthOfAllColumns) {
-                columnCount = Math.floor(root.clientWidth /
-                        (parseInt(settings.gridColumnWidth, 10) +
-                        parseInt(settings.gridGutterWidth, 10)));
+                columnCount = Math.floor(root.clientWidth / (parseInt(settings.gridColumnWidth, 10) + parseInt(settings.gridGutterWidth, 10)));
             }
 
             document.getElementById('column-and-page-info').innerHTML =
@@ -431,7 +430,7 @@ function paintGrid() {
 
                     pageHeight = (undefined !== document.height)
                         ? document.height
-                        : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
+                        : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight),
 
                     gridUnit = (settings__ColumnWidth + settings__GutterWidth),
                     widthOfAllGridUnits = settings__ColumnCount * gridUnit,
@@ -517,38 +516,44 @@ function paintGrid() {
                 case 'modular-grid':
                     modularGrid.className = 'modular-grid';
 
-                    modularGrid.setAttribute('style',
-                            'display: block !important; ' +
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
-                            'background-size: ' + gridUnit + 'px 100%, 100% ' + settings__BaselineDistance + 'px !important; ' +
-                            'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
-                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
+                    modularGrid.setAttribute(
+                        'style',
+                        'display: block !important; ' +
+                                'height: ' + pageHeight + 'px !important; ' +
+                                'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
+                                'background-size: ' + gridUnit + 'px 100%, 100% ' + settings__BaselineDistance + 'px !important; ' +
+                                'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
+                                'max-width: ' + widthOfAllGridUnits + 'px !important;'
+                    );
 
                     break;
 
                 case 'column-grid':
                     modularGrid.className = 'column-grid';
 
-                    modularGrid.setAttribute('style',
-                            'display: block !important; ' +
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0) !important; ' +
-                            'background-size: ' + gridUnit + 'px 100% !important; ' +
-                            'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
-                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
+                    modularGrid.setAttribute(
+                        'style',
+                        'display: block !important; ' +
+                                'height: ' + pageHeight + 'px !important; ' +
+                                'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0) !important; ' +
+                                'background-size: ' + gridUnit + 'px 100% !important; ' +
+                                'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
+                                'max-width: ' + widthOfAllGridUnits + 'px !important;'
+                    );
 
                     break;
 
                 case 'baseline-grid':
                     modularGrid.className = 'baseline-grid';
 
-                    modularGrid.setAttribute('style',
-                            'display: block !important; ' +
-                            'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
-                            'background-size: 100% ' + settings__BaselineDistance + 'px !important; ' +
-                            'max-width: ' + widthOfAllGridUnits + 'px !important;');
+                    modularGrid.setAttribute(
+                        'style',
+                        'display: block !important; ' +
+                                'height: ' + pageHeight + 'px !important; ' +
+                                'background-image: linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
+                                'background-size: 100% ' + settings__BaselineDistance + 'px !important; ' +
+                                'max-width: ' + widthOfAllGridUnits + 'px !important;'
+                    );
 
                     break;
                 }
