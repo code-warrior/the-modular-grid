@@ -421,7 +421,7 @@ function paintGrid() {
                     _modularGrid__ColumnColor = settings.gridColumnColor,
                     _modularGrid__GutterWidth = parseFloat(settings.gridGutterWidth),
                     _modularGrid__BaselineColor = settings.gridBaselineColor,
-                    _gridBaselineDistance = settings.gridBaselineDistance,
+                    _modularGrid__BaselineDistance = settings.gridBaselineDistance,
                     _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
                     _gridMargin = parseFloat(settings.gridMargin),
                     _currentGrid = settings.currentGrid,
@@ -528,7 +528,7 @@ function paintGrid() {
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
-                            'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'background-size: ' + gridUnit + 'px 100%, 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
                             'background-position: ' + _gridMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
 
@@ -554,7 +554,7 @@ function paintGrid() {
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
-                            'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
+                            'background-size: 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
 
                     break;
