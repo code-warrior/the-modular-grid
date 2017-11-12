@@ -439,7 +439,7 @@ function paintGrid() {
 
                     gridUnit = (_modularGrid__ColumnWidth + _modularGrid__GutterWidth),
                     widthOfAllGridUnits = _modularGrid__ColumnCount * gridUnit,
-                    gridColumnColorRGBA = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
+                    gridColumnColor = convertHexToRGBA(_modularGrid__ColumnColor, _modularGrid__ColumnColorOpacity),
 
                     gridStyleSheet = document.createElement('link'),
 
@@ -531,7 +531,7 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
                             'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllGridUnits + 'px !important;');
@@ -544,7 +544,7 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0) !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
                             'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllGridUnits + 'px !important;');
