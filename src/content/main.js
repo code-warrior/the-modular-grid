@@ -417,7 +417,7 @@ function paintGrid() {
                     body = document.querySelector('body'),
 
                     _modularGrid__ColumnWidth = parseFloat(settings.gridColumnWidth),
-                    _gridColumnCount = parseInt(settings.gridColumnCount, 10),
+                    _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
                     _gridColumnColor = settings.gridColumnColor,
                     _gridGutterWidth = parseFloat(settings.gridGutterWidth),
                     _gridBaselineColor = settings.gridBaselineColor,
@@ -434,7 +434,7 @@ function paintGrid() {
                         : Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ),
 
                     gridUnit = (_modularGrid__ColumnWidth + _gridGutterWidth),
-                    widthOfAllColumns = _gridColumnCount * gridUnit,
+                    widthOfAllColumns = _modularGrid__ColumnCount * gridUnit,
                     gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
 
                     gridStyleSheet = document.createElement('link'),
@@ -463,7 +463,7 @@ function paintGrid() {
                     infoSection__OptionsLink = document.createElement('span');
 
                 if (viewportWidth < widthOfAllColumns) {
-                    _gridColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _gridGutterWidth));
+                    _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _gridGutterWidth));
                 }
 
                 gridStyleSheet.href = chrome.extension.getURL('content.css');
@@ -498,7 +498,7 @@ function paintGrid() {
                         'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
                         'Press <kbd>esc</kbd> to cycle through the grids.';
                 infoSection__ColumnAndPageInfo.innerHTML =
-                        'Column count: <strong>' + _gridColumnCount + '</strong><br>' +
+                        'Column count: <strong>' + _modularGrid__ColumnCount + '</strong><br>' +
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
                 infoSection__OptionsLink.innerHTML = 'Options';
 
