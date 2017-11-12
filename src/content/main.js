@@ -104,6 +104,10 @@ function convertHexToRGBA(hex, opacity) {
         index,
         _opacity = opacity;
 
+    const HEX = 16,
+        END_OF_HEX = 6,
+        HEX_LENGTH = hex.length;
+
     if (!Number.isNaN(Number(_opacity))) {
         _opacity = parseFloat(_opacity, 10);
 
@@ -117,10 +121,6 @@ function convertHexToRGBA(hex, opacity) {
 
         return;
     }
-
-    const HEX = 16,
-        END_OF_HEX = 6,
-        HEX_LENGTH = hex.length;
 
     if (null !== hex.match(patternForHex)) {
         for (index = 1; index < HEX_LENGTH; index += 1) {
