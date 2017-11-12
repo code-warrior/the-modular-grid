@@ -439,13 +439,6 @@ function paintGrid() {
 
                     styleSheet = document.createElement('link'),
 
-                    //
-                    // modularGrid__Container is the container of the entire grid and
-                    // is appended to the <body> element as its first child. The
-                    // modularGrid variable is appended to modularGrid__Container and
-                    // is the layer whose background contains the varying grids
-                    // displayed to the user.
-                    //
                     modularGrid__Container = document.createElement('div'),
                     modularGrid = document.createElement('div'),
 
