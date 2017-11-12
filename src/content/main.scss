@@ -30,7 +30,6 @@
    font: .9875rem / 1.6 $font--stack !important;
 
    .message-box {
-      display: block !important;
       position: relative !important;
       margin-bottom: $offset-sidebar !important;
       background-color: get-color('background', 'ternary') !important;
