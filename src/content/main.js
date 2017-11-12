@@ -427,7 +427,7 @@ function paintGrid() {
                     _modularGrid__BaselineColor = settings.gridBaselineColor,
                     _modularGrid__BaselineDistance = settings.gridBaselineDistance,
                     _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
-                    _gridMargin = parseFloat(settings.gridMargin),
+                    _modularGrid__LeftMargin = parseFloat(settings.gridMargin),
                     _currentGrid = settings.currentGrid,
 
                     viewportWidth = html.clientWidth,
@@ -533,7 +533,7 @@ function paintGrid() {
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _modularGrid__BaselineDistance + 'px !important; ' +
-                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
 
                     break;
@@ -546,7 +546,7 @@ function paintGrid() {
                             'height: ' + pageHeight + 'px !important; ' +
                             'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0) !important; ' +
                             'background-size: ' + gridUnit + 'px 100% !important; ' +
-                            'background-position: ' + _gridMargin + 'px 0 !important; ' +
+                            'background-position: ' + _modularGrid__LeftMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
 
                     break;
