@@ -420,7 +420,7 @@ function paintGrid() {
                     _modularGrid__ColumnCount = parseInt(settings.gridColumnCount, 10),
                     _modularGrid__ColumnColor = settings.gridColumnColor,
                     _modularGrid__GutterWidth = parseFloat(settings.gridGutterWidth),
-                    _gridBaselineColor = settings.gridBaselineColor,
+                    _modularGrid__BaselineColor = settings.gridBaselineColor,
                     _gridBaselineDistance = settings.gridBaselineDistance,
                     _modularGrid__ColumnColorOpacity = settings.gridColumnColorOpacity,
                     _gridMargin = parseFloat(settings.gridMargin),
@@ -527,7 +527,7 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-image: linear-gradient(90deg, ' + gridColumnColorRGBA + ' ' + _modularGrid__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: ' + gridUnit + 'px 100%, 100% ' + _gridBaselineDistance + 'px !important; ' +
                             'background-position: ' + _gridMargin + 'px 0 !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
@@ -553,7 +553,7 @@ function paintGrid() {
                     modularGrid.setAttribute('style',
                             'display: block !important; ' +
                             'height: ' + pageHeight + 'px !important; ' +
-                            'background-image: linear-gradient(0deg, transparent 95%, ' + _gridBaselineColor + ' 100%) !important; ' +
+                            'background-image: linear-gradient(0deg, transparent 95%, ' + _modularGrid__BaselineColor + ' 100%) !important; ' +
                             'background-size: 100% ' + _gridBaselineDistance + 'px !important; ' +
                             'max-width: ' + widthOfAllColumns + 'px !important;');
 
