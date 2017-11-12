@@ -460,7 +460,7 @@ function paintGrid() {
                     modularGrid__InfoSidebar__Container = document.createElement('div'),
                     modularGrid__InfoSidebar__Instructions = document.createElement('p'),
                     modularGrid__InfoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
-                    infoSection__OptionsLink = document.createElement('p');
+                    modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
 
                 if (viewportWidth < widthOfAllColumns) {
                     _modularGrid__ColumnCount = Math.floor(viewportWidth / (_modularGrid__ColumnWidth + _gridGutterWidth));
@@ -492,7 +492,7 @@ function paintGrid() {
                 modularGrid__InfoSidebar__Instructions.className = 'message-box';
                 modularGrid__InfoSidebar__ColumnAndPageWidthInfo.className = 'message-box';
                 modularGrid__InfoSidebar__ColumnAndPageWidthInfo.id = 'column-and-page-info';
-                infoSection__OptionsLink.className = 'message-box';
+                modularGrid__InfoSidebar__OptionsLink.className = 'message-box';
 
                 modularGrid__InfoSidebar__Instructions.innerHTML =
                         'Type <kbd>Ctrl + Shift</kbd> to toggle this section. ' +
@@ -500,13 +500,13 @@ function paintGrid() {
                 modularGrid__InfoSidebar__ColumnAndPageWidthInfo.innerHTML =
                         'Column count: <strong>' + _modularGrid__ColumnCount + '</strong><br>' +
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
-                infoSection__OptionsLink.innerHTML = 'Options';
+                modularGrid__InfoSidebar__OptionsLink.innerHTML = 'Options';
 
                 modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__Instructions);
                 modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__ColumnAndPageWidthInfo);
-                modularGrid__InfoSidebar__Container.appendChild(infoSection__OptionsLink);
+                modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__OptionsLink);
 
-                infoSection__OptionsLink.addEventListener('click', function () {
+                modularGrid__InfoSidebar__OptionsLink.addEventListener('click', function () {
                     chrome.runtime.sendMessage('openOptions');
                 }, false);
 
