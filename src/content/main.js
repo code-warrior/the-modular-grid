@@ -90,7 +90,7 @@ function getLargestZIndexOfNonStaticElements(node) {
  * @param hex A 7-character color value, ranging from #000000 – #ffffff. Note: this
  * function does not accept 3-character shortcuts, as in #fff, for example.
  * @param opacity A floating point number between 0.0 – 1.0.
- * @returns {string} A CSS3 rgba equivalent to the hex and opacity combination.
+ * @returns {*} A CSS3 rgba equivalent to the hex and opacity combination, or undefined.
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
 function convertHexToRGBA(hex, opacity) {
