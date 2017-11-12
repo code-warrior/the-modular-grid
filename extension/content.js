@@ -96,35 +96,31 @@ function getLargestZIndexOfNonStaticElements(node) {
 function convertHexToRGBA(hex, opacity) {
     'use strict';
 
-    let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/;
-    let currentNumberInNibble = 0;
-    let previousNumberInNibble = 0;
-    let calculateNibble = 0;
-    let rgba = 'rgba(';
-    let index;
-    let _opacity = opacity;
+    let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/,
+        currentNumberInNibble = 0,
+        previousNumberInNibble = 0,
+        calculateNibble = 0,
+        rgba = 'rgba(',
+        index,
+        _opacity = opacity;
+
+    const HEX = 16,
+        END_OF_HEX = 6,
+        HEX_LENGTH = hex.length;
 
     if (!Number.isNaN(Number(_opacity))) {
         _opacity = parseFloat(_opacity, 10);
-    }
 
-    alert(typeof _opacity);
-
-    if (typeof _opacity !== 'number') {
-        console.error('The opacity variable must be a number');
-
-        return;
-    } else {
         if ((_opacity < 0.0) || (_opacity > 1.0)) {
-            console.error('The opacity variable fall within the range of 0.0 – 1.0');
+            console.error('The opacity variable must fall within the range of 0.0 – 1.0');
 
             return;
         }
-    }
+    } else {
+        console.error('The opacity variable must be a number');
 
-    const HEX = 16;
-    const END_OF_HEX = 6;
-    const HEX_LENGTH = hex.length;
+        return;
+    }
 
     if (null !== hex.match(patternForHex)) {
         for (index = 1; index < HEX_LENGTH; index += 1) {
