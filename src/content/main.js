@@ -108,8 +108,6 @@ function convertHexToRGBA(hex, opacity) {
         _opacity = parseFloat(_opacity, 10);
     }
 
-    alert(typeof _opacity);
-
     if (typeof _opacity !== 'number') {
         console.error('The opacity variable must be a number');
 
