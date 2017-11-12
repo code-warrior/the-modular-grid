@@ -106,18 +106,16 @@ function convertHexToRGBA(hex, opacity) {
 
     if (!Number.isNaN(Number(_opacity))) {
         _opacity = parseFloat(_opacity, 10);
-    }
 
-    if (typeof _opacity !== 'number') {
-        console.error('The opacity variable must be a number');
-
-        return;
-    } else {
         if ((_opacity < 0.0) || (_opacity > 1.0)) {
-            console.error('The opacity variable fall within the range of 0.0 – 1.0');
+            console.error('The opacity variable must fall within the range of 0.0 – 1.0');
 
             return;
         }
+    } else {
+        console.error('The opacity variable must be a number');
+
+        return;
     }
 
     const HEX = 16;
