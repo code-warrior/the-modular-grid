@@ -90,14 +90,11 @@ function getLargestZIndexOfNonStaticElements(node) {
  * @param hex A 7-character color value, ranging from #000000 – #ffffff. Note: this
  * function does not accept 3-character shortcuts, as in #fff, for example.
  * @param opacity A floating point number between 0.0 – 1.0.
- * @returns {string} A CSS3 rgba equivalent to the hex and opacity combination.
+ * @returns {*} A CSS3 rgba equivalent to the hex and opacity combination, or undefined.
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
 function convertHexToRGBA(hex, opacity) {
     'use strict';
-
-    let _opacity = opacity;
-
 
     let patternForHex = /^#([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])([0-9]|[a-fA-F])$/;
     let currentNumberInNibble = 0;
@@ -105,6 +102,25 @@ function convertHexToRGBA(hex, opacity) {
     let calculateNibble = 0;
     let rgba = 'rgba(';
     let index;
+    let _opacity = opacity;
+
+    if (!Number.isNaN(Number(_opacity))) {
+        _opacity = parseFloat(_opacity, 10);
+    }
+
+    alert(typeof _opacity);
+
+    if (typeof _opacity !== 'number') {
+        console.error('The opacity variable must be a number');
+
+        return;
+    } else {
+        if ((_opacity < 0.0) || (_opacity > 1.0)) {
+            console.error('The opacity variable fall within the range of 0.0 – 1.0');
+
+            return;
+        }
+    }
 
     const HEX = 16;
     const END_OF_HEX = 6;
