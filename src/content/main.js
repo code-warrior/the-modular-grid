@@ -392,7 +392,7 @@ function addViewportResizeListener() {
 
 /**
  * Paints the grid by injecting three nodes into the DOM: modularGrid__Container,
- * gridStyleSheet, and modularGrid__InfoSidebar__Container.
+ * gridStyleSheet, and infoSidebar__Container.
  *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
@@ -451,7 +451,7 @@ function paintGrid() {
 
                     modularGrid__ZIndex,
 
-                    modularGrid__InfoSidebar__Container = document.createElement('div'),
+                    infoSidebar__Container = document.createElement('div'),
                     modularGrid__InfoSidebar__Instructions = document.createElement('p'),
                     modularGrid__InfoSidebar__ColumnAndPageWidthInfo = document.createElement('p'),
                     modularGrid__InfoSidebar__OptionsLink = document.createElement('p');
@@ -464,15 +464,15 @@ function paintGrid() {
                 gridStyleSheet.rel = 'stylesheet';
                 gridStyleSheet.id = 'modular-grid-css';
 
-                modularGrid__InfoSidebar__Container.id = 'info-sidebar';
+                infoSidebar__Container.id = 'info-sidebar';
 
                 chrome.storage.sync.get(
                     null,
                     function (settings) {
                         if (settings.infoSectionIsEnabled) {
-                            modularGrid__InfoSidebar__Container.style.display = 'block';
+                            infoSidebar__Container.style.display = 'block';
                         } else {
-                            modularGrid__InfoSidebar__Container.style.display = 'none';
+                            infoSidebar__Container.style.display = 'none';
                         }
                     }
                 );
@@ -496,9 +496,9 @@ function paintGrid() {
                         'Page width: <strong>' + viewportWidth + 'px</strong>';
                 modularGrid__InfoSidebar__OptionsLink.innerHTML = 'Options';
 
-                modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__Instructions);
-                modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__ColumnAndPageWidthInfo);
-                modularGrid__InfoSidebar__Container.appendChild(modularGrid__InfoSidebar__OptionsLink);
+                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__Instructions);
+                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__ColumnAndPageWidthInfo);
+                infoSidebar__Container.appendChild(modularGrid__InfoSidebar__OptionsLink);
 
                 modularGrid__InfoSidebar__OptionsLink.addEventListener('click', function () {
                     chrome.runtime.sendMessage('openOptions');
@@ -509,16 +509,16 @@ function paintGrid() {
                 if (null !== modularGrid__ZIndex) {
                     modularGrid__Container.setAttribute('style', 'display: block !important; z-index: ' + modularGrid__ZIndex);
                     modularGrid.style.zIndex = modularGrid__ZIndex;
-                    modularGrid__InfoSidebar__Container.style.zIndex = (modularGrid__ZIndex + 1);
+                    infoSidebar__Container.style.zIndex = (modularGrid__ZIndex + 1);
                 } else {
                     modularGrid__Container.style.zIndex = 'auto';
                     modularGrid.style.zIndex = 'auto';
-                    modularGrid__InfoSidebar__Container.style.zIndex = 'auto';
+                    infoSidebar__Container.style.zIndex = 'auto';
                 }
 
                 head.appendChild(gridStyleSheet);
                 body.insertBefore(modularGrid__Container, firstChildOfBody);
-                body.appendChild(modularGrid__InfoSidebar__Container);
+                body.appendChild(infoSidebar__Container);
 
                 switch (settings__CurrentGrid) {
                 case 'modular-grid':
