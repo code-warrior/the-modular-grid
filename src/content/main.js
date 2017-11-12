@@ -413,9 +413,6 @@ function paintGrid() {
                 }
 
                 let html = document.querySelector('html'),
-                    viewportWidth = html.clientWidth,
-                    firstChildOfBody = body.firstElementChild,
-
                     head = document.querySelector('head'),
                     gridStyleSheet = document.createElement('link'),
 
@@ -434,6 +431,8 @@ function paintGrid() {
                     _gridMargin = parseFloat(settings.gridMargin),
                     _currentGrid = settings.currentGrid,
 
+                    viewportWidth = html.clientWidth,
+                    firstChildOfBody = body.firstElementChild,
                     gridUnit = (_gridColumnWidth + _gridGutterWidth),
                     widthOfAllColumns = _gridColumnCount * gridUnit,
                     gridColumnColorRGBA = convertHexToRGBA(_gridColumnColor, _gridColumnColorOpacity),
