@@ -237,12 +237,12 @@ function toggleGridInfo() {
     chrome.storage.sync.get(
         null,
         function (settings) {
-            if (settings.infoSectionIsEnabled) {
+            if (settings.infoSidebarIsEnabled) {
                 document.getElementById('info-sidebar').style.display = 'none';
-                chrome.storage.sync.set({infoSectionIsEnabled: false});
+                chrome.storage.sync.set({infoSidebarIsEnabled: false});
             } else {
                 document.getElementById('info-sidebar').style.display = 'block';
-                chrome.storage.sync.set({infoSectionIsEnabled: true});
+                chrome.storage.sync.set({infoSidebarIsEnabled: true});
             }
         }
     );
@@ -460,7 +460,7 @@ function paintGrid() {
                 chrome.storage.sync.get(
                     null,
                     function (settings) {
-                        if (settings.infoSectionIsEnabled) {
+                        if (settings.infoSidebarIsEnabled) {
                             infoSidebar__Container.style.display = 'block';
                         } else {
                             infoSidebar__Container.style.display = 'none';
