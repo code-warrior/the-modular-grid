@@ -423,6 +423,7 @@ function paintGrid() {
                     settings__ColumnColorOpacity = settings.gridColumnColorOpacity,
                     settings__LeftMargin = parseFloat(settings.gridMargin),
                     settings__CurrentGrid = settings.currentGrid,
+                    settings__InfoSidebarIsEnabled = settings.infoSidebarIsEnabled,
 
                     viewportWidth = html.clientWidth,
                     firstChildOfBody = body.firstElementChild,
