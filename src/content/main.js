@@ -458,16 +458,11 @@ function paintGrid() {
 
                 infoSidebar__Container.id = 'info-sidebar';
 
-                chrome.storage.sync.get(
-                    null,
-                    function (settings) {
-                        if (settings.infoSidebarIsEnabled) {
-                            infoSidebar__Container.style.display = 'block';
-                        } else {
-                            infoSidebar__Container.style.display = 'none';
-                        }
-                    }
-                );
+                if (settings__InfoSidebarIsEnabled) {
+                    infoSidebar__Container.style.display = 'block';
+                } else {
+                    infoSidebar__Container.style.display = 'none';
+                }
 
                 modularGrid.id = 'modular-grid';
                 modularGrid.className = settings__CurrentGrid;
