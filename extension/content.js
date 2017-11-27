@@ -391,7 +391,7 @@ function addKeyboardListener() {
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
-function addViewportResizeListener() {
+function addWindowResizeListener() {
     'use strict';
 
     window.onresize = function () {
@@ -417,7 +417,7 @@ function paintGrid() {
 
                 if (settings.eventListenersEnabled) {
                     addKeyboardListener();
-                    addViewportResizeListener();
+                    addWindowResizeListener();
                     chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
@@ -584,7 +584,7 @@ chrome.storage.sync.get(
         if (settings.gridIsEnabled) {
             paintGrid();
             addKeyboardListener();
-            addViewportResizeListener();
+            addWindowResizeListener();
             chrome.storage.sync.set({eventListenersEnabled: true});
         } else {
             removeKeyboardListener();
