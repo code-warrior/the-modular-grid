@@ -211,18 +211,29 @@ function convertHexToRGBA(hex, opacity) {
 }
 
 /**
- * “Delete” the event listeners by employing the only method resembling deletion:
- * null assignment.
+ * “Remove” the keyboard listener.
  *
  * @returns none
  * @author Roy Vanegas <roy@thecodeeducators.com>
  */
-function removeEventListeners() {
+function removeKeyboardListener() {
     'use strict';
 
     document.onkeydown = null;
+}
+
+/**
+ * “Remove” the onresize listener.
+ *
+ * @returns none
+ * @author Roy Vanegas <roy@thecodeeducators.com>
+ */
+function removeWindowResizeListener() {
+    'use strict';
+
     window.onresize = null;
 }
+
 
 /**
  * Toggles the info section popup box in the upper right hand corner based on the
@@ -554,7 +565,8 @@ function paintGrid() {
                 }
             } else {
                 if (!settings.eventListenersEnabled) {
-                    removeEventListeners();
+                    removeKeyboardListener();
+                    removeWindowResizeListener();
                     chrome.storage.sync.set({eventListenersEnabled: !settings.eventListenersEnabled});
                 }
 
@@ -575,7 +587,8 @@ chrome.storage.sync.get(
             addViewportResizeListener();
             chrome.storage.sync.set({eventListenersEnabled: true});
         } else {
-            removeEventListeners();
+            removeKeyboardListener();
+            removeWindowResizeListener();
             chrome.storage.sync.set({eventListenersEnabled: false});
         }
     }
