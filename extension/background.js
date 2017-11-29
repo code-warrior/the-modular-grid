@@ -14,7 +14,7 @@ chrome.storage.sync.set({
     gridBaselineDistance: 24,
     gridColumnColorOpacity: 0.2,
     gridMargin: 10,
-    infoSectionIsEnabled: true,
+    infoSidebarIsEnabled: true,
     marginsAreEnabled: true,
     eventListenersEnabled: true,
     currentGrid: 'modular-grid'
