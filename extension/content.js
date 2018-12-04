@@ -234,7 +234,6 @@ function removeWindowResizeListener() {
     window.onresize = null;
 }
 
-
 /**
  * Toggles the info section popup box in the upper right hand corner based on the
  * value of the global Boolean infoSidebarIsShowing.
