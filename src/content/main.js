@@ -528,6 +528,7 @@ function paintGrid() {
                                 'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0), linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
                                 'background-size: ' + gridUnit + 'px 100%, 100% ' + settings__BaselineDistance + 'px !important; ' +
                                 'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
+                                'width: auto !important; ' +
                                 'max-width: ' + widthOfAllGridUnits + 'px !important;'
                     );
 
@@ -543,6 +544,7 @@ function paintGrid() {
                                 'background-image: linear-gradient(90deg, ' + gridColumnColor + ' ' + settings__ColumnWidth + 'px, transparent 0) !important; ' +
                                 'background-size: ' + gridUnit + 'px 100% !important; ' +
                                 'background-position: ' + settings__LeftMargin + 'px 0 !important; ' +
+                                'width: auto !important; ' +
                                 'max-width: ' + widthOfAllGridUnits + 'px !important;'
                     );
 
@@ -557,6 +559,7 @@ function paintGrid() {
                                 'height: ' + pageHeight + 'px !important; ' +
                                 'background-image: linear-gradient(0deg, transparent 95%, ' + settings__BaselineColor + ' 100%) !important; ' +
                                 'background-size: 100% ' + settings__BaselineDistance + 'px !important; ' +
+                                'width: auto !important; ' +
                                 'max-width: ' + widthOfAllGridUnits + 'px !important;'
                     );
 
