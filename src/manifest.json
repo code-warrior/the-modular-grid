@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "The Modular Grid",
     "short_name": "Modular Grid",
     "author": "Roy Vanegas",
