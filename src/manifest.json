@@ -61,7 +61,7 @@
     },
 
     "permissions": [
-        "tabs"
+        "tabs",
         "background",
         "activeTab",
         "<all_urls>"
