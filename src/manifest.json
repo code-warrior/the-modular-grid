@@ -61,15 +61,19 @@
     },
 
     "permissions": [
+        "tabs"
         "background",
-        "unlimitedStorage",
-        "storage",
-        "tabs",
         "activeTab",
+        "<all_urls>"
+    ],
+    "optional_permissions": [
+        "unlimitedStorage",
+        "storage"
+    ],
+    "host_permissions": [
         "http://*/",
         "https://*/",
-        "*://*/*",
-        "<all_urls>"
+        "*://*/*"
     ],
 
     "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
